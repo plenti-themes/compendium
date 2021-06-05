@@ -1,0 +1,274 @@
+{
+  "components": [
+    {
+      "name": "featured",
+      "fields": {
+        "features": [
+          {
+            "slider": {
+              "image": {
+                "pos": "top",
+                "url": "/assets/post-3_hu1141597ca868199d541d6207bd898908_200384_1110x0_resize_q75_box.jpg",
+                "alt": "Other"
+              },
+              "title": "Cheerful Loving Couple Drinking Coffee",
+              "link": "/posts",
+              "meta": {
+                "author": {
+                  "name": "John Doe",
+                  "url": "/sveltebook/author/john-doe/"
+                },
+                "date": "March 14, 2020",
+                "categories": "Photography",
+                "tags": "Art, Image"
+              }
+            }
+          },
+          {
+            "slider": {
+              "image": {
+                "pos": "top",
+                "url": "/assets/post-4_huf10e9f47160d4dcabc8f729ce564018d_334600_1110x0_resize_q75_box.jpg",
+                "alt": "Other"
+              },
+              "title": "Cheerful Loving Couple Drinking Coffee",
+              "link": "/posts",
+              "meta": {
+                "author": {
+                  "name": "John Doe",
+                  "url": "/sveltebook/author/john-doe/"
+                },
+                "date": "March 14, 2020",
+                "categories": "Photography",
+                "tags": "Art, Image"
+              }
+            }
+          },
+          {
+            "slider": {
+              "image": {
+                "pos": "top",
+                "url": "/assets/post-5_hu1ec64b1607113a941c6978e228bab314_206096_1110x0_resize_q75_box.jpg",
+                "alt": "Other"
+              },
+              "title": "Cheerful Loving Couple Drinking Coffee",
+              "link": "/posts",
+              "meta": {
+                "author": {
+                  "name": "John Doe",
+                  "url": "/sveltebook/author/john-doe/"
+                },
+                "date": "March 14, 2020",
+                "categories": "Photography",
+                "tags": "Art, Image"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "section",
+      "fields": {
+        "cards": [
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-1_hu771f7caf30f5a18d8db2d2d1d07622b1_361879_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Elements That You Can Use To Create A New Post On This Template.",
+              "url": "/posts",
+              "body": "Heading example Here is example of headings. You can use this heading by following markdownify rules."
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          },
+
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-1_hu771f7caf30f5a18d8db2d2d1d07622b1_361879_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Elements That You Can Use To Create A New Post On This Template.",
+              "url": "/posts",
+              "body": "Heading example Here is example of headings. You can use this heading by following markdownify rules."
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          },
+
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-1_hu771f7caf30f5a18d8db2d2d1d07622b1_361879_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Elements That You Can Use To Create A New Post On This Template.",
+              "url": "/posts",
+              "body": "Heading example Here is example of headings. You can use this heading by following markdownify rules."
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          },
+
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-1_hu771f7caf30f5a18d8db2d2d1d07622b1_361879_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Elements That You Can Use To Create A New Post On This Template.",
+              "url": "/posts",
+              "body": "Heading example Here is example of headings. You can use this heading by following markdownify rules."
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          },
+
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-1_hu771f7caf30f5a18d8db2d2d1d07622b1_361879_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Elements That You Can Use To Create A New Post On This Template.",
+              "url": "/posts",
+              "body": "Heading example Here is example of headings. You can use this heading by following markdownify rules."
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          },
+
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-1_hu771f7caf30f5a18d8db2d2d1d07622b1_361879_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Elements That You Can Use To Create A New Post On This Template.",
+              "url": "/posts",
+              "body": "Heading example Here is example of headings. You can use this heading by following markdownify rules."
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          },
+
+          {
+            "image": {
+              "position": "top",
+              "url": "/assets/post-2_hu52d922f08eb8074328849650ddc4504d_195923_380x0_resize_q75_box.jpg",
+              "alt": "Other"
+            },
+            "post": {
+              "title": "Cheerful Loving Couple Bakers Drinking Coffee",
+              "url": "/posts",
+              "body": "It’s no secret that the digital industry is booming. From exciting startups to global brands, companies are reaching out to digital agencies"
+            },
+            "meta": {
+              "author": {
+                "name": "John Doe",
+                "url": "/sveltebook/author/john-doe/"
+              },
+              "date": "March 14, 2020",
+              "categories": "Photography",
+              "tags": "Photo, Image"
+            },
+            "button": {
+              "title": "Continue Reading",
+              "url": "/sveltebook/post/elements"
+            }
+          }
+        ],
+        "categories": {
+          "icon": "ti-object-group",
+          "title": "Categories",
+          "list": "search"
+        },
+        "tags": {
+          "icon": "ti-tags",
+          "title": "Tags",
+          "list": "search"
+        },
+        "social": {
+          "icon": "ti-social",
+          "title": "Social Links",
+          "list": "search"
+        }
+      }
+    }
+  ]
+}
