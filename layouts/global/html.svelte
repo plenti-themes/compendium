@@ -8,9 +8,10 @@
 </script>
 
 <html lang="en">
-  <Head title="SvelteBook | Personal Blog Template" />
+  <Head title="Compendium | Personal Blog Template" />
   <body>
-    <header class="sticky-top border-bottom border-2 bg-white">
+	<!-- Setup sticky nav menu at the top -->
+    <header class="sticky top-0 z-50 border-bottom border-2 bg-white">
       <!-- reference the Navbar class from import above -->
       <Navbar />
     </header>
@@ -22,7 +23,7 @@
       <svelte:component this={layout} {...content.fields} />
     </main>
 
-    <footer class="footer section-sm pb-4 pt-2 border-top border-2 bg-white">
+    <footer class="border-top border-2 bg-white">
       <!-- reference the Footer class from import above -->
       <Footer />
     </footer>

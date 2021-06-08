@@ -14,12 +14,13 @@
   }
 </script>
 
-<section class="section-sm pb-0">
-  <div class="container">
+<section class="content flex flex-wrap items-center justify-between py-16">
+  <div class="w-0 md:w-1/12 xl:w-2/12" />
+  <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row">
       {#each [features[featureIdx]] as { slider } (featureIdx)}
-        <div class="content col-lg-12 mb-20">
-          <!-- Svelte Carousel Image -->
+        <div class="content col-lg-12">
+          <!-- Carousel Image -->
           <div class="relative rounded-lg overflow-hidden">
             <img
               class=""
@@ -30,48 +31,35 @@
             />
 
             <!-- Carousel Overlay Text -->
-            <div class="absolute row w-full text-center m-0 feature">
+            <div class="absolute row w-full m-0 feature px-16">
               <div class="col-lg-2" />
               <div class="col-lg-8">
                 <h2
-                  class="mb-3 md:mb-4 lg:mb-5 text-2xl sm:text-3xl md:text-4xl"
+                  class="text-center mb-3 md:mb-4 lg:mb-5 text-2xl sm:text-3xl md:text-4xl"
                 >
-                  <a href={slider.link} class="post-title" tabindex={featureIdx}
-                    >{slider.title}</a
-                  >
+                  <a href={slider.link} class="post-title">{slider.title}</a>
                 </h2>
-                <ul
-                  class="list-inline post-meta text-center text-sm md:mb-10 sm:mb-5"
-                >
-                  <li class="list-inline-item">
+                <ul class="flex flex-wrap items-center justify-center post-meta text-sm md:mb-10 sm:mb-5">
+                  <li class="px-1">
                     <i class="fas fa-user" />
-                    <a href="/sveltebook/author/john-doe/" tabindex={featureIdx}
-                      >John Doe</a
-                    >
+                    <a href={slider.author.url}>{slider.author.name}</a>
                   </li>
-                  <li class="list-inline-item">Date : {slider.meta.date}</li>
-                  <li class="list-inline-item">
+                  <li class="px-1">Date : {slider.date}</li>
+                  <li class="px-1">
                     Categories :
-                    <a
-                      href="/sveltebook/categories/four-seasons"
-                      class="ml-1"
-                      tabindex={featureIdx}
-                      >Four seasons
-                    </a>
+                    {#each slider.categories as catg, i}
+                      <a href="/categories/{catg}" class="ml-1"
+                        >{catg}{#if i < slider.categories.length - 1}, {/if}</a
+                      >
+                    {/each}
                   </li>
-                  <li class="list-inline-item">
-                    Tags : <a
-                      href="/sveltebook/tags/seasons"
-                      class="ml-1"
-                      tabindex={featureIdx}
-                      >Seasons
-                    </a>
-                    ,<a
-                      href="/sveltebook/tags/new"
-                      class="ml-1"
-                      tabindex={featureIdx}
-                      >New
-                    </a>
+                  <li class="px-1">
+                    Tags :
+                    {#each slider.tags as tag, i}
+                      <a href="/tags/{tag}" class="ml-1"
+                        >{tag}{#if i < slider.tags.length - 1}, {/if}</a
+                      >
+                    {/each}
                   </li>
                 </ul>
               </div>
@@ -83,7 +71,7 @@
               style="top: 45%"
             >
               <i
-                class="fas fa-chevron-circle-left text-4xl md:text-5xl lg:text-6xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+                class="fas fa-chevron-circle-left text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
               />
             </button>
             <button
@@ -93,7 +81,7 @@
               style="top: 45%"
             >
               <i
-                class="fas fa-chevron-circle-right text-4xl md:text-5xl lg:text-6xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+                class="fas fa-chevron-circle-right text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
               />
             </button>
           </div>
@@ -101,6 +89,7 @@
       {/each}
     </div>
   </div>
+  <div class="w-0 md:w-1/12 xl:w-2/12" />
 </section>
 
 <style>

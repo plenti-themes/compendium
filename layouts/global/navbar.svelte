@@ -1,44 +1,74 @@
-<div class="container">
-  <nav class="navbar navbar-expand-lg navbar-white">
-    <a class="navbar-brand" href="/">
-      <h2 class="content" style="font-weight: 800;">
-        <i class="fas fa-feather-alt" /><i>SvelteBook</i>
+<script>
+  let menuShow = false;
+  import { onMount } from 'svelte';
+
+//   const toggleNavbar = () => {
+  function toggleNavbar() {
+    menuShow = !menuShow;
+    console.log(menuShow);
+  }
+
+  onMount(() => {
+    const handleOutsideClick = (event) => {
+      if (show && !menu.contains(event.target)) {
+        menuShow = false;
+      }
+    };
+
+    const handleEscape = (event) => {
+      if (show && event.key === 'Escape') {
+        menuShow = false;
+      }
+    };
+
+    // add events when element is added to the DOM
+    document.addEventListener('click', handleOutsideClick, false);
+    document.addEventListener('keyup', handleEscape, false);
+
+    // remove events when element is removed from the DOM
+    return () => {
+      document.removeEventListener('click', handleOutsideClick, false);
+      document.removeEventListener('keyup', handleEscape, false);
+    };
+  });
+
+</script>
+
+<div class="flex flex-wrap py-5 px-2">
+  <div class="w-0    md:w-1/12 xl:w-2/12" />
+  <div class="w-full md:w-10/12 xl:w-8/12 content">
+    <nav class="content flex flex-wrap items-center justify-between ">
+      <!-- logo -->
+      <h2 class="text-3xl font-bold ">
+        <i class="fas fa-feather-alt" /><i>Compendium</i>
       </h2>
-    </a>
-    <button
-      class="navbar-toggler border-0 collapsed"
-      type="button"
-      data-toggle="collapse"
-      data-target="#navigation"
-      aria-expanded="false"
-    >
-      <i class="fas fa-bars"></i>
-    </button>
 
-    <!-- menu -->
-    <div class="navbar-collapse text-center collapse" id="navigation" style="">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
+      <!-- hamburger -->
+      <div class="text-3xl flex md:hidden">
+		<button id="hamburger" type="button" on:click={toggleNavbar}>
+          <i class="fas fa-bars block {menuShow ? 'hidden' : 'flex'}" />
+          <i class="fas fa-window-close {menuShow ? 'flex' : 'hidden'}" />
+        </button>
+      </div>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/about">About</a>
-        </li>
+      <!-- links -->
+      <div
+        class="md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow ? 'bg-gray-50' : 'hidden'}"
+      >
+        <a class="block md:inline-block px-2 py-2" href="/">Home</a>
+        <a class="block md:inline-block px-2 py-2" href="/about">About</a>
+        <a class="block md:inline-block px-2 py-2" href="/projects">Projects</a>
+        <a class="block md:inline-block px-2 py-2" href="/contact">Contact</a>
+        <span class="block md:inline-block px-2 py-2">
+          <button class="" type="button">
+            <i class="fas fa-adjust fa-fw" />
+          </button>
+        </span>
+      </div>
 
-        <li class="nav-item">
-          <a class="nav-link" href="/projects">Projects</a>
-        </li>
-
-        <li class="nav-item">
-          <a class="nav-link" href="/contact">Contact</a>
-        </li>
-
-        <!-- light/dark theme -->
-        <li class="theme-switch-item nav-link">
-          <i class="mt-1.5 fas fa-adjust fa-fw" aria-hidden="true" />
-        </li>
-      </ul>
-    </div>
-  </nav>
+      <!-- cta -->
+    </nav>
+  </div>
+  <div class="w-0      md:w-1/12 xl:w-2/12" />
 </div>
+
