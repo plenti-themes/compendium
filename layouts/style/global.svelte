@@ -32,7 +32,7 @@
   :global(p, .paragraph) {
     color: #696c6d;
     font-size: 95%;
-    font-weight: 200;
+    font-weight: 300;
   }
   :global(.list-inline-item .svg-inline--fa i) {
     font-size: 90%;
@@ -48,13 +48,13 @@
   }
   :global(.content h1 h2 h3 h4 h5 h6) {
     color: rgba(28, 29, 31, 0.8);
-    font-weight: 500;
+    /* font-weight: 500; */
     line-height: 1.2;
   }
   :global(.content a) {
     color: rgba(28, 29, 31);
     font-family: montserrat, sans-serif;
-    font-weight: 500;
+    /* font-weight: 500; */
     line-height: 1.2;
   }
   :global(.content a:hover) {
@@ -113,7 +113,7 @@
     transition: 0.2s ease;
   }
   :global(.btn-outline:hover) {
-    color: #fff;
+    color: #ffffff;
     background-color: rgba(180, 83, 9);
     text-decoration: none;
     font-weight: 400;
