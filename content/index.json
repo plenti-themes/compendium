@@ -1,4 +1,5 @@
 {
+  "title": "Compendium | Personal Blog Template",
   "components": [
     {
       "name": "featured",
@@ -130,22 +131,7 @@
               "url": "/post/elements"
             }
           }
-        ],
-        "categories": {
-          "icon": "ti-object-group",
-          "title": "Categories",
-          "list": ["search"]
-        },
-        "tags": {
-          "icon": "ti-tags",
-          "title": "Tags",
-          "list": ["search"]
-        },
-        "social": {
-          "icon": "ti-social",
-          "title": "Social Links",
-          "list": ["search"]
-        }
+        ]
       }
     }
   ]
