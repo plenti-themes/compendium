@@ -1,14 +1,28 @@
 <script>
-  import { slide } from "svelte/transition";
+  import { fade } from 'svelte/transition';
   export let allFeatures;
 
   let featureIdx = 0;
 
-  function clickNext() {
-    featureIdx = (featureIdx + 1) % allFeatures.length;
-  }
+  $: maxFeatures = allFeatures.length;
+
   function clickPrev() {
-    featureIdx = (featureIdx - 1) % allFeatures.length;
+    if (featureIdx == 0) {
+      // block of code to be executed if the condition is true
+      featureIdx = maxFeatures - 1;
+    } else {
+      // block of code to be executed if the condition is false
+      featureIdx = (featureIdx - 1) % maxFeatures;
+    }
+  }
+  function clickNext() {
+    if (featureIdx == maxFeatures) {
+      // block of code to be executed if the condition is true
+      featureIdx = 0;
+    } else {
+      // block of code to be executed if the condition is false
+	  featureIdx = (featureIdx + 1) % maxFeatures;
+    }
   }
 </script>
 
@@ -23,9 +37,9 @@
         : 'hidden'}"
     >
       <img
-        class=""
+        class="object-cover"
         style="filter: brightness(60%)"
-        transition:slide
+        transition:fade
         src="/assets/{post.fields.image.src}"
         alt={post.fields.image.alt}
       />
@@ -43,7 +57,7 @@
             class="flex flex-wrap items-center justify-center post-meta text-sm md:mb-10 sm:mb-5"
           >
             <li class="px-1">
-              <i class="icofont-user"></i>
+              <i class="icofont-user" />
               <a href={post.fields.author.url}>{post.fields.author.name}</a>
             </li>
             <li class="px-1">Date : {post.fields.date}</li>
@@ -74,7 +88,7 @@
         class="prev absolute m-2 left-2"
         style="top: 45%"
       >
-	  <i class=""></i>
+        <i class="" />
         <i
           class="icofont-circled-left text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
