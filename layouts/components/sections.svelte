@@ -11,7 +11,7 @@
             <!--Card -->
             <div class="rounded-lg overflow-hidden shadow-lg">
               <img
-                class="w-full"
+                class="w-full md:h-52 lg:h-60 object-cover"
                 src="/assets/{post.fields.image.src}"
                 alt={post.fields.image.alt}
               />
