@@ -23,10 +23,5 @@
   />
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <link rel="stylesheet" href="/spa/bundle.css" />
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"
-    type="application/javascript"
-    crossorigin="anonymous"
-    defer="defer"
-    data-search-pseudo-elements=""></script>
+  <link rel="stylesheet" href="/assets/icofont/icofont.min.css">
 </head>

@@ -18,7 +18,7 @@
       </div>
       <ul class="content-meta flex flex-wrap mb-4">
         <li class="px-1">
-          <i class="fas fa-user" />
+		  <i class="icofont-user"></i>
           <a href={author.url}>{author.name}</a>
         </li>
         <li class="px-1">Date : {date}</li>

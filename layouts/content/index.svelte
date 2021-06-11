@@ -1,7 +1,7 @@
 <script>
   import Featured from "../components/featured.svelte";
   import Sections from "../components/sections.svelte";
-  import Pagination from "../components/pagination.svelte";
+  import Pagination from "../components/paginate.svelte";
 
   export let allContent, content, fields;
 

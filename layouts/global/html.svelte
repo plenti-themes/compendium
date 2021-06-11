@@ -1,8 +1,8 @@
 <script>
   // Import Svelte component classes
-  import Head   from "head.svelte";
-  import Navbar from "navbar.svelte";
-  import Footer from "footer.svelte";
+  import Head   from "./head.svelte";
+  import Navbar from "./navbar.svelte";
+  import Footer from "./footer.svelte";
 
   export let content, layout, allContent, allLayouts;
 </script>

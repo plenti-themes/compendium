@@ -86,9 +86,9 @@
 	border-radius: 50%;
     text-align: center;
 	text-decoration: none;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
-	padding: 10px;
+	padding: 6px;
 	display: inline-block;
     z-index: 1;
     transition: 0.2s ease;

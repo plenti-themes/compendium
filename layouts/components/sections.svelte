@@ -21,7 +21,7 @@
                 </div>
                 <ul class="content flex flex-wrap post-meta mb-4 content-meta">
                   <li class="px-1">
-                    <i class="fas fa-user" />
+                    <i class="icofont-user" />
                     <a href={post.fields.author.url}
                       >{post.fields.author.name}</a
                     >
@@ -76,8 +76,8 @@
               type="search"
               placeholder="Type &amp; Hit Enter..."
             />
-            <button type="submit" class="btn-round" aria-label="Search Post"
-              ><i class="fas fa-search" /></button
+            <button type="submit" class="btn-round" aria-label="Search Post">
+              <i class="icofont-search-2" /></button
             >
           </form>
         </div>
@@ -87,16 +87,18 @@
           <h4 class="font-bold">Social Links</h4>
           <ul class="content-meta mb-4">
             <li class="btn-round inline-block">
-              <a href="#top"><i class="fab fa-facebook hover:text-white" /></a>
+              <a href="#top"><i class="icofont-facebook hover:text-white" /></a>
             </li>
             <li class="btn-round inline-block">
-              <a href="#top"><i class="fab fa-twitter hover:text-white" /></a>
+              <a href="#top"><i class="icofont-twitter hover:text-white" /></a>
             </li>
             <li class="btn-round inline-block">
-              <a href="#top"><i class="fab fa-linkedin-in hover:text-white" /></a>
+              <a href="#top"
+                ><i class="icofont-linkedin hover:text-white" /></a
+              >
             </li>
             <li class="btn-round inline-block">
-              <a href="#top"><i class="fab fa-github hover:text-white" /></a>
+              <a href="#top"><i class="icofont-github hover:text-white" /></a>
             </li>
           </ul>
         </div>
