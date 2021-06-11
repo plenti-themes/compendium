@@ -62,9 +62,6 @@
     font-weight: 500;
     text-decoration: none;
   }
-  :global(.content ul li) {
-    font-size: 90%;
-  }
   :global(.content-meta) {
     font-size: 80%;
     opacity: 80%;
@@ -78,6 +75,9 @@
     color: rgba(180, 83, 9);
     font-weight: 500;
   }
+  :global(.content ul li) {
+    font-size: 90%;
+  }
 
   /* Buttons */
   :global(.btn-round) {
@@ -87,7 +87,8 @@
     text-align: center;
 	text-decoration: none;
     font-size: 14px;
-	padding: 8px;
+    font-weight: 700;
+	padding: 10px;
 	display: inline-block;
     z-index: 1;
     transition: 0.2s ease;
@@ -96,7 +97,7 @@
     color: #fff;
     background-color: rgba(180, 83, 9);
     text-decoration: none;
-    font-weight: 400;
+    font-weight: 700;
     opacity: 70%;
   }
   :global(.btn-outline) {

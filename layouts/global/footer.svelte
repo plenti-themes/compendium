@@ -5,8 +5,8 @@
     >
     <p class="font-normal">
       © Copyright 2021. All rights reserved.<br />
-      Developed by Roberto Rivera and<br />
-	  powered by <a target="_blank" rel="noopener noreferrer" href="https://plenti.co/">Plenti</a>
+      Designed and developed by Roberto Rivera.<br />
+	  Powered by <a target="_blank" rel="noopener noreferrer" href="https://plenti.co/">Plenti</a>
       of <a target="_blank" rel="noopener noreferrer" href="https://svelte.dev/">Svelte</a> 
 	  and <a target="_blank" rel="noopener noreferrer" href="https://tailwindcss.com/">tailwindcss</a>.
     </p>

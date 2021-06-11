@@ -1,13 +1,16 @@
 <script>
-  export let title, env;
+  export let allContent, env;
+
 </script>
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <title>{title}</title>
-  <!-- <base href="{ env.local ? "/" : env.baseurl }"> -->
+  <title>Title</title>
+  <!-- <base href="{ env ? "/" : env.baseurl }"> -->
+
+  <!-- Fix hydration -->
   <script type="module" src="/spa/ejected/main.js"></script>
 
   <link
