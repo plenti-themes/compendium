@@ -13,7 +13,8 @@
       of
       <a target="_blank" rel="noopener noreferrer" href="https://svelte.dev/"
         >Svelte</a
-      >
+      >, 
+	  <a target="_blank" rel="noopener noreferrer" href="https://icofont.com/">IcoFont</a>
       and
       <a
         target="_blank"
