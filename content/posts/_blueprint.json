@@ -1,0 +1,18 @@
+{
+  "title": "",
+  "image": {
+    "src": "",
+    "alt": "Post Image",
+    "reference": ""
+  },
+  "author": {
+    "name": "John Doe",
+    "url": "/author/john-doe/"
+  },
+  "date": "",
+  "categories": ["Photography"],
+  "tags": ["Image", "Other"],
+  "featured": false,
+
+  "body": ""
+}
