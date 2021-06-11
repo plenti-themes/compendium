@@ -1,14 +1,14 @@
 <script>
-  import { fade } from "svelte/transition";
+  import { slide } from "svelte/transition";
   export let allFeatures;
 
   let featureIdx = 0;
 
   function clickNext() {
-    featureIdx = (featureIdx + 1) % posts.length;
+    featureIdx = (featureIdx + 1) % allFeatures.length;
   }
   function clickPrev() {
-    featureIdx = (featureIdx - 1) % posts.length;
+    featureIdx = (featureIdx - 1) % allFeatures.length;
   }
 </script>
 
@@ -25,7 +25,7 @@
       <img
         class=""
         style="filter: brightness(60%)"
-        transition:fade
+        transition:slide
         src="/assets/{post.fields.image.src}"
         alt={post.fields.image.alt}
       />
@@ -43,7 +43,7 @@
             class="flex flex-wrap items-center justify-center post-meta text-sm md:mb-10 sm:mb-5"
           >
             <li class="px-1">
-              <i class="fas fa-user" />
+              <i class="icofont-user"></i>
               <a href={post.fields.author.url}>{post.fields.author.name}</a>
             </li>
             <li class="px-1">Date : {post.fields.date}</li>
@@ -74,8 +74,9 @@
         class="prev absolute m-2 left-2"
         style="top: 45%"
       >
+	  <i class=""></i>
         <i
-          class="fas fa-chevron-circle-left text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="icofont-circled-left text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
       <button
@@ -85,7 +86,7 @@
         style="top: 45%"
       >
         <i
-          class="fas fa-chevron-circle-right text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="icofont-circled-right text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
     </div>
