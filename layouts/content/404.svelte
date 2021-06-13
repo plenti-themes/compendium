@@ -1,5 +1,5 @@
 <script>
-  export let title, body, image, reference;
+  export let title, body, image;
 </script>
 
 <section
@@ -7,8 +7,8 @@
 >
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
-    <div class="relative rounded-lg overflow-hidden">
-      <img class="" src="/assets/{image.src}" alt={image.alt} />
+    <div class="relative">
+      <img class="object-cover rounded-lg overflow-hidden h-96 w-full" src="/assets/{image.src}" alt={image.alt} />
 	  <span class="content-meta">{@html image.reference}</span>
 
       <div class="content font-bold text-lg mb-2 my-6">
