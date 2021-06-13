@@ -2,9 +2,10 @@
   "build": "public",
   "baseurl": "/compendium/",
   "routes": {
-    "pages": ":filename",
-    "posts": "blog/:filename",
-    "blog": "blog/:paginate(totalPages)"
+    "404": "/:filename",
+    "pages": "/:filename",
+    "posts": "/posts/:filename",
+	"index": "/:paginate(totalPages)"
   },
   "local": {
     "port": 3000

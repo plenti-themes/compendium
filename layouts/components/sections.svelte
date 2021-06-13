@@ -1,5 +1,6 @@
 <script>
-  export let allPosts, postRangeHigh, postRangeLow;
+  import Pagination from "../components/paginate.svelte";
+  export let allPosts, postRangeHigh, postRangeLow, currentPage, totalPages;
 </script>
 
 <section class="pb-10 mt-16">
@@ -45,8 +46,9 @@
                     {/each}
                   </li>
                 </ul>
-                <p class="text-gray-700 text-base">
-                  {post.fields.body.substring(0, 175)} …
+                <p class="text-base">
+                  {post.fields.body.substring(0, 175)}
+                  <span class="font-bold">...</span>
                 </p>
                 <article class="border-0">
                   <div class="mb-4">
@@ -60,6 +62,13 @@
             </div>
           {/if}
         {/each}
+      </div>
+
+      <!-- ------------------------------------------------------- -->
+      <!-- Paginate each page as necessary                         -->
+      <!-- ------------------------------------------------------- -->
+      <div class="row mt-8 md:pr-10">
+        <Pagination {currentPage} {totalPages} />
       </div>
     </div>
 
@@ -93,9 +102,7 @@
               <a href="#top"><i class="icofont-twitter hover:text-white" /></a>
             </li>
             <li class="btn-round inline-block">
-              <a href="#top"
-                ><i class="icofont-linkedin hover:text-white" /></a
-              >
+              <a href="#top"><i class="icofont-linkedin hover:text-white" /></a>
             </li>
             <li class="btn-round inline-block">
               <a href="#top"><i class="icofont-github hover:text-white" /></a>

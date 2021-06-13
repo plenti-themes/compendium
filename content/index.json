@@ -1,7 +1,7 @@
 {
   "title": "Compendium | Personal Blog Template",
-  "fields": {
+  "theme": {
     "postsPerPage": 4,
-    "section": "main"
+    "featuredPage": "Default"
   }
 }
