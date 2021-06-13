@@ -33,7 +33,7 @@
   //   });
 </script>
 
-<div class="flex flex-wrap py-5 px-2">
+<div class="flex flex-wrap py-3 px-2">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 content">
     <nav class="content flex flex-wrap items-center justify-between ">
@@ -59,8 +59,8 @@
           : 'hidden'}"
       >
         <a class="block md:inline-block px-2 py-2" href="/">Home</a>
-        <a class="block md:inline-block px-2 py-2" href="/about">About</a>
         <a class="block md:inline-block px-2 py-2" href="/projects">Projects</a>
+        <a class="block md:inline-block px-2 py-2" href="/about">About</a>
         <a class="block md:inline-block px-2 py-2" href="/contact">Contact</a>
         <span class="block md:inline-block px-2 py-2">
           <button class="" type="button">

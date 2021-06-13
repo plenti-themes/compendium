@@ -32,12 +32,12 @@
     <!-- Carousel Image -->
     <div
       id={i}
-      class="feature relative rounded-lg overflow-hidden {i == featureIdx
+      class="feature relative overflow-hidden {i == featureIdx
         ? 'flex'
         : 'hidden'}"
     >
       <img
-        class="object-cover"
+        class="object-cover h-screen w-full"
         style="filter: brightness(60%)"
         transition:fade
         src="/assets/{post.fields.image.src}"
@@ -86,7 +86,7 @@
       <button
         on:click={clickPrev}
         class="prev absolute m-2 left-2"
-        style="top: 45%"
+        style="top: 50%"
       >
         <i class="" />
         <i
@@ -97,7 +97,7 @@
         type="button"
         on:click={clickNext}
         class="next absolute m-2 right-2"
-        style="top: 45%"
+        style="top: 50%"
       >
         <i
           class="icofont-circled-right text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"

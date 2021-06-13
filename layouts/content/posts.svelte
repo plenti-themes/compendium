@@ -39,7 +39,7 @@
           {/each}
         </li>
       </ul>
-      <p class="text-gray-700 text-base">
+      <p class="text-base">
         {@html body}
       </p>
     </div>

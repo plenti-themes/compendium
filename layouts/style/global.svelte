@@ -32,7 +32,7 @@
   :global(p, .paragraph) {
     color: #696c6d;
     font-size: 95%;
-    font-weight: 300;
+    font-weight: 400;
   }
   :global(.list-inline-item .svg-inline--fa i) {
     font-size: 90%;
