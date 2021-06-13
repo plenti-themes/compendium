@@ -1,6 +1,6 @@
 {
   "build": "public",
-  "baseurl": "/compendium/",
+  "baseurl": "/",
   "routes": {
     "404": "/:filename",
     "pages": "/:filename",

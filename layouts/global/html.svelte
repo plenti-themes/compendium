@@ -1,14 +1,15 @@
 <script>
   // Import Svelte component classes
-  import Head   from "./head.svelte";
+  import Head from "./head.svelte";
   import Navbar from "./navbar.svelte";
   import Footer from "./footer.svelte";
 
-  export let content, layout, allContent, allLayouts;
+  export let content, layout, allContent, allLayouts, env;
+  let title = allContent.filter((content) => content.path == "/")[0].fields.title;
 </script>
 
 <html lang="en">
-  <Head title={content.title} />
+  <Head {title} {env} />
   <body>
     <!-- Setup sticky nav menu at the top -->
     <header class="sticky top-0 z-50 border-bottom border-2 bg-white">
