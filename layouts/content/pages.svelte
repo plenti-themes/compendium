@@ -1,7 +1,5 @@
 <script>
-  //   export let title, body, image;
   export let title;
-  //   image, post, author, date;
 </script>
 
 <section

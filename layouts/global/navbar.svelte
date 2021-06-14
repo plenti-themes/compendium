@@ -39,7 +39,7 @@
     <nav class="content flex flex-wrap items-center justify-between ">
       <!-- logo -->
       <h2 class="text-3xl font-bold">
-        <i class="icofont-bird-alt" /><i>Compendium</i>
+        <i class="icofont-bird-alt" /><i class="-ml-1">Compendium</i>
       </h2>
 
       <!-- hamburger -->

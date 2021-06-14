@@ -53,9 +53,7 @@
           >
             <a href={post.path} class="post-title">{post.fields.title}</a>
           </h2>
-          <ul
-            class="flex flex-wrap items-center justify-center post-meta text-sm md:mb-10 sm:mb-5"
-          >
+          <ul class="flex flex-wrap items-center justify-center post-meta text-sm md:mb-10 sm:mb-5">
             <li class="px-1">
               <i class="icofont-user" />
               <a href={post.fields.author.url}>{post.fields.author.name}</a>
