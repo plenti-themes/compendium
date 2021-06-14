@@ -1,6 +1,7 @@
 <script>
   import Aside from "../components/aside.svelte";
-  export let title, image, body, author, date, categories, tags;
+  export let allContent, title, image, body, author, date, categories, tags;
+  let allPosts = allContent.filter((content) => content.type == "posts");
 </script>
 
 <section
@@ -10,7 +11,11 @@
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
       <div class="relative mb-10">
-        <img class="rounded-lg overflow-hidden" src="/assets/{image.src}" alt={image.alt} />
+        <img
+          class="rounded-lg overflow-hidden"
+          src="/assets/{image.src}"
+          alt={image.alt}
+        />
         <span class="content-meta"
           >{@html image.reference.replaceAll(
             "<a ",
@@ -18,7 +23,7 @@
           )}</span
         >
       </div>
-      <div class="w-full flex flex-wrap md:w-9/12 mb-5 mb-lg-0 px-0 md:pr-10">
+      <div class="w-full md:w-9/12 mb-5 mb-lg-0 px-0 md:pr-10">
         <div class="content font-bold text-xl mb-2">
           <h2 class="h2">{title}</h2>
         </div>
@@ -51,7 +56,7 @@
       </div>
 
       <!-- Aside  -->
-      <Aside />
+      <Aside {allPosts} />
     </div>
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />

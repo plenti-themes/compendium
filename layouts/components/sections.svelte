@@ -74,6 +74,6 @@
     </div>
 
     <!-- Set the aside as the last column in the row -->
-	<Aside />
+	<Aside {allPosts} />
   </div>
 </section>
