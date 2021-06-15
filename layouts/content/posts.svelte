@@ -2,9 +2,18 @@
   import Aside from "../components/aside.svelte";
   export let allContent, title, image, body, author, date, categories, tags;
   let allPosts = allContent.filter((content) => content.type == "posts");
+
+  function scrollDown() {
+    window.scrollTo({
+      top: 65,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
 </script>
 
 <section
+  use:scrollDown
   class="section content flex flex-wrap items-center justify-between py-16"
 >
   <div class="w-0 md:w-1/12 xl:w-2/12" />
@@ -23,7 +32,7 @@
           )}</span
         >
       </div>
-      <div class="w-full md:w-9/12 mb-5 mb-lg-0 px-0 md:pr-10">
+      <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
         <div class="content font-bold text-xl mb-2">
           <h2 class="h2">{title}</h2>
         </div>
