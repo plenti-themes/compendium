@@ -5,6 +5,8 @@
   export let allContent, content, theme;
 
   $: currentPage = content.pager;
+  let featuredPage = allContent.filter((content) => content.path == "/")[0]
+    .fields.theme.featuredPage;
   let allPosts = allContent.filter((content) => content.type == "posts");
   let allFeatures = allPosts.filter((content) => content.fields?.featured);
   let totalPosts = allPosts.length;
@@ -17,14 +19,20 @@
   <!-- ------------------------------------------------------- -->
   <!-- Loop through all the posts and process featured only    -->
   <!-- ------------------------------------------------------- -->
-  {#if (currentPage <= 1)}
+  {#if featuredPage == "Screen" && currentPage <= 1}
     <div class="row -mt-16">
-      <Featured {allFeatures} />
+      <Featured {allFeatures} {featuredPage} />
     </div>
   {/if}
 
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
+    {#if featuredPage == "Frame" && currentPage <= 1}
+      <div class="row mt-16">
+        <Featured {allFeatures} {featuredPage} />
+      </div>
+    {/if}
+
     <!-- ------------------------------------------------------- -->
     <!-- Loop through all the posts and generate cards and aside -->
     <!-- ------------------------------------------------------- -->
