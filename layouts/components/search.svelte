@@ -10,9 +10,9 @@
     <form action="/search" class="widget-search">
       <input class="w-36" placeholder="Search content..." bind:value />
     </form>
-    <button type="submit" class="-mt-4" aria-label="Search Post">
+    <!-- <button type="submit" class="-mt-4" aria-label="Search Post">
       <i class="icofont-search-2 btn-round inline-block ml-1" />
-    </button>
+    </button> -->
   </span>
   <div class="row">
     <div class="content">
