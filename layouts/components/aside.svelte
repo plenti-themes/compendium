@@ -1,53 +1,12 @@
 <script>
+  import Search from "../components/search.svelte";
   export let allPosts;
-
-  let value = "";
 </script>
 
 <aside class="w-full md:w-3/12 px-0">
   <div class="pl-0 pl-lg-4">
     <!-- Search -->
-    <div class="row">
-      <h4 class="font-bold mb-2"><span>Search</span></h4>
-      <span class="flex flex-wrap items-center">
-        <form action="/search" class="widget-search">
-          <input class="w-36" placeholder="Search content..." bind:value />
-        </form>
-        <button type="submit" class="-mt-4" aria-label="Search Post">
-          <i class="icofont-search-2 btn-round inline-block ml-1" />
-        </button>
-      </span>
-      <div class="row">
-        <div class="content">
-          {#if value.length >= 3}
-            <!-- {#each allPosts as post} -->
-            {#each allPosts as post, i}
-              {#if post.fields.body.toLowerCase().includes(value.toLowerCase())}
-                <div class="flex items-center mb-5">
-                  <img
-                    class="inline-block object-cover rounded-full w-16 h-16"
-                    src="/assets/{post.fields.image.src}"
-                    alt={post.fields.image.alt}
-                  />
-                  <div class="inline-block ml-2">
-                    <a class="post-title font-bold" href={post.path}
-                      >{post.fields.title}</a
-                    >
-                    <ul class="post-meta text-sm">
-                      <li class="">
-                        <i class="icofont-user" />
-                        <a href={post.fields.author.url}
-                          >{post.fields.author.name}</a
-                        > - {post.fields.date}</li>
-                    </ul>
-                  </div>
-                </div>
-              {/if}
-            {/each}
-          {/if}
-        </div>
-      </div>
-    </div>
+	<Search {allPosts} />
 
     <!-- Social -->
     <div class="row">
@@ -104,8 +63,6 @@
         </li>
       </ul>
     </div>
-
-    <!-- latest post -->
 
     <!-- tags -->
     <div class="row">
