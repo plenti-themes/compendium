@@ -1,11 +1,9 @@
 <script>
-  import { onMount } from "svelte";
-
-  function scrollTo() {
+  function scrollTop() {
     window.scrollTo({
       top: 0,
       left: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 </script>
@@ -13,7 +11,7 @@
 <div class="flex flex-wrap items-center justify-between pb-4 pt-2">
   <div class="content w-full text-center">
     <!-- <a href="" id="scrollTop"> -->
-    <button type="button" on:click={scrollTo}>
+    <button type="button" on:click={scrollTop}>
       <i class="icofont-circled-up text-4xl mt-2 mb-2" />
     </button>
     <!-- </a> -->
