@@ -20,8 +20,6 @@
     text-decoration: none;
   }
 
-
-
   /* Defaults */
   :global(.body) {
     color: #696c6d;
@@ -81,28 +79,58 @@
 
   /* Buttons */
   :global(.btn-round) {
-    color: #1c1d1f;
-    background-color: #cccfcf;
-	border-radius: 50%;
-    text-align: center;
-	text-decoration: none;
-    font-size: 18px;
-    font-weight: 700;
-	padding: 6px;
-	display: inline-block;
+    display: inline-flex;
     z-index: 1;
     transition: 0.2s ease;
+    color: #1c1d1f;
+    background-color: #ffffff;
+    /* background-color: #cccfcf; */
+    border: 1px solid;
+    border-color: rgba(180, 83, 9);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 700;
+    height: 2.25rem;
+    width: 2.25rem;
+    padding: 3px;
   }
   :global(.btn-round:hover) {
-    color: #fff;
+    color: #ffffff;
     background-color: rgba(180, 83, 9);
     text-decoration: none;
     font-weight: 700;
     opacity: 70%;
   }
+  :global(.btn-round-active) {
+    color: #ffffff;
+    background-color: rgba(180, 83, 9);
+    display: inline-flex;
+    z-index: 1;
+    transition: 0.2s ease;
+    border: 1px solid;
+    border-color: rgba(180, 83, 9);
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.125rem;
+    font-weight: 700;
+    height: 2.25rem;
+    width: 2.25rem;
+    padding: 3px;
+    opacity: 70%;
+  }
+  :global(.disabled:hover) {
+    color: #1c1d1f;
+    background-color: #ffffff;
+    text-decoration: none;
+  }
   :global(.btn-outline) {
     color: #1c1d1f;
-    background-color: #fff;
+    background-color: #ffffff;
     border: 1px solid;
     border-color: rgba(180, 83, 9);
     border-radius: 50px;

@@ -14,12 +14,12 @@
 
 <section
   use:scrollDown
-  class="section content flex flex-wrap items-center justify-between py-16"
+  class="section flex flex-wrap items-center justify-between py-16"
 >
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
-      <div class="relative mb-10">
+      <div class="content relative mb-10">
         <img
           class="rounded-lg overflow-hidden"
           src="/assets/{image.src}"
@@ -32,7 +32,7 @@
           )}</span
         >
       </div>
-      <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
+      <div class="content w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
         <div class="content font-bold text-xl mb-2">
           <h2 class="h2">{title}</h2>
         </div>

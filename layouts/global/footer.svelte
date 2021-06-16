@@ -10,11 +10,12 @@
 
 <div class="flex flex-wrap items-center justify-between pb-4 pt-2">
   <div class="content w-full text-center">
-    <!-- <a href="" id="scrollTop"> -->
-    <button type="button" on:click={scrollTop}>
-      <i class="icofont-circled-up text-4xl mt-2 mb-2" />
+    <button type="btn-round" on:click={scrollTop}>
+	  <i
+		class="icofont-circled-up text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-50 hover:opacity-80"
+	  />
     </button>
-    <!-- </a> -->
+<!-- </a> -->
     <p class="font-normal">
       © Copyright 2021. All rights reserved.<br />
       Designed and developed by Roberto Rivera.<br />

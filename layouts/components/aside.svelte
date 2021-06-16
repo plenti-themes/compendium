@@ -6,25 +6,17 @@
 <aside class="w-full md:w-3/12 px-0">
   <div class="pl-0 pl-lg-4">
     <!-- Search -->
-	<Search {allPosts} />
+    <Search {allPosts} />
 
     <!-- Social -->
     <div class="row">
       <h4 class="font-bold">Social Links</h4>
-      <ul class="content-meta mb-4">
-        <li class="btn-round inline-block">
-          <a href="#top"><i class="text-lg hover:text-white icofont-facebook" /></a>
-        </li>
-        <li class="btn-round inline-block">
-          <a href="#top"><i class="text-lg hover:text-white icofont-twitter" /></a>
-        </li>
-        <li class="btn-round inline-block">
-          <a href="#top"><i class="text-lg hover:text-white icofont-linkedin" /></a>
-        </li>
-        <li class="btn-round inline-block">
-          <a href="#top"><i class="text-lg hover:text-white icofont-github" /></a>
-        </li>
-      </ul>
+      <div class="mb-4">
+        <a href="#top" class="btn-round"><i class="icofont-facebook" /></a>
+        <a href="#top" class="btn-round"><i class="icofont-twitter" /></a>
+        <a href="#top" class="btn-round"><i class="icofont-linkedin" /></a>
+        <a href="#top" class="btn-round"><i class="icofont-github" /></a>
+      </div>
     </div>
 
     <!-- categories -->
