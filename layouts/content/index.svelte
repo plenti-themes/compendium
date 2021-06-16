@@ -15,7 +15,7 @@
   $: postRangeLow = postRangeHigh - theme.postsPerPage;
 </script>
 
-<section class="flex flex-wrap items-center justify-between pb-16">
+<section class="flex flex-wrap items-center justify-between pb-11">
   <!-- ------------------------------------------------------- -->
   <!-- Loop through all the posts and process featured only    -->
   <!-- ------------------------------------------------------- -->
