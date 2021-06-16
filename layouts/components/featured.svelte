@@ -116,14 +116,13 @@
           class="icofont-circled-right text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
-      {#if featuredPage == "Screen"}
+      {#if featuredPage == "Bleed"}
         <button
           type="button"
 		  on:click={scrollDown}
           class="down absolute"
           style="bottom: 5%; right: 50%"
         >
-		<i class=""></i>
           <i
             class="icofont-circled-down text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
           />

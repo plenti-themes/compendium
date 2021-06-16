@@ -19,7 +19,7 @@
   <!-- ------------------------------------------------------- -->
   <!-- Loop through all the posts and process featured only    -->
   <!-- ------------------------------------------------------- -->
-  {#if featuredPage == "Screen" && currentPage <= 1}
+  {#if featuredPage == "Bleed" && currentPage <= 1}
     <div class="row -mt-16">
       <Featured {allFeatures} {featuredPage} />
     </div>
