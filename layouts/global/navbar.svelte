@@ -2,35 +2,33 @@
   let menuShow = false;
   import { onMount } from "svelte";
 
-  //   const toggleNavbar = () => {
   function toggleNavbar() {
     menuShow = !menuShow;
-    // console.log(menuShow);
   }
 
-  //   onMount(() => {
-  //     const handleOutsideClick = (event) => {
-  //       if (menuShow && !menu.contains(event.target)) {
-  //         menuShow = false;
-  //       }
-  //     };
+    onMount(() => {
+      const handleOutsideClick = (event) => {
+        if (menuShow && !menu.contains(event.target)) {
+          menuShow = false;
+        }
+      };
 
-  //     const handleEscape = (event) => {
-  //       if (menuShow && event.key === "Escape") {
-  //         menuShow = false;
-  //       }
-  //     };
+      const handleEscape = (event) => {
+        if (menuShow && event.key === "Escape") {
+          menuShow = false;
+        }
+      };
 
-  //     // add events when element is added to the DOM
-  //     document.addEventListener("click", handleOutsideClick, false);
-  //     document.addEventListener("keyup", handleEscape, false);
+      // add events when element is added to the DOM
+      document.addEventListener("click", handleOutsideClick, false);
+      document.addEventListener("keyup", handleEscape, false);
 
-  //     // remove events when element is removed from the DOM
-  //     return () => {
-  //       document.removeEventListener("click", handleOutsideClick, false);
-  //       document.removeEventListener("keyup", handleEscape, false);
-  //     };
-  //   });
+      // remove events when element is removed from the DOM
+      return () => {
+        document.removeEventListener("click", handleOutsideClick, false);
+        document.removeEventListener("keyup", handleEscape, false);
+      };
+    });
 </script>
 
 <div class="flex flex-wrap py-3 px-2">
@@ -42,9 +40,9 @@
         <i class="icofont-bird-alt" /><i class="-ml-1">Compendium</i>
       </h2>
 
-      <!-- hamburger -->
+      <!-- hamburger menu -->
       <div class="text-3xl flex md:hidden">
-        <button id="hamburger" type="button" on:click={toggleNavbar}>
+        <button id="menu" type="button" on:click={toggleNavbar}>
           <i
             class="icofont-navigation-menu block {menuShow ? 'hidden' : 'flex'}"
           />
