@@ -103,7 +103,7 @@
       >
         <i class="" />
         <i
-          class="icofont-circled-left text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="icofont-circled-left text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
       <button
@@ -113,7 +113,7 @@
         style="top: 50%"
       >
         <i
-          class="icofont-circled-right text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="icofont-circled-right text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
       {#if featuredPage == "Bleed"}
@@ -121,10 +121,10 @@
           type="button"
 		  on:click={scrollDown}
           class="down absolute"
-          style="bottom: 5%; right: 50%"
+          style="bottom: 5%; left: 47%"
         >
           <i
-            class="icofont-circled-down text-3xl sm:text-4xl lg:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+            class="icofont-circled-down text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
           />
         </button>
       {/if}
