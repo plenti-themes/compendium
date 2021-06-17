@@ -32,7 +32,7 @@
                 >
                 <ul class="post-meta text-sm">
                   <li class="">
-                    <i class="las la-user-astronaut text-base" />
+                    <i class="las la-user-astronaut text-base top-0.5 relative" />
                     <a href={post.fields.author.url}
                       >{post.fields.author.name}</a
                     >

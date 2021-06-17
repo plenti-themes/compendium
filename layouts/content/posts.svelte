@@ -39,7 +39,7 @@
         </div>
         <ul class="content-meta flex flex-wrap mb-4">
           <li class="px-1">
-            <i class="las la-user-astronaut text-base" />
+            <i class="las la-user-astronaut text-base top-0.5 relative" />
             <a href={author.url}>{author.name}</a>
           </li>
           <li class="px-1">Date : {date}</li>

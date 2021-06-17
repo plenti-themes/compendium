@@ -24,7 +24,12 @@
         target="_blank"
         rel="noopener noreferrer"
         href={src}
-        class="btn-round mx-0.5"><i class="{ico} text-2xl font-medium" /></a
+        class="btn-round mx-0.5"
+        ><i
+          class="{ico} font-medium {ico == 'lab la-keybase'
+            ? 'text-3xl top-0'
+            : 'text-2xl top-1.5'}"
+        /></a
       >
     {/each}
   </div>

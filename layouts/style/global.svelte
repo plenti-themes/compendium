@@ -148,9 +148,4 @@
     font-weight: 400;
     opacity: 70%;
   }
-  :global(.lab, .las) {
-    position: relative;
-    top: 1.5px;
-  }
-
 </style>

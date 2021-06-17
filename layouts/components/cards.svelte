@@ -16,7 +16,7 @@
         </div>
         <ul class="content flex flex-wrap post-meta mb-4 content-meta">
           <li class="px-1">
-            <i class="las la-user-astronaut text-base" />
+            <i class="las la-user-astronaut text-base top-0.5 relative" />
             <a href={post.fields.author.url}>{post.fields.author.name}</a>
           </li>
           <li class="px-1">Date : {post.fields.date}</li>
@@ -54,7 +54,3 @@
     </div>
   {/if}
 {/each}
-
-<style>
-	
-</style>

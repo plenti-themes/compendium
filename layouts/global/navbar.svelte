@@ -37,7 +37,7 @@
     <nav class="content flex flex-wrap items-center justify-between ">
       <!-- logo -->
       <h2 class="font-bold">
-        <i class="las la-feather-alt text-4xl" /><i class="-ml-1 text-3xl"
+        <i class="las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i class="-ml-1 text-3xl"
           >Compendium</i
         >
       </h2>
@@ -62,7 +62,7 @@
         <a class="block md:inline-block px-2 py-2" href="/contact">Contact</a>
         <span class="block md:inline-block px-2 py-2">
           <button class="" type="button">
-            <i class="las la-adjust text-xl" />
+            <i class="las la-adjust text-xl top-0" />
           </button>
         </span>
       </div>
