@@ -70,7 +70,7 @@
               : 'mb-24'}"
           >
             <li class="px-1">
-              <i class="las la-user-ninja" />
+              <i class="las la-user-astronaut text-base" />
               <a href={post.fields.author.url}>{post.fields.author.name}</a>
             </li>
             <li class="px-1">Date : {post.fields.date}</li>

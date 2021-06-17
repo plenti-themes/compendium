@@ -8,19 +8,19 @@
   <!-- -------------------- -->
   {#if currentPage - 1 > 0}
     <a href="/1" class="btn-round m-0.5" aria-label="First"
-      ><i class="las la-angle-double-left" /></a
+      ><i class="las la-angle-double-left font-black" /></a
     >
     <a
       href="/{Math.max(currentPage - 1, 1)}"
       class="btn-round m-0.5"
-      aria-label="Previous"><i class="las la-angle-left" /></a
+      aria-label="Previous"><i class="las la-angle-left font-black" /></a
     >
   {:else}
     <button class="btn-round m-0.5 disabled" aria-label="First"
-      ><i class="las la-angle-double-left text-gray-300" /></button
+      ><i class="las la-angle-double-left text-gray-300 font-black" /></button
     >
     <button class="btn-round m-0.5 disabled" aria-label="Previous"
-      ><i class="las la-angle-left text-gray-300" /></button
+      ><i class="las la-angle-left text-gray-300 font-black" /></button
     >
   {/if}
 
@@ -42,17 +42,23 @@
     <a
       href="/{Math.min(currentPage + 1, totalPages)}"
       class="btn-round m-0.5"
-      aria-label="Next"><i class="las la-angle-right" /></a
+      aria-label="Next"><i class="las la-angle-right font-black" /></a
     >
     <a href="/{totalPages}" class="btn-round m-0.5" aria-label="Last"
-      ><i class="las la-angle-double-right" /></a
+      ><i class="las la-angle-double-right font-black" /></a
     >
   {:else}
     <button class="btn-round m-0.5 disabled" aria-label="Next"
-      ><i class="las la-angle-right text-gray-300" /></button
+      ><i class="las la-angle-right text-gray-300 font-black" /></button
     >
     <button class="btn-round m-0.5 disabled" aria-label="Last"
-      ><i class="las la-angle-double-right text-gray-300" /></button
+      ><i class="las la-angle-double-right text-gray-300 font-black" /></button
     >
   {/if}
 </div>
+
+<style>
+  .las {
+    top: 0px;
+  }
+</style>
