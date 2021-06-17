@@ -23,5 +23,5 @@
   />
   <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
   <link rel="stylesheet" href="/spa/bundle.css" />
-  <link rel="stylesheet" href="/assets/icofont/icofont.min.css">
+  <link rel="stylesheet" href="/assets/icons8/css/line-awesome.min.css">
 </head>

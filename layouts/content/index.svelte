@@ -38,7 +38,7 @@
     <!-- ------------------------------------------------------- -->
     <div class="row">
       <Sections
-        {allPosts}
+        {allContent}
         {postRangeHigh}
         {postRangeLow}
         {currentPage}

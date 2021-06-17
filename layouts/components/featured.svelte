@@ -70,7 +70,7 @@
               : 'mb-24'}"
           >
             <li class="px-1">
-              <i class="icofont-user" />
+              <i class="las la-user-ninja" />
               <a href={post.fields.author.url}>{post.fields.author.name}</a>
             </li>
             <li class="px-1">Date : {post.fields.date}</li>
@@ -103,7 +103,7 @@
       >
         <i class="" />
         <i
-          class="icofont-circled-left text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
       <button
@@ -113,7 +113,7 @@
         style="top: 50%"
       >
         <i
-          class="icofont-circled-right text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
         />
       </button>
       {#if featuredPage == "Bleed"}
@@ -124,7 +124,7 @@
           style="bottom: 5%; left: 47%"
         >
           <i
-            class="icofont-circled-down text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+            class="las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
           />
         </button>
       {/if}

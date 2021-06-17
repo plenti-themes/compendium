@@ -16,7 +16,7 @@
         </div>
         <ul class="content flex flex-wrap post-meta mb-4 content-meta">
           <li class="px-1">
-            <i class="icofont-user" />
+            <i class="las la-user-ninja" />
             <a href={post.fields.author.url}>{post.fields.author.name}</a>
           </li>
           <li class="px-1">Date : {post.fields.date}</li>

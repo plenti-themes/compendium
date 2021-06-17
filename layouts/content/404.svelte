@@ -12,7 +12,7 @@
 	  <span class="content-meta">{@html image.reference}</span>
 
       <div class="content font-bold text-lg mb-2 my-6">
-        <h2 class="text-2xl"><i class="icofont-direction-sign"></i>{title}</h2>
+        <h2 class="text-2xl"><i class="las la-directions"></i>{title}</h2>
       </div>
       <div>
         <p class="text-xl">{body}</p>

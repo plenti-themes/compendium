@@ -12,7 +12,7 @@
   <div class="content w-full text-center">
     <button type="btn-round" on:click={scrollTop}>
 	  <i
-		class="icofont-circled-up text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-50 hover:opacity-80"
+		class="las la-chevron-circle-up text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-50 hover:opacity-80"
 	  />
     </button>
 <!-- </a> -->
@@ -27,8 +27,8 @@
       <a target="_blank" rel="noopener noreferrer" href="https://svelte.dev/"
         >Svelte</a
       >,
-      <a target="_blank" rel="noopener noreferrer" href="https://icofont.com/"
-        >IcoFont</a
+      <a target="_blank" rel="noopener noreferrer" href="https://icons8.com/line-awesome"
+        >Line Awesome</a
       >
       and
       <a

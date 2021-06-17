@@ -3,7 +3,10 @@
   import Cards from "../components/cards.svelte";
   import Pagination from "../components/paginate.svelte";
 
-  export let allPosts, postRangeHigh, postRangeLow, currentPage, totalPages;
+  export let allContent, postRangeHigh, postRangeLow, currentPage, totalPages;
+  let allPosts = allContent.filter((content) => content.type == "posts");
+  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.theme.social;
+
 </script>
 
 <section class="mt-16">
@@ -27,6 +30,6 @@
     <!-- ------------------------------------------------------- -->
     <!-- Set the aside as the last column in the row             -->
     <!-- ------------------------------------------------------- -->
-    <Aside {allPosts} />
+    <Aside {allPosts} {allSocial} />
   </div>
 </section>

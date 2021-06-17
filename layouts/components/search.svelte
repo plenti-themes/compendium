@@ -11,7 +11,7 @@
       <input class="w-36" placeholder="Search content..." bind:value />
     </form>
     <!-- <button type="submit" class="-mt-4" aria-label="Search Post">
-      <i class="icofont-search-2 btn-round inline-block ml-1" />
+      <i class="las la-search-2 btn-round inline-block ml-1" />
     </button> -->
   </span>
   <div class="row">
@@ -32,7 +32,7 @@
                 >
                 <ul class="post-meta text-sm">
                   <li class="">
-                    <i class="icofont-user" />
+                    <i class="las la-user-ninja text-base" />
                     <a href={post.fields.author.url}
                       >{post.fields.author.name}</a
                     >

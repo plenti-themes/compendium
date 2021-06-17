@@ -95,7 +95,7 @@
     font-weight: 700;
     height: 2.25rem;
     width: 2.25rem;
-    padding: 3px;
+    padding: 1px;
   }
   :global(.btn-round:hover) {
     color: #ffffff;
