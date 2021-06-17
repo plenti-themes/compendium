@@ -1,9 +1,52 @@
 {
   "title": "Compendium | Personal Blog Template",
   "theme": {
-    "postsPerPage": 4,
-    "featuredPage": "Frame",
-	"featuredPageOptions": "Bleed, Frame, None",
-	"social": []
+    "postsPerPage": 6,
+    "featuredPage": "Bleed",
+    "featuredPageOptions": "Bleed, Frame, None",
+    "social": [
+      {
+        "src": "https://www.linkedin.com/",
+        "ico": "lab la-linkedin-in",
+        "enabled": true
+      },
+      {
+        "src": "https://github.com/",
+        "ico": "lab la-github-alt",
+        "enabled": true
+      },
+      {
+        "src": "https://about.gitlab.com/",
+        "ico": "lab la-gitlab",
+        "enabled": true
+      },
+      {
+        "src": "https://twitter.com/",
+        "ico": "lab la-twitter",
+        "enabled": false
+      },
+      {
+        "src": "https://keybase.io/",
+        "ico": "lab la-keybase",
+        "enabled": true
+      },
+      {
+        "src": "https://www.reddit.com/",
+        "ico": "lab la-reddit",
+        "enabled": true
+      },
+      {
+        "src": "https://www.instagram.com/",
+        "ico": "lab la-instagram",
+        "enabled": false
+      },
+      {
+        "src": "https://www.facebook.com/",
+        "ico": "lab la-facebook-f",
+        "enabled": false
+      },
+      { "src": "", "ico": "", "enabled": false }
+    ],
+    "scheme": []
   }
 }
