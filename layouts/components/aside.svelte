@@ -1,6 +1,8 @@
 <script>
   import Search from "../components/search.svelte";
-  export let allPosts;
+  import Social from "../components/social.svelte";
+
+  export let allPosts, allSocial;
 </script>
 
 <aside class="w-full md:w-3/12 px-0">
@@ -9,15 +11,7 @@
     <Search {allPosts} />
 
     <!-- Social -->
-    <div class="row">
-      <h4 class="font-bold">Social Links</h4>
-      <div class="mb-4">
-        <a href="#top" class="btn-round"><i class="icofont-facebook" /></a>
-        <a href="#top" class="btn-round"><i class="icofont-twitter" /></a>
-        <a href="#top" class="btn-round"><i class="icofont-linkedin" /></a>
-        <a href="#top" class="btn-round"><i class="icofont-github" /></a>
-      </div>
-    </div>
+	<Social {allSocial} />
 
     <!-- categories -->
     <div class="row">
