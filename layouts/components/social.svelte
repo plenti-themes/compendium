@@ -17,7 +17,7 @@
 </script>
 
 <div class="row">
-  <h4 class="h4">Social Links</h4>
+  <h4 class="h4 mb-1">Social Links</h4>
   <div class="mb-4">
     {#each arrSocial as { src, ico }}
       <button class="btn-round mx-0.5">

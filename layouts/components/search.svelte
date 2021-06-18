@@ -5,7 +5,7 @@
 </script>
 
 <div class="row">
-  <h4 class="h4 mb-2"><span>Search</span></h4>
+  <h4 class="h4 mb-1"><span>Search</span></h4>
   <span class="flex flex-wrap items-center">
     <form action="/search" class="widget-search">
       <input class="" placeholder="Search content..." bind:value />
