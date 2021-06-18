@@ -1,11 +1,15 @@
 {
   "name": "my-plenti-app",
   "version": "1.0.0",
-  "type": "module",
+  "scripts": {
+    "build": "postcss css/pre-tailwind.css -o assets/global-tailwind.css"
+  },
   "private": true,
   "dependencies": {
     "navaid": "^1.2.0",
+    "postcss-cli": "^8.3.1",
     "regexparam": "^1.3.0",
-    "svelte": "^3.32.3"
+    "svelte": "^3.32.3",
+    "tailwindcss": "^2.2.0"
   }
 }
