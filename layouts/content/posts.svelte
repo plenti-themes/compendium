@@ -26,7 +26,7 @@
           src="/assets/{image.src}"
           alt={image.alt}
         />
-        <span class="content-meta"
+        <span class="content text-xs"
           >{@html image.reference.replaceAll(
             "<a ",
             "<a target='blank' rel='noopener noreferrer'"
@@ -37,7 +37,7 @@
         <div class="content font-bold text-xl mb-2">
           <h2 class="h2">{title}</h2>
         </div>
-        <ul class="content-meta flex flex-wrap mb-4">
+        <ul class="content text-meta flex flex-wrap mb-4">
           <li class="px-1">
             <i class="las la-user-astronaut text-base top-0.5 relative" />
             <a href={author.url}>{author.name}</a>
@@ -66,7 +66,7 @@
       </div>
 
       <!-- Aside  -->
-	  <Aside {allPosts} {allSocial} />
+      <Aside {allPosts} {allSocial} />
     </div>
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />

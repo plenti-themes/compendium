@@ -12,9 +12,9 @@
       />
       <div class="px-5 py-4">
         <div class="content font-bold text-lg mb-2">
-          <a class="post-title" href={post.path}>{post.fields.title}</a>
+          <a class="" href={post.path}>{post.fields.title}</a>
         </div>
-        <ul class="content flex flex-wrap post-meta mb-4 content-meta">
+        <ul class="content text-meta flex flex-wrap mb-4">
           <li class="px-1">
             <i class="las la-user-astronaut text-base top-0.5 relative" />
             <a href={post.fields.author.url}>{post.fields.author.name}</a>

@@ -20,17 +20,15 @@
   <h4 class="font-bold">Social Links</h4>
   <div class="mb-4">
     {#each arrSocial as { src, ico }}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={src}
-        class="btn-round mx-0.5"
-        ><i
-          class="{ico} font-medium {ico == 'lab la-keybase'
-            ? 'text-3xl top-0'
-            : 'text-2xl top-1.5'}"
-        /></a
-      >
+      <button class="btn-round mx-0.5">
+        <a target="_blank" rel="noopener noreferrer" href={src}
+          ><i
+            class="{ico} font-medium {ico == 'lab la-keybase'
+              ? 'text-3xl pb-0.5'
+              : 'text-2xl pt-0.5'}"
+          /></a
+        >
+      </button>
     {/each}
   </div>
 </div>

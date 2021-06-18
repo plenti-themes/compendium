@@ -9,7 +9,7 @@
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="relative">
       <img class="object-cover rounded-lg overflow-hidden h-96 w-full" src="/assets/{image.src}" alt={image.alt} />
-	  <span class="content-meta">{@html image.reference}</span>
+	  <span class="content text-xs">{@html image.reference}</span>
 
       <div class="content font-bold text-lg mb-2 my-6">
         <h2 class="text-2xl"><i class="las la-directions"></i>{title}</h2>

@@ -52,15 +52,15 @@
 
       <!-- links -->
       <div
-        class="md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow
+        class="content md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow
           ? 'bg-gray-50'
           : 'hidden'}"
       >
-        <a class="block md:inline-block px-2 py-2" href="/">Home</a>
-        <a class="block md:inline-block px-2 py-2" href="/projects">Projects</a>
-        <a class="block md:inline-block px-2 py-2" href="/about">About</a>
-        <a class="block md:inline-block px-2 py-2" href="/contact">Contact</a>
-        <span class="block md:inline-block px-2 py-2">
+        <a class="block md:inline-flex px-2 py-2" href="/">Home</a>
+        <a class="block md:inline-flex px-2 py-2" href="/projects">Projects</a>
+        <a class="block md:inline-flex px-2 py-2" href="/about">About</a>
+        <a class="block md:inline-flex px-2 py-2" href="/contact">Contact</a>
+        <span class="block md:inline-flex px-2 py-2">
           <button class="" type="button">
             <i class="las la-adjust text-xl top-0" />
           </button>

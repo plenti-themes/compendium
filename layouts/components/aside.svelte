@@ -16,7 +16,7 @@
     <!-- categories -->
     <div class="row">
       <h4 class="font-bold"><span>Categories</span></h4>
-      <ul class="content-meta mb-4">
+      <ul class="content text-meta mb-4">
         <li>
           <a href="/categories/four-seasons" class="d-flex"
             >Four seasons
@@ -53,7 +53,7 @@
     <!-- tags -->
     <div class="row">
       <h4 class="w-full flex font-bold">Tags</h4>
-      <ul class="content-meta mb-4">
+      <ul class="content text-meta mb-4">
         <li class="list-inline-item">
           <a href="/tags/booth">Booth</a>
         </li>

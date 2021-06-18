@@ -61,10 +61,10 @@
           <h2
             class="text-center mb-3 md:mb-4 lg:mb-5 text-2xl sm:text-3xl md:text-4xl"
           >
-            <a href={post.path} class="post-title">{post.fields.title}</a>
+            <a href={post.path} class="">{post.fields.title}</a>
           </h2>
           <ul
-            class="flex flex-wrap items-center justify-center post-meta text-sm {featuredPage ==
+            class="flex flex-wrap items-center justify-center text-sm {featuredPage ==
             'Frame'
               ? 'md:mb-10 sm:mb-5'
               : 'mb-24'}"

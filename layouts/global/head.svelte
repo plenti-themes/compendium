@@ -13,10 +13,7 @@
   <!-- Fix hydration -->
   <script type="module" src="/spa/ejected/main.js"></script>
 
-  <link
-    href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-    rel="stylesheet"
-  />
+  <link rel='stylesheet' href='/assets/global-tailwind.css'>
   <link
     href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap"
     rel="stylesheet"

@@ -27,10 +27,10 @@
                 alt={post.fields.image.alt}
               />
               <div class="inline-block ml-2">
-                <a class="post-title font-bold" href={post.path}
+                <a class="font-bold" href={post.path}
                   >{post.fields.title}</a
                 >
-                <ul class="post-meta text-sm">
+                <ul class="text-meta">
                   <li class="">
                     <i class="las la-user-astronaut text-base top-0.5 relative" />
                     <a href={post.fields.author.url}
