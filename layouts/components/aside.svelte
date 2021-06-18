@@ -15,34 +15,34 @@
 
     <!-- categories -->
     <div class="row">
-      <h4 class="font-bold"><span>Categories</span></h4>
-      <ul class="content text-meta mb-4">
+      <h4 class="h4"><span>Categories</span></h4>
+      <ul class="content text-sm mb-4">
         <li>
-          <a href="/categories/four-seasons" class="d-flex"
+          <a href="/categories/four-seasons" class="inline-flex"
             >Four seasons
             <small class="ml-auto">(1)</small></a
           >
         </li>
         <li>
-          <a href="/categories/newyork-city" class="d-flex"
+          <a href="/categories/newyork-city" class="inline-flex"
             >Newyork city
             <small class="ml-auto">(2)</small></a
           >
         </li>
         <li>
-          <a href="/categories/photobooth" class="d-flex"
+          <a href="/categories/photobooth" class="inline-flex"
             >Photobooth
             <small class="ml-auto">(1)</small></a
           >
         </li>
         <li>
-          <a href="/categories/photography" class="d-flex"
+          <a href="/categories/photography" class="inline-flex"
             >Photography
             <small class="ml-auto">(2)</small></a
           >
         </li>
         <li>
-          <a href="/categories/videography" class="d-flex"
+          <a href="/categories/videography" class="inline-flex"
             >Videography
             <small class="ml-auto">(1)</small></a
           >
@@ -52,24 +52,24 @@
 
     <!-- tags -->
     <div class="row">
-      <h4 class="w-full flex font-bold">Tags</h4>
-      <ul class="content text-meta mb-4">
-        <li class="list-inline-item">
-          <a href="/tags/booth">Booth</a>
+      <h4 class="h4 w-full flex">Tags</h4>
+      <ul class="content text-sm mb-4">
+        <li class="pr-1 inline-flex">
+          <a href="/tags/booth">Booth,</a>
         </li>
-        <li class="list-inline-item">
-          <a href="/tags/city">City</a>
+        <li class="pr-1 inline-flex">
+          <a href="/tags/city">City,</a>
         </li>
-        <li class="list-inline-item">
-          <a href="/tags/image">Image</a>
+        <li class="pr-1 inline-flex">
+          <a href="/tags/image">Image,</a>
         </li>
-        <li class="list-inline-item">
-          <a href="/tags/new">New</a>
+        <li class="pr-1 inline-flex">
+          <a href="/tags/new">Nature,</a>
         </li>
-        <li class="list-inline-item">
-          <a href="/tags/photo">Photo</a>
+        <li class="pr-1 inline-flex">
+          <a href="/tags/photo">Photo,</a>
         </li>
-        <li class="list-inline-item">
+        <li class="pr-1 inline-flex">
           <a href="/tags/video">Video</a>
         </li>
       </ul>

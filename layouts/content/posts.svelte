@@ -38,12 +38,12 @@
           <h2 class="h2">{title}</h2>
         </div>
         <ul class="content text-meta flex flex-wrap mb-4">
-          <li class="px-1">
-            <i class="las la-user-astronaut text-base top-0.5 relative" />
+          <li class="px-1 inline-flex">
+            <i class="las la-user-astronaut text-base relative" />
             <a href={author.url}>{author.name}</a>
           </li>
-          <li class="px-1">Date : {date}</li>
-          <li class="px-1">
+          <li class="px-1 inline-flex">Date : {date}</li>
+          <li class="px-1 inline-flex">
             Categories:
             {#each categories as catg, i}
               <a href="/categories/{catg}" class="content ml-1">
@@ -51,7 +51,7 @@
               </a>
             {/each}
           </li>
-          <li class="px-1">
+          <li class="px-1 inline-flex">
             Tags:
             {#each tags as tag, i}
               <a href="/tags/{tag}" class="ml-1">

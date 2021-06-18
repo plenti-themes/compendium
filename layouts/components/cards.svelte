@@ -11,16 +11,16 @@
         alt={post.fields.image.alt}
       />
       <div class="px-5 py-4">
-        <div class="content font-bold text-lg mb-2">
-          <a class="" href={post.path}>{post.fields.title}</a>
+        <div class="content h3 mb-2">
+          <a href={post.path}>{post.fields.title}</a>
         </div>
         <ul class="content text-meta flex flex-wrap mb-4">
-          <li class="px-1">
-            <i class="las la-user-astronaut text-base top-0.5 relative" />
+          <li class="px-1 inline-flex">
+            <i class="las la-user-astronaut text-base relative" />
             <a href={post.fields.author.url}>{post.fields.author.name}</a>
           </li>
-          <li class="px-1">Date : {post.fields.date}</li>
-          <li class="px-1">
+          <li class="px-1 inline-flex">Date : {post.fields.date}</li>
+          <li class="px-1 inline-flex">
             Categories :
             {#each post.fields.categories as catg, i}
               <a href="/categories/{catg}" class="ml-1"
@@ -29,7 +29,7 @@
               >
             {/each}
           </li>
-          <li class="px-1">
+          <li class="px-1 inline-flex">
             Tags :
             {#each post.fields.tags as tag, i}
               <a href="/tags/{tag}" class="ml-1"

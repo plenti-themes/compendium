@@ -5,10 +5,10 @@
 </script>
 
 <div class="row">
-  <h4 class="font-bold mb-2"><span>Search</span></h4>
+  <h4 class="h4 mb-2"><span>Search</span></h4>
   <span class="flex flex-wrap items-center">
     <form action="/search" class="widget-search">
-      <input class="w-36" placeholder="Search content..." bind:value />
+      <input class="" placeholder="Search content..." bind:value />
     </form>
     <!-- <button type="submit" class="-mt-4" aria-label="Search Post">
       <i class="las la-search-2 btn-round inline-block ml-1" />
@@ -27,7 +27,7 @@
                 alt={post.fields.image.alt}
               />
               <div class="inline-block ml-2">
-                <a class="font-bold" href={post.path}
+                <a class="h4" href={post.path}
                   >{post.fields.title}</a
                 >
                 <ul class="text-meta">

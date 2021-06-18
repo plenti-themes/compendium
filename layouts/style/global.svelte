@@ -6,12 +6,36 @@
     font-weight: 400;
   }
   :global(.text-meta) {
+    font-family: montserrat, sans-serif;
 	font-size: 0.8rem;
+  }
+  :global(.h1) {
+	font-size: 2rem;
+  }
+  :global(.h2) {
+	font-size: 1.5rem;
+  }
+  :global(.h3) {
+	font-size: 1.17rem;
+  }
+  :global(.h4) {
+	font-size: 1rem;
+  }
+  :global(.h5) {
+	font-size: 0.85rem;
+  }
+  :global(.h6) {
+	font-size: 0.67rem;
   }
 
   /* Content settings */
-  :global(.content, h1, h2, h3, h4, h5, h6) {
+  :global(.content) {
     color: rgba(28, 29, 31, 0.8);
+    line-height: 1.2;
+  }
+  :global(.content .h1, .h2, .h3, .h4, .h5, .h6) {
+    font-family: montserrat, sans-serif;
+    font-weight: 700;
     line-height: 1.2;
   }
   :global(.content strong) {

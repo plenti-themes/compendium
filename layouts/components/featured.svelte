@@ -59,7 +59,7 @@
         <div class="col-lg-2" />
         <div class="col-lg-8">
           <h2
-            class="text-center mb-3 md:mb-4 lg:mb-5 text-2xl sm:text-3xl md:text-4xl"
+            class="content text-center mb-3 md:mb-4 lg:mb-5 text-2xl sm:text-3xl md:text-4xl"
           >
             <a href={post.path} class="">{post.fields.title}</a>
           </h2>
