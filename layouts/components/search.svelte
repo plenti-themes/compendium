@@ -5,7 +5,7 @@
 </script>
 
 <div class="row">
-  <h4 class="h4 mb-1"><span>Search</span></h4>
+  <h4 class="header mb-1"><span>Search</span></h4>
   <span class="flex flex-wrap items-center">
     <form action="/search" class="widget-search">
       <input class="" placeholder="Search content..." bind:value />
@@ -27,12 +27,14 @@
                 alt={post.fields.image.alt}
               />
               <div class="inline-block ml-2">
-                <a class="h4" href={post.path}
-                  >{post.fields.title}</a
-                >
+                <h5 class="header">
+                  <a href={post.path}>{post.fields.title}</a>
+                </h5>
                 <ul class="text-meta">
                   <li class="">
-                    <i class="las la-user-astronaut text-base top-0.5 relative" />
+                    <i
+                      class="las la-user-astronaut text-base top-0.5 relative"
+                    />
                     <a href={post.fields.author.url}
                       >{post.fields.author.name}</a
                     >

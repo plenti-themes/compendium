@@ -36,11 +36,11 @@
   <div class="w-full md:w-10/12 xl:w-8/12 content">
     <nav class="content flex flex-wrap items-center justify-between ">
       <!-- logo -->
-      <h2 class="font-bold">
-        <i class="las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i class="-ml-1 text-3xl"
-          >Compendium</i
+      <h1 class="header">
+        <i class="las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i
+          class="text-3xl">Compendium</i
         >
-      </h2>
+      </h1>
 
       <!-- hamburger menu -->
       <div class="text-4xl flex md:hidden align-items justify-content">
@@ -56,15 +56,16 @@
           ? 'bg-gray-50'
           : 'hidden'}"
       >
-        <a class="block md:inline-flex px-2 py-2" href="/">Home</a>
-        <a class="block md:inline-flex px-2 py-2" href="/projects">Projects</a>
-        <a class="block md:inline-flex px-2 py-2" href="/about">About</a>
-        <a class="block md:inline-flex px-2 py-2" href="/contact">Contact</a>
-        <span class="block md:inline-flex px-2 py-2">
-          <button class="" type="button">
-            <i class="las la-adjust text-xl top-0" />
+        <h3>
+          <a class="block md:inline-flex px-2 py-1" href="/">Home</a>
+          <a class="block md:inline-flex px-2 py-1" href="/projects">Projects</a
+          >
+          <a class="block md:inline-flex px-2 py-1" href="/about">About</a>
+          <a class="block md:inline-flex px-2 py-1" href="/contact">Contact</a>
+          <button>
+            <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
           </button>
-        </span>
+        </h3>
       </div>
 
       <!-- cta -->

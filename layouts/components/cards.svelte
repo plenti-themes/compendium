@@ -11,12 +11,12 @@
         alt={post.fields.image.alt}
       />
       <div class="px-5 py-4">
-        <div class="content h3 mb-2">
+        <h3 class="header mb-2">
           <a href={post.path}>{post.fields.title}</a>
-        </div>
-        <ul class="content text-meta flex flex-wrap mb-4">
+		</h3>
+        <ul class="text-meta flex flex-wrap mb-4">
           <li class="px-1 inline-flex">
-            <i class="las la-user-astronaut text-base relative" />
+            <i class="las la-user-astronaut text-base" />
             <a href={post.fields.author.url}>{post.fields.author.name}</a>
           </li>
           <li class="px-1 inline-flex">Date : {post.fields.date}</li>

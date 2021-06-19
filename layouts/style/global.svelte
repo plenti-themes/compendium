@@ -1,42 +1,44 @@
 <style>
-  /* Words */
+  /* Nodes */
+  :global(h1) {
+    font-size: 2rem;
+  }
+  :global(h2) {
+    font-size: 1.5rem;
+  }
+  :global(h3) {
+    font-size: 1.17rem;
+  }
+  :global(h4) {
+    font-size: 1rem;
+  }
+  :global(h5) {
+    font-size: 0.85rem;
+  }
+  :global(h6) {
+    font-size: 0.67rem;
+  }
+
+  /* Content settings */
   :global(p) {
-    color: #696c6d;
+    color: rgba(28, 29, 31, 0.8);
     font-size: 95%;
     font-weight: 400;
   }
   :global(.text-meta) {
+    color: rgba(28, 29, 31, 0.8);
     font-family: montserrat, sans-serif;
-	font-size: 0.8rem;
+    font-size: 0.8rem;
   }
-  :global(.h1) {
-	font-size: 2rem;
-  }
-  :global(.h2) {
-	font-size: 1.5rem;
-  }
-  :global(.h3) {
-	font-size: 1.17rem;
-  }
-  :global(.h4) {
-	font-size: 1rem;
-  }
-  :global(.h5) {
-	font-size: 0.85rem;
-  }
-  :global(.h6) {
-	font-size: 0.67rem;
-  }
-
-  /* Content settings */
   :global(.content) {
     color: rgba(28, 29, 31, 0.8);
     line-height: 1.2;
   }
-  :global(.content .h1, .h2, .h3, .h4, .h5, .h6) {
+  :global(.header) {
+    color: rgba(28, 29, 31, 0.8);
+    line-height: 1.2;
     font-family: montserrat, sans-serif;
     font-weight: 700;
-    line-height: 1.2;
   }
   :global(.content strong) {
     font-weight: 600;
@@ -51,10 +53,10 @@
     font-weight: 500;
     text-decoration: none;
   }
-    :global(.content ul li) {
+  :global(.content ul li) {
     font-size: 90%;
   }
-  
+
   /* Buttons */
   :global(.btn-round) {
     display: inline-flex;

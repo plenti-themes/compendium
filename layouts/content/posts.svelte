@@ -33,11 +33,9 @@
           )}</span
         >
       </div>
-      <div class="content w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
-        <div class="content font-bold text-xl mb-2">
-          <h2 class="h2">{title}</h2>
-        </div>
-        <ul class="content text-meta flex flex-wrap mb-4">
+      <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
+          <h2 class="header mb-2">{title}</h2>
+        <ul class="text-meta flex flex-wrap mb-4">
           <li class="px-1 inline-flex">
             <i class="las la-user-astronaut text-base relative" />
             <a href={author.url}>{author.name}</a>
@@ -46,7 +44,7 @@
           <li class="px-1 inline-flex">
             Categories:
             {#each categories as catg, i}
-              <a href="/categories/{catg}" class="content ml-1">
+              <a href="/categories/{catg}" class="ml-1">
                 {catg}{#if i < categories.length - 1}, {/if}
               </a>
             {/each}
