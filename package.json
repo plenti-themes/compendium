@@ -1,6 +1,6 @@
 {
-  "name": "my-plenti-app",
-  "version": "1.0.0",
+  "name": "compendium-theme",
+  "version": "0.2.0",
   "scripts": {
     "build": "postcss styles/tailwind.source.css -o assets/tailwind.global.css"
   },
