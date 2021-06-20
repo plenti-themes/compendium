@@ -4,7 +4,7 @@
 
 {#each allPosts as post, i}
   {#if i >= postRangeLow && i < postRangeHigh}
-    <div class="rounded-lg overflow-hidden shadow-lg">
+    <div class="rounded-lg overflow-hidden shadow-md bg-secondary">
       <img
         class="w-full md:h-52 lg:h-60 object-cover"
         src="/assets/{post.fields.image.src}"

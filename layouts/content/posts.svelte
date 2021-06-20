@@ -20,13 +20,13 @@
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
-      <div class="content relative mb-10">
+      <div class="relative mb-10">
         <img
           class="rounded-lg overflow-hidden"
           src="/assets/{image.src}"
           alt={image.alt}
         />
-        <span class="content text-xs"
+        <span class="text-meta"
           >{@html image.reference.replaceAll(
             "<a ",
             "<a target='blank' rel='noopener noreferrer'"
@@ -58,7 +58,7 @@
             {/each}
           </li>
         </ul>
-        <p class="text-base">
+        <p class="content opacity-80">
           {@html body}
         </p>
       </div>

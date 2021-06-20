@@ -16,11 +16,11 @@
       aria-label="Previous"><i class="las la-angle-left font-black" /></a
     >
   {:else}
-    <button class="btn-round m-0.5 disabled" aria-label="First"
-      ><i class="las la-angle-double-left text-gray-300 font-black" /></button
+    <button class="btn-round-inactive m-0.5" aria-label="First"
+      ><i class="las la-angle-double-left font-black" /></button
     >
-    <button class="btn-round m-0.5 disabled" aria-label="Previous"
-      ><i class="las la-angle-left text-gray-300 font-black" /></button
+    <button class="btn-round-inactive m-0.5" aria-label="Previous"
+      ><i class="las la-angle-left font-black" /></button
     >
   {/if}
 
@@ -48,11 +48,11 @@
       ><i class="las la-angle-double-right font-black" /></a
     >
   {:else}
-    <button class="btn-round m-0.5 disabled" aria-label="Next"
-      ><i class="las la-angle-right text-gray-300 font-black" /></button
+    <button class="btn-round-inactive m-0.5" aria-label="Next"
+      ><i class="las la-angle-right font-black" /></button
     >
-    <button class="btn-round m-0.5 disabled" aria-label="Last"
-      ><i class="las la-angle-double-right text-gray-300 font-black" /></button
+    <button class="btn-round-inactive m-0.5" aria-label="Last"
+      ><i class="las la-angle-double-right font-black" /></button
     >
   {/if}
 </div>

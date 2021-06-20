@@ -12,7 +12,7 @@
 <section class="mt-16">
   <div class="row md:flex md:flex-wrap">
     <div class="w-full md:w-9/12 mb-5 mb-lg-0 px-0">
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 md:pr-10">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:pr-10">
         <!-- ------------------------------------------------------- -->
         <!-- Setup a Card for each post as necessary                 -->
         <!-- ------------------------------------------------------- -->

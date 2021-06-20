@@ -2,7 +2,7 @@
   "title": "Compendium | Personal Blog Template",
   "theme": {
     "postsPerPage": 4,
-    "featuredPage": "Bleed",
+    "featuredPage": "Frame",
     "featuredPageOptions": "Bleed, Frame, None",
     "social": [
       {

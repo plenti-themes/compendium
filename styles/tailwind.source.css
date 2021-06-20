@@ -1,23 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap");
+@import url("/assets/icons8/css/line-awesome.min.css");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.content,
-#content,
-.theme-light {
-  --primary: #367ee9;
-  --secondary: #a0aec0;
-  --accent: #718096;
-  --background: #fff;
-  --main: #0d0106;
-  --header: #2d3748;
-}
+/* ----------------------------------------- */
+/* Color Scheme: Simplicity
+/* ----------------------------------------- */
+/* Light color theme */
+.lt-content {
+	/* UI colors */
+	--primary: rgba(255, 255, 255, 1);
+	--secondary: rgb(252, 252, 252);
+	--accent: rgba(180, 83, 9);
+	--background: rgb(249, 249, 249);
+	--surface: rgba(255, 255, 255, 1);
+	/* Font colors */
+	--on-primary: rgba(28, 29, 31, 0.8);
+	--on-secondary: rgba(28, 29, 31, 0.8);
+	--on-accent: rgba(255, 255, 255, 1);
+	--on-background: rgba(28, 29, 31, 0.8);
+	--on-surface: rgba(28, 29, 31, 0.8);
+	--on-disabled: rgba(110, 110, 110, 0.8); 
+  }
+  /* Dark color theme */
+  .dk-content {
+	/* UI colors */
+	--primary: rgb(25, 25, 25);
+	--secondary: rgb(28, 28, 28);
+	--accent: rgb(180, 83, 9);
+	--background: rgb(32, 32, 32);
+	--surface: rgb(25, 25, 25);
+	/* Font colors */
+	--on-primary: rgba(225, 225, 225, 0.8);
+	--on-secondary: rgba(225, 225, 225, 0.8);
+	--on-accent: rgba(255, 255, 255, 1);
+	--on-background: rgba(225, 225, 225, 0.8);
+	--on-surface: rgba(225, 225, 225, 0.8);
+	--on-disabled: rgba(75, 75, 75, 0.8); 
+  }
 
-.theme-dark {
-  --primary: #367ee9;
-  --secondary: #a0aec0;
-  --accent: #718096;
-  --background: #fff;
-  --main: #0d0106;
-  --header: #2d3748;
-}
+/* ----------------------------------------- */
+/* Color Scheme: Simplicity
+/* ----------------------------------------- */
+/* Light color theme */
+/* .lt-content {
+	--primary: rgba(255, 255, 255, 1);
+	--secondary: rgb(252, 252, 252);
+	--accent: rgba(180, 83, 9);
+	--background: rgb(249, 249, 249);
+	--surface: rgba(255, 255, 255, 1);
+	--on-primary: rgba(28, 29, 31, 0.8);
+	--on-secondary: rgba(28, 29, 31, 0.8);
+	--on-accent: rgba(255, 255, 255, 1);
+	--on-background: rgba(28, 29, 31, 0.8);
+	--on-surface: rgba(28, 29, 31, 0.8);
+	--on-disabled: rgba(110, 110, 110, 0.8); 
+  } */
+  /* Dark color theme */
+  /* .dk-content {
+	--primary: rgb(25, 25, 25);
+	--secondary: rgb(28, 28, 28);
+	--accent: rgb(180, 83, 9);
+	--background: rgb(32, 32, 32);
+	--surface: rgb(25, 25, 25);
+	--on-primary: rgba(225, 225, 225, 0.8);
+	--on-secondary: rgba(225, 225, 225, 0.8);
+	--on-accent: rgba(255, 255, 255, 1);
+	--on-background: rgba(225, 225, 225, 0.8);
+	--on-surface: rgba(225, 225, 225, 0.8);
+	--on-disabled: rgba(75, 75, 75, 0.8); 
+  } */
+  

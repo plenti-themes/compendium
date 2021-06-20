@@ -1,6 +1,11 @@
 <script>
   import { onMount } from "svelte";
   let menuShow = false;
+  export let isDark = false;
+
+  function toggleDark() {
+    isDark = !isDark;
+  }
 
   function toggleNavbar() {
     menuShow = !menuShow;
@@ -31,10 +36,10 @@
   });
 </script>
 
-<div class="flex flex-wrap py-3 px-2">
+<div class="content flex flex-wrap py-3 px-2	">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 content">
-    <nav class="content flex flex-wrap items-center justify-between ">
+    <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
       <h1 class="header">
         <i class="las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i
@@ -53,7 +58,7 @@
       <!-- links -->
       <div
         class="content md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow
-          ? 'bg-gray-50'
+          ? 'bg-secondary'
           : 'hidden'}"
       >
         <h3>
@@ -62,7 +67,7 @@
           >
           <a class="block md:inline-flex px-2 py-1" href="/about">About</a>
           <a class="block md:inline-flex px-2 py-1" href="/contact">Contact</a>
-          <button>
+          <button id="dark" type="button" on:click={toggleDark}>
             <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
           </button>
         </h3>
