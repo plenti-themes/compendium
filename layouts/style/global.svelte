@@ -27,6 +27,12 @@
   /* ---------------- */
   /* Content Classes  */
   /* ---------------- */
+  :global(.accent) {
+    color: var(--accent);
+  }
+  :global(.bg-accent) {
+    background-color: var(--accent);
+  }
   :global(.bg-primary) {
     background-color: var(--primary);
   }
@@ -41,30 +47,62 @@
     font-family: montserrat, sans-serif;
     font-size: 0.8rem;
   }
+  :global(.text-meta a) {
+	opacity: 75%;
+	text-decoration: underline;
+  }
   :global(.text-meta a:hover) {
     color: var(--accent);
+	opacity: 100%;
+  }
+  :global(.header) {
+    color: var(--on-secondary);
+    line-height: 1.2;
     font-family: montserrat, sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-weight: 700;
+	opacity: 80%;
+  }
+  :global(.header a) {
+    color: var(--on-secondary);
+	opacity: 80%;
+  }
+  :global(.header a:hover) {
+	opacity: 95%;
+  }
+  :global(.menu) {
+    color: var(--on-primary);
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  :global(.menu a) {
+    color: var(--on-primary);
+    font-family: montserrat, sans-serif;
+    line-height: 1.2;
+  }
+  :global(.menu a:hover) {
+    color: var(--accent);
+    text-decoration: none;
+  }
+  :global(.footer) {
+    color: var(--on-primary);
+    line-height: 1.2;
+    font-family: montserrat, sans-serif;
+    font-weight: 500;
+	font-size: 0.9rem;
+	opacity: 90%;
+  }
+  :global(.footer a) {
+	opacity: 90%;
+	text-decoration: underline;
+  }
+  :global(.footer a:hover) {
+    color: var(--accent);
+	opacity: 100%;
+	text-decoration: underline;
   }
   :global(.content) {
     color: var(--on-secondary);
     line-height: 1.5;
-  }
-  :global(.header) {
-    color: var(--on-primary);
-    line-height: 1.2;
-    font-family: montserrat, sans-serif;
-    font-weight: 700;
-  }
-  :global(.header a:hover) {
-    color: var(--accent);
-    line-height: 1.2;
-    font-family: montserrat, sans-serif;
-    font-weight: 700;
-  }
-  :global(.content strong) {
-    font-weight: 600;
   }
   :global(.content a) {
     color: var(--on-secondary);
@@ -73,7 +111,6 @@
   }
   :global(.content a:hover) {
     color: var(--accent);
-    font-weight: 500;
     text-decoration: none;
   }
   :global(.content ul li) {
@@ -83,6 +120,11 @@
   /* ---------------- */
   /* Surface Classes  */
   /* ---------------- */
+  :global(.disabled:hover) {
+    color: var(--on-accent);
+    background-color: var(--accent);
+    text-decoration: none;
+  }
   :global(.btn-round) {
     display: inline-flex;
     z-index: 1;
@@ -90,7 +132,7 @@
     color: var(--on-surface);
     background-color: var(--surface);
     border: 1px solid;
-    border-color: var(--accent);
+    border-color: var(--on-accent);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -104,13 +146,15 @@
   :global(.btn-round:hover) {
     color: var(--on-accent);
     background-color: var(--accent);
+    border-color: var(--accent);
     text-decoration: none;
     font-weight: 700;
-    opacity: 70%;
+    opacity: 90%;
   }
   :global(.btn-round-active) {
     color: var(--on-accent);
     background-color: var(--accent);
+    border-color: var(--accent);
     display: inline-flex;
     z-index: 1;
     transition: 0.2s ease;
@@ -125,7 +169,7 @@
     height: 2.25rem;
     width: 2.25rem;
     padding: 3px;
-    opacity: 70%;
+    opacity: 90%;
   }
   :global(.btn-round-inactive) {
     color: var(--on-disabled);
@@ -134,7 +178,7 @@
     z-index: 1;
     transition: 0.2s ease;
     border: 1px solid;
-    border-color: var(--accent);
+    border-color: var(--on-accent);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -144,20 +188,16 @@
     height: 2.25rem;
     width: 2.25rem;
     padding: 3px;
-    opacity: 70%;
-  }
-  :global(.disabled:hover) {
-    color: var(--on-accent);
-    background-color: var(--accent);
-    text-decoration: none;
+    opacity: 90%;
   }
   :global(.btn-outline) {
     color: var(--on-surface);
     background-color: var(--surface);
     border: 1px solid;
-    border-color: var(--accent);
+    border-color: var(--on-accent);
     border-radius: 50px;
     padding: 10px 25px;
+    font-weight: 500;
     text-align: center;
     vertical-align: middle;
     font-size: 14px;
@@ -167,8 +207,9 @@
   :global(.btn-outline:hover) {
     color: var(--on-accent);
     background-color: var(--accent);
+    border-color: var(--accent);
     text-decoration: none;
-    font-weight: 400;
-    opacity: 70%;
+    /* font-weight: 500; */
+    opacity: 90%;
   }
 </style>

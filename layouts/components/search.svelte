@@ -15,37 +15,31 @@
     </button> -->
   </span>
   <div class="row">
-    <div class="content">
-      {#if value.length >= 3}
-        <!-- {#each allPosts as post} -->
-        {#each allPosts as post, i}
-          {#if post.fields.body.toLowerCase().includes(value.toLowerCase())}
-            <div class="flex items-center mb-5">
-              <img
-                class="inline-block object-cover rounded-full w-16 h-16"
-                src="/assets/{post.fields.image.src}"
-                alt={post.fields.image.alt}
-              />
-              <div class="inline-block ml-2">
-                <h5 class="header">
-                  <a href={post.path}>{post.fields.title}</a>
-                </h5>
-                <ul class="text-meta">
-                  <li class="">
-                    <i
-                      class="las la-user-astronaut text-base top-0.5 relative"
-                    />
-                    <a href={post.fields.author.url}
-                      >{post.fields.author.name}</a
-                    >
-                    - {post.fields.date}
-                  </li>
-                </ul>
-              </div>
+    {#if value.length >= 3}
+      <!-- {#each allPosts as post} -->
+      {#each allPosts as post, i}
+        {#if post.fields.body.toLowerCase().includes(value.toLowerCase())}
+          <div class="flex items-center mb-5">
+            <img
+              class="inline-block object-cover rounded-full w-16 h-16"
+              src="/assets/{post.fields.image.src}"
+              alt={post.fields.image.alt}
+            />
+            <div class="inline-block ml-2">
+              <h5 class="header">
+                <a href={post.path}>{post.fields.title}</a>
+              </h5>
+              <ul class="text-meta">
+                <li class="">
+                  <i class="las la-user-astronaut text-base top-0.5 relative" />
+                  <a href={post.fields.author.url}>{post.fields.author.name}</a>
+                  - {post.fields.date}
+                </li>
+              </ul>
             </div>
-          {/if}
-        {/each}
-      {/if}
-    </div>
+          </div>
+        {/if}
+      {/each}
+    {/if}
   </div>
 </div>

@@ -36,7 +36,7 @@
 
 <!-- {#each [features[featureIdx]] as { post } (featureIdx)} -->
 {#each allFeatures as post, i}
-  <div class="content">
+	<div class="content">
     <!-- Carousel Image -->
     <div
       id={i}
@@ -97,13 +97,13 @@
       </div>
 
       <button
-	  on:click={clickPrev}
-	  class="prev absolute m-2 left-2"
+        on:click={clickPrev}
+        class="prev absolute m-2 left-2"
         style="top: 50%"
       >
         <i class="" />
         <i
-          class="las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-accent bg-clip-content opacity-70 hover:opacity-90"
         />
       </button>
       <button
@@ -113,18 +113,18 @@
         style="top: 50%"
       >
         <i
-          class="las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+          class="las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-accent bg-clip-content opacity-70 hover:opacity-90"
         />
       </button>
       {#if featuredPage == "Bleed"}
         <button
           type="button"
-		  on:click={scrollDown}
+          on:click={scrollDown}
           class="down absolute"
           style="bottom: 5%; left: 47%"
         >
           <i
-            class="las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-white bg-clip-content text-yellow-700 opacity-40 hover:opacity-80"
+            class="las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-accent bg-clip-content opacity-70 hover:opacity-90"
           />
         </button>
       {/if}
@@ -141,7 +141,7 @@
     color: rgba(255, 255, 255, 0.9);
   }
   .feature a:hover {
-    color: rgba(180, 83, 9, 0.9);
+    color: var(--accent);
   }
   .feature {
     bottom: 3%;

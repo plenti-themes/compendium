@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   let menuShow = false;
-  export let isDark = false;
+  export let isDark;
 
   function toggleDark() {
     isDark = !isDark;
@@ -36,13 +36,13 @@
   });
 </script>
 
-<div class="content flex flex-wrap py-3 px-2	">
+<div class="flex flex-wrap py-3 px-2	">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
-  <div class="w-full md:w-10/12 xl:w-8/12 content">
+  <div class="menu w-full md:w-10/12 xl:w-8/12">
     <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
-      <h1 class="header">
-        <i class="las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i
+      <h1 class="font-bold">
+        <i class="accent las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i
           class="text-3xl">Compendium</i
         >
       </h1>
@@ -57,8 +57,8 @@
 
       <!-- links -->
       <div
-        class="content md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow
-          ? 'bg-secondary'
+        class="menu md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow
+          ? 'bg-primary bg-opacity-70'
           : 'hidden'}"
       >
         <h3>

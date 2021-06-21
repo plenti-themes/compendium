@@ -17,7 +17,8 @@
     <header
       class="{isDark
         ? 'dk-content'
-        : 'lt-content border-b-2'} bg-primary sticky top-0 z-50"
+        : 'lt-content'} bg-primary sticky top-0 z-50"
+      style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
     >
       <!-- reference the Navbar class from import above -->
       <Navbar bind:isDark />
@@ -37,9 +38,7 @@
     </main>
 
     <footer
-      class="{isDark
-        ? 'dk-content'
-        : 'lt-content border-t-2'} bg-primary"
+      class="{isDark ? 'dk-content' : 'lt-content border-t-2'} bg-primary"
     >
       <!-- reference the Footer class from import above -->
       <Footer />

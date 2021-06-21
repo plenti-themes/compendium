@@ -31877,16 +31877,14 @@ video {
 /* Light color theme */
 
 .lt-content {
-  /* UI colors */
   --primary: rgba(255, 255, 255, 1);
-  --secondary: rgb(252, 252, 252);
+  --secondary: #f7f7f7;
   --accent: rgba(180, 83, 9);
-  --background: rgb(249, 249, 249);
+  --background: rgb(250, 250, 250);
   --surface: rgba(255, 255, 255, 1);
-  /* Font colors */
   --on-primary: rgba(28, 29, 31, 0.8);
   --on-secondary: rgba(28, 29, 31, 0.8);
-  --on-accent: rgba(255, 255, 255, 1);
+  --on-accent: rgb(225, 225, 225);
   --on-background: rgba(28, 29, 31, 0.8);
   --on-surface: rgba(28, 29, 31, 0.8);
   --on-disabled: rgba(110, 110, 110, 0.8);
@@ -31895,57 +31893,92 @@ video {
 /* Dark color theme */
 
 .dk-content {
-  /* UI colors */
   --primary: rgb(25, 25, 25);
   --secondary: rgb(28, 28, 28);
   --accent: rgb(180, 83, 9);
   --background: rgb(32, 32, 32);
-  --surface: rgb(25, 25, 25);
-  /* Font colors */
+  --surface: rgb(40, 40, 40);
   --on-primary: rgba(225, 225, 225, 0.8);
   --on-secondary: rgba(225, 225, 225, 0.8);
   --on-accent: rgba(255, 255, 255, 1);
   --on-background: rgba(225, 225, 225, 0.8);
   --on-surface: rgba(225, 225, 225, 0.8);
-  --on-disabled: rgba(75, 75, 75, 0.8);
+  --on-disabled: rgba(110, 110, 110, 0.8);
 }
 
 /* ----------------------------------------- */
 
-/* Color Scheme: Simplicity
+/* Color Scheme: Earthiness
 /* ----------------------------------------- */
 
 /* Light color theme */
 
 /* .lt-content {
-	--primary: rgba(255, 255, 255, 1);
-	--secondary: rgb(252, 252, 252);
-	--accent: rgba(180, 83, 9);
-	--background: rgb(249, 249, 249);
-	--surface: rgba(255, 255, 255, 1);
-	--on-primary: rgba(28, 29, 31, 0.8);
-	--on-secondary: rgba(28, 29, 31, 0.8);
-	--on-accent: rgba(255, 255, 255, 1);
-	--on-background: rgba(28, 29, 31, 0.8);
-	--on-surface: rgba(28, 29, 31, 0.8);
-	--on-disabled: rgba(110, 110, 110, 0.8); 
-  } */
+  --primary: #ffffff;
+  --secondary: #d4dfca;
+  --accent: #81B18C;
+  --background: #e8efe1;
+  --surface: #464343;
+  --on-primary: #181818;
+  --on-secondary: #333333;
+  --on-accent: #050505;
+  --on-background: #fefefe;
+  --on-surface: #fefefe;
+  --on-disabled: rgba(155, 155, 155, 0.8);
+} */
 
 /* Dark color theme */
 
 /* .dk-content {
-	--primary: rgb(25, 25, 25);
-	--secondary: rgb(28, 28, 28);
-	--accent: rgb(180, 83, 9);
-	--background: rgb(32, 32, 32);
-	--surface: rgb(25, 25, 25);
-	--on-primary: rgba(225, 225, 225, 0.8);
-	--on-secondary: rgba(225, 225, 225, 0.8);
-	--on-accent: rgba(255, 255, 255, 1);
-	--on-background: rgba(225, 225, 225, 0.8);
-	--on-surface: rgba(225, 225, 225, 0.8);
-	--on-disabled: rgba(75, 75, 75, 0.8); 
-  } */
+  --primary: rgb(25, 25, 25);
+  --secondary: rgb(28, 28, 28);
+  --accent: #81B18C;
+  --background: rgb(32, 32, 32);
+  --surface: rgb(25, 25, 25);
+  --on-primary: rgba(225, 225, 225, 0.8);
+  --on-secondary: rgba(225, 225, 225, 0.8);
+  --on-accent: rgba(255, 255, 255, 1);
+  --on-background: rgba(225, 225, 225, 0.8);
+  --on-surface: rgba(225, 225, 225, 0.8);
+  --on-disabled: rgba(155, 155, 155, 0.8);
+} */
+
+/* ----------------------------------------- */
+
+/* Color Scheme: Technobeat
+/* ----------------------------------------- */
+
+/* Light color theme */
+
+/* .lt-content {
+  --primary: #000000;
+  --secondary: #f7f7f7;
+  --accent: #e2127a;
+  --background: #ffffff;
+  --surface: #333333;
+  --on-primary: #ffffff;
+  --on-secondary: #333333;
+  --on-accent: #ffffff;
+  --on-background: #333333;
+  --on-surface: #ffffff;
+  --on-disabled: rgba(155, 155, 155, 0.8);
+} */
+
+/* Dark color theme */
+
+/* .dk-content {
+  --primary: rgb(25, 25, 25);
+  --secondary: rgb(28, 28, 28);
+  --accent: #e2127a;
+  --background: rgb(32, 32, 32);
+  --surface: rgb(40, 40, 40);
+  --on-primary: rgba(225, 225, 225, 0.8);
+  --on-secondary: rgba(225, 225, 225, 0.8);
+  --on-accent: rgba(255, 255, 255, 1);
+  --on-background: rgba(225, 225, 225, 0.8);
+  --on-surface: rgba(225, 225, 225, 0.8);
+  --on-disabled: rgba(110, 110, 110, 0.8);
+} */
 
 @media (min-width: 640px){
   .sm\:container{
@@ -187761,4 +187794,3 @@ video {
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
 }
-  
