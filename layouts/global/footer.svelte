@@ -12,7 +12,7 @@
   <div class="w-full text-center">
     <button on:click={scrollTop}>
       <i
-        class="las la-chevron-circle-up text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100 bg-accent"
+        class="las la-chevron-circle-up text-5xl md:text-6xl rounded-full overflow-hidden bg-clip-content opacity-70 hover:opacity-100 accent"
       />
     </button>
     <!-- </a> -->

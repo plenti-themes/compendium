@@ -1,0 +1,29 @@
+/* ----------------------------------------- */
+/* Color Scheme: Technobeat
+/* ----------------------------------------- */
+.lt-theme {
+  --primary: #000000;
+  --secondary: #f7f7f7;
+  --accent: #e2127a;
+  --background: #ffffff;
+  --surface: #333333;
+  --on-primary: #ffffff;
+  --on-secondary: #333333;
+  --on-accent: #ffffff;
+  --on-background: #333333;
+  --on-surface: #ffffff;
+  --on-disabled: rgba(155, 155, 155, 0.8);
+}
+.dk-theme {
+  --primary: #000000;
+  --secondary: #242424;
+  --accent: #e2127a;
+  --background: #1c1c1c;
+  --surface: #1c1c1c;
+  --on-primary: #ffffff;
+  --on-secondary: #ffffff;
+  --on-accent: #ffffff;
+  --on-background: #cccccc;
+  --on-surface: #cccccc;
+  --on-disabled: rgba(110, 110, 110, 0.8);
+}

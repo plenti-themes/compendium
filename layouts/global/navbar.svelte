@@ -42,8 +42,8 @@
     <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
       <h1 class="font-bold">
-        <i class="accent las la-feather-alt text-4xl top-0.5 left-0.5 relative" /><i
-          class="text-3xl">Compendium</i
+        <i class="accent las la-feather-alt text-4xl relative" /><i
+          ><a class="text-3xl" href="/">Compendium</a></i
         >
       </h1>
 

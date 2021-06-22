@@ -40,7 +40,7 @@
     <!-- Carousel Image -->
     <div
       id={i}
-      class="feature relative overflow-hidden 
+      class="relative overflow-hidden 
 		  {featuredPage == 'Frame' ? ' rounded-lg' : ''} 
 		  {i == featureIdx ? 'flex' : 'hidden'}"
     >
@@ -98,33 +98,33 @@
 
       <button
         on:click={clickPrev}
-        class="prev absolute m-2 left-2"
+        class="absolute m-2 left-2"
         style="top: 50%"
       >
         <i class="" />
         <i
-          class="las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-accent bg-clip-content opacity-70 hover:opacity-90"
+          class="accent las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
         />
       </button>
       <button
         type="button"
         on:click={clickNext}
-        class="next absolute m-2 right-2"
+        class="absolute m-2 right-2"
         style="top: 50%"
       >
         <i
-          class="las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-accent bg-clip-content opacity-70 hover:opacity-90"
+          class="accent las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
         />
       </button>
       {#if featuredPage == "Bleed"}
         <button
           type="button"
           on:click={scrollDown}
-          class="down absolute"
+          class="absolute"
           style="bottom: 5%; left: 47%"
         >
           <i
-            class="las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-accent bg-clip-content opacity-70 hover:opacity-90"
+            class="accent las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
           />
         </button>
       {/if}
