@@ -9,10 +9,9 @@
   --surface: #333333;
   --on-primary: #ffffff;
   --on-secondary: #333333;
-  --on-accent: #ffffff;
+  --on-accent: 255, 255, 255;
   --on-background: #333333;
   --on-surface: #ffffff;
-  --on-disabled: rgba(155, 155, 155, 0.8);
 }
 .dk-theme {
   --primary: #000000;
@@ -22,8 +21,7 @@
   --surface: #1c1c1c;
   --on-primary: #ffffff;
   --on-secondary: #ffffff;
-  --on-accent: #ffffff;
+  --on-accent: 255, 255, 255;
   --on-background: #cccccc;
   --on-surface: #cccccc;
-  --on-disabled: rgba(110, 110, 110, 0.8);
 }

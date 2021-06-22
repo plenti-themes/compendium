@@ -119,7 +119,7 @@
   /* Surface Classes  */
   /* ---------------- */
   :global(.disabled:hover) {
-    color: var(--on-accent);
+    color: rgba(var(--on-accent), 1);
     background-color: var(--accent);
     text-decoration: none;
   }
@@ -130,7 +130,7 @@
     color: var(--on-surface);
     background-color: var(--surface);
     border: 1px solid;
-    border-color: var(--on-accent);
+    border-color: rgba(var(--on-accent), 0.3);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -142,7 +142,7 @@
     padding: 1px;
   }
   :global(.btn-round:hover) {
-    color: var(--on-accent);
+    color: rgba(var(--on-accent), 1);
     background-color: var(--accent);
     border-color: var(--accent);
     text-decoration: none;
@@ -150,7 +150,7 @@
     opacity: 90%;
   }
   :global(.btn-round-active) {
-    color: var(--on-accent);
+    color: rgba(var(--on-accent), 1);
     background-color: var(--accent);
     border-color: var(--accent);
     display: inline-flex;
@@ -170,13 +170,13 @@
     opacity: 90%;
   }
   :global(.btn-round-inactive) {
-    color: var(--on-disabled);
+    color: rgba(var(--on-accent), 0.3);
     background-color: var(--surface);
     display: inline-flex;
     z-index: 1;
     transition: 0.2s ease;
     border: 1px solid;
-    border-color: var(--on-accent);
+    border-color: rgba(var(--on-accent), 0.3);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
@@ -192,10 +192,10 @@
     color: var(--on-surface);
     background-color: var(--surface);
     border: 1px solid;
-    border-color: var(--on-accent);
+    border-color: rgba(var(--on-accent), 0.3);
     border-radius: 50px;
     padding: 10px 25px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     vertical-align: middle;
     font-size: 14px;
@@ -203,7 +203,7 @@
     transition: 0.2s ease;
   }
   :global(.btn-outline:hover) {
-    color: var(--on-accent);
+    color: rgba(var(--on-accent), 1);
     background-color: var(--accent);
     border-color: var(--accent);
     text-decoration: none;
@@ -211,3 +211,5 @@
     opacity: 90%;
   }
 </style>
+
+<!-- rgba(var(--color), 0.8); -->

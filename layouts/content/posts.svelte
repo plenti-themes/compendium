@@ -58,7 +58,7 @@
             {/each}
           </li>
         </ul>
-        <p class="content opacity-80">
+        <p class="content opacity-90">
           {@html body}
         </p>
       </div>
