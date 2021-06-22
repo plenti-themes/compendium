@@ -31,6 +31,10 @@
     color: var(--accent);
     background-color: var(--primary);
   }
+  :global(.accent-b) {
+    color: var(--accent);
+    background-color: var(--background);
+  }
   :global(.bg-primary) {
     background-color: var(--primary);
   }

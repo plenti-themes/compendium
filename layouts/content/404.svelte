@@ -17,7 +17,7 @@
       <span class="content text-xs">{@html image.reference}</span>
 
       <div class="content font-bold text-lg mb-2 my-6">
-        <h2 class="header"><i class="las la-directions" />{title}</h2>
+        <h2 class="header"><i class="accent-b text-3xl las la-directions" />{title}</h2>
       </div>
       <div>
         <p class="text-xl">{body}</p>
