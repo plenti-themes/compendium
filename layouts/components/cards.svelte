@@ -39,7 +39,7 @@
           </li>
         </ul>
         <p class="text-base">
-          {post.fields.body.substring(0, 175)}
+          {post.fields.body.substring(0, Math.min(175, post.fields.body.substring(0, 175).lastIndexOf(" ")))}
           <span class="font-bold">...</span>
         </p>
         <article class="border-0">
