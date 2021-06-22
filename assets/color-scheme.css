@@ -1,29 +1,29 @@
 /* ----------------------------------------- */
-/* Color Scheme: Technobeat
+/* Color Scheme: Earthliness
 /* ----------------------------------------- */
 .lt-theme {
-  --primary: #000000;
-  --secondary: #f7f7f7;
-  --accent: #e2127a;
-  --background: #ffffff;
-  --surface: #333333;
-  --on-primary: #ffffff;
+  --primary: #ffffff;
+  --secondary: #d4dfca;
+  --accent: #81B18C;
+  --background: #e8efe1;
+  --surface: #464343;
+  --on-primary: #181818;
   --on-secondary: #333333;
-  --on-accent: #ffffff;
-  --on-background: #333333;
-  --on-surface: #ffffff;
+  --on-accent: #050505;
+  --on-background: #fefefe;
+  --on-surface: #fefefe;
   --on-disabled: rgba(155, 155, 155, 0.8);
 }
 .dk-theme {
   --primary: #000000;
-  --secondary: #242424;
-  --accent: #e2127a;
-  --background: #1c1c1c;
-  --surface: #1c1c1c;
+  --secondary: #192212;
+  --accent: #81B18C;
+  --background: #202918;
+  --surface: #000000;
   --on-primary: #ffffff;
-  --on-secondary: #ffffff;
-  --on-accent: #ffffff;
-  --on-background: #cccccc;
-  --on-surface: #cccccc;
-  --on-disabled: rgba(110, 110, 110, 0.8);
+  --on-secondary: #bcb9b9;
+  --on-accent: #fefefe;
+  --on-background: #bcb9b9;
+  --on-surface: #bcb9b9;
+  --on-disabled: rgba(155, 155, 155, 0.8);
 }

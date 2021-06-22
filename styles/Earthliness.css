@@ -1,5 +1,5 @@
 /* ----------------------------------------- */
-/* Color Scheme: Earthiness
+/* Color Scheme: Earthliness
 /* ----------------------------------------- */
 .lt-theme {
   --primary: #ffffff;
@@ -16,13 +16,13 @@
 }
 .dk-theme {
   --primary: #000000;
-  --secondary: #2a3520;
+  --secondary: #192212;
   --accent: #81B18C;
-  --background: #1e2715;
-  --surface: rgb(25, 25, 25);
+  --background: #202918;
+  --surface: #000000;
   --on-primary: #ffffff;
-  --on-secondary: rgba(250, 250, 250, 0.9);
-  --on-accent: #050505;
+  --on-secondary: #bcb9b9;
+  --on-accent: #fefefe;
   --on-background: #bcb9b9;
   --on-surface: #bcb9b9;
   --on-disabled: rgba(155, 155, 155, 0.8);
