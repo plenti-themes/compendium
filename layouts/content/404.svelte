@@ -3,25 +3,27 @@
 </script>
 
 <section
-  class="section content flex flex-wrap items-center justify-between py-16"
+  class="w-full section flex flex-wrap items-center justify-between py-16"
 >
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
-    <div class="relative">
+    <div class="w-full relative">
       <img
-        class="object-cover rounded-lg overflow-hidden h-96 w-full"
+        class=" w-full object-cover rounded-lg overflow-hidden h-screen-60"
         style="filter: brightness(50%)"
         src="/assets/{image.src}"
         alt={image.alt}
       />
+      <div class="absolute pl-2 md:pl-6" style="bottom: 10%;">
+        <h2 class="header">
+          <i class="text-2xl md:text-3xl lg:text-4xl accent las la-directions" />
+          <span class="text-base md:text-xl lg:text-2xl text-white">{title}</span>
+        </h2>
+        <div class="pl-8 md:pl-9 lg:pl-10">
+          <i class="text-sm md:text-lg lg:text-xl text-white">{body}</i>
+        </div>
+      </div>
       <span class="content text-xs">{@html image.reference}</span>
-
-      <div class="content font-bold text-lg mb-2 my-6">
-        <h2 class="header"><i class="accent-b text-3xl las la-directions" />{title}</h2>
-      </div>
-      <div>
-        <p class="text-xl">{body}</p>
-      </div>
     </div>
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />
