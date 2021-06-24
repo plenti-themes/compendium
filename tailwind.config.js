@@ -16,28 +16,30 @@ module.exports = {
     enabled: production, // disable purge in dev
   },
   // extend tailwind's theme with new color schemes
-//   theme: {
-//     extend: {
-//       colors: {
-//         csCoolness: {
-//           primary: "#367ee9",
-//           secondary: "#a0aec0",
-//           accent: "#718096",
-//           background: "#fff",
-//           main: "#0d0106",
-//           header: "#2d3748",
-//         },
-//         csSimplicity: {
-//           primary: "#367ee9",
-//           secondary: "#a0aec0",
-//           accent: "#718096",
-//           background: "#fff",
-//           main: "#0d0106",
-//           header: "#2d3748",
-//         },
-//       },
-//     },
-//   },
+  theme: {
+    extend: {
+      height: (theme) => ({
+        "screen-90": "90vh",
+        "screen-80": "80vh",
+        "screen-70": "70vh",
+        "screen-60": "60vh",
+        "screen-50": "50vh",
+        "screen-40": "40vh",
+        "screen-30": "30vh",
+        "screen-20": "20vh",
+      }),
+      width: (theme) => ({
+        "screen-90": "90vh",
+        "screen-80": "80vh",
+        "screen-70": "70vh",
+        "screen-60": "60vh",
+        "screen-50": "50vh",
+        "screen-40": "40vh",
+        "screen-30": "30vh",
+        "screen-20": "20vh",
+      }),
+    },
+  },
   variants: {},
   plugins: [],
 };
