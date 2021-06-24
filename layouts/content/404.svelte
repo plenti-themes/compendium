@@ -10,7 +10,7 @@
     <div class="w-full relative">
       <img
         class=" w-full object-cover rounded-lg overflow-hidden h-screen-60"
-        style="filter: brightness(50%)"
+        style="filter: brightness(60%)"
         src="/assets/{image.src}"
         alt={image.alt}
       />
@@ -23,7 +23,7 @@
           <i class="text-sm md:text-lg lg:text-xl text-white">{body}</i>
         </div>
       </div>
-      <span class="content text-xs">{@html image.reference}</span>
+      <span class="text-meta">{@html image.reference}</span>
     </div>
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />

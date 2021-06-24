@@ -2,7 +2,8 @@
   import Aside from "../components/aside.svelte";
   export let allContent, title, image, body, author, date, categories, tags;
   let allPosts = allContent.filter((content) => content.type == "posts");
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.theme.social;
+  let allSocial = allContent.filter((content) => content.path == "/")[0].fields
+    .theme.social;
 
   function scrollDown() {
     window.scrollTo({
@@ -34,7 +35,7 @@
         >
       </div>
       <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
-          <h2 class="header mb-2">{title}</h2>
+        <h2 class="header mb-2">{title}</h2>
         <ul class="text-meta flex flex-wrap mb-4">
           <li class="px-1 inline-flex">
             <i class="las la-user-astronaut text-base relative" />
@@ -58,13 +59,15 @@
             {/each}
           </li>
         </ul>
-        <p class="content opacity-90">
+        <p>
           {@html body}
         </p>
       </div>
 
       <!-- Aside  -->
-      <Aside {allPosts} {allSocial} />
+      <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
+        <Aside {allPosts} {allSocial} />
+      </div>
     </div>
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />

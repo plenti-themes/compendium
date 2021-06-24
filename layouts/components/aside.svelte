@@ -5,7 +5,7 @@
   export let allPosts, allSocial;
 </script>
 
-<aside class="w-full md:w-3/12 px-0">
+<aside class="w-full">
   <div class="pl-0 pl-lg-4">
     <!-- Search -->
     <Search {allPosts} />
@@ -16,7 +16,7 @@
     <!-- categories -->
     <div class="row">
       <h4 class="header mb-1"><span>Categories</span></h4>
-      <ul class="content text-sm mb-4">
+      <ul class="text-aside mb-4">
         <li>
           <a href="/categories/four-seasons" class="inline-flex"
             >Four seasons
@@ -53,7 +53,7 @@
     <!-- tags -->
     <div class="row">
       <h4 class="header mb-1 w-full flex">Tags</h4>
-      <ul class="content text-sm mb-4">
+      <ul class="text-aside mb-4">
         <li class="pr-1 inline-flex">
           <a href="/tags/booth">Booth,</a>
         </li>

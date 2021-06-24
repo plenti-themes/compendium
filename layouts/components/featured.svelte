@@ -56,11 +56,11 @@
     </div>
 
     <!-- Carousel Overlay Text -->
-    <div id="featureOverlayText" class="w-full absolute row m-0 feature px-16">
+    <div id="featureOverlayText" class="feature w-full absolute row m-0 px-16">
       <div class="col-lg-2" />
       <div class="col-lg-8">
         <h2
-          class="w-full content text-center pb-3 md:pb-4 lg:pb-5 text-2xl sm:text-3xl md:text-4xl"
+          class="w-full text-center pb-3 md:pb-4 lg:pb-5 text-2xl sm:text-3xl md:text-4xl"
         >
           <a href={post.path} class="">{post.fields.title}</a>
         </h2>

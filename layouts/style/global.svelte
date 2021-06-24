@@ -1,5 +1,29 @@
+<!-- rgba(var(--color), 0.8); -->
 <style>
-  /* Nodes */
+  /* ---------------- */
+  /* Global styles    */
+  /* ---------------- */
+  :global(body, p) {
+    color: var(--on-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+  :global(a) {
+    opacity: 80%;
+  }
+  :global(a:hover) {
+    color: var(--accent);
+    opacity: 95%;
+  }
+
+  /* ---------------- */
+  /* Typography    */
+  /* ---------------- */
+  :global(h1, h2, h3, h4, h5, h6) {
+    font-family: montserrat, sans-serif;
+    line-height: 1.2;
+    opacity: 80%;
+  }
   :global(h1) {
     font-size: 2rem;
   }
@@ -18,14 +42,49 @@
   :global(h6) {
     font-size: 0.67rem;
   }
-  :global(p) {
+
+  /* ---------------- */
+  /* Layouts          */
+  /* ---------------- */
+  :global(.header) {
     color: var(--on-secondary);
-    font-size: 95%;
-    font-weight: 400;
+    font-weight: 700;
+  }
+  :global(.menu) {
+    color: var(--on-primary);
+    font-weight: 500;
+  }
+  :global(.tag) {
+    color: var(--on-secondary);
+    font-weight: 500;
+  }
+  :global(.text-aside) {
+    color: var(--on-secondary);
+    font-size: 0.95rem;
+    opacity: 80%;
+  }
+  :global(.text-meta) {
+    color: var(--on-secondary);
+    font-size: 0.8rem;
+    opacity: 80%;
+  }
+  :global(.text-meta a) {
+    text-decoration: underline;
+  }
+  :global(.footer) {
+    color: var(--on-primary);
+    line-height: 1.2;
+    font-family: montserrat, sans-serif;
+    font-weight: 500;
+    font-size: 0.9rem;
+    opacity: 90%;
+  }
+  :global(.footer a) {
+    text-decoration: underline;
   }
 
   /* ---------------- */
-  /* Content Classes  */
+  /* Color Classes  */
   /* ---------------- */
   :global(.accent) {
     color: var(--accent);
@@ -46,80 +105,6 @@
   }
   :global(.bg-background) {
     background-color: var(--background);
-  }
-  :global(.text-meta) {
-    color: var(--on-secondary);
-    font-family: montserrat, sans-serif;
-    font-size: 0.8rem;
-  }
-  :global(.text-meta a) {
-	opacity: 75%;
-	text-decoration: underline;
-  }
-  :global(.text-meta a:hover) {
-    color: var(--accent);
-	opacity: 100%;
-  }
-  :global(.header) {
-    color: var(--on-secondary);
-    line-height: 1.2;
-    font-family: montserrat, sans-serif;
-    font-weight: 700;
-	opacity: 80%;
-  }
-  :global(.header a) {
-    color: var(--on-secondary);
-	opacity: 80%;
-  }
-  :global(.header a:hover) {
-	opacity: 95%;
-  }
-  :global(.menu) {
-    color: var(--on-primary);
-    font-weight: 500;
-    line-height: 1.5;
-  }
-  :global(.menu a) {
-    color: var(--on-primary);
-    font-family: montserrat, sans-serif;
-    line-height: 1.2;
-  }
-  :global(.menu a:hover) {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  :global(.footer) {
-    color: var(--on-primary);
-    line-height: 1.2;
-    font-family: montserrat, sans-serif;
-    font-weight: 500;
-	font-size: 0.9rem;
-	opacity: 90%;
-  }
-  :global(.footer a) {
-	opacity: 90%;
-	text-decoration: underline;
-  }
-  :global(.footer a:hover) {
-    color: var(--accent);
-	opacity: 100%;
-	text-decoration: underline;
-  }
-  :global(.content) {
-    color: var(--on-secondary);
-    line-height: 1.5;
-  }
-  :global(.content a) {
-    color: var(--on-secondary);
-    font-family: montserrat, sans-serif;
-    line-height: 1.2;
-  }
-  :global(.content a:hover) {
-    color: var(--accent);
-    text-decoration: none;
-  }
-  :global(.content ul li) {
-    font-size: 90%;
   }
 
   /* ---------------- */
@@ -218,5 +203,3 @@
     opacity: 90%;
   }
 </style>
-
-<!-- rgba(var(--color), 0.8); -->

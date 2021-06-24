@@ -5,8 +5,8 @@
 
   export let allContent, postRangeHigh, postRangeLow, currentPage, totalPages;
   let allPosts = allContent.filter((content) => content.type == "posts");
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.theme.social;
-
+  let allSocial = allContent.filter((content) => content.path == "/")[0].fields
+    .theme.social;
 </script>
 
 <section class="mt-16">
@@ -30,6 +30,8 @@
     <!-- ------------------------------------------------------- -->
     <!-- Set the aside as the last column in the row             -->
     <!-- ------------------------------------------------------- -->
-    <Aside {allPosts} {allSocial} />
+    <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
+      <Aside {allPosts} {allSocial} />
+    </div>
   </div>
 </section>

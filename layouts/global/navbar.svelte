@@ -49,7 +49,7 @@
 
       <!-- hamburger menu -->
       <div class="text-4xl flex md:hidden align-items justify-content">
-        <button id="menu" type="button" on:click={toggleNavbar}>
+        <button id="menu" type="button" class="focus:outline-none" on:click={toggleNavbar}>
           <i class="las la-bars{menuShow ? 'hidden' : ''}" />
           <i class="las la-window-close{menuShow ? '' : 'hidden'}" />
         </button>
