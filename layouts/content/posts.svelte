@@ -20,9 +20,9 @@
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
-      <div class="relative mb-10">
+      <div class="relative mb-10 w-full">
         <img
-          class="rounded-lg overflow-hidden"
+          class="rounded-lg overflow-hidden w-full h-screen-70 object-cover object-center"
           src="/assets/{image.src}"
           alt={image.alt}
         />
