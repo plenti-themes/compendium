@@ -1,4 +1,5 @@
 {
+  "page": "about",
   "title": "About Me",
   "author": {
     "name": "John Doe",
@@ -21,5 +22,5 @@
     "post": "the data wisperer",
     "tagline": "I do x with y"
   },
-  "body": "I was born in the land of Oz, and have always dreamed that a hurricane would take me somewhere far. Eventually I actually ended up working abroad, where I began to travel around Asia. I discovered the world of low-cost airlines and began to fly somewhere and see the world every weekend.<br/><br/>Being somewhere in the 15th country, I realized that I had enough experience and knowledge to share with others. Here you will find useful tips, my travel experiences, life hacks and the usual daily thoughts about everything that surrounds me."
+  "body": "I was born in the land of Oz, and had always dreamed that a hurricane would take me somewhere afar. Eventually I actually ended up working abroad, where I began traveling throughout Asia. After discovering the world of low-cost airlines, I started seeing the world every weekend.<br/><br/>Once I stayed in the 15th country I had visited, I realized that I had enough experience and knowledge to share. Here you will find useful tips, my travel experiences, life hacks and the usual daily thoughts about everything that surrounds me."
 }
