@@ -20,7 +20,7 @@
   <!-- Loop through all the posts and process featured only    -->
   <!-- ------------------------------------------------------- -->
   {#if featuredPage == "Bleed" && currentPage <= 1}
-    <div class="row -mt-16">
+    <div class="w-full row -mt-16">
       <Featured {allFeatures} {featuredPage} />
     </div>
   {/if}
@@ -28,7 +28,7 @@
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     {#if featuredPage == "Frame" && currentPage <= 1}
-      <div class="row mt-16">
+      <div class="w-full row mt-16">
         <Featured {allFeatures} {featuredPage} />
       </div>
     {/if}
@@ -36,7 +36,7 @@
     <!-- ------------------------------------------------------- -->
     <!-- Loop through all the posts and generate cards and aside -->
     <!-- ------------------------------------------------------- -->
-    <div class="row">
+    <div class="w-full">
       <Sections
         {allContent}
         {postRangeHigh}

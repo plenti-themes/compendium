@@ -29,6 +29,9 @@
   /* ---------------- */
   :global(.accent) {
     color: var(--accent);
+  }
+  :global(.accent-p) {
+    color: var(--accent);
     background-color: var(--primary);
   }
   :global(.accent-b) {

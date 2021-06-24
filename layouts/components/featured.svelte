@@ -36,99 +36,96 @@
 
 <!-- {#each [features[featureIdx]] as { post } (featureIdx)} -->
 {#each allFeatures as post, i}
-	<div class="content">
-    <!-- Carousel Image -->
-    <div
-      id={i}
-      class="relative overflow-hidden 
+  <!-- Carousel Image -->
+  <div
+    id={i}
+    class="w-full relative overflow-hidden 
 		  {featuredPage == 'Frame' ? ' rounded-lg' : ''} 
 		  {i == featureIdx ? 'flex' : 'hidden'}"
-    >
+  >
+    <div id="featureImage" class="w-full">
       <img
         class="w-full {featuredPage == 'Frame'
-          ? 'rounded-lg'
+          ? 'rounded-lg object-cover h-screen-70'
           : 'object-cover h-screen'}"
         style="filter: brightness(60%)"
         transition:fade
         src="/assets/{post.fields.image.src}"
         alt={post.fields.image.alt}
       />
+    </div>
 
-      <!-- Carousel Overlay Text -->
-      <div class="absolute row w-full m-0 feature px-16">
-        <div class="col-lg-2" />
-        <div class="col-lg-8">
-          <h2
-            class="content text-center mb-3 md:mb-4 lg:mb-5 text-2xl sm:text-3xl md:text-4xl"
-          >
-            <a href={post.path} class="">{post.fields.title}</a>
-          </h2>
-          <ul
-            class="flex flex-wrap items-center justify-center text-sm {featuredPage ==
-            'Frame'
-              ? 'md:mb-10 sm:mb-5'
-              : 'mb-24'}"
-          >
-            <li class="px-1">
-              <i class="las la-user-astronaut text-base top-0.5 relative" />
-              <a href={post.fields.author.url}>{post.fields.author.name}</a>
-            </li>
-            <li class="px-1">Date : {post.fields.date}</li>
-            <li class="px-1">
-              Categories :
-              {#each post.fields.categories as catg, i}
-                <a href="/categories/{catg}" class="ml-1"
-                  >{catg}{#if i < post.fields.categories.length - 1},
-                  {/if}</a
-                >
-              {/each}
-            </li>
-            <li class="px-1">
-              Tags :
-              {#each post.fields.tags as tag, i}
-                <a href="/tags/{tag}" class="ml-1"
-                  >{tag}{#if i < post.fields.tags.length - 1}, {/if}</a
-                >
-              {/each}
-            </li>
-          </ul>
-        </div>
-        <div class="col-lg-2" />
+    <!-- Carousel Overlay Text -->
+    <div id="featureOverlayText" class="w-full absolute row m-0 feature px-16">
+      <div class="col-lg-2" />
+      <div class="col-lg-8">
+        <h2
+          class="w-full content text-center pb-3 md:pb-4 lg:pb-5 text-2xl sm:text-3xl md:text-4xl"
+        >
+          <a href={post.path} class="">{post.fields.title}</a>
+        </h2>
+        <ul
+          class="flex flex-wrap items-center justify-center text-sm {featuredPage ==
+          'Frame'
+            ? 'md:mb-10 sm:mb-5'
+            : 'mb-24'}"
+        >
+          <li class="px-1">
+            <i class="las la-user-astronaut text-base top-0.5 relative" />
+            <a href={post.fields.author.url}>{post.fields.author.name}</a>
+          </li>
+          <li class="px-1">Date : {post.fields.date}</li>
+          <li class="px-1">
+            Categories :
+            {#each post.fields.categories as catg, i}
+              <a href="/categories/{catg}" class="ml-1"
+                >{catg}{#if i < post.fields.categories.length - 1},
+                {/if}</a
+              >
+            {/each}
+          </li>
+          <li class="px-1">
+            Tags :
+            {#each post.fields.tags as tag, i}
+              <a href="/tags/{tag}" class="ml-1"
+                >{tag}{#if i < post.fields.tags.length - 1}, {/if}</a
+              >
+            {/each}
+          </li>
+        </ul>
       </div>
+      <div class="col-lg-2" />
+    </div>
 
-      <button
-        on:click={clickPrev}
-        class="absolute m-2 left-2"
-        style="top: 50%"
-      >
-        <i class="" />
-        <i
-          class="accent las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
-        />
-      </button>
+    <!-- Carousel Overlay Text -->
+    <button on:click={clickPrev} class="absolute m-2 left-2" style="top: 50%">
+      <i class="" />
+      <i
+        class="accent las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
+      />
+    </button>
+    <button
+      type="button"
+      on:click={clickNext}
+      class="absolute m-2 right-2"
+      style="top: 50%"
+    >
+      <i
+        class="accent las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
+      />
+    </button>
+    {#if featuredPage == "Bleed"}
       <button
         type="button"
-        on:click={clickNext}
-        class="absolute m-2 right-2"
-        style="top: 50%"
+        on:click={scrollDown}
+        class="absolute"
+        style="bottom: 5%; left: 47%"
       >
         <i
-          class="accent las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
+          class="accent las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
         />
       </button>
-      {#if featuredPage == "Bleed"}
-        <button
-          type="button"
-          on:click={scrollDown}
-          class="absolute"
-          style="bottom: 5%; left: 47%"
-        >
-          <i
-            class="accent las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-60 hover:opacity-100"
-          />
-        </button>
-      {/if}
-    </div>
+    {/if}
   </div>
 {/each}
 
