@@ -7,6 +7,7 @@
     color: var(--on-secondary);
     font-size: 1rem;
     font-weight: 400;
+    opacity: 90%;
   }
   :global(a) {
     opacity: 80%;
