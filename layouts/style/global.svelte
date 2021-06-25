@@ -7,10 +7,10 @@
     color: var(--on-secondary);
     font-size: 1rem;
     font-weight: 400;
-    opacity: 90%;
+    opacity: 85%;
   }
   :global(a) {
-    opacity: 80%;
+    opacity: 85%;
   }
   :global(a:hover) {
     color: var(--accent);
@@ -23,7 +23,7 @@
   :global(h1, h2, h3, h4, h5, h6) {
     font-family: montserrat, sans-serif;
     line-height: 1.2;
-    opacity: 80%;
+    opacity: 85%;
   }
   :global(h1) {
     font-size: 2rem;
@@ -78,7 +78,7 @@
     font-family: montserrat, sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
-    opacity: 90%;
+    opacity: 85%;
   }
   :global(.footer a) {
     text-decoration: underline;
