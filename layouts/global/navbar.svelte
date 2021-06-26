@@ -65,8 +65,8 @@
           <a class="block md:inline-flex px-2 py-1" href="/">Home</a>
           <a class="block md:inline-flex px-2 py-1" href="/projects">Projects</a
           >
-          <a class="block md:inline-flex px-2 py-1" href="/about">About</a>
-          <a class="block md:inline-flex px-2 py-1" href="/contact">Contact</a>
+          <a class="block md:inline-flex px-2 py-1" href="/pages/about">About</a>
+          <a class="block md:inline-flex px-2 py-1" href="/pages/contact">Contact</a>
           <button id="dark" type="button" on:click={toggleDark}>
             <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
           </button>

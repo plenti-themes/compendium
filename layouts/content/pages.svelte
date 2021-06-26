@@ -1,6 +1,5 @@
 <script>
   import About from "../components/about.svelte";
-  import Projects from "../components/projects.svelte";
   export let allContent, content, page, title, image, hero, splash, body, author, date;
 </script>
 
@@ -10,11 +9,6 @@
     <!-- Custom About page    -->
     <!-- -------------------- -->
     <About {title} {image} {hero} {splash} {body} />
-  {:else if page == "projects"}
-    <!-- -------------------- -->
-    <!-- Custom Projects page -->
-    <!-- -------------------- -->
-    <Projects {allContent} {content} {title} />
   {:else}
     <!-- -------------------- -->
     <!-- Default page logic   -->

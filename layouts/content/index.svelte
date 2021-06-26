@@ -3,6 +3,7 @@
   import Sections from "../components/sections.svelte";
 
   export let allContent, content, theme;
+  let page = "post";
 
   $: currentPage = content.pager;
   let featuredPage = allContent.filter((content) => content.path == "/")[0]
@@ -43,6 +44,7 @@
         {postRangeLow}
         {currentPage}
         {totalPages}
+		{page}
       />
     </div>
   </div>

@@ -6,15 +6,16 @@
   <div class="rounded-xl overflow-hidden shadow-md bg-secondary">
     <div class="flex-none lg:flex">
       {#if i >= projRangeLow && i < projRangeHigh}
-        <div class="px-6 pt-6 pb-4">
+        <div class="px-2 md:px-6 pt-2 md:pt-6 pb-2 md:pb-4">
           {#each allProjs as post, p}
             {#if proj == post.fields.project}
               {#if projArry.find((pst) => pst.proj === proj).title == post.fields.title}
-                <h2 class="header pb-2 text-lg md:text-xl lg:text-2xl">Project: {proj}</h2>
+                <h2 class="header pb-2 text-lg md:text-xl lg:text-2xl"><i>Project</i>: {proj}</h2>
+
               {/if}
               <div class="flex items-center py-2">
                 <img
-                  class="inline-block object-cover rounded-md w-20 h-20"
+                  class="inline-block object-cover rounded-md w-28 h-28"
                   src="/assets/{post.fields.image.src}"
                   alt={post.fields.image.alt}
                 />

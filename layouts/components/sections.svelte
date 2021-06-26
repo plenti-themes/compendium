@@ -3,10 +3,9 @@
   import Cards from "../components/cards.svelte";
   import Pagination from "../components/paginate.svelte";
 
-  export let allContent, postRangeHigh, postRangeLow, currentPage, totalPages;
+  export let allContent, postRangeHigh, postRangeLow, currentPage, totalPages, page;
   let allPosts = allContent.filter((content) => content.type == "posts");
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields
-    .theme.social;
+  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.socialLinks;
 </script>
 
 <section class="mt-16">
@@ -23,7 +22,7 @@
       <!-- Paginate each page as necessary                         -->
       <!-- ------------------------------------------------------- -->
       <div class="row mt-8 md:pr-10">
-        <Pagination {currentPage} {totalPages} />
+        <Pagination {currentPage} {totalPages} {page} />
       </div>
     </div>
 
