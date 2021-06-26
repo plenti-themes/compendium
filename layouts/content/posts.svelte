@@ -2,8 +2,7 @@
   import Aside from "../components/aside.svelte";
   export let allContent, title, image, body, author, date, categories, tags;
   let allPosts = allContent.filter((content) => content.type == "posts");
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields
-    .theme.social;
+  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.socialLinks;
 
   function scrollDown() {
     window.scrollTo({
