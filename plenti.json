@@ -2,10 +2,11 @@
   "build": "public",
   "baseurl": "/",
   "routes": {
-    "404": "/:filename",
-    "pages": "/:filename",
+    "index": "/:paginate(totalPages)",
+    "pages": "/pages/:filename",
     "posts": "/posts/:filename",
-	"index": "/:paginate(totalPages)"
+    "projects": "/:filename/:paginate(totalProjPages)",
+    "404": "/:filename"
   },
   "local": {
     "port": 3000
