@@ -2,7 +2,7 @@
   "name": "compendium-theme",
   "version": "0.2.0",
   "scripts": {
-    "prebuild": "cp styles/$(grep csName content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
+    "prebuild": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
     "build": "postcss styles/tailwind.source.css -o assets/tailwind.global.css"
   },
   "private": true,

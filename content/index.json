@@ -1,170 +1,55 @@
 {
   "title": "Compendium | Personal Blog Template",
+  "description": "Compendium is a blog template for the Plenti-based SSG using Svelte.",
   "theme": {
-    "postsPerPage": 4,
-    "featuredPage": "Frame",
-    "featuredPageOptions": "Bleed, Frame, None",
-    "social": [
-      {
-        "src": "https://www.linkedin.com/",
-        "ico": "lab la-linkedin-in",
-        "enabled": true
-      },
-      {
-        "src": "https://github.com/",
-        "ico": "lab la-github-alt",
-        "enabled": true
-      },
-      {
-        "src": "https://about.gitlab.com/",
-        "ico": "lab la-gitlab",
-        "enabled": true
-      },
-      {
-        "src": "https://twitter.com/",
-        "ico": "lab la-twitter",
-        "enabled": false
-      },
-      {
-        "src": "https://keybase.io/",
-        "ico": "lab la-keybase",
-        "enabled": true
-      },
-      {
-        "src": "https://www.reddit.com/",
-        "ico": "lab la-reddit",
-        "enabled": true
-      },
-      {
-        "src": "https://www.instagram.com/",
-        "ico": "lab la-instagram",
-        "enabled": false
-      },
-      {
-        "src": "https://www.facebook.com/",
-        "ico": "lab la-facebook-f",
-        "enabled": false
-      },
-      { "src": "", "ico": "", "enabled": false }
-    ],
-    "csName": "Technobeat",
-    "colorSchemes": [
-      {
-        "selector": "Simplicity",
-        "ltTheme": {
-          "--primary": "rgba(255, 255, 255, 1)",
-          "--secondary": "#f7f7f7",
-          "--accent": "rgba(180, 83, 9)",
-          "--background": "rgb(250, 250, 250)",
-          "--surface": "rgba(255, 255, 255, 1)",
-          "--on-primary": "rgba(28, 29, 31, 0.8)",
-          "--on-secondary": "rgba(28, 29, 31, 0.8)",
-          "--on-accent": "rgb(225, 225, 225)",
-          "--on-background": "rgba(28, 29, 31, 0.8)",
-          "--on-surface": "rgba(28, 29, 31, 0.8)",
-          "--on-disabled": "rgba(110, 110, 110, 0.8)"
-        },
-        "dkTheme": {
-          "--primary": "rgb(25, 25, 25)",
-          "--secondary": "rgb(28, 28, 28);",
-          "--accent": "rgb(180, 83, 9)",
-          "--background": "rgb(32, 32, 32)",
-          "--surface": "rgb(40, 40, 40)",
-          "--on-primary": "rgba(225, 225, 225, 0.8)",
-          "--on-secondary": "rgba(225, 225, 225, 0.8)",
-          "--on-accent": "rgba(255, 255, 255, 1)",
-          "--on-background": "rgba(225, 225, 225, 0.8)",
-          "--on-surface": "rgba(225, 225, 225, 0.8)",
-          "--on-disabled": "rgba(110, 110, 110, 0.8)"
-        }
-      },
-      {
-        "selector": "Earthliness",
-        "ltTheme": {
-          "--primary": "#ffffff",
-          "--secondary": "#d4dfca",
-          "--accent": "#81B18C",
-          "--background": "#e8efe1",
-          "--surface": "#464343",
-          "--on-primary": "#181818",
-          "--on-secondary": "#333333",
-          "--on-accent": "#050505",
-          "--on-background": "#fefefe",
-          "--on-surface": "#fefefe",
-          "--on-disabled": "rgba(155, 155, 155, 0.8)"
-        },
-        "dkTheme": {
-          "--primary": "rgb(25, 25, 25)",
-          "--secondary": "rgb(28, 28, 28)",
-          "--accent": "#81B18C",
-          "--background": "rgb(32, 32, 32)",
-          "--surface": "rgb(25, 25, 25)",
-          "--on-primary": "rgba(225, 225, 225, 0.8)",
-          "--on-secondary": "rgba(225, 225, 225, 0.8)",
-          "--on-accent": "rgba(255, 255, 255, 1)",
-          "--on-background": "rgba(225, 225, 225, 0.8)",
-          "--on-surface": "rgba(225, 225, 225, 0.8)",
-          "--on-disabled": "rgba(155, 155, 155, 0.8)"
-        }
-      },
-      {
-        "selector": "Technobeat",
-        "ltTheme": {
-          "--primary": "#000000",
-          "--secondary": "#f7f7f7",
-          "--accent": "#e2127a",
-          "--background": "#ffffff",
-          "--surface": "#333333",
-          "--on-primary": "#ffffff",
-          "--on-secondary": "#333333",
-          "--on-accent": "#ffffff",
-          "--on-background": "#333333",
-          "--on-surface": "#ffffff",
-          "--on-disabled": "rgba(155, 155, 155, 0.8)"
-        },
-        "dkTheme": {
-          "--primary": "rgb(25, 25, 25)",
-          "--secondary": "rgb(28, 28, 28)",
-          "--accent": "rgb(180, 83, 9)",
-          "--background": "rgb(32, 32, 32)",
-          "--surface": "rgb(40, 40, 40)",
-          "--on-primary": "rgba(225, 225, 225, 0.8)",
-          "--on-secondary": "rgba(225, 225, 225, 0.8)",
-          "--on-accent": "rgba(255, 255, 255, 1)",
-          "--on-background": "rgba(225, 225, 225, 0.8)",
-          "--on-surface": "rgba(225, 225, 225, 0.8)",
-          "--on-disabled": "rgba(110, 110, 110, 0.8)"
-        }
-      },
-      {
-        "selector": "Other",
-        "ltTheme": {
-          "--primary": "",
-          "--secondary": "",
-          "--accent": "",
-          "--background": "",
-          "--surface": "",
-          "--on-primary": "",
-          "--on-secondary": "",
-          "--on-accent": "",
-          "--on-background": "",
-          "--on-surface": "",
-          "--on-disabled": ""
-        },
-        "dkTheme": {
-          "--primary": "",
-          "--secondary": "",
-          "--accent": "",
-          "--background": "",
-          "--surface": "",
-          "--on-primary": "",
-          "--on-secondary": "",
-          "--on-accent": "",
-          "--on-background": "",
-          "--on-surface": "",
-          "--on-disabled": ""
-        }
-      }
-    ]
-  }
+    "postsPerPage": 6,
+    "projsPerPage": 3,
+    "featuredPage": "Bleed",
+    "featuredPageValues": "Bleed, Frame, None",
+    "colorScheme": "Technobeat",
+    "colorSchemeValues": "Earthliness, Simplicity, Technobeat"
+  },
+  "socialLinks": [
+    {
+      "src": "https://www.linkedin.com/",
+      "ico": "lab la-linkedin-in",
+      "enabled": true
+    },
+    {
+      "src": "https://github.com/",
+      "ico": "lab la-github-alt",
+      "enabled": true
+    },
+    {
+      "src": "https://about.gitlab.com/",
+      "ico": "lab la-gitlab",
+      "enabled": true
+    },
+    {
+      "src": "https://twitter.com/",
+      "ico": "lab la-twitter",
+      "enabled": false
+    },
+    {
+      "src": "https://keybase.io/",
+      "ico": "lab la-keybase",
+      "enabled": true
+    },
+    {
+      "src": "https://www.reddit.com/",
+      "ico": "lab la-reddit",
+      "enabled": true
+    },
+    {
+      "src": "https://www.instagram.com/",
+      "ico": "lab la-instagram",
+      "enabled": false
+    },
+    {
+      "src": "https://www.facebook.com/",
+      "ico": "lab la-facebook-f",
+      "enabled": false
+    },
+    { "src": "", "ico": "", "enabled": false }
+  ]
 }
