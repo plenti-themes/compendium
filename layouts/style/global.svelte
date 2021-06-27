@@ -104,7 +104,7 @@
   :global(.bg-secondary) {
     background-color: var(--secondary);
   }
-  :global(.bg-background) {
+  :global(.bg-main) {
     background-color: var(--background);
   }
 

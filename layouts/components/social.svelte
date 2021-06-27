@@ -1,15 +1,15 @@
 <script>
-  export let allSocial;
+  export let socialLinks;
 
   // -------------------------------------------------------------
-  // BUG?: svelte #each loop is not functional with allSocial
-  // Following js function to parse allSocial into array arrSocial
+  // BUG?: svelte #each loop is not functional with socialLinks
+  // Following js function to parse socialLinks into array arrSocial
   // -------------------------------------------------------------
   let arrSocial = [];
   function printSocial() {
-    for (let i in allSocial) {
-      if (allSocial[i].enabled) {
-        arrSocial.push({ src: allSocial[i].src, ico: allSocial[i].ico });
+    for (let i in socialLinks) {
+      if (socialLinks[i].enabled) {
+        arrSocial.push({ src: socialLinks[i].src, ico: socialLinks[i].ico });
       }
     }
   }

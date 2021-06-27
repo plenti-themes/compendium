@@ -1,11 +1,18 @@
 <script>
+  // Variables passed in from "html.svelte"
+  export let allPosts, content;
+  // Variables passed in from "index.svelte"
+  export let postRangeHigh, postRangeLow, currentPage, totalPages;
+
+  let page = "post";
+
+  // Aside component for search, categories, and tags
   import Aside from "../components/aside.svelte";
+  // Cards component for all posts.
   import Cards from "../components/cards.svelte";
   import Pagination from "../components/paginate.svelte";
 
-  export let allContent, postRangeHigh, postRangeLow, currentPage, totalPages, page;
-  let allPosts = allContent.filter((content) => content.type == "posts");
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.socialLinks;
+  let socialLinks = content.fields.socialLinks;
 </script>
 
 <section class="mt-16">
@@ -30,7 +37,7 @@
     <!-- Set the aside as the last column in the row             -->
     <!-- ------------------------------------------------------- -->
     <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
-      <Aside {allPosts} {allSocial} />
+      <Aside {allPosts} {socialLinks} />
     </div>
   </div>
 </section>

@@ -1,18 +1,24 @@
 <script>
+  // Aside component for search, categories, and tags
   import Aside from "../components/aside.svelte";
-  import SEO from "../components/openGraph.svelte";
+  // Ogp (Open Graph Protocol): SEO for social networks
+  import Ogp from "../components/openGraph.svelte";
 
-  export let allContent, title, image, body, author, date, categories, tags;
-  
-  let allPosts = allContent.filter((content) => content.type == "posts");
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields.socialLinks;
-  let site_name = allContent.filter((content) => content.path == "/")[0].fields.title;
-  let path = allPosts.filter((content) => content.fields.title == title)[0].path;
+  // Values passed in from "html.svelte"
+  export let idxContent, allPosts, content, env;
+  // Values passed in from layout content {...content.fields}
+  export let title, image, body, author, date, categories, tags;
 
+  let socialLinks = idxContent.socialLinks;
+  let site_name = idxContent.title;
+  let path = content.path;
+
+  // Ogp description length - setting to last word on-or-before 110 characters
   let desc_len = 110;
-  let desc = body.substring(0,
+  let desc = body.substring(
+    0,
     Math.min(desc_len, body.substring(0, desc_len).lastIndexOf(" "))
-  )
+  );
 
   function scrollDown() {
     window.scrollTo({
@@ -27,7 +33,7 @@
   use:scrollDown
   class="section flex flex-wrap items-center justify-between py-16"
 >
-  <SEO {site_name} {title} {desc} {image} {path} />
+  <Ogp {site_name} {title} {desc} {image} {env} {path} />
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
@@ -76,7 +82,7 @@
 
       <!-- Aside  -->
       <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
-        <Aside {allPosts} {allSocial} />
+        <Aside {allPosts} {socialLinks} />
       </div>
     </div>
   </div>

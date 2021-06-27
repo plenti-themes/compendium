@@ -2,7 +2,7 @@
   import Search from "../components/search.svelte";
   import Social from "../components/social.svelte";
 
-  export let allPosts, allSocial;
+  export let allPosts, socialLinks;
 </script>
 
 <aside class="w-full">
@@ -11,7 +11,7 @@
     <Search {allPosts} />
 
     <!-- Social -->
-	<Social {allSocial} />
+	<Social {socialLinks} />
 
     <!-- categories -->
     <div class="row">

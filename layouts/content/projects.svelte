@@ -1,15 +1,17 @@
 <script>
   import Aside from "../components/aside.svelte";
-  import Groups from "../components/cardsGroup.svelte";
+  import Groups from "../components/cardsProjects.svelte";
   import Pagination from "../components/paginate.svelte";
 
-  export let allContent, content, page;
+  // Variables passed in from "html.svelte" via "index.svelte"
+  export let idxContent, allPosts, content;
+  let page = content.fields.page;
 
   $: currentPage = content.pager;
-  let allPosts = allContent.filter((content) => content.type == "posts");
   let allProjs = allPosts.filter((content) => content.fields?.project != "");
-  let projsPerPage = allContent.filter((content) => content.path == "/")[0]
-    .fields.theme.projsPerPage;
+
+  let socialLinks = idxContent.socialLinks;
+  let projsPerPage = idxContent.theme.projsPerPage;
 
   let projArry = [];
   let projList = [];
@@ -30,8 +32,6 @@
   
   $: projRangeHigh = currentPage * projsPerPage;
   $: projRangeLow = projRangeHigh - projsPerPage;
-  let allSocial = allContent.filter((content) => content.path == "/")[0].fields
-    .socialLinks;
 </script>
 
 <section class="w-full flex flex-wrap items-center justify-between py-16">
@@ -57,7 +57,7 @@
           <!-- Paginate each page as necessary                         -->
           <!-- ------------------------------------------------------- -->
           <div class="row mt-8 md:pr-10">
-            <Pagination {currentPage} {totalPages} {page} />
+            <Pagination {currentPage} {totalPages} {page} {totalProjPages} />
           </div>
         </div>
 
@@ -65,7 +65,7 @@
         <!-- Set the aside as the last column in the row             -->
         <!-- ------------------------------------------------------- -->
         <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
-          <Aside {allPosts} {allSocial} />
+          <Aside {allPosts} {socialLinks} />
         </div>
       </div>
     </section>

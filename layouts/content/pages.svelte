@@ -1,6 +1,6 @@
 <script>
   import About from "../components/about.svelte";
-  export let allContent, content, page, title, image, hero, splash, body, author, date;
+  export let page, title, image, hero, splash, body, author, date;
 </script>
 
 <section class="w-full flex flex-wrap items-center justify-between py-16">

@@ -2,13 +2,14 @@
   import Featured from "../components/featured.svelte";
   import Sections from "../components/sections.svelte";
 
-  export let allContent, content, theme;
-  let page = "post";
+  // Variables passed in from "html.svelte"
+  // * content: values for keys in "index.json"
+  // * allPosts: values for keys in all posts
+  // * theme: values passed in from layout content {...content.fields}
+  export let allPosts, content, theme;
 
   $: currentPage = content.pager;
-  let featuredPage = allContent.filter((content) => content.path == "/")[0]
-    .fields.theme.featuredPage;
-  let allPosts = allContent.filter((content) => content.type == "posts");
+  let featuredPage = theme.featuredPage;
   let allFeatures = allPosts.filter((content) => content.fields?.featured);
   let totalPosts = allPosts.length;
   let totalPages = Math.ceil(totalPosts / theme.postsPerPage);
@@ -39,12 +40,12 @@
     <!-- ------------------------------------------------------- -->
     <div class="w-full">
       <Sections
-        {allContent}
+		{allPosts}
+		{content}
         {postRangeHigh}
         {postRangeLow}
         {currentPage}
         {totalPages}
-		{page}
       />
     </div>
   </div>

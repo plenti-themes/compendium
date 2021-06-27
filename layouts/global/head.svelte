@@ -1,21 +1,21 @@
 <script>
-  export let indexContent, env;
+  export let idxContent, env;
 </script>
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content={indexContent.description} />
+  <meta name="description" content={idxContent.description} />
 
   <meta property="og:type" content="website" />
-  <meta property="og:title" content={indexContent.title} />
-  <meta property="og:description" content={indexContent.description} />
+  <meta property="og:title" content={idxContent.title} />
+  <meta property="og:description" content={idxContent.description} />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content={indexContent.title} />
-  <meta name="twitter:description" content={indexContent.description} />
+  <meta name="twitter:title" content={idxContent.title} />
+  <meta name="twitter:description" content={idxContent.description} />
 
-  <title>{indexContent.title}</title>
+  <title>{idxContent.title}</title>
 
   <base href={env ? "/" : env.baseurl} />
 

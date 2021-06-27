@@ -1,16 +1,28 @@
 <script>
-  // Import Svelte component classes
+  // Import Svelte component classes for all content
   import Head from "./head.svelte";
   import Navbar from "./navbar.svelte";
   import Footer from "./footer.svelte";
 
+  // Bind variable for capturing light/dark theme state
   export let isDark = false;
-  export let content, layout, allContent, allLayouts, env;
-  let indexContent = allContent.filter((content) => content.path == "/")[0].fields;
+
+  // Plenti system variables
+  // * allContent: consolidated content data (public/spa/ejected/content.js)
+  // * allLayouts: list of layout files
+  // * content: key values from specific content file
+  // * layout: layout for the specific content file
+  // * env: state values from "plenti.json" 
+  export let allContent, allLayouts, content, layout, env;
+
+  // Capture key values from "index.json" for theming and ogp content.
+  export let idxContent = allContent.filter((key) => key.path == "/")[0].fields;
+  // Capture key content for all posts.
+  export let allPosts = allContent.filter((key) => key.type == "posts");
 </script>
 
 <html lang="en">
-  <Head {indexContent} {env} />
+  <Head {idxContent} {env} />
   <body>
     <!-- Setup sticky nav menu at the top -->
     <header
@@ -21,17 +33,16 @@
       <Navbar bind:isDark />
     </header>
 
-    <main class="{isDark ? 'dk-theme' : 'lt-theme'} bg-background">
-      <!-- loop through the layout components specified by the field items
-		   in the index.json (content folder).  Svelte components with 
-		   corresponding names must be in the layouts/components folder.  -->
+    <main class="{isDark ? 'dk-theme' : 'lt-theme'} bg-main">
       <svelte:component
         this={layout}
         {...content.fields}
-        {allContent}
+		{idxContent}
+		{allPosts}
         {allLayouts}
         {content}
         {isDark}
+		{env}
       />
     </main>
 
