@@ -1,12 +1,18 @@
 <script>
   import Aside from "../components/aside.svelte";
-  import SEO from "../components/ogpSEO.svelte";
+  import SEO from "../components/openGraph.svelte";
 
   export let allContent, title, image, body, author, date, categories, tags;
+  
   let allPosts = allContent.filter((content) => content.type == "posts");
   let allSocial = allContent.filter((content) => content.path == "/")[0].fields.socialLinks;
   let site_name = allContent.filter((content) => content.path == "/")[0].fields.title;
   let path = allPosts.filter((content) => content.fields.title == title)[0].path;
+
+  let desc_len = 110;
+  let desc = body.substring(0,
+    Math.min(desc_len, body.substring(0, desc_len).lastIndexOf(" "))
+  )
 
   function scrollDown() {
     window.scrollTo({
@@ -21,7 +27,7 @@
   use:scrollDown
   class="section flex flex-wrap items-center justify-between py-16"
 >
-  <SEO {site_name} {title} {body} {image} {path} />
+  <SEO {site_name} {title} {desc} {image} {path} />
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">

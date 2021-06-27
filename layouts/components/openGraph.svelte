@@ -1,17 +1,11 @@
 <!-- The Open Graph protocol -- https://ogp.me/ -->
 <script>
-  export let site_name, title, body, image, path;
-  let desc_len = 200;
+  export let site_name, title, desc, image, path;
 </script>
 
 <meta property="og:site_name" content={site_name} />
 <meta property="og:title" content={title} />
-<meta
-  property="og:description"
-  content={body.substring(0,
-    Math.min(desc_len, body.substring(0, desc_len).lastIndexOf(" "))
-  )}
-/>
+<meta property="og:description" content={desc} />
 <meta property="og:url" content={path} />
 <meta property="og:image" content={image.src} />
 <meta property="og:type" content="article" />
