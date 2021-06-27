@@ -1,6 +1,6 @@
 {
   "title": "Compendium | Personal Blog Template",
-  "description": "Compendium is a blog template for the Plenti-based SSG using Svelte.",
+  "description": "A personal blog template for the Plenti-based SSG built on Svelte.",
   "theme": {
     "postsPerPage": 6,
     "projsPerPage": 3,

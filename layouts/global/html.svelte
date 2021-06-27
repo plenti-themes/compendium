@@ -6,12 +6,11 @@
 
   export let isDark = false;
   export let content, layout, allContent, allLayouts, env;
-  let title = allContent.filter((content) => content.path == "/")[0].fields
-    .title;
+  let indexContent = allContent.filter((content) => content.path == "/")[0].fields;
 </script>
 
 <html lang="en">
-  <Head {title} {env} />
+  <Head {indexContent} {env} />
   <body>
     <!-- Setup sticky nav menu at the top -->
     <header
@@ -32,7 +31,7 @@
         {allContent}
         {allLayouts}
         {content}
-		{isDark}
+        {isDark}
       />
     </main>
 
