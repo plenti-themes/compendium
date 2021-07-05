@@ -10,7 +10,9 @@
 
   $: currentPage = content.pager;
   let featuredPage = theme.featuredPage;
-  let allFeatures = allPosts.filter((content) => content.fields?.featured);
+  let allFeatures = allPosts.filter(
+    (content) => content.fields?.schema.featured
+  );
   let totalPosts = allPosts.length;
   let totalPages = Math.ceil(totalPosts / theme.postsPerPage);
   $: postRangeHigh = currentPage * theme.postsPerPage;
@@ -40,8 +42,8 @@
     <!-- ------------------------------------------------------- -->
     <div class="w-full">
       <Sections
-		{allPosts}
-		{content}
+        {allPosts}
+        {content}
         {postRangeHigh}
         {postRangeLow}
         {currentPage}

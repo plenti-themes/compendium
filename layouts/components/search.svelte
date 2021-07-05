@@ -22,18 +22,18 @@
           <div class="flex items-center mb-5">
             <img
               class="inline-block object-cover rounded-full w-16 h-16"
-              src="/assets/{post.fields.image.src}"
-              alt={post.fields.image.alt}
+              src="/assets/{post.fields.schema.image.src}"
+              alt={post.fields.schema.image.alt}
             />
             <div class="inline-block ml-2">
               <h5 class="header">
-                <a href={post.path}>{post.fields.title}</a>
+                <a href={post.path}>{post.fields.schema.title}</a>
               </h5>
               <ul class="text-meta">
                 <li class="">
                   <i class="las la-user-astronaut text-base top-0.5 relative" />
-                  <a href={post.fields.author.url}>{post.fields.author.name}</a>
-                  - {post.fields.date}
+                  <a href={post.fields.schema.author.url}>{post.fields.schema.author.name}</a>
+                  - {post.fields.schema.date}
                 </li>
               </ul>
             </div>

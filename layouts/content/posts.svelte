@@ -7,8 +7,16 @@
   // Values passed in from "html.svelte"
   export let idxContent, allPosts, content, env;
   // Values passed in from layout content {...content.fields}
-  export let title, image, body, author, date, categories, tags;
+  export let schema, body;
 
+  // Extract schema keys
+  export let title = schema.title;
+  export let image = schema.image;
+  export let author = schema.author;
+  export let date = schema.date;
+  export let categories = schema.categories;
+  export let tags = schema.tags;
+  
   let socialLinks = idxContent.socialLinks;
   let site_name = idxContent.title;
   let path = content.path;
@@ -37,7 +45,7 @@
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
-      <div class="relative mb-10 w-full">
+      <div class="relative mb-8 w-full">
         <img
           class="rounded-lg overflow-hidden w-full h-screen-70 object-cover object-center"
           src="/assets/{image.src}"

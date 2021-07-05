@@ -50,8 +50,8 @@
           : 'object-cover h-screen'}"
         style="filter: brightness(60%)"
         transition:fade
-        src="/assets/{post.fields.image.src}"
-        alt={post.fields.image.alt}
+        src="/assets/{post.fields.schema.image.src}"
+        alt={post.fields.schema.image.alt}
       />
     </div>
 
@@ -62,7 +62,7 @@
         <h2
           class="w-full text-center pb-3 md:pb-4 lg:pb-5 text-2xl sm:text-3xl md:text-4xl"
         >
-          <a href={post.path} class="">{post.fields.title}</a>
+          <a href={post.path} class="">{post.fields.schema.title}</a>
         </h2>
         <ul
           class="flex flex-wrap items-center justify-center text-sm {featuredPage ==
@@ -72,23 +72,23 @@
         >
           <li class="px-1">
             <i class="las la-user-astronaut text-base top-0.5 relative" />
-            <a href={post.fields.author.url}>{post.fields.author.name}</a>
+            <a href={post.fields.schema.author.url}>{post.fields.schema.author.name}</a>
           </li>
-          <li class="px-1">Date : {post.fields.date}</li>
+          <li class="px-1">Date : {post.fields.schema.date}</li>
           <li class="px-1">
             Categories :
-            {#each post.fields.categories as catg, i}
+            {#each post.fields.schema.categories as catg, i}
               <a href="/categories/{catg}" class="ml-1"
-                >{catg}{#if i < post.fields.categories.length - 1},
+                >{catg}{#if i < post.fields.schema.categories.length - 1},
                 {/if}</a
               >
             {/each}
           </li>
           <li class="px-1">
             Tags :
-            {#each post.fields.tags as tag, i}
+            {#each post.fields.schema.tags as tag, i}
               <a href="/tags/{tag}" class="ml-1"
-                >{tag}{#if i < post.fields.tags.length - 1}, {/if}</a
+                >{tag}{#if i < post.fields.schema.tags.length - 1}, {/if}</a
               >
             {/each}
           </li>
