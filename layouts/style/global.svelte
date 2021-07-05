@@ -7,14 +7,17 @@
     color: var(--on-secondary);
     font-size: 1rem;
     font-weight: 400;
-    opacity: 85%;
+    opacity: 0.95;
+  }
+  :global(p a) {
+    text-decoration: underline;
   }
   :global(a) {
-    opacity: 85%;
+    opacity: 0.9;
   }
   :global(a:hover) {
     color: var(--accent);
-    opacity: 95%;
+    opacity: 0.95;
   }
 
   /* ---------------- */
@@ -22,8 +25,11 @@
   /* ---------------- */
   :global(h1, h2, h3, h4, h5, h6) {
     font-family: montserrat, sans-serif;
+    font-weight: 600;
     line-height: 1.2;
-    opacity: 85%;
+    opacity: 0.85;
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
   }
   :global(h1) {
     font-size: 2rem;
@@ -49,11 +55,11 @@
   /* ---------------- */
   :global(.header) {
     color: var(--on-secondary);
-    font-weight: 700;
   }
   :global(.menu) {
-    color: var(--on-primary);
+    font-family: montserrat, sans-serif;
     font-weight: 500;
+    color: var(--on-primary);
   }
   :global(.tag) {
     color: var(--on-secondary);
@@ -62,12 +68,12 @@
   :global(.text-aside) {
     color: var(--on-secondary);
     font-size: 0.95rem;
-    opacity: 80%;
+    opacity: 0.85;
   }
   :global(.text-meta) {
     color: var(--on-secondary);
     font-size: 0.8rem;
-    opacity: 80%;
+    opacity: 0.85;
   }
   :global(.text-meta a) {
     text-decoration: underline;
@@ -78,7 +84,7 @@
     font-family: montserrat, sans-serif;
     font-weight: 500;
     font-size: 0.9rem;
-    opacity: 85%;
+    opacity: 0.85;
   }
   :global(.footer a) {
     text-decoration: underline;
@@ -140,7 +146,7 @@
     border-color: var(--accent);
     text-decoration: none;
     font-weight: 700;
-    opacity: 90%;
+    opacity: 0.9;
   }
   :global(.btn-round-active) {
     color: rgba(var(--on-accent), 1);
@@ -160,7 +166,7 @@
     height: 2.25rem;
     width: 2.25rem;
     padding: 3px;
-    opacity: 90%;
+    opacity: 0.9;
   }
   :global(.btn-round-inactive) {
     color: rgba(var(--on-accent), 0.3);
@@ -179,7 +185,7 @@
     height: 2.25rem;
     width: 2.25rem;
     padding: 3px;
-    opacity: 90%;
+    opacity: 0.9;
   }
   :global(.btn-outline) {
     color: var(--on-surface);
@@ -201,6 +207,6 @@
     border-color: var(--accent);
     text-decoration: none;
     /* font-weight: 500; */
-    opacity: 90%;
+    opacity: 0.9;
   }
 </style>

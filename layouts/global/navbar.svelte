@@ -41,7 +41,7 @@
   <div class="menu w-full md:w-10/12 xl:w-8/12">
     <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
-      <h1 class="font-bold">
+      <h1 class="font-bold mt-0">
         <i class="accent las la-feather-alt text-4xl relative" /><i
           ><a class="text-3xl" href="/">Compendium</a></i
         >
@@ -57,11 +57,11 @@
 
       <!-- links -->
       <div
-        class="menu md:flex w-full md:w-auto text-right text-bold mt-5 md:mt-0 font-light {menuShow
+        class="menu md:flex w-full md:w-auto text-right mt-5 md:mt-0 {menuShow
           ? 'bg-primary bg-opacity-70'
           : 'hidden'}"
       >
-        <h3>
+        <div class="menu text-lg">
           <a class="block md:inline-flex px-2 py-1" href="/">Home</a>
           <a class="block md:inline-flex px-2 py-1" href="/projects">Projects</a
           >
@@ -70,7 +70,7 @@
           <button id="dark" type="button" on:click={toggleDark}>
             <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
           </button>
-        </h3>
+        </div>
       </div>
 
       <!-- cta -->
