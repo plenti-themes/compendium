@@ -4,9 +4,11 @@
   "theme": {
     "postsPerPage": 6,
     "projsPerPage": 3,
+    "mathTypesetting": true,
+    "codeHighlighting": true,
     "featuredPage": "Bleed",
     "featuredPageValues": "Bleed, Frame, None",
-    "colorScheme": "Technobeat",
+    "colorScheme": "Earthliness",
     "colorSchemeValues": "Earthliness, Simplicity, Technobeat"
   },
   "socialLinks": [
