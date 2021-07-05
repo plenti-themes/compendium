@@ -6,7 +6,7 @@
   --secondary: #d4dfca;
   --accent: #81B18C;
   --background: #e8efe1;
-  --surface: #575757;
+  --surface: #3f3f3f;
   --on-primary: #181818;
   --on-secondary: #333333;
   --on-accent: 5, 5, 5;
@@ -15,9 +15,9 @@
 }
 .dk-theme {
   --primary: #000000;
-  --secondary: #192212;
+  --secondary: #1b2015;
   --accent: #81B18C;
-  --background: #202918;
+  --background: #141610;
   --surface: #000000;
   --on-primary: #ffffff;
   --on-secondary: #c7c7c7;

@@ -1,27 +1,27 @@
 /* ----------------------------------------- */
-/* Color Scheme: Technobeat
+/* Color Scheme: Earthliness
 /* ----------------------------------------- */
 .lt-theme {
-  --primary: #000000;
-  --secondary: #f5f5f5;
-  --accent: #e2127a;
-  --background: #ffffff;
-  --surface: #333333;
-  --on-primary: #ffffff;
+  --primary: #ffffff;
+  --secondary: #d4dfca;
+  --accent: #81B18C;
+  --background: #e8efe1;
+  --surface: #3f3f3f;
+  --on-primary: #181818;
   --on-secondary: #333333;
-  --on-accent: 255, 255, 255;
-  --on-background: #333333;
-  --on-surface: #ffffff;
+  --on-accent: 5, 5, 5;
+  --on-background: #fefefe;
+  --on-surface: #fefefe;
 }
 .dk-theme {
   --primary: #000000;
-  --secondary: #242424;
-  --accent: #e2127a;
-  --background: #1c1c1c;
-  --surface: #1c1c1c;
+  --secondary: #1b2015;
+  --accent: #81B18C;
+  --background: #141610;
+  --surface: #000000;
   --on-primary: #ffffff;
-  --on-secondary: #ffffff;
-  --on-accent: 255, 255, 255;
-  --on-background: #cccccc;
-  --on-surface: #cccccc;
+  --on-secondary: #c7c7c7;
+  --on-accent: 254, 254, 254;
+  --on-background: #ececec;
+  --on-surface: #bcb9b9;
 }

@@ -15,10 +15,10 @@
 }
 .dk-theme {
   --primary: #000000;
-  --secondary: #242424;
+  --secondary: #202020;
   --accent: #e2127a;
-  --background: #1c1c1c;
-  --surface: #1c1c1c;
+  --background: #0e0e0e;
+  --surface: #151515;
   --on-primary: #ffffff;
   --on-secondary: #ffffff;
   --on-accent: 255, 255, 255;
