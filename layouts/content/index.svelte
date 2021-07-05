@@ -11,7 +11,7 @@
   $: currentPage = content.pager;
   let featuredPage = theme.featuredPage;
   let allFeatures = allPosts.filter(
-    (content) => content.fields?.schema.featured
+    (content) => content.fields?.featured
   );
   let totalPosts = allPosts.length;
   let totalPages = Math.ceil(totalPosts / theme.postsPerPage);

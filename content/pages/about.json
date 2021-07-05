@@ -8,19 +8,20 @@
   "image": {
     "src": "omid-ghobadi-sjoqjY9faJE-unsplash.jpg",
     "alt": "Post Image",
-    "reference": "Photo by <a href='https://unsplash.com/@omidghaf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Omid Ghobadi</a> on <a href='https://unsplash.com/@omidghaf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+    "citation": "Photo by <a href='https://unsplash.com/@omidghaf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Omid Ghobadi</a> on <a href='https://unsplash.com/@omidghaf?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
   },
   "splash": {
     "src": "oliver-plattner-Plt0vHDRb9U-unsplash.jpg",
     "alt": "Post Image",
-    "reference": "Photo by <a href='https://unsplash.com/@oplattner?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Oliver Plattner</a> on <a href='https://unsplash.com/s/photos/san-francisco?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+    "citation": "Photo by <a href='https://unsplash.com/@oplattner?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Oliver Plattner</a> on <a href='https://unsplash.com/s/photos/san-francisco?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
   },
-  "date": "1/8/2020",
+  "dateCreated": "1/8/2020",
+  "dateModified": "1/8/2020",
   "hero": {
     "pre": "Hi! I'm ",
     "accent": "Jo",
     "post": "the data wisperer",
     "tagline": "I do x with y"
   },
-  "body": "I was born in the land of Oz, and had always dreamed that a hurricane would take me somewhere afar. Eventually I actually ended up working abroad, where I began traveling throughout Asia. After discovering the world of low-cost airlines, I started seeing the world every weekend.<br/><br/>Once I stayed in the 15th country I had visited, I realized that I had enough experience and knowledge to share. Here you will find useful tips, my travel experiences, life hacks and the usual daily thoughts about everything that surrounds me."
+  "articleBody": "I was born in the land of Oz, and had always dreamed that a hurricane would take me somewhere afar. Eventually I actually ended up working abroad, where I began traveling throughout Asia. After discovering the world of low-cost airlines, I started seeing the world every weekend.<br/><br/>Once I stayed in the 15th country I had visited, I realized that I had enough experience and knowledge to share. Here you will find useful tips, my travel experiences, life hacks and the usual daily thoughts about everything that surrounds me."
 }

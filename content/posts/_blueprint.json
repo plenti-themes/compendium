@@ -3,16 +3,17 @@
   "image": {
     "src": "",
     "alt": "Post Image",
-    "reference": ""
+    "citation": ""
   },
   "author": {
     "name": "John Doe",
     "url": "/author/john-doe/"
   },
-  "date": "",
+  "dateCreated": "",
+  "dateModified": "",
   "categories": ["Photography"],
   "tags": ["Image", "Other"],
   "featured": false,
-
-  "body": ""
+  "draft": true,
+  "articleBody": ""
 }

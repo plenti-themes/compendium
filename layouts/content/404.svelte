@@ -1,5 +1,5 @@
 <script>
-  export let title, body, image;
+  export let title, articleBody, image;
 </script>
 
 <section
@@ -20,10 +20,10 @@
           <span class="text-base md:text-xl lg:text-2xl text-white">{title}</span>
         </h2>
         <div class="pl-8 md:pl-9 lg:pl-10">
-          <i class="text-sm md:text-lg lg:text-xl text-white">{body}</i>
+          <i class="text-sm md:text-lg lg:text-xl text-white">{articleBody}</i>
         </div>
       </div>
-      <span class="text-meta">{@html image.reference}</span>
+      <span class="text-meta">{@html image.citation}</span>
     </div>
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />

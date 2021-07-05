@@ -1,5 +1,5 @@
 <script>
-  export let title, image, hero, splash, body;
+  export let title, image, hero, splash, articleBody;
 </script>
 
 <!-- Hero section -->
@@ -21,7 +21,7 @@
       alt={image.alt}
     />
     <span class="text-meta"
-      >{@html image.reference.replaceAll(
+      >{@html image.citation.replaceAll(
         "<a ",
         "<a target='blank' rel='noopener noreferrer'"
       )}</span
@@ -46,13 +46,13 @@
     <div class="w-full font-bold text-lg px-6 pt-10">
       <h2 class="accent text-white text-4xl font-extrabold ">{title}</h2>
     </div>
-    <p class="text-white text-md sm:text-lg xl:text-2xl px-6 py-6">
-      {@html body}
+    <p class="text-white text-md sm:text-lg px-6 py-6">
+      {@html articleBody}
     </p>
   </div>
 </div>
 <div class="text-meta">
-  {@html splash.reference.replaceAll(
+  {@html splash.citation.replaceAll(
     "<a ",
     "<a target='blank' rel='noopener noreferrer'"
   )}

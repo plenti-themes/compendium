@@ -6,16 +6,8 @@
 
   // Values passed in from "html.svelte"
   export let idxContent, allPosts, content, env;
-  // Values passed in from layout content {...content.fields}
-  export let schema, body;
-
-  // Extract schema keys
-  export let title = schema.title;
-  export let image = schema.image;
-  export let author = schema.author;
-  export let date = schema.date;
-  export let categories = schema.categories;
-  export let tags = schema.tags;
+  // Content field Values passed in via layout content {...content.fields}
+  export let articleBody, title, image, author, dateCreated, dateModified, categories, tags;
   
   let socialLinks = idxContent.socialLinks;
   let site_name = idxContent.title;
@@ -23,9 +15,9 @@
 
   // Ogp description length - setting to last word on-or-before 110 characters
   let desc_len = 110;
-  let desc = body.substring(
+  let desc = articleBody.substring(
     0,
-    Math.min(desc_len, body.substring(0, desc_len).lastIndexOf(" "))
+    Math.min(desc_len, articleBody.substring(0, desc_len).lastIndexOf(" "))
   );
 
   function scrollDown() {
@@ -52,7 +44,7 @@
           alt={image.alt}
         />
         <span class="text-meta"
-          >{@html image.reference.replaceAll(
+          >{@html image.citation.replaceAll(
             "<a ",
             "<a target='blank' rel='noopener noreferrer'"
           )}</span
@@ -65,7 +57,8 @@
             <i class="las la-user-astronaut text-base relative" />
             <a href={author.url}>{author.name}</a>
           </li>
-          <li class="px-1 inline-flex">Date : {date}</li>
+          <li class="px-1 inline-flex">Created : {dateCreated}</li>
+          <li class="px-1 inline-flex">Updated : {dateModified}</li>
           <li class="px-1 inline-flex">
             Categories:
             {#each categories as catg, i}
@@ -84,7 +77,7 @@
           </li>
         </ul>
         <p>
-          {@html body}
+          {@html articleBody}
         </p>
       </div>
 

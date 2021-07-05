@@ -1,9 +1,9 @@
 {
   "title": "Sometimes we get lost, but that's okay.",
-  "body": "The page you were looking for does not exist!",
+  "articleBody": "The page you were looking for does not exist!",
   "image": {
     "src": "ethan-sykes-iISyBKOT2D0-unsplash.jpg",
     "alt": "Unsplash Photo",
-    "reference": "Photo by <a href='https://unsplash.com/@e_sykes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Ethan Sykes</a> on <a href='https://unsplash.com/s/photos/lost?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+    "citation": "Photo by <a href='https://unsplash.com/@e_sykes?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Ethan Sykes</a> on <a href='https://unsplash.com/s/photos/lost?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
   }
 }

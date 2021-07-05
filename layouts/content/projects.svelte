@@ -8,7 +8,7 @@
   let page = content.fields.page;
 
   $: currentPage = content.pager;
-  let allProjs = allPosts.filter((content) => content.fields?.schema.project != "");
+  let allProjs = allPosts.filter((content) => content.fields?.project != "");
   let socialLinks = idxContent.socialLinks;
   let projsPerPage = idxContent.theme.projsPerPage;
 
@@ -16,10 +16,10 @@
   let projList = [];
   allProjs.forEach((element) => {
     projArry.push({
-      proj: element.fields.schema.project,
-      title: element.fields.schema.title,
+      proj: element.fields.project,
+      title: element.fields.title,
     });
-    projList.push(element.fields.schema.project);
+    projList.push(element.fields.project);
   });
 
   let uniqProjs = [...new Set(projList)];
