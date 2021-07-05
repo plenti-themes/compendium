@@ -12,7 +12,7 @@
   // * allLayouts: list of layout files
   // * content: key values from specific content file
   // * layout: layout for the specific content file
-  // * env: state values from "plenti.json" 
+  // * env: state values from "plenti.json"
   export let allContent, allLayouts, content, layout, env;
 
   // Capture key values from "index.json" for theming and ogp content.
@@ -37,12 +37,12 @@
       <svelte:component
         this={layout}
         {...content.fields}
-		{idxContent}
-		{allPosts}
+        {idxContent}
         {allLayouts}
+        {allPosts}
         {content}
         {isDark}
-		{env}
+        {env}
       />
     </main>
 
