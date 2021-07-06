@@ -1,4 +1,6 @@
 {
+  "name": "Compendium",
+  "logo": "las la-feather-alt",
   "title": "Compendium | Personal Blog Template",
   "description": "A personal blog template for the Plenti-based SSG built on Svelte.",
   "theme": {

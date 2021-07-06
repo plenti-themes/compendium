@@ -20,17 +20,17 @@
     Math.min(desc_len, articleBody.substring(0, desc_len).lastIndexOf(" "))
   );
 
-  function scrollDown() {
-    window.scrollTo({
-      top: 65,
-      left: 0,
-      behavior: "smooth",
-    });
-  }
+  // function scrollDown() {
+  //   window.scrollTo({
+  //     top: 65,
+  //     left: 0,
+  //     behavior: "smooth",
+  //   });
+  // }
 </script>
 
+<!-- use:scrollDown -->
 <section
-  use:scrollDown
   class="section flex flex-wrap items-center justify-between py-16"
 >
   <Ogp {site_name} {title} {desc} {image} {env} {path} />
@@ -40,7 +40,7 @@
       <div class="relative mb-8 w-full">
         <img
           class="rounded-lg overflow-hidden w-full h-screen-70 object-cover object-center"
-          src="/assets/{image.src}"
+          src="assets/posts/{image.src}"
           alt={image.alt}
         />
         <span class="text-meta"
@@ -62,7 +62,7 @@
           <li class="px-1 inline-flex">
             Categories:
             {#each categories as catg, i}
-              <a href="/categories/{catg}" class="ml-1">
+              <a href="categories/{catg}" class="ml-1">
                 {catg}{#if i < categories.length - 1}, {/if}
               </a>
             {/each}
@@ -70,7 +70,7 @@
           <li class="px-1 inline-flex">
             Tags:
             {#each tags as tag, i}
-              <a href="/tags/{tag}" class="ml-1">
+              <a href="tags/{tag}" class="ml-1">
                 {tag}{#if i < tags.length - 1}, {/if}
               </a>
             {/each}

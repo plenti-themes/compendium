@@ -16,7 +16,7 @@
               <div class="flex items-center mb-3">
                 <img
                   class="inline-block object-cover rounded-md w-28 h-28"
-                  src="/assets/{post.fields.image.src}"
+                  src="assets/posts/{post.fields.image.src}"
                   alt={post.fields.image.alt}
                 />
                 <div class="inline-block ml-2">
@@ -37,7 +37,7 @@
                     <li class="mr-2 inline-flex">
                       Categories:
                       {#each post.fields.categories as catg, i}
-                        <a href="/categories/{catg}" class="ml-1">
+                        <a href="categories/{catg}" class="ml-1">
                           {catg}{#if i < post.fields.categories.length - 1},
                           {/if}
                         </a>
@@ -46,7 +46,7 @@
                     <li class="mr-2 inline-flex">
                       Tags:
                       {#each post.fields.tags as tag, i}
-                        <a href="/tags/{tag}" class="ml-1">
+                        <a href="tags/{tag}" class="ml-1">
                           {tag}{#if i < post.fields.tags.length - 1}, {/if}
                         </a>
                       {/each}

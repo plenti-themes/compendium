@@ -5,10 +5,10 @@
   export let post_url, image_url;
   if (env.local) {
 	  post_url = path;
-	  image_url = "/assets/" + image.src;
+	  image_url = "assets/" + image.src;
   } else {
 	  post_url = env.baseurl + path;
-	  image_url = env.baseurl + "/assets/" + image.src;
+	  image_url = env.baseurl + "assets/" + image.src;
   }
 </script>
 

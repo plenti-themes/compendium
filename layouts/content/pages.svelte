@@ -3,7 +3,7 @@
   export let page, title, image, hero, splash, articleBody;
 </script>
 
-<section class="w-full flex flex-wrap items-center justify-between py-16">
+<section class="w-full py-16">
   {#if page == "about"}
     <!-- -------------------- -->
     <!-- Custom About page    -->

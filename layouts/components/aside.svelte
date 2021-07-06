@@ -18,31 +18,31 @@
       <h4 class="header mb-1"><span>Categories</span></h4>
       <ul class="text-aside mb-4">
         <li>
-          <a href="/categories/four-seasons" class="inline-flex"
+          <a href="categories/four-seasons" class="inline-flex"
             >Four seasons
             <small class="ml-auto">(1)</small></a
           >
         </li>
         <li>
-          <a href="/categories/newyork-city" class="inline-flex"
+          <a href="categories/newyork-city" class="inline-flex"
             >Newyork city
             <small class="ml-auto">(2)</small></a
           >
         </li>
         <li>
-          <a href="/categories/photobooth" class="inline-flex"
+          <a href="categories/photobooth" class="inline-flex"
             >Photobooth
             <small class="ml-auto">(1)</small></a
           >
         </li>
         <li>
-          <a href="/categories/photography" class="inline-flex"
+          <a href="categories/photography" class="inline-flex"
             >Photography
             <small class="ml-auto">(2)</small></a
           >
         </li>
         <li>
-          <a href="/categories/videography" class="inline-flex"
+          <a href="categories/videography" class="inline-flex"
             >Videography
             <small class="ml-auto">(1)</small></a
           >
@@ -55,22 +55,22 @@
       <h4 class="header mb-1 w-full flex">Tags</h4>
       <ul class="text-aside mb-4">
         <li class="pr-1 inline-flex">
-          <a href="/tags/booth">Booth,</a>
+          <a href="tags/booth">Booth,</a>
         </li>
         <li class="pr-1 inline-flex">
-          <a href="/tags/city">City,</a>
+          <a href="tags/city">City,</a>
         </li>
         <li class="pr-1 inline-flex">
-          <a href="/tags/image">Image,</a>
+          <a href="tags/image">Image,</a>
         </li>
         <li class="pr-1 inline-flex">
-          <a href="/tags/new">Nature,</a>
+          <a href="tags/new">Nature,</a>
         </li>
         <li class="pr-1 inline-flex">
-          <a href="/tags/photo">Photo,</a>
+          <a href="tags/photo">Photo,</a>
         </li>
         <li class="pr-1 inline-flex">
-          <a href="/tags/video">Video</a>
+          <a href="tags/video">Video</a>
         </li>
       </ul>
     </div>

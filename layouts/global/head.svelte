@@ -1,5 +1,6 @@
 <script>
   export let idxContent, env;
+  let base = env.local ? "/" : env.baseurl;
 </script>
 
 <head>
@@ -17,21 +18,21 @@
 
   <title>{idxContent.title}</title>
 
-  <base href={env.local ? "/" : env.baseurl} />
+  <base href={base} />
 
   <!-- Fix hydration -->
   <script type="module" src="/spa/ejected/main.js"></script>
 
-  <link rel="icon" type="image/svg+xml" href="/assets/logo.svg" />
-  <link rel="stylesheet" href="/assets/tailwind.global.css" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/tailwind.global.css" />
 
   {#if idxContent.theme.codeHighlighting}
-    <link rel="stylesheet" href="/assets/prism.css" />
+    <link rel="stylesheet" href="assets/prism.css" />
   {/if}
 
   {#if idxContent.theme.mathTypesetting}
-    <link rel="stylesheet" href="/assets/katex.min.css" />
+    <link rel="stylesheet" href="assets/katex.min.css" />
   {/if}
 
-  <link rel="stylesheet" href="/spa/bundle.css" />
+  <link rel="stylesheet" href="spa/bundle.css" />
 </head>

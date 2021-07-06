@@ -1,7 +1,7 @@
 <script>
   import { onMount } from "svelte";
   let menuShow = false;
-  export let isDark;
+  export let idxContent, isDark;
 
   function toggleDark() {
     isDark = !isDark;
@@ -42,8 +42,8 @@
     <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
       <h1 class="font-bold mt-0">
-        <i class="accent las la-feather-alt text-4xl relative" /><i
-          ><a class="text-3xl" href="/">Compendium</a></i
+        <i class="accent {idxContent.logo} text-4xl relative" /><i
+          ><a class="text-3xl" href=".">{idxContent.name}</a></i
         >
       </h1>
 
@@ -62,11 +62,11 @@
           : 'hidden'}"
       >
         <div class="menu text-lg">
-          <a class="block md:inline-flex px-2 py-1" href="/">Home</a>
-          <a class="block md:inline-flex px-2 py-1" href="/projects">Projects</a
+          <a class="block md:inline-flex px-2 py-1" href=".">Home</a>
+          <a class="block md:inline-flex px-2 py-1" href="projects">Projects</a
           >
-          <a class="block md:inline-flex px-2 py-1" href="/pages/about">About</a>
-          <a class="block md:inline-flex px-2 py-1" href="/pages/contact">Contact</a>
+          <a class="block md:inline-flex px-2 py-1" href="pages/about">About</a>
+          <a class="block md:inline-flex px-2 py-1" href="pages/contact">Contact</a>
           <button id="dark" type="button" on:click={toggleDark}>
             <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
           </button>

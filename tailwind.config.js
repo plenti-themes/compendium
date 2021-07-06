@@ -1,7 +1,7 @@
 // Setup boolean to run purge only when not
 // currently in development
 // const production = !process.env.ROLLUP_WATCH;
-const production = false;
+const production = process.env.local;
 
 // module.exports = {
 // 	future: {

@@ -17,7 +17,7 @@
   <div>
     <img
       class="w-full object-cover object-bottom h-screen-40 sm:h-screen-60 md:h-screen-70 lg:h-screen-80 xl:h-screen-90"
-      src="/assets/{image.src}"
+      src="assets/pages/{image.src}"
       alt={image.alt}
     />
     <span class="text-meta"
@@ -33,9 +33,9 @@
 <div id="about" class="relative">
   <div class="w-full pt-16">
     <img
-      class="object-center object-cover w-full h-screen-80 lg:h-screen-90"
+      class="w-full object-center object-cover h-screen-80 lg:h-screen-90"
       style="filter: brightness(60%)"
-      src="/assets/{splash.src}"
+      src="assets/pages/{splash.src}"
       alt={splash.alt}
     />
   </div>
@@ -51,7 +51,7 @@
     </p>
   </div>
 </div>
-<div class="text-meta">
+<div class="text-meta relative block">
   {@html splash.citation.replaceAll(
     "<a ",
     "<a target='blank' rel='noopener noreferrer'"

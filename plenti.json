@@ -1,6 +1,6 @@
 {
   "build": "public",
-  "baseurl": "/",
+  "baseurl": "/test-theme/",
   "routes": {
     "index": "/:paginate(totalPages)",
     "pages": "/pages/:filename",

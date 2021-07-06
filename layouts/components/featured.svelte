@@ -50,7 +50,7 @@
           : 'object-cover h-screen'}"
         style="filter: brightness(60%)"
         transition:fade
-        src="/assets/{post.fields.image.src}"
+        src="assets/posts/{post.fields.image.src}"
         alt={post.fields.image.alt}
       />
     </div>
@@ -78,7 +78,7 @@
           <li class="px-1">
             Categories :
             {#each post.fields.categories as catg, i}
-              <a href="/categories/{catg}" class="ml-1"
+              <a href="categories/{catg}" class="ml-1"
                 >{catg}{#if i < post.fields.categories.length - 1},
                 {/if}</a
               >
@@ -87,7 +87,7 @@
           <li class="px-1">
             Tags :
             {#each post.fields.tags as tag, i}
-              <a href="/tags/{tag}" class="ml-1"
+              <a href="tags/{tag}" class="ml-1"
                 >{tag}{#if i < post.fields.tags.length - 1}, {/if}</a
               >
             {/each}

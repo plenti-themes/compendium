@@ -7,7 +7,7 @@
     <div class="rounded-lg overflow-hidden shadow-md bg-secondary">
       <img
         class="w-full md:h-52 lg:h-60 object-cover"
-        src="/assets/{post.fields.image.src}"
+        src="assets/posts/{post.fields.image.src}"
         alt={post.fields.image.alt}
       />
       <div class="px-5 py-4">
@@ -24,7 +24,7 @@
           <li class="px-1 inline-flex">
             Categories :
             {#each post.fields.categories as catg, i}
-              <a href="/categories/{catg}" class="ml-1"
+              <a href="categories/{catg}" class="ml-1"
                 >{catg}{#if i < post.fields.categories.length - 1},
                 {/if}</a
               >
@@ -33,7 +33,7 @@
           <li class="px-1 inline-flex">
             Tags :
             {#each post.fields.tags as tag, i}
-              <a href="/tags/{tag}" class="ml-1"
+              <a href="tags/{tag}" class="ml-1"
                 >{tag}{#if i < post.fields.tags.length - 1}, {/if}</a
               >
             {/each}

@@ -22,7 +22,7 @@
           <div class="flex items-center mb-5">
             <img
               class="inline-block object-cover rounded-full w-16 h-16"
-              src="/assets/{post.fields.image.src}"
+              src="assets/posts/{post.fields.image.src}"
               alt={post.fields.image.alt}
             />
             <div class="inline-block ml-2">
