@@ -2,8 +2,10 @@
   "name": "compendium-theme",
   "version": "0.2.0",
   "scripts": {
-    "prescheme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
-    "scheme": "postcss styles/tailwind.source.css -o assets/tailwind.global.css"
+    "update:scheme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
+    "prebuild:dev": "npm run update:scheme",
+    "build:dev": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
+    "build:prod": "NODE_ENV=production npm run build:dev"
   },
   "private": true,
   "dependencies": {
@@ -13,6 +15,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "cssnano": "^5.0.6",
     "postcss": "^8.3.5",
     "postcss-cli": "^8.3.1",
     "tailwindcss": "^2.2.2"

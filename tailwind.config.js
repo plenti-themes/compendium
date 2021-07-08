@@ -1,7 +1,7 @@
 // Setup boolean to run purge only when not
 // currently in development
 // const production = !process.env.ROLLUP_WATCH;
-const production = process.env.local;
+const production = process.env.NODE_ENV === 'production';
 
 // module.exports = {
 // 	future: {
@@ -9,11 +9,13 @@ const production = process.env.local;
 // 	  removeDeprecatedGapUtilities: true,
 // 	},
 
-module.exports = {
+const defaultOpts = {
   // leverage tailwind built-in css purge feature
   purge: {
+    // disable purge in dev
+    enabled: production,
     content: ["./layouts/**/*.svelte"],
-    enabled: production, // disable purge in dev
+    // content: ["./public/**/*.html"],
   },
   // extend tailwind's theme with new color schemes
   theme: {
@@ -43,3 +45,5 @@ module.exports = {
   variants: {},
   plugins: [],
 };
+
+module.exports = defaultOpts;
