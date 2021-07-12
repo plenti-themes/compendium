@@ -1,6 +1,10 @@
 <script>
-  export let idxContent, env;
+  export let idxContent, allPages, env;
+
   let base = env.local ? "/" : env.baseurl;
+  let enabledContact = allPages.filter(
+    (key) => key.fields.menu === "Contact"
+  )[0].fields.enabled;
 </script>
 
 <head>
@@ -25,6 +29,10 @@
 
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="stylesheet" href="assets/tailwind.global.css" />
+
+  {#if enabledContact}
+    <script src="assets/smtp.js"></script>
+  {/if}
 
   {#if idxContent.theme.codeHighlighting}
     <link rel="stylesheet" href="assets/prism.css" />

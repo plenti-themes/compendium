@@ -1,3 +1,6 @@
 {
-	"title": "Contact"
+	"title": "Contact Us",
+	"enabled": true,
+	"menu": "Contact",
+	"articleBody": "Swing by for a cup of coffee, or leave us a message:"
 }

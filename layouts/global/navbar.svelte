@@ -1,7 +1,9 @@
 <script>
   import { onMount } from "svelte";
   let menuShow = false;
-  export let idxContent, isDark;
+  export let idxContent, allProjs, allPages, isDark;
+  
+  let projsEnabled = allProjs[0].fields.enabled;
 
   function toggleDark() {
     isDark = !isDark;
@@ -49,7 +51,12 @@
 
       <!-- hamburger menu -->
       <div class="text-4xl flex md:hidden align-items justify-content">
-        <button id="menu" type="button" class="focus:outline-none" on:click={toggleNavbar}>
+        <button
+          id="menu"
+          type="button"
+          class="focus:outline-none"
+          on:click={toggleNavbar}
+        >
           <i class="las la-bars{menuShow ? 'hidden' : ''}" />
           <i class="las la-window-close{menuShow ? '' : 'hidden'}" />
         </button>
@@ -63,10 +70,18 @@
       >
         <div class="menu text-lg">
           <a class="block md:inline-flex px-2 py-1" href=".">Home</a>
-          <a class="block md:inline-flex px-2 py-1" href="projects">Projects</a
-          >
-          <a class="block md:inline-flex px-2 py-1" href="pages/about">About</a>
-          <a class="block md:inline-flex px-2 py-1" href="pages/contact">Contact</a>
+          {#if projsEnabled}
+            <a class="block md:inline-flex px-2 py-1" href="projects"
+              >Projects</a
+            >
+          {/if}
+          {#each allPages as page, i}
+            {#if page.fields.enabled}
+              <a class="block md:inline-flex px-2 py-1" href={page.path}
+                >{page.fields.menu}</a
+              >
+            {/if}
+          {/each}
           <button id="dark" type="button" on:click={toggleDark}>
             <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
           </button>

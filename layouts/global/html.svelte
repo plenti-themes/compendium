@@ -18,11 +18,13 @@
   // Capture key values from "index.json" for theming and ogp content.
   export let idxContent = allContent.filter((key) => key.path == "/")[0].fields;
   // Capture key content for all posts.
+  export let allProjs = allContent.filter((key) => key.type == "projects");
+  export let allPages = allContent.filter((key) => key.type == "pages");
   export let allPosts = allContent.filter((key) => key.type == "posts");
 </script>
 
 <html lang="en">
-  <Head {idxContent} {env} />
+  <Head {idxContent} {allPages} {env} />
   <body>
     <!-- Setup sticky nav menu at the top -->
     <header
@@ -30,7 +32,7 @@
       style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
     >
       <!-- reference the Navbar class from import above -->
-      <Navbar bind:isDark {idxContent} />
+      <Navbar bind:isDark {idxContent} {allProjs} {allPages} />
     </header>
 
     <main class="{isDark ? 'dk-theme' : 'lt-theme'} bg-main">
