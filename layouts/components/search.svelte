@@ -5,20 +5,22 @@
 </script>
 
 <div class="row">
-  <h4 class="header mb-1"><span>Search</span></h4>
+  <h4 class="header mt-0"><span>Search</span></h4>
   <span class="flex flex-wrap items-center">
-    <form action="/search" class="widget-search">
-      <input class="" placeholder="Search content..." bind:value />
-    </form>
-    <!-- <button type="submit" class="-mt-4" aria-label="Search Post">
-      <i class="las la-search-2 btn-round inline-block ml-1" />
-    </button> -->
+    <input
+      class="appearance-none block w-full bg-gray-100 border border-gray-400 mb-5 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+      id="search"
+      placeholder="Search articles..."
+      bind:value
+    />
   </span>
   <div class="row">
     {#if value.length >= 3}
       <!-- {#each allPosts as post} -->
       {#each allPosts as post, i}
-        {#if post.fields.articleBody.toLowerCase().includes(value.toLowerCase())}
+        {#if post.fields.articleBody
+          .toLowerCase()
+          .includes(value.toLowerCase())}
           <div class="flex items-center mb-5">
             <img
               class="inline-block object-cover rounded-full w-16 h-16"
@@ -26,12 +28,12 @@
               alt={post.fields.image.alt}
             />
             <div class="inline-block ml-2">
-              <h5 class="header">
+              <h5 class="header my-0">
                 <a href={post.path}>{post.fields.title}</a>
               </h5>
               <ul class="text-meta">
                 <li class="">
-                  <i class="las la-user-astronaut text-base top-0.5 relative" />
+                  <i class="las la-user-astronaut text-base relative" />
                   <a href={post.fields.author.url}>{post.fields.author.name}</a>
                   - {post.fields.dateCreated}
                 </li>
