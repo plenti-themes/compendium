@@ -17,7 +17,7 @@
 </script>
 
 <div class="row">
-  <h4 class="header mb-1">Social Links</h4>
+  <h4 class="header mt-2 mb-1">Social Links</h4>
   <div class="mb-4">
     {#each arrSocial as { src, ico }}
       <a target="_blank" rel="noopener noreferrer" href={src}>
