@@ -11,7 +11,7 @@
     <Search {allPosts} />
 
     <!-- Social -->
-	<Social {socialLinks} />
+    <Social {socialLinks} />
 
     <!-- categories -->
     <div class="row">
