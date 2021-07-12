@@ -2,3 +2,5 @@ articulatePost
 node_modules
 public
 temp_build
+themes
+package-lock.json
