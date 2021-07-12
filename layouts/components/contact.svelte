@@ -27,7 +27,7 @@
     console.log(msgData);
 
     // Setup XML connection request
-    const API_URL = "https://"";
+    const API_URL = "https://";
     const xhr = new XMLHttpRequest();
 
     xhr.withCredentials = true;
