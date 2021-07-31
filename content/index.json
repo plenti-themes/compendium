@@ -1,11 +1,13 @@
 {
   "name": "Compendium",
+  "site": "www.example.net",
   "logo": "las la-feather-alt",
   "title": "Compendium | Personal Blog Template",
   "description": "A personal blog template for the Plenti-based SSG built on Svelte.",
   "theme": {
     "postsPerPage": 6,
     "projsPerPage": 3,
+    "tagsPerPage": 12,
     "mathTypesetting": true,
     "codeHighlighting": true,
     "featuredPage": "Bleed",
