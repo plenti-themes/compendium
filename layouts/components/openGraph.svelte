@@ -1,21 +1,23 @@
 <!-- The Open Graph protocol -- https://ogp.me/ -->
 <script>
-  export let site_name, title, desc, image, env, path;
-
+  // Values passed in from "html.svelte" via post.svelte
+  export let idxContent, env;
+  // Content field Values passed in via layout content {...content.fields}
+  export let title, desc, image, path;
+  // Defined here for use in teh HTML below
   export let post_url, image_url;
-  if (env.local) {
-	  post_url = path;
-	  image_url = "assets/" + image.src;
-  } else {
-	  post_url = env.baseurl + path;
-	  image_url = env.baseurl + "assets/" + image.src;
-  }
+
+  let site_name = idxContent.title;
+  let site_url = env.local ? "" : idxContent.site;
+
+  post_url = site_url + env.baseurl + path;
+  image_url = site_url + env.baseurl + "assets/posts/" + image.src;
 </script>
 
 <meta property="og:site_name" content={site_name} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={desc} />
-<meta property="og:url" content={post_url} />
+<meta property="og:url" content={path} />
 <meta property="og:image" content={image_url} />
 <meta property="og:type" content="article" />
 <meta property="article:publisher" content={site_name} />
