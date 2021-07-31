@@ -18,23 +18,27 @@
   // Capture key values from "index.json" for theming and ogp content.
   export let idxContent = allContent.filter((key) => key.path == "/")[0].fields;
   // Capture key content for all posts.
-  export let allProjs = allContent.filter((key) => key.type == "projects");
+  export let allProjs = allContent.filter((key) => key.type == "projs");
   export let allPages = allContent.filter((key) => key.type == "pages");
   export let allPosts = allContent.filter((key) => key.type == "posts");
 </script>
 
+<!-- <!DOCTYPE html> -->
+
 <html lang="en">
   <Head {idxContent} {allPages} {env} />
-  <body>
-    <!-- Setup sticky nav menu at the top -->
-    <header
-      class="{isDark ? 'dk-theme' : 'lt-theme'} bg-primary sticky top-0 z-50"
-      style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
-    >
-      <!-- reference the Navbar class from import above -->
-      <Navbar bind:isDark {idxContent} {allProjs} {allPages} />
-    </header>
+  <!-- Setup sticky nav menu at the top -->
+  <header
+    class="{isDark ? 'dk-theme' : 'lt-theme'} bg-primary sticky top-0 z-50"
+    style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
+  >
+    <!-- reference the Navbar class from import above -->
+    <!-- {#if process.browser} -->
+    <Navbar bind:isDark {idxContent} {allProjs} {allPages} />
+    <!-- {/if} -->
+  </header>
 
+  <body>
     <main class="{isDark ? 'dk-theme' : 'lt-theme'} bg-main">
       <svelte:component
         this={layout}
@@ -47,12 +51,12 @@
         {env}
       />
     </main>
-
-    <footer class="{isDark ? 'dk-theme' : 'lt-theme border-t-2'} bg-primary">
-      <!-- reference the Footer class from import above -->
-      <Footer />
-    </footer>
   </body>
+
+  <footer class="{isDark ? 'dk-theme' : 'lt-theme border-t-2'} bg-primary">
+    <!-- reference the Footer class from import above -->
+    <Footer />
+  </footer>
 </html>
 
 <style>
