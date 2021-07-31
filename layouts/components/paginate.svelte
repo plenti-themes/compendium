@@ -1,5 +1,7 @@
 <script>
   export let currentPage, totalPages, page;
+
+  export let pagePath = page === "projs" ? "projs/" : "";
 </script>
 
 <div class="flex pagination text-center justify-center">
@@ -8,15 +10,12 @@
   <!-- -------------------- -->
   {#if currentPage - 1 > 0}
     <a
-      href="{page == 'projects' ? 'projects/' : ''}1"
+      href="{pagePath}1"
       class="btn-round m-0.5"
       aria-label="First"><i class="las la-angle-double-left font-black" /></a
     >
     <a
-      href="{page == 'projects' ? 'projects/' : ''}{Math.max(
-        currentPage - 1,
-        1
-      )}"
+      href="{pagePath}{Math.max(currentPage - 1, 1)}"
       class="btn-round m-0.5"
       aria-label="Previous"><i class="las la-angle-left font-black" /></a
     >
@@ -36,9 +35,8 @@
     {#if currentPage == i + 1}
       <button class="btn-round-active m-0.5">{i + 1}</button>
     {:else}
-      <a
-        class="btn-round m-0.5"
-        href="{page == 'projects' ? 'projects/' : ''}{i + 1}">{i + 1}</a
+      <a class="btn-round m-0.5" href="{pagePath}{i + 1}"
+        >{i + 1}</a
       >
     {/if}
   {/each}
@@ -48,7 +46,7 @@
   <!-- -------------------- -->
   {#if currentPage + 1 <= totalPages}
     <a
-      href="{page == 'projects' ? 'projects/' : ''}{Math.min(
+      href="{pagePath}{Math.min(
         currentPage + 1,
         totalPages
       )}"
@@ -56,7 +54,7 @@
       aria-label="Next"><i class="las la-angle-right font-black" /></a
     >
     <a
-      href="{page == 'projects' ? 'projects/' : ''}{totalPages}"
+      href="{pagePath}{totalPages}"
       class="btn-round m-0.5"
       aria-label="Last"><i class="las la-angle-double-right font-black" /></a
     >
