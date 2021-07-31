@@ -34,7 +34,7 @@
 </script>
 
 {#if enabled}
-<section class="w-full flex flex-wrap items-center justify-between py-16">
+<section class="w-full flex flex-wrap items-center justify-between  py-6 sm:py-16">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row md:flex md:flex-wrap">
