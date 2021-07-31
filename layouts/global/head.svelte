@@ -25,13 +25,13 @@
   <base href={base} />
 
   <!-- Fix hydration -->
-  <script type="module" src="/spa/ejected/main.js"></script>
+  <script type="module" src="spa/ejected/main.js"></script>
 
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="stylesheet" href="assets/tailwind.global.css" />
 
   {#if enabledContact}
-    <script src="assets/smtp.js"></script>
+    <!-- Setup contacts assets as needed -->
   {/if}
 
   {#if idxContent.theme.codeHighlighting}
