@@ -11,9 +11,9 @@
         alt={post.fields.image.alt}
       />
       <div class="px-5 py-4">
-        <h3 class="header mb-2">
+        <h3 class="header mb-2 text-base md:text-lg lg:text-xl">
           <a href={post.path}>{post.fields.title}</a>
-		</h3>
+        </h3>
         <ul class="text-meta flex flex-wrap mb-4">
           <li class="px-1 inline-flex">
             <i class="las la-user-astronaut text-base" />
@@ -40,7 +40,15 @@
           </li>
         </ul>
         <p class="text-base">
-          {@html post.fields.articleBody.substring(0, Math.min(175, post.fields.articleBody.substring(0, 175).lastIndexOf(" ")))}
+          {@html post.fields.articleBody.substring(
+            post.fields.articleBody.indexOf("<p>"),
+            Math.min(
+              post.fields.articleBody.indexOf("<p>") + 175,
+              post.fields.articleBody
+                .substring(0, post.fields.articleBody.indexOf("<p>") + 175)
+                .lastIndexOf(" ")
+            )
+          )}
           <span class="font-bold">...</span>
         </p>
         <article class="border-0">

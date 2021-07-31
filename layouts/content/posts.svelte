@@ -7,33 +7,33 @@
   // Values passed in from "html.svelte"
   export let idxContent, allPosts, content, env;
   // Content field Values passed in via layout content {...content.fields}
-  export let articleBody, title, image, author, dateCreated, dateModified, categories, tags;
-  
+  export let articleBody,
+    title,
+    image,
+    author,
+    dateCreated,
+    dateModified,
+    categories,
+    tags;
+
   let socialLinks = idxContent.socialLinks;
-  let site_name = idxContent.title;
   let path = content.path;
 
   // Ogp description length - setting to last word on-or-before 110 characters
-  let desc_len = 110;
+  // let desc_idx = articleBody.match(/<p>/);
+  let desc_start = articleBody.indexOf("<p>");
+  let desc_end = desc_start + 110;
   let desc = articleBody.substring(
-    0,
-    Math.min(desc_len, articleBody.substring(0, desc_len).lastIndexOf(" "))
+    desc_start,
+    Math.min(desc_end, articleBody.substring(0, desc_end).lastIndexOf(" "))
   );
-
-  // function scrollDown() {
-  //   window.scrollTo({
-  //     top: 65,
-  //     left: 0,
-  //     behavior: "smooth",
-  //   });
-  // }
 </script>
 
 <!-- use:scrollDown -->
 <section
-  class="section flex flex-wrap items-center justify-between py-16"
+  class="section flex flex-wrap items-center justify-between py-6 sm:py-16"
 >
-  <Ogp {site_name} {title} {desc} {image} {env} {path} />
+  <Ogp {idxContent} {title} {desc} {image} {env} {path} />
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row flex flex-wrap">
@@ -51,7 +51,7 @@
         >
       </div>
       <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
-        <h2 class="header mb-2">{title}</h2>
+        <h1 class="header mb-2">{title}</h1>
         <ul class="text-meta flex flex-wrap mb-4">
           <li class="px-1 inline-flex">
             <i class="las la-user-astronaut text-base relative" />
