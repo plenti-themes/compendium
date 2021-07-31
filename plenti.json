@@ -2,11 +2,11 @@
   "build": "public",
   "baseurl": "test-theme/",
   "routes": {
-    "index": ":paginate(totalPages)",
-    "pages": "pages/:filename",
-    "posts": "posts/:filename",
-    "projects": ":filename/:paginate(totalProjPages)",
-    "404": ":filename"
+    "404": "/:filename",
+    "index": "/:paginate(totalPages)",
+    "pages": "/pages/:filename",
+    "posts": "/posts/:filename",
+    "projs": "/projs/:paginate(totalProjPages)"
   },
   "local": {
     "port": 3000
