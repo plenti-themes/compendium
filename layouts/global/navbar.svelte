@@ -71,7 +71,7 @@
         <div class="menu text-lg">
           <a class="block md:inline-flex px-2 py-1" href=".">Home</a>
           {#if projsEnabled}
-            <a class="block md:inline-flex px-2 py-1" href="projects"
+            <a class="block md:inline-flex px-2 py-1" href="projs"
               >Projects</a
             >
           {/if}
