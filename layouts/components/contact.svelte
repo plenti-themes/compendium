@@ -1,7 +1,7 @@
 <script>
   // Aside component for search, categories, and tags
   import Aside from "../components/aside.svelte";
-  import { onMount } from "svelte";
+  // import { onMount } from "svelte";
 
   // Variables passed in from "html.svelte"
   export let idxContent, allPosts, socialLinks;
@@ -50,7 +50,7 @@
     <div class="row md:flex md:flex-wrap">
       <div class="w-full md:w-9/12 mb-5 mb-lg-0 px-0">
         <div class="">
-          <h2 class="header mt-0 mb-6">{title}</h2>
+          <h2 class="header text-2xl mt-0 mb-6">{title}</h2>
           <p class="mb-10">{articleBody}</p>
         </div>
         <form id="contactform" class="w-full max-w-lg">

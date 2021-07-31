@@ -14,7 +14,7 @@
   let socialLinks = idxContent.socialLinks;
 </script>
 
-<div class="w-full py-16">
+<div class="w-full py-6 sm:py-16">
   {#if (menu == "About" && enabled)}
     <!-- -------------------- -->
     <!-- Custom About page    -->

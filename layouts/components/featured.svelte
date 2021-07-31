@@ -5,7 +5,7 @@
 
   function scrollDown() {
     window.scrollTo({
-      top: 650,
+      top: 800,
       left: 0,
       behavior: "smooth",
     });
@@ -124,7 +124,7 @@
           type="button"
           on:click={scrollDown}
           class="absolute"
-          style="bottom: 5%; left: 47%"
+          style="bottom: 5%; left: 50%; transform: translate(-50%);"
         >
           <Hoverable let:hovering>
             <span class="inline-block {hovering ? 'animate-bounce' : ''}">
