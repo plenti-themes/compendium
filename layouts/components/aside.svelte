@@ -18,31 +18,31 @@
       <h4 class="header mb-1"><span>Categories</span></h4>
       <ul class="text-aside mb-4">
         <li>
-          <a href="categories/four-seasons" class="inline-flex"
+          <a href="catgs/four-seasons" class="inline-flex"
             >Four seasons
             <small class="ml-auto">(1)</small></a
           >
         </li>
         <li>
-          <a href="categories/newyork-city" class="inline-flex"
+          <a href="catgs/newyork-city" class="inline-flex"
             >Newyork city
             <small class="ml-auto">(2)</small></a
           >
         </li>
         <li>
-          <a href="categories/photobooth" class="inline-flex"
+          <a href="catgs/photobooth" class="inline-flex"
             >Photobooth
             <small class="ml-auto">(1)</small></a
           >
         </li>
         <li>
-          <a href="categories/photography" class="inline-flex"
+          <a href="catgs/photography" class="inline-flex"
             >Photography
             <small class="ml-auto">(2)</small></a
           >
         </li>
         <li>
-          <a href="categories/videography" class="inline-flex"
+          <a href="catgs/videography" class="inline-flex"
             >Videography
             <small class="ml-auto">(1)</small></a
           >

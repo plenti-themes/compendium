@@ -82,7 +82,7 @@
             <li class="px-1">
               Categories :
               {#each post.fields.categories as catg, i}
-                <a href="categories/{catg}" class="ml-1"
+                <a href="catgs/{catg}" class="ml-1"
                   >{catg}{#if i < post.fields.categories.length - 1},
                   {/if}</a
                 >
@@ -105,7 +105,7 @@
       <button on:click={clickPrev} class="absolute m-2 left-2" style="top: 50%">
         <i class="" />
         <i
-          class="accent las la-chevron-circle-left text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
+          class="accent las la-chevron-circle-left text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
         />
       </button>
       <button
@@ -115,7 +115,7 @@
         style="top: 50%"
       >
         <i
-          class="accent las la-chevron-circle-right text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
+          class="accent las la-chevron-circle-right text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
         />
       </button>
 
@@ -129,7 +129,7 @@
           <Hoverable let:hovering>
             <span class="inline-block {hovering ? 'animate-bounce' : ''}">
               <i
-                class="accent las la-chevron-circle-down text-4xl md:text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
+                class="accent las la-chevron-circle-down text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
               />
             </span>
           </Hoverable>

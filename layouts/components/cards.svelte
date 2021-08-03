@@ -24,7 +24,7 @@
           <li class="px-1 inline-flex">
             Categories :
             {#each post.fields.categories as catg, i}
-              <a href="categories/{catg}" class="ml-1"
+              <a href="catgs/{catg}" class="ml-1"
                 >{catg}{#if i < post.fields.categories.length - 1},
                 {/if}</a
               >
