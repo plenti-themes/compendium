@@ -1,0 +1,180 @@
+
+
+<html lang="en"><head><meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="A personal blog template for the Plenti-based SSG built on Svelte.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Compendium | Personal Blog Template">
+  <meta property="og:description" content="A personal blog template for the Plenti-based SSG built on Svelte.">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Compendium | Personal Blog Template">
+  <meta name="twitter:description" content="A personal blog template for the Plenti-based SSG built on Svelte.">
+
+  <title>Compendium | Personal Blog Template</title>
+
+  <base href="/plenti-compendium/">
+
+  
+  <script type="module" src="spa/ejected/main.js"></script>
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+  <link rel="stylesheet" href="assets/tailwind.global.css">
+
+  
+
+  <link rel="stylesheet" href="assets/prism.css">
+
+  <link rel="stylesheet" href="assets/katex.min.css">
+
+  <link rel="stylesheet" href="spa/bundle.css"></head>
+  
+  <header class="lt-theme bg-primary sticky top-0 z-50" style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);">
+    <div class="flex flex-wrap py-3 px-2	"><div class="w-0 md:w-1/12 xl:w-2/12"></div>
+  <div class="menu w-full md:w-10/12 xl:w-8/12"><nav class="flex flex-wrap items-center justify-between">
+      <h1 class="font-bold mt-0"><i class="accent las la-feather-alt text-4xl relative"></i><i><a class="text-3xl" href=".">Compendium</a></i></h1>
+
+      
+      <div class="text-4xl flex md:hidden align-items justify-content"><button id="menu" type="button" class="focus:outline-none"><i class="las la-bars"></i>
+          <i class="las la-window-closehidden"></i></button></div>
+
+      
+      <div class="menu md:flex w-full md:w-auto text-right mt-5 md:mt-0 hidden"><div class="menu text-lg"><a class="block md:inline-flex px-2 py-1" href=".">Home</a>
+          <a class="block md:inline-flex px-2 py-1" href="projs">Projects</a>
+          <a class="block md:inline-flex px-2 py-1" href="pages/about">About</a><a class="block md:inline-flex px-2 py-1" href="pages/contact">Contact</a>
+          <button id="dark" type="button"><i class="las la-adjust block md:inline-flex py-1 px-2 text-xl"></i></button></div></div>
+
+      </nav></div>
+  <div class="w-0 md:w-1/12 xl:w-2/12"></div></div></header>
+
+  <body><main class="lt-theme bg-main"><section class="section flex flex-wrap items-center justify-between py-6 sm:py-16">
+
+
+<meta property="og:site_name" content="Compendium | Personal Blog Template">
+<meta property="og:title" content="Lorem ipsum dolor sit amet">
+<meta property="og:description" content="&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis purus vitae ipsum">
+<meta property="og:url" content="posts/post-01">
+<meta property="og:image" content="www.example.net/plenti-compendium/assets/posts/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg">
+<meta property="og:type" content="article">
+<meta property="article:publisher" content="Compendium | Personal Blog Template">
+<meta property="article:section" content="Posts">
+
+
+
+  <div class="w-0 md:w-1/12 xl:w-2/12"></div>
+  <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0"><div class="row flex flex-wrap"><div class="relative mb-8 w-full"><img class="rounded-lg overflow-hidden w-full h-screen-70 object-cover object-center" src="assets/posts/nick-morrison-FHnnjk1Yj7Y-unsplash.jpg" alt="Post Image">
+        <span class="text-meta">Photo by <a target='blank' rel='noopener noreferrer'href='https://unsplash.com/@nickmorrison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Nick Morrison</a> on <a target='blank' rel='noopener noreferrer'href='https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a></span></div>
+      <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10"><h1 class="header mb-2">Lorem ipsum dolor sit amet</h1>
+        <ul class="text-meta flex flex-wrap mb-4"><li class="px-1 inline-flex"><i class="las la-user-astronaut text-base relative"></i>
+            <a href="/pages/about">Ro Doe</a></li>
+          <li class="px-1 inline-flex">Created : 1/8/2021</li>
+          <li class="px-1 inline-flex">Updated : 7/5/2021</li>
+          <li class="px-1 inline-flex">Categories:
+            <a href="catgs/Photography" class="ml-1">Photography
+              </a></li>
+          <li class="px-1 inline-flex">Tags:
+            <a href="tags/Art" class="ml-1">Art,
+              </a><a href="tags/Image" class="ml-1">Image,
+              </a><a href="tags/Random" class="ml-1">Random
+              </a></li></ul>
+        <p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis purus vitae ipsum imperdiet condimentum. Nunc vel vehicula augue. Vestibulum luctus nulla nisl, at congue augue maximus et. Mauris eget massa dui. Cras sagittis accumsan lacus.<h2 id=install>Install</h2><p>An <strong>example</strong> JavaScript code.<pre class=language-js><code class=language-js><span class="token keyword">const</span> srcPath <span class="token operator">=</span> <span class="token string">"./articles/"</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> dstPath <span class="token operator">=</span> <span class="token string">"./content/posts/"</span><span class="token punctuation">;</span>
+
+fs<span class="token punctuation">.</span><span class="token property-access function method">watch</span><span class="token punctuation">(</span>srcPath<span class="token punctuation">,</span> <span class="token punctuation">{</span> persistent<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> filename</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>event <span class="token operator">=</span> <span class="token string">"change"</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword">const</span> srcFile <span class="token operator">=</span> filename<span class="token punctuation">;</span>
+ <span class="token keyword">const</span> dstFile <span class="token operator">=</span> srcFile<span class="token punctuation">.</span><span class="token property-access function method">split</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">".json"</span><span class="token punctuation">;</span>
+
+ processor<span class="token punctuation">.</span><span class="token property-access function method">process</span><span class="token punctuation">(</span>
+ toVFile<span class="token punctuation">.</span><span class="token property-access function method">readSync</span><span class="token punctuation">(</span>srcPath <span class="token operator">+</span> srcFile<span class="token punctuation">,</span> <span class="token string">"utf8"</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+ <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">error<span class="token punctuation">,</span> file</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+ <span class="token keyword control-flow">if</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token keyword control-flow">throw</span> error<span class="token punctuation">;</span>
+ <span class="token class-name console">console</span><span class="token punctuation">.</span><span class="token property-access function method">error</span><span class="token punctuation">(</span><span class="token function">reporter</span><span class="token punctuation">(</span>error <span class="token operator">||</span> file<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">let</span> jsonOutput <span class="token operator">=</span> <span class="token punctuation">{</span>
+ schema<span class="token operator">:</span> file<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">.</span><span class="token property-access">frontmatter</span><span class="token punctuation">,</span>
+ body<span class="token operator">:</span> file<span class="token punctuation">.</span><span class="token property-access">contents</span><span class="token punctuation">,</span>
+ <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+ <span class="token keyword">let</span> article <span class="token operator">=</span> <span class="token class-name known-class-name">JSON</span><span class="token punctuation">.</span><span class="token property-access function method">stringify</span><span class="token punctuation">(</span>jsonOutput<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token property-access function method">replace</span><span class="token punctuation">(</span><span class="token regex"><span class="token regex-delimiter">/</span><span class="token language-regex regex-source">\n</span><span class="token regex-delimiter">/</span><span class="token regex-flags">g</span></span><span class="token punctuation">,</span> <span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token comment">// console.log(article);</span>
+ fs<span class="token punctuation">.</span><span class="token property-access function method">writeFileSync</span><span class="token punctuation">(</span>dstPath <span class="token operator">+</span> dstFile<span class="token punctuation">,</span> article<span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+ <span class="token punctuation">)</span><span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>A <code>Python</code> code sample.<pre class=language-python><code class=language-python><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
+ <span class="token keyword">import</span> doctest
+
+ doctest<span class="token punctuation">.</span>testmod<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+ network <span class="token operator">=</span> Perceptron<span class="token punctuation">(</span>
+ sample<span class="token operator">=</span>samples<span class="token punctuation">,</span> target<span class="token operator">=</span>exit<span class="token punctuation">,</span> learning_rate<span class="token operator">=</span><span class="token number">0.01</span><span class="token punctuation">,</span> epoch_number<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">,</span> bias<span class="token operator">=</span><span class="token operator">-</span><span class="token number">1</span>
+ <span class="token punctuation">)</span>
+ network<span class="token punctuation">.</span>training<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Finished training perceptron"</span><span class="token punctuation">)</span>
+ <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Enter values to predict or q to exit"</span><span class="token punctuation">)</span>
+ <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+ sample<span class="token punctuation">:</span> <span class="token builtin">list</span> <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+ <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>samples<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+ user_input <span class="token operator">=</span> <span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">"value: "</span><span class="token punctuation">)</span><span class="token punctuation">.</span>strip<span class="token punctuation">(</span><span class="token punctuation">)</span>
+ <span class="token keyword">if</span> user_input <span class="token operator">==</span> <span class="token string">"q"</span><span class="token punctuation">:</span>
+ <span class="token keyword">break</span>
+ observation <span class="token operator">=</span> <span class="token builtin">float</span><span class="token punctuation">(</span>user_input<span class="token punctuation">)</span>
+ sample<span class="token punctuation">.</span>insert<span class="token punctuation">(</span>i<span class="token punctuation">,</span> observation<span class="token punctuation">)</span>
+ network<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>sample<span class="token punctuation">)</span>
+</code></pre><h2 id=math>Math</h2><div class="math math-display"><span class=katex-display><span class=katex><span class=katex-mathml><math display=block xmlns=http://www.w3.org/1998/Math/MathML><semantics><mrow><mi>L</mi><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mi>ρ</mi><msup><mi>v</mi><mn>2</mn></msup><mi>S</mi><msub><mi>C</mi><mi>L</mi></msub></mrow><annotation encoding=application/x-tex>L = \frac{1}{2} \rho v^2 S C_L</annotation></semantics></math></span><span class=katex-html aria-hidden=true><span class=base><span class=strut style=height:.68333em;vertical-align:0></span><span class="mord mathnormal">L</span><span class=mspace style=margin-right:.2777777777777778em></span><span class=mrel>=</span><span class=mspace style=margin-right:.2777777777777778em></span></span><span class=base><span class=strut style=height:2.00744em;vertical-align:-.686em></span><span class=mord><span class="nulldelimiter mopen"></span><span class=mfrac><span class="vlist-t vlist-t2"><span class=vlist-r><span class=vlist style=height:1.32144em><span style=top:-2.314em><span class=pstrut style=height:3em></span><span class=mord><span class=mord>2</span></span></span><span style=top:-3.23em><span class=pstrut style=height:3em></span><span class=frac-line style=border-bottom-width:.04em></span></span><span style=top:-3.677em><span class=pstrut style=height:3em></span><span class=mord><span class=mord>1</span></span></span></span><span class=vlist-s>​</span></span><span class=vlist-r><span class=vlist style=height:.686em><span></span></span></span></span></span><span class="nulldelimiter mclose"></span></span><span class="mord mathnormal">ρ</span><span class=mord><span class="mord mathnormal"style=margin-right:.03588em>v</span><span class=msupsub><span class=vlist-t><span class=vlist-r><span class=vlist style=height:.8641079999999999em><span style=top:-3.113em;margin-right:.05em><span class=pstrut style=height:2.7em></span><span class="mtight reset-size6 size3 sizing"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mord mathnormal"style=margin-right:.05764em>S</span><span class=mord><span class="mord mathnormal"style=margin-right:.07153em>C</span><span class=msupsub><span class="vlist-t vlist-t2"><span class=vlist-r><span class=vlist style=height:.32833099999999993em><span style=top:-2.5500000000000003em;margin-left:-.07153em;margin-right:.05em><span class=pstrut style=height:2.7em></span><span class="mtight reset-size6 size3 sizing"><span class="mord mathnormal mtight">L</span></span></span></span><span class=vlist-s>​</span></span><span class=vlist-r><span class=vlist style=height:.15em><span></span></span></span></span></span></span></span></span></span></span></div><h2 id=license>License</h2><p>MIT</p></div>
+
+      
+      <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0"><aside class="w-full"><div class="pl-0 pl-lg-4">
+    <div class="row"><h4 class="header mt-0"><span>Search</span></h4>
+  <span class="flex flex-wrap items-center"><input class="appearance-none block w-full bg-gray-100 border border-gray-400 mb-5 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="search" placeholder="Search articles..."></span>
+  <div class="row"></div></div>
+
+    
+    <div class="row"><h4 class="header mt-2 mb-1">Social Links</h4>
+  <div class="mb-4"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"><button class="btn-round mx-0.5"><i class="lab la-linkedin-in font-medium text-2xl pt-0.5"></i></button>
+      </a><a target="_blank" rel="noopener noreferrer" href="https://github.com/"><button class="btn-round mx-0.5"><i class="lab la-github-alt font-medium text-2xl pt-0.5"></i></button>
+      </a><a target="_blank" rel="noopener noreferrer" href="https://about.gitlab.com/"><button class="btn-round mx-0.5"><i class="lab la-gitlab font-medium text-2xl pt-0.5"></i></button>
+      </a><a target="_blank" rel="noopener noreferrer" href="https://keybase.io/"><button class="btn-round mx-0.5"><i class="lab la-keybase font-medium text-3xl pb-0.5"></i></button>
+      </a><a target="_blank" rel="noopener noreferrer" href="https://www.reddit.com/"><button class="btn-round mx-0.5"><i class="lab la-reddit font-medium text-2xl pt-0.5"></i></button>
+      </a></div></div>
+
+    
+    <div class="row"><h4 class="header mb-1"><span>Categories</span></h4>
+      <ul class="text-aside mb-4"><li><a href="catgs/four-seasons" class="inline-flex">Four seasons
+            <small class="ml-auto">(1)</small></a></li>
+        <li><a href="catgs/newyork-city" class="inline-flex">Newyork city
+            <small class="ml-auto">(2)</small></a></li>
+        <li><a href="catgs/photobooth" class="inline-flex">Photobooth
+            <small class="ml-auto">(1)</small></a></li>
+        <li><a href="catgs/photography" class="inline-flex">Photography
+            <small class="ml-auto">(2)</small></a></li>
+        <li><a href="catgs/videography" class="inline-flex">Videography
+            <small class="ml-auto">(1)</small></a></li></ul></div>
+
+    
+    <div class="row"><h4 class="header mb-1 w-full flex">Tags</h4>
+      <ul class="text-aside mb-4"><li class="pr-1 inline-flex"><a href="tags/booth">Booth,</a></li>
+        <li class="pr-1 inline-flex"><a href="tags/city">City,</a></li>
+        <li class="pr-1 inline-flex"><a href="tags/image">Image,</a></li>
+        <li class="pr-1 inline-flex"><a href="tags/new">Nature,</a></li>
+        <li class="pr-1 inline-flex"><a href="tags/photo">Photo,</a></li>
+        <li class="pr-1 inline-flex"><a href="tags/video">Video</a></li></ul></div></div></aside></div></div></div>
+  <div class="w-0 md:w-1/12 xl:w-2/12"></div></section></main></body>
+
+  <footer class="lt-theme border-t-2 bg-primary">
+    <div class="flex flex-wrap items-center justify-between pb-4 pt-2"><div class="w-full text-center"><button><i class="las la-chevron-circle-up text-5xl md:text-6xl rounded-full overflow-hidden bg-clip-content opacity-70 hover:opacity-100 accent"></i></button>
+    
+    <div class="footer mt-2">© Copyright 2021. All rights reserved.<br>
+      Designed and developed by Roberto Rivera.<br>
+      Powered by
+      <a target="_blank" rel="noopener noreferrer" href="https://plenti.co/">Plenti</a>
+      of
+      <a target="_blank" rel="noopener noreferrer" href="https://svelte.dev/">Svelte</a>,
+      <a target="_blank" rel="noopener noreferrer" href="https://icons8.com/line-awesome">Line Awesome</a>
+      and
+      <a target="_blank" rel="noopener noreferrer" href="https://tailwindcss.com/">tailwindcss</a>.
+	</div></div></div></footer>
+</html>

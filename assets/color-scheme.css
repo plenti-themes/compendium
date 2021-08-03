@@ -1,0 +1,27 @@
+/* ----------------------------------------- */
+/* Color Scheme: Earthliness
+/* ----------------------------------------- */
+.lt-theme {
+  --primary: #ffffff;
+  --secondary: #d4dfca;
+  --accent: #81B18C;
+  --background: #e8efe1;
+  --surface: #141610;
+  --on-primary: #181818;
+  --on-secondary: #333333;
+  --on-accent: 5, 5, 5;
+  --on-background: #fefefe;
+  --on-surface: #fefefe;
+}
+.dk-theme {
+  --primary: #000000;
+  --secondary: #1b2015;
+  --accent: #81B18C;
+  --background: #141610;
+  --surface: #000000;
+  --on-primary: #ffffff;
+  --on-secondary: #c7c7c7;
+  --on-accent: 254, 254, 254;
+  --on-background: #ececec;
+  --on-surface: #bcb9b9;
+}
