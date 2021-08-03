@@ -1,5 +1,7 @@
 # Compendium | Personal Blog Template
 
+NOTE: work-in-progress... the template is still in development
+
 This blog template was designed to be readily customized for user preference. There are a number of variables in the index.json that will allow for enabling or disabling features and settings.
 
 ## Theme Settings (index.json)
