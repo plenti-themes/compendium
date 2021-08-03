@@ -33,9 +33,7 @@
     style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
   >
     <!-- reference the Navbar class from import above -->
-    <!-- {#if process.browser} -->
     <Navbar bind:isDark {idxContent} {allProjs} {allPages} />
-    <!-- {/if} -->
   </header>
 
   <body>

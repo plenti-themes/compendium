@@ -20,7 +20,6 @@
   let path = content.path;
 
   // Ogp description length - setting to last word on-or-before 110 characters
-  // let desc_idx = articleBody.match(/<p>/);
   let desc_start = articleBody.indexOf("<p>");
   let desc_end = desc_start + 110;
   let desc = articleBody.substring(
@@ -29,7 +28,6 @@
   );
 </script>
 
-<!-- use:scrollDown -->
 <section
   class="section flex flex-wrap items-center justify-between py-6 sm:py-16"
 >
@@ -62,7 +60,7 @@
           <li class="px-1 inline-flex">
             Categories:
             {#each categories as catg, i}
-              <a href="categories/{catg}" class="ml-1">
+              <a href="catgs/{catg}" class="ml-1">
                 {catg}{#if i < categories.length - 1}, {/if}
               </a>
             {/each}
