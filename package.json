@@ -3,9 +3,9 @@
   "version": "0.3.0",
   "scripts": {
     "update:scheme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
-    "prebuild:dev": "npm run update:scheme",
-    "build:dev": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
-    "build:prod": "NODE_ENV=production npm run build:dev",
+    "predevlop": "npm run update:scheme",
+    "develop": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
+    "build:prod": "NODE_ENV=production npm run develop",
     "prebuild": "npm run build:prod",
     "build": "plenti build",
     "postbuild": "npm run static",
