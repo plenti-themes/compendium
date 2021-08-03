@@ -1,14 +1,14 @@
 {
   "build": "public",
-  "baseurl": "test-theme/",
+  "baseurl": "/",
+  "local": {
+    "port": 3000
+  },
   "routes": {
     "404": "/:filename",
     "index": "/:paginate(totalPages)",
     "pages": "/pages/:filename",
     "posts": "/posts/:filename",
     "projs": "/projs/:paginate(totalProjPages)"
-  },
-  "local": {
-    "port": 3000
   }
 }
