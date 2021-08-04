@@ -4,8 +4,8 @@
   import Navbar from "./navbar.svelte";
   import Footer from "./footer.svelte";
 
-  // Bind variable for capturing light/dark theme state
-  export let isDark = false;
+  // Set the bind variable for capturing light/dark theme state
+  export let isDark;
 
   // Plenti system variables
   // * allContent: consolidated content data (public/spa/ejected/content.js)

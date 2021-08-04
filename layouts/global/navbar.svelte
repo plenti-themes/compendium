@@ -1,19 +1,25 @@
 <script>
   import { onMount } from "svelte";
-  let menuShow = false;
-  export let idxContent, allProjs, allPages, isDark;
-  
+  import { writable } from "svelte/store";
+
+  export let idxContent, allProjs, allPages;
+  export let isDark, theme;
+
   let projsEnabled = allProjs[0].fields.enabled;
-
-  function toggleDark() {
-    isDark = !isDark;
-  }
-
-  function toggleNavbar() {
-    menuShow = !menuShow;
-  }
+  let menuShow = false;
 
   onMount(() => {
+    // Get the value out of storage on-load or set a sane default.
+    theme = writable(localStorage.getItem("theme"));
+
+    // Anytime the store changes, update the local storage value.
+    theme.subscribe((value) => {
+      localStorage.setItem("theme", value === "dark" ? "dark" : "light");
+    });
+
+    // Set the starting boolean
+    isDark = localStorage.theme === "dark" ? true : false;
+
     const handleOutsideClick = (event) => {
       if (menuShow && !menu.contains(event.target)) {
         menuShow = false;
@@ -36,6 +42,17 @@
       document.removeEventListener("keyup", handleEscape, false);
     };
   });
+
+  function toggleDark() {
+    // Set the boolean
+    isDark = !isDark;
+    // Store the change as local storage value
+    theme.set(isDark ? "dark" : "light");
+  }
+
+  function toggleNavbar() {
+    menuShow = !menuShow;
+  }
 </script>
 
 <div class="flex flex-wrap py-3 px-2	">
@@ -71,9 +88,7 @@
         <div class="menu text-lg">
           <a class="block md:inline-flex px-2 py-1" href=".">Home</a>
           {#if projsEnabled}
-            <a class="block md:inline-flex px-2 py-1" href="projs"
-              >Projects</a
-            >
+            <a class="block md:inline-flex px-2 py-1" href="projs">Projects</a>
           {/if}
           {#each allPages as page, i}
             {#if page.fields.enabled}
