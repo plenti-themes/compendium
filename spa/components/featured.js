@@ -32,7 +32,7 @@ import {
 } from '../web_modules/svelte/internal/index.mjs';
 
 import { fade } from '../web_modules/svelte/transition/index.mjs';
-import Hoverable from './hoverable.js';
+import Hoverable from '../scripts/hoverable.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();

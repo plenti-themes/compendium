@@ -265,7 +265,7 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { isDark = false } = $$props;
+	let { isDark } = $$props;
 
 	let { allContent } = $$props,
 		{ allLayouts } = $$props,

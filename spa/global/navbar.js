@@ -23,15 +23,16 @@ import {
 } from '../web_modules/svelte/internal/index.mjs';
 
 import { onMount } from '../web_modules/svelte/index.mjs';
+import { writable } from '../web_modules/svelte/store/index.mjs';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i];
-	child_ctx[10] = i;
+	child_ctx[9] = list[i];
+	child_ctx[11] = i;
 	return child_ctx;
 }
 
-// (73:10) {#if projsEnabled}
+// (90:10) {#if projsEnabled}
 function create_if_block_1(ctx) {
 	let a;
 	let t;
@@ -63,10 +64,10 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (79:12) {#if page.fields.enabled}
+// (94:12) {#if page.fields.enabled}
 function create_if_block(ctx) {
 	let a;
-	let t_value = /*page*/ ctx[8].fields.menu + "";
+	let t_value = /*page*/ ctx[9].fields.menu + "";
 	let t;
 	let a_href_value;
 
@@ -85,16 +86,16 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(a, "class", "block md:inline-flex px-2 py-1");
-			attr(a, "href", a_href_value = /*page*/ ctx[8].path);
+			attr(a, "href", a_href_value = /*page*/ ctx[9].path);
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
 			append(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPages*/ 2 && t_value !== (t_value = /*page*/ ctx[8].fields.menu + "")) set_data(t, t_value);
+			if (dirty & /*allPages*/ 2 && t_value !== (t_value = /*page*/ ctx[9].fields.menu + "")) set_data(t, t_value);
 
-			if (dirty & /*allPages*/ 2 && a_href_value !== (a_href_value = /*page*/ ctx[8].path)) {
+			if (dirty & /*allPages*/ 2 && a_href_value !== (a_href_value = /*page*/ ctx[9].path)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -104,10 +105,10 @@ function create_if_block(ctx) {
 	};
 }
 
-// (78:10) {#each allPages as page, i}
+// (93:10) {#each allPages as page, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
-	let if_block = /*page*/ ctx[8].fields.enabled && create_if_block(ctx);
+	let if_block = /*page*/ ctx[9].fields.enabled && create_if_block(ctx);
 
 	return {
 		c() {
@@ -123,7 +124,7 @@ function create_each_block(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (/*page*/ ctx[8].fields.enabled) {
+			if (/*page*/ ctx[9].fields.enabled) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -422,24 +423,23 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	let { idxContent } = $$props, { allProjs } = $$props, { allPages } = $$props;
+	let { isDark } = $$props, { theme } = $$props;
+	let projsEnabled = allProjs[0].fields.enabled;
 	let menuShow = false;
 
-	let { idxContent } = $$props,
-		{ allProjs } = $$props,
-		{ allPages } = $$props,
-		{ isDark } = $$props;
-
-	let projsEnabled = allProjs[0].fields.enabled;
-
-	function toggleDark() {
-		$$invalidate(6, isDark = !isDark);
-	}
-
-	function toggleNavbar() {
-		$$invalidate(2, menuShow = !menuShow);
-	}
-
 	onMount(() => {
+		// Get the value out of storage on-load or set a sane default.
+		$$invalidate(7, theme = writable(localStorage.getItem("theme")));
+
+		// Anytime the store changes, update the local storage value.
+		theme.subscribe(value => {
+			localStorage.setItem("theme", value === "dark" ? "dark" : "light");
+		});
+
+		// Set the starting boolean
+		$$invalidate(6, isDark = localStorage.theme === "dark" ? true : false);
+
 		const handleOutsideClick = event => {
 			if (menuShow && !menu.contains(event.target)) {
 				$$invalidate(2, menuShow = false);
@@ -464,11 +464,24 @@ function instance($$self, $$props, $$invalidate) {
 		};
 	});
 
+	function toggleDark() {
+		// Set the boolean
+		$$invalidate(6, isDark = !isDark);
+
+		// Store the change as local storage value
+		theme.set(isDark ? "dark" : "light");
+	}
+
+	function toggleNavbar() {
+		$$invalidate(2, menuShow = !menuShow);
+	}
+
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);
-		if ("allProjs" in $$props) $$invalidate(7, allProjs = $$props.allProjs);
+		if ("allProjs" in $$props) $$invalidate(8, allProjs = $$props.allProjs);
 		if ("allPages" in $$props) $$invalidate(1, allPages = $$props.allPages);
 		if ("isDark" in $$props) $$invalidate(6, isDark = $$props.isDark);
+		if ("theme" in $$props) $$invalidate(7, theme = $$props.theme);
 	};
 
 	return [
@@ -479,6 +492,7 @@ function instance($$self, $$props, $$invalidate) {
 		toggleDark,
 		toggleNavbar,
 		isDark,
+		theme,
 		allProjs
 	];
 }
@@ -489,9 +503,10 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 0,
-			allProjs: 7,
+			allProjs: 8,
 			allPages: 1,
-			isDark: 6
+			isDark: 6,
+			theme: 7
 		});
 	}
 }

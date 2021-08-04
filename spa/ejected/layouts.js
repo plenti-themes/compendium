@@ -19,4 +19,5 @@ export {default as layouts_global_footer_svelte} from '../global/footer.js';
 export {default as layouts_global_head_svelte} from '../global/head.js';
 export {default as layouts_global_html_svelte} from '../global/html.js';
 export {default as layouts_global_navbar_svelte} from '../global/navbar.js';
+export {default as layouts_scripts_hoverable_svelte} from '../scripts/hoverable.js';
 export {default as layouts_style_global_svelte} from '../style/global.js';
