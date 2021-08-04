@@ -4,6 +4,16 @@ NOTE: work-in-progress... the template is still in development
 
 This blog template was designed to be readily customized for user preference. There are a number of variables in the index.json that will allow for enabling or disabling features and settings.
 
+## TODO
+
+1. add Tags and Category pages
+2. ~~add code to save the dark/light theme to localStorage~~
+3. add a "Sendgrid" API function for the contacts page
+4. update for WAI-ARIA
+5. add a detailed README.md that explains how to use the theme
+6. include some additional SEO tweaks
+7. transform the template to the dynamic components approach
+
 ## Theme Settings (index.json)
 
 ### title: will show title on the tab
