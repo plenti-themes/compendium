@@ -1,6 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
-  import Hoverable from "./hoverable.svelte";
+  import Hoverable from "../scripts/hoverable.svelte";
   export let allFeatures, featuredPage;
 
   function scrollDown() {
