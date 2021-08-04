@@ -1,6 +1,6 @@
 {
   "build": "public",
-  "baseurl": "/plenti-compendium/",
+  "baseurl": "/compendium/",
   "local": {
     "port": 3000
   },
