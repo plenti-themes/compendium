@@ -4,7 +4,6 @@ export {default as layouts_components_cards_svelte} from '../components/cards.js
 export {default as layouts_components_cardsProjects_svelte} from '../components/cardsProjects.js';
 export {default as layouts_components_contact_svelte} from '../components/contact.js';
 export {default as layouts_components_featured_svelte} from '../components/featured.js';
-export {default as layouts_components_hoverable_svelte} from '../components/hoverable.js';
 export {default as layouts_components_openGraph_svelte} from '../components/openGraph.js';
 export {default as layouts_components_paginate_svelte} from '../components/paginate.js';
 export {default as layouts_components_search_svelte} from '../components/search.js';
