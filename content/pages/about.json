@@ -1,7 +1,8 @@
 {
   "title": "About Me",
+  "pageType": "About",
   "enabled": true,
-  "menu": "About",
+  "menu": true,
   "author": {
     "name": "Ro Doe",
     "url": "pages/about"
