@@ -10,8 +10,9 @@
           {#each allProjs as post, p}
             {#if proj == post.fields.project}
               {#if projArry.find((pst) => pst.proj === proj).title == post.fields.title}
-                <h2 class="header text-lg md:text-xl lg:text-2xl"><i>Project</i>: {proj}</h2>
-
+                <h2 class="header text-lg md:text-xl lg:text-2xl">
+                  <span class="accent">Project:</span> {proj}
+                </h2>
               {/if}
               <div class="flex items-center mb-3">
                 <img
@@ -30,8 +31,12 @@
                         >{post.fields.author.name}</a
                       >
                     </li>
-                    <li class="mr-2 inline-flex">Created : {post.fields.dateCreated}</li>
-                    <li class="mr-2 inline-flex">Updated : {post.fields.dateModified}</li>
+                    <li class="mr-2 inline-flex">
+                      Created : {post.fields.dateCreated}
+                    </li>
+                    <li class="mr-2 inline-flex">
+                      Updated : {post.fields.dateModified}
+                    </li>
                   </ul>
                   <ul class="text-meta flex flex-wrap">
                     <li class="mr-2 inline-flex">

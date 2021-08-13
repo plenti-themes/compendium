@@ -11,7 +11,7 @@
         alt={post.fields.image.alt}
       />
       <div class="px-5 py-4">
-        <h3 class="header mb-2 text-base md:text-lg lg:text-xl">
+        <h3 class="header mb-2 text-xl md:text-2xl">
           <a href={post.path}>{post.fields.title}</a>
         </h3>
         <ul class="text-meta flex flex-wrap mb-4">
