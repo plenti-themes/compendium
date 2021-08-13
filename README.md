@@ -12,7 +12,7 @@ This blog template was designed to be readily customized for user preference. Th
 4. update for WAI-ARIA
 5. add a detailed README.md that explains how to use the theme
 6. include some additional SEO tweaks
-7. transform the template to the dynamic components approach
+7. ~~transform the template to the dynamic components approach~~
 
 ## Theme Settings (index.json)
 
