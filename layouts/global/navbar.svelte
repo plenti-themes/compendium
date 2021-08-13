@@ -2,11 +2,21 @@
   import { onMount } from "svelte";
   import { writable } from "svelte/store";
 
-  export let idxContent, allProjs, allPages;
+  export let allPages;
   export let isDark, theme;
 
-  let projsEnabled = allProjs[0].fields.enabled;
   let menuShow = false;
+
+  function toggleDark() {
+    // Set the boolean
+    isDark = !isDark;
+    // Store the change as local storage value
+    theme.set(isDark ? "dark" : "light");
+  }
+
+  function toggleNavbar() {
+    menuShow = !menuShow;
+  }
 
   onMount(() => {
     // Get the value out of storage on-load or set a sane default.
@@ -42,32 +52,25 @@
       document.removeEventListener("keyup", handleEscape, false);
     };
   });
-
-  function toggleDark() {
-    // Set the boolean
-    isDark = !isDark;
-    // Store the change as local storage value
-    theme.set(isDark ? "dark" : "light");
-  }
-
-  function toggleNavbar() {
-    menuShow = !menuShow;
-  }
 </script>
 
-<div class="flex flex-wrap py-3 px-2	">
+<div class="flex flex-wrap py-2 px-2	">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
-  <div class="menu w-full md:w-10/12 xl:w-8/12">
+  <div class="w-full md:w-10/12 xl:w-8/12">
     <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
-      <h1 class="font-bold mt-0">
-        <i class="accent {idxContent.logo} text-4xl relative" /><i
-          ><a class="text-3xl" href=".">{idxContent.name}</a></i
+      <h1 class="font-bold opacity-100 my-0 flex items-center">
+        <img width="50" height="50" src="assets/logo.svg" alt="Logo" />
+        <a class="ml-2 text-4xl menu" href="."
+          ><span class="accent" style="opacity: 1;">QUANTIFIED</span><span
+            class="menu"
+            style="border-bottom: 4px solid transparent;">LEAP</span
+          ></a
         >
       </h1>
 
       <!-- hamburger menu -->
-      <div class="text-4xl flex md:hidden align-items justify-content">
+      <div class="menu text-4xl flex md:hidden items-center">
         <button
           id="menu"
           type="button"
@@ -81,25 +84,29 @@
 
       <!-- links -->
       <div
-        class="menu md:flex w-full md:w-auto text-right mt-5 md:mt-0 {menuShow
+        class="md:flex w-full md:w-auto text-right mt-5 md:mt-0 {menuShow
           ? 'bg-primary bg-opacity-70'
           : 'hidden'}"
       >
-        <div class="menu text-lg">
-          <a class="block md:inline-flex px-2 py-1" href=".">Home</a>
-          {#if projsEnabled}
-            <a class="block md:inline-flex px-2 py-1" href="projs">Projects</a>
-          {/if}
+        <div class="text-xl">
+          <a class="block md:inline-flex px-2 py-1 md:py-0" href="."
+            ><span class="menu">Home</span></a
+          >
           {#each allPages as page, i}
-            {#if page.fields.enabled}
+            {#if page.fields.enabled && page.fields.menu}
               <a class="block md:inline-flex px-2 py-1" href={page.path}
-                >{page.fields.menu}</a
+                ><span class="menu">{page.fields.pageType}</span></a
               >
             {/if}
           {/each}
-          <button id="dark" type="button" on:click={toggleDark}>
-            <i class="las la-adjust block md:inline-flex py-1 px-2 text-xl" />
-          </button>
+          <button
+            id="dark"
+            type="button"
+            class="inline-block md:inline-flex px-2 py-1 md:py-0"
+            on:click={toggleDark}
+            ><span class="menu"><i class="las la-adjust text-2xl" /></span
+            ></button
+          >
         </div>
       </div>
 

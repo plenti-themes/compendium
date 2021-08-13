@@ -1,9 +1,9 @@
 <script>
-  import About from "../components/about.svelte";
-  import Contact from "../components/contact.svelte";
   export let idxContent,
+    allLayouts,
     allPosts,
-    menu,
+    content,
+    pageType,
     enabled,
     title,
     image,
@@ -11,29 +11,29 @@
     splash,
     articleBody;
 
-  let socialLinks = idxContent.socialLinks;
+  const getComponent = function () {
+    try {
+      return allLayouts[
+        "layouts_components_page_" + pageType.toLowerCase() + "_svelte"
+      ];
+    } catch (e) {
+      return false;
+    }
+  };
 </script>
 
-<div class="w-full py-6 sm:py-16">
-  {#if (menu == "About" && enabled)}
-    <!-- -------------------- -->
-    <!-- Custom About page    -->
-    <!-- -------------------- -->
-    <About {title} {image} {hero} {splash} {articleBody} />
-  {:else if (menu = "Contact" && enabled)}
-    <!-- -------------------- -->
-    <!-- Default page logic   -->
-    <!-- -------------------- -->
-    <Contact {idxContent} {allPosts} {socialLinks} {title} {articleBody} />
-  {:else}
-    <div class="w-0 md:w-1/12 xl:w-2/12" />
-    <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
-      <div class="relative rounded-lg overflow-hidden">
-        <div class="mb-2">
-          <h2 class="header">{title} Page</h2>
-        </div>
-      </div>
-    </div>
-    <div class="w-0 md:w-1/12 xl:w-2/12" />
-  {/if}
-</div>
+{#if enabled}
+  <div class="w-full py-6 sm:py-16">
+    <svelte:component
+      this={getComponent()}
+      {idxContent}
+      {content}
+      {allPosts}
+      {title}
+      {image}
+      {hero}
+      {splash}
+      {articleBody}
+    />
+  </div>
+{/if}

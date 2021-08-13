@@ -1,6 +1,6 @@
 <script>
   import Featured from "../components/featured.svelte";
-  import Sections from "../components/sections.svelte";
+  import MainSection from "../components/main.svelte";
 
   // Variables passed in from "html.svelte"
   // * content: values for keys in "index.json"
@@ -41,7 +41,7 @@
     <!-- Loop through all the posts and generate cards and aside -->
     <!-- ------------------------------------------------------- -->
     <div class="w-full">
-      <Sections
+      <MainSection
         {allPosts}
         {content}
         {postRangeHigh}

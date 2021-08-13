@@ -4,13 +4,11 @@
   // Variables passed in from "index.svelte"
   export let postRangeHigh, postRangeLow, currentPage, totalPages;
 
-  let page = "post";
-
   // Aside component for search, categories, and tags
-  import Aside from "../components/aside.svelte";
+  import Aside from "./aside.svelte";
   // Cards component for all posts.
-  import Cards from "../components/cards.svelte";
-  import Pagination from "../components/paginate.svelte";
+  import Cards from "./cards_posts.svelte";
+  import Pagination from "./paginate.svelte";
 
   let socialLinks = content.fields.socialLinks;
 </script>
@@ -29,7 +27,7 @@
       <!-- Paginate each page as necessary                         -->
       <!-- ------------------------------------------------------- -->
       <div class="row mt-8 md:pr-10">
-        <Pagination {currentPage} {totalPages} {page} />
+        <Pagination {currentPage} {totalPages} />
       </div>
     </div>
 

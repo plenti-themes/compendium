@@ -1,13 +1,14 @@
 <script>
   // Aside component for search, categories, and tags
-  import Aside from "../components/aside.svelte";
+  import Aside from "./aside.svelte";
   // import { onMount } from "svelte";
 
   // Variables passed in from "html.svelte"
-  export let idxContent, allPosts, socialLinks;
+  export let idxContent, allPosts;
   // Variables passed in from "index.svelte"
   export let title, articleBody;
 
+  let socialLinks = idxContent.socialLinks;
   let addrFrom = "";
   let nameFrst = "";
   let nameLast = "";

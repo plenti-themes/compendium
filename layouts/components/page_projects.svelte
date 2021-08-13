@@ -1,11 +1,10 @@
 <script>
-  import Aside from "../components/aside.svelte";
-  import Groups from "../components/cardsProjects.svelte";
-  import Pagination from "../components/paginate.svelte";
+  import Aside from "./aside.svelte";
+  import Cards from "./cards_projs.svelte";
+  import Pagination from "./paginate.svelte";
 
   // Variables passed in from "html.svelte" via "index.svelte"
-  export let idxContent, allPosts, content, enabled;
-  let page = content.fields.page;
+  export let idxContent, allPosts, content;
 
   $: currentPage = content.pager;
   let allProjs = allPosts.filter((content) => content.fields?.project != "");
@@ -22,6 +21,8 @@
     projList.push(element.fields.project);
   });
 
+  console.log(projArry)
+
   let uniqProjs = [...new Set(projList)];
   let totalProjs = uniqProjs.length;
   let totalPages = Math.ceil(totalProjs / projsPerPage);
@@ -33,7 +34,6 @@
   $: projRangeLow = projRangeHigh - projsPerPage;
 </script>
 
-{#if enabled}
 <section class="w-full flex flex-wrap items-center justify-between  py-6 sm:py-16">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
@@ -43,7 +43,7 @@
           <!-- ------------------------------------------------------- -->
           <!-- Setup a Card for each post as necessary                 -->
           <!-- ------------------------------------------------------- -->
-          <Groups
+          <Cards
             {projArry}
             {uniqProjs}
             {allProjs}
@@ -56,7 +56,7 @@
         <!-- Paginate each page as necessary                         -->
         <!-- ------------------------------------------------------- -->
         <div class="row mt-8 md:pr-10">
-          <Pagination {currentPage} {totalPages} {page} {totalProjPages} />
+          <Pagination {currentPage} {totalPages} {totalProjPages} />
         </div>
       </div>
 
@@ -70,4 +70,3 @@
   </div>
   <div class="w-0 md:w-1/12 xl:w-2/12" />
 </section>
-{/if}

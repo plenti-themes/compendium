@@ -18,7 +18,6 @@
   // Capture key values from "index.json" for theming and ogp content.
   export let idxContent = allContent.filter((key) => key.path == "/")[0].fields;
   // Capture key content for all posts.
-  export let allProjs = allContent.filter((key) => key.type == "projs");
   export let allPages = allContent.filter((key) => key.type == "pages");
   export let allPosts = allContent.filter((key) => key.type == "posts");
 </script>
@@ -33,7 +32,7 @@
     style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
   >
     <!-- reference the Navbar class from import above -->
-    <Navbar bind:isDark {idxContent} {allProjs} {allPages} />
+    <Navbar bind:isDark {allPages} />
   </header>
 
   <body>

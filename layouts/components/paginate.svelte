@@ -1,7 +1,7 @@
 <script>
-  export let currentPage, totalPages, page;
+  export let currentPage, totalPages;
 
-  export let pagePath = page === "projs" ? "projs/" : "";
+  export let pagePath = "";
 </script>
 
 <div class="flex pagination text-center justify-center">

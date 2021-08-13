@@ -3,7 +3,7 @@
 
   let base = env.local ? "/" : env.baseurl;
   let enabledContact = allPages.filter(
-    (key) => key.fields.menu === "Contact"
+    (key) => key.fields.pageType === "Contact"
   )[0].fields.enabled;
 </script>
 

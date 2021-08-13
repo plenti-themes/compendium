@@ -43,8 +43,8 @@
     class="absolute ml-2 md:ml-12 xl:mt-6 bg-black bg-opacity-50 w-screen-45 sm:w-screen-70 xl:w-screen-80 h-screen-70"
     style="top: 14%; overflow-y: auto;"
   >
-    <div class="w-full font-bold text-lg px-6 pt-10">
-      <h2 class="accent text-white text-4xl font-extrabold ">{title}</h2>
+    <div class="w-full text-lg px-6 pt-10">
+      <h2 class="accent text-white text-4xl">{title}</h2>
     </div>
     <p class="text-white text-md sm:text-lg xl:text-xl px-6 py-6">
       {@html articleBody}
