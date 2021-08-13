@@ -2,7 +2,7 @@
   // Aside component for search, categories, and tags
   import Aside from "../components/aside.svelte";
   // Ogp (Open Graph Protocol): SEO for social networks
-  import Ogp from "../components/openGraph.svelte";
+  import Ogp from "../scripts/openGraph.svelte";
 
   // Values passed in from "html.svelte"
   export let idxContent, allPosts, content, env;
