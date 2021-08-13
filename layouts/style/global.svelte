@@ -34,7 +34,7 @@
     border-spacing: 0.5rem 0.5rem;
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
-    font-size: 0.80rem;
+    font-size: 0.8rem;
   }
   :global(table > caption) {
     font-size: 0.85rem;
@@ -154,7 +154,16 @@
     font-family: montserrat, sans-serif;
     font-weight: 500;
     color: var(--on-primary);
+    border-bottom: 4px solid transparent;
   }
+  :global(.menu:hover) {
+    border-bottom: 4px solid var(--accent);
+    transition: all 0.25s ease-in;
+  }
+  :global(.menu.active) {
+    border-bottom: 4px solid var(--accent);
+  }
+
   :global(.tag) {
     color: var(--on-secondary);
     font-weight: 500;
