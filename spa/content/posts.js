@@ -27,7 +27,7 @@ import {
 import Aside from '../components/aside.js';
 
 // Ogp (Open Graph Protocol): SEO for social networks
-import Ogp from '../components/openGraph.js';
+import Ogp from '../scripts/openGraph.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();

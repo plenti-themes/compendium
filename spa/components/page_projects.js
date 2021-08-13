@@ -3,7 +3,6 @@ import {
 	SvelteComponent,
 	append,
 	attr,
-	check_outros,
 	children,
 	claim_component,
 	claim_element,
@@ -12,8 +11,6 @@ import {
 	destroy_component,
 	detach,
 	element,
-	empty,
-	group_outros,
 	init,
 	insert,
 	mount_component,
@@ -23,11 +20,11 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import Aside from '../components/aside.js';
-import Groups from '../components/cardsProjects.js';
-import Pagination from '../components/paginate.js';
+import Aside from './aside.js';
+import Cards from './cards_projs.js';
+import Pagination from './paginate.js';
 
-function create_if_block(ctx) {
+function create_fragment(ctx) {
 	let section;
 	let div0;
 	let t0;
@@ -35,7 +32,7 @@ function create_if_block(ctx) {
 	let div5;
 	let div3;
 	let div1;
-	let groups;
+	let cards;
 	let t1;
 	let div2;
 	let pagination;
@@ -46,29 +43,28 @@ function create_if_block(ctx) {
 	let div7;
 	let current;
 
-	groups = new Groups({
+	cards = new Cards({
 			props: {
-				projArry: /*projArry*/ ctx[8],
-				uniqProjs: /*uniqProjs*/ ctx[9],
-				allProjs: /*allProjs*/ ctx[6],
-				projRangeHigh: /*projRangeHigh*/ ctx[3],
-				projRangeLow: /*projRangeLow*/ ctx[4]
+				projArry: /*projArry*/ ctx[6],
+				uniqProjs: /*uniqProjs*/ ctx[7],
+				allProjs: /*allProjs*/ ctx[4],
+				projRangeHigh: /*projRangeHigh*/ ctx[2],
+				projRangeLow: /*projRangeLow*/ ctx[3]
 			}
 		});
 
 	pagination = new Pagination({
 			props: {
-				currentPage: /*currentPage*/ ctx[2],
-				totalPages: /*totalPages*/ ctx[10],
-				page: /*page*/ ctx[5],
-				totalProjPages: /*totalProjPages*/ ctx[11]
+				currentPage: /*currentPage*/ ctx[1],
+				totalPages: /*totalPages*/ ctx[8],
+				totalProjPages: /*totalProjPages*/ ctx[9]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[7]
+				socialLinks: /*socialLinks*/ ctx[5]
 			}
 		});
 
@@ -81,7 +77,7 @@ function create_if_block(ctx) {
 			div5 = element("div");
 			div3 = element("div");
 			div1 = element("div");
-			create_component(groups.$$.fragment);
+			create_component(cards.$$.fragment);
 			t1 = space();
 			div2 = element("div");
 			create_component(pagination.$$.fragment);
@@ -106,7 +102,7 @@ function create_if_block(ctx) {
 			var div3_nodes = children(div3);
 			div1 = claim_element(div3_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			claim_component(groups.$$.fragment, div1_nodes);
+			claim_component(cards.$$.fragment, div1_nodes);
 			div1_nodes.forEach(detach);
 			t1 = claim_space(div3_nodes);
 			div2 = claim_element(div3_nodes, "DIV", { class: true });
@@ -146,7 +142,7 @@ function create_if_block(ctx) {
 			append(div6, div5);
 			append(div5, div3);
 			append(div3, div1);
-			mount_component(groups, div1, null);
+			mount_component(cards, div1, null);
 			append(div3, t1);
 			append(div3, div2);
 			mount_component(pagination, div2, null);
@@ -157,13 +153,13 @@ function create_if_block(ctx) {
 			append(section, div7);
 			current = true;
 		},
-		p(ctx, dirty) {
-			const groups_changes = {};
-			if (dirty & /*projRangeHigh*/ 8) groups_changes.projRangeHigh = /*projRangeHigh*/ ctx[3];
-			if (dirty & /*projRangeLow*/ 16) groups_changes.projRangeLow = /*projRangeLow*/ ctx[4];
-			groups.$set(groups_changes);
+		p(ctx, [dirty]) {
+			const cards_changes = {};
+			if (dirty & /*projRangeHigh*/ 4) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[2];
+			if (dirty & /*projRangeLow*/ 8) cards_changes.projRangeLow = /*projRangeLow*/ ctx[3];
+			cards.$set(cards_changes);
 			const pagination_changes = {};
-			if (dirty & /*currentPage*/ 4) pagination_changes.currentPage = /*currentPage*/ ctx[2];
+			if (dirty & /*currentPage*/ 2) pagination_changes.currentPage = /*currentPage*/ ctx[1];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
@@ -171,81 +167,22 @@ function create_if_block(ctx) {
 		},
 		i(local) {
 			if (current) return;
-			transition_in(groups.$$.fragment, local);
+			transition_in(cards.$$.fragment, local);
 			transition_in(pagination.$$.fragment, local);
 			transition_in(aside.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
-			transition_out(groups.$$.fragment, local);
+			transition_out(cards.$$.fragment, local);
 			transition_out(pagination.$$.fragment, local);
 			transition_out(aside.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
-			destroy_component(groups);
+			destroy_component(cards);
 			destroy_component(pagination);
 			destroy_component(aside);
-		}
-	};
-}
-
-function create_fragment(ctx) {
-	let if_block_anchor;
-	let current;
-	let if_block = /*enabled*/ ctx[1] && create_if_block(ctx);
-
-	return {
-		c() {
-			if (if_block) if_block.c();
-			if_block_anchor = empty();
-		},
-		l(nodes) {
-			if (if_block) if_block.l(nodes);
-			if_block_anchor = empty();
-		},
-		m(target, anchor) {
-			if (if_block) if_block.m(target, anchor);
-			insert(target, if_block_anchor, anchor);
-			current = true;
-		},
-		p(ctx, [dirty]) {
-			if (/*enabled*/ ctx[1]) {
-				if (if_block) {
-					if_block.p(ctx, dirty);
-
-					if (dirty & /*enabled*/ 2) {
-						transition_in(if_block, 1);
-					}
-				} else {
-					if_block = create_if_block(ctx);
-					if_block.c();
-					transition_in(if_block, 1);
-					if_block.m(if_block_anchor.parentNode, if_block_anchor);
-				}
-			} else if (if_block) {
-				group_outros();
-
-				transition_out(if_block, 1, 1, () => {
-					if_block = null;
-				});
-
-				check_outros();
-			}
-		},
-		i(local) {
-			if (current) return;
-			transition_in(if_block);
-			current = true;
-		},
-		o(local) {
-			transition_out(if_block);
-			current = false;
-		},
-		d(detaching) {
-			if (if_block) if_block.d(detaching);
-			if (detaching) detach(if_block_anchor);
 		}
 	};
 }
@@ -254,13 +191,7 @@ function instance($$self, $$props, $$invalidate) {
 	let currentPage;
 	let projRangeHigh;
 	let projRangeLow;
-
-	let { idxContent } = $$props,
-		{ allPosts } = $$props,
-		{ content } = $$props,
-		{ enabled } = $$props;
-
-	let page = content.fields.page;
+	let { idxContent } = $$props, { allPosts } = $$props, { content } = $$props;
 	let allProjs = allPosts.filter(content => content.fields?.project != "");
 	let socialLinks = idxContent.socialLinks;
 	let projsPerPage = idxContent.theme.projsPerPage;
@@ -276,6 +207,7 @@ function instance($$self, $$props, $$invalidate) {
 		projList.push(element.fields.project);
 	});
 
+	console.log(projArry);
 	let uniqProjs = [...new Set(projList)];
 	let totalProjs = uniqProjs.length;
 	let totalPages = Math.ceil(totalProjs / projsPerPage);
@@ -284,33 +216,30 @@ function instance($$self, $$props, $$invalidate) {
 	let totalProjPages = totalPages;
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(13, content = $$props.content);
-		if ("enabled" in $$props) $$invalidate(1, enabled = $$props.enabled);
+		if ("content" in $$props) $$invalidate(11, content = $$props.content);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*content*/ 8192) {
-			$: $$invalidate(2, currentPage = content.pager);
+		if ($$self.$$.dirty & /*content*/ 2048) {
+			$: $$invalidate(1, currentPage = content.pager);
 		}
 
-		if ($$self.$$.dirty & /*currentPage*/ 4) {
-			$: $$invalidate(3, projRangeHigh = currentPage * projsPerPage);
+		if ($$self.$$.dirty & /*currentPage*/ 2) {
+			$: $$invalidate(2, projRangeHigh = currentPage * projsPerPage);
 		}
 
-		if ($$self.$$.dirty & /*projRangeHigh*/ 8) {
-			$: $$invalidate(4, projRangeLow = projRangeHigh - projsPerPage);
+		if ($$self.$$.dirty & /*projRangeHigh*/ 4) {
+			$: $$invalidate(3, projRangeLow = projRangeHigh - projsPerPage);
 		}
 	};
 
 	return [
 		allPosts,
-		enabled,
 		currentPage,
 		projRangeHigh,
 		projRangeLow,
-		page,
 		allProjs,
 		socialLinks,
 		projArry,
@@ -325,13 +254,7 @@ function instance($$self, $$props, $$invalidate) {
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-
-		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 12,
-			allPosts: 0,
-			content: 13,
-			enabled: 1
-		});
+		init(this, options, instance, create_fragment, safe_not_equal, { idxContent: 10, allPosts: 0, content: 11 });
 	}
 }
 

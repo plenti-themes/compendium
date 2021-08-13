@@ -338,7 +338,7 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props, { allPages } = $$props, { env } = $$props;
 	let base = env.local ? "/" : env.baseurl;
-	let enabledContact = allPages.filter(key => key.fields.menu === "Contact")[0].fields.enabled;
+	let enabledContact = allPages.filter(key => key.fields.pageType === "Contact")[0].fields.enabled;
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);

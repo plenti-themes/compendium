@@ -21,8 +21,8 @@ import {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[4] = list[i];
-	child_ctx[6] = i;
+	child_ctx[3] = list[i];
+	child_ctx[5] = i;
 	return child_ctx;
 }
 
@@ -162,7 +162,7 @@ function create_if_block_2(ctx) {
 // (37:4) {:else}
 function create_else_block_1(ctx) {
 	let a;
-	let t_value = /*i*/ ctx[6] + 1 + "";
+	let t_value = /*i*/ ctx[5] + 1 + "";
 	let t;
 	let a_href_value;
 
@@ -181,14 +181,14 @@ function create_else_block_1(ctx) {
 		},
 		h() {
 			attr(a, "class", "btn-round m-0.5");
-			attr(a, "href", a_href_value = "" + (/*pagePath*/ ctx[2] + (/*i*/ ctx[6] + 1)));
+			attr(a, "href", a_href_value = "" + (/*pagePath*/ ctx[2] + (/*i*/ ctx[5] + 1)));
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
 			append(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*pagePath*/ 4 && a_href_value !== (a_href_value = "" + (/*pagePath*/ ctx[2] + (/*i*/ ctx[6] + 1)))) {
+			if (dirty & /*pagePath*/ 4 && a_href_value !== (a_href_value = "" + (/*pagePath*/ ctx[2] + (/*i*/ ctx[5] + 1)))) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -201,7 +201,7 @@ function create_else_block_1(ctx) {
 // (35:4) {#if currentPage == i + 1}
 function create_if_block_1(ctx) {
 	let button;
-	let t_value = /*i*/ ctx[6] + 1 + "";
+	let t_value = /*i*/ ctx[5] + 1 + "";
 	let t;
 
 	return {
@@ -236,7 +236,7 @@ function create_each_block(ctx) {
 	let if_block_anchor;
 
 	function select_block_type_1(ctx, dirty) {
-		if (/*currentPage*/ ctx[0] == /*i*/ ctx[6] + 1) return create_if_block_1;
+		if (/*currentPage*/ ctx[0] == /*i*/ ctx[5] + 1) return create_if_block_1;
 		return create_else_block_1;
 	}
 
@@ -540,17 +540,16 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { currentPage } = $$props, { totalPages } = $$props, { page } = $$props;
-	let { pagePath = page === "projs" ? "projs/" : "" } = $$props;
+	let { currentPage } = $$props, { totalPages } = $$props;
+	let { pagePath = "" } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("currentPage" in $$props) $$invalidate(0, currentPage = $$props.currentPage);
 		if ("totalPages" in $$props) $$invalidate(1, totalPages = $$props.totalPages);
-		if ("page" in $$props) $$invalidate(3, page = $$props.page);
 		if ("pagePath" in $$props) $$invalidate(2, pagePath = $$props.pagePath);
 	};
 
-	return [currentPage, totalPages, pagePath, page];
+	return [currentPage, totalPages, pagePath];
 }
 
 class Component extends SvelteComponent {
@@ -560,7 +559,6 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			currentPage: 0,
 			totalPages: 1,
-			page: 3,
 			pagePath: 2
 		});
 	}

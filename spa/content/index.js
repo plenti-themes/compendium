@@ -24,7 +24,7 @@ import {
 } from '../web_modules/svelte/internal/index.mjs';
 
 import Featured from '../components/featured.js';
-import Sections from '../components/sections.js';
+import MainSection from '../components/main.js';
 
 function create_if_block_1(ctx) {
 	let div;
@@ -135,14 +135,14 @@ function create_fragment(ctx) {
 	let div2;
 	let t2;
 	let div1;
-	let sections;
+	let mainsection;
 	let t3;
 	let div3;
 	let current;
 	let if_block0 = /*featuredPage*/ ctx[5] == "Bleed" && /*currentPage*/ ctx[2] <= 1 && create_if_block_1(ctx);
 	let if_block1 = /*featuredPage*/ ctx[5] == "Frame" && /*currentPage*/ ctx[2] <= 1 && create_if_block(ctx);
 
-	sections = new Sections({
+	mainsection = new MainSection({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
 				content: /*content*/ ctx[1],
@@ -164,7 +164,7 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.c();
 			t2 = space();
 			div1 = element("div");
-			create_component(sections.$$.fragment);
+			create_component(mainsection.$$.fragment);
 			t3 = space();
 			div3 = element("div");
 			this.h();
@@ -183,7 +183,7 @@ function create_fragment(ctx) {
 			t2 = claim_space(div2_nodes);
 			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			claim_component(sections.$$.fragment, div1_nodes);
+			claim_component(mainsection.$$.fragment, div1_nodes);
 			div1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			t3 = claim_space(section_nodes);
@@ -209,7 +209,7 @@ function create_fragment(ctx) {
 			if (if_block1) if_block1.m(div2, null);
 			append(div2, t2);
 			append(div2, div1);
-			mount_component(sections, div1, null);
+			mount_component(mainsection, div1, null);
 			append(section, t3);
 			append(section, div3);
 			current = true;
@@ -261,32 +261,32 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			const sections_changes = {};
-			if (dirty & /*allPosts*/ 1) sections_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*content*/ 2) sections_changes.content = /*content*/ ctx[1];
-			if (dirty & /*postRangeHigh*/ 8) sections_changes.postRangeHigh = /*postRangeHigh*/ ctx[3];
-			if (dirty & /*postRangeLow*/ 16) sections_changes.postRangeLow = /*postRangeLow*/ ctx[4];
-			if (dirty & /*currentPage*/ 4) sections_changes.currentPage = /*currentPage*/ ctx[2];
-			sections.$set(sections_changes);
+			const mainsection_changes = {};
+			if (dirty & /*allPosts*/ 1) mainsection_changes.allPosts = /*allPosts*/ ctx[0];
+			if (dirty & /*content*/ 2) mainsection_changes.content = /*content*/ ctx[1];
+			if (dirty & /*postRangeHigh*/ 8) mainsection_changes.postRangeHigh = /*postRangeHigh*/ ctx[3];
+			if (dirty & /*postRangeLow*/ 16) mainsection_changes.postRangeLow = /*postRangeLow*/ ctx[4];
+			if (dirty & /*currentPage*/ 4) mainsection_changes.currentPage = /*currentPage*/ ctx[2];
+			mainsection.$set(mainsection_changes);
 		},
 		i(local) {
 			if (current) return;
 			transition_in(if_block0);
 			transition_in(if_block1);
-			transition_in(sections.$$.fragment, local);
+			transition_in(mainsection.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
 			transition_out(if_block0);
 			transition_out(if_block1);
-			transition_out(sections.$$.fragment, local);
+			transition_out(mainsection.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
-			destroy_component(sections);
+			destroy_component(mainsection);
 		}
 	};
 }

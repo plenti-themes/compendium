@@ -26,7 +26,7 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import Aside from '../components/aside.js';
+import Aside from './aside.js';
 
 function create_fragment(ctx) {
 	let section;
@@ -88,7 +88,7 @@ function create_fragment(ctx) {
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[1]
+				socialLinks: /*socialLinks*/ ctx[7]
 			}
 		});
 
@@ -102,10 +102,10 @@ function create_fragment(ctx) {
 			div12 = element("div");
 			div1 = element("div");
 			h2 = element("h2");
-			t1 = text(/*title*/ ctx[2]);
+			t1 = text(/*title*/ ctx[1]);
 			t2 = space();
 			p = element("p");
-			t3 = text(/*articleBody*/ ctx[3]);
+			t3 = text(/*articleBody*/ ctx[2]);
 			t4 = space();
 			form = element("form");
 			div4 = element("div");
@@ -164,12 +164,12 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			h2 = claim_element(div1_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t1 = claim_text(h2_nodes, /*title*/ ctx[2]);
+			t1 = claim_text(h2_nodes, /*title*/ ctx[1]);
 			h2_nodes.forEach(detach);
 			t2 = claim_space(div1_nodes);
 			p = claim_element(div1_nodes, "P", { class: true });
 			var p_nodes = children(p);
-			t3 = claim_text(p_nodes, /*articleBody*/ ctx[3]);
+			t3 = claim_text(p_nodes, /*articleBody*/ ctx[2]);
 			p_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			t4 = claim_space(div12_nodes);
@@ -346,14 +346,14 @@ function create_fragment(ctx) {
 			append(label0, t5);
 			append(div2, t6);
 			append(div2, input0);
-			set_input_value(input0, /*nameFrst*/ ctx[5]);
+			set_input_value(input0, /*nameFrst*/ ctx[4]);
 			append(div4, t7);
 			append(div4, div3);
 			append(div3, label1);
 			append(label1, t8);
 			append(div3, t9);
 			append(div3, input1);
-			set_input_value(input1, /*nameLast*/ ctx[6]);
+			set_input_value(input1, /*nameLast*/ ctx[5]);
 			append(form, t10);
 			append(form, div6);
 			append(div6, div5);
@@ -361,7 +361,7 @@ function create_fragment(ctx) {
 			append(label2, t11);
 			append(div5, t12);
 			append(div5, input2);
-			set_input_value(input2, /*addrFrom*/ ctx[4]);
+			set_input_value(input2, /*addrFrom*/ ctx[3]);
 			append(form, t13);
 			append(form, div8);
 			append(div8, div7);
@@ -369,7 +369,7 @@ function create_fragment(ctx) {
 			append(label3, t14);
 			append(div7, t15);
 			append(div7, textarea);
-			set_input_value(textarea, /*msgBody*/ ctx[7]);
+			set_input_value(textarea, /*msgBody*/ ctx[6]);
 			append(form, t16);
 			append(form, div11);
 			append(div11, div9);
@@ -397,28 +397,27 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*title*/ 4) set_data(t1, /*title*/ ctx[2]);
-			if (!current || dirty & /*articleBody*/ 8) set_data(t3, /*articleBody*/ ctx[3]);
+			if (!current || dirty & /*title*/ 2) set_data(t1, /*title*/ ctx[1]);
+			if (!current || dirty & /*articleBody*/ 4) set_data(t3, /*articleBody*/ ctx[2]);
 
-			if (dirty & /*nameFrst*/ 32 && input0.value !== /*nameFrst*/ ctx[5]) {
-				set_input_value(input0, /*nameFrst*/ ctx[5]);
+			if (dirty & /*nameFrst*/ 16 && input0.value !== /*nameFrst*/ ctx[4]) {
+				set_input_value(input0, /*nameFrst*/ ctx[4]);
 			}
 
-			if (dirty & /*nameLast*/ 64 && input1.value !== /*nameLast*/ ctx[6]) {
-				set_input_value(input1, /*nameLast*/ ctx[6]);
+			if (dirty & /*nameLast*/ 32 && input1.value !== /*nameLast*/ ctx[5]) {
+				set_input_value(input1, /*nameLast*/ ctx[5]);
 			}
 
-			if (dirty & /*addrFrom*/ 16 && input2.value !== /*addrFrom*/ ctx[4]) {
-				set_input_value(input2, /*addrFrom*/ ctx[4]);
+			if (dirty & /*addrFrom*/ 8 && input2.value !== /*addrFrom*/ ctx[3]) {
+				set_input_value(input2, /*addrFrom*/ ctx[3]);
 			}
 
-			if (dirty & /*msgBody*/ 128) {
-				set_input_value(textarea, /*msgBody*/ ctx[7]);
+			if (dirty & /*msgBody*/ 64) {
+				set_input_value(textarea, /*msgBody*/ ctx[6]);
 			}
 
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*socialLinks*/ 2) aside_changes.socialLinks = /*socialLinks*/ ctx[1];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -440,8 +439,9 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { idxContent } = $$props, { allPosts } = $$props, { socialLinks } = $$props;
+	let { idxContent } = $$props, { allPosts } = $$props;
 	let { title } = $$props, { articleBody } = $$props;
+	let socialLinks = idxContent.socialLinks;
 	let addrFrom = "";
 	let nameFrst = "";
 	let nameLast = "";
@@ -481,41 +481,40 @@ function instance($$self, $$props, $$invalidate) {
 
 	function input0_input_handler() {
 		nameFrst = this.value;
-		$$invalidate(5, nameFrst);
+		$$invalidate(4, nameFrst);
 	}
 
 	function input1_input_handler() {
 		nameLast = this.value;
-		$$invalidate(6, nameLast);
+		$$invalidate(5, nameLast);
 	}
 
 	function input2_input_handler() {
 		addrFrom = this.value;
-		$$invalidate(4, addrFrom);
+		$$invalidate(3, addrFrom);
 	}
 
 	function textarea_input_handler() {
 		msgBody = this.value;
-		$$invalidate(7, msgBody);
+		$$invalidate(6, msgBody);
 	}
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(9, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("socialLinks" in $$props) $$invalidate(1, socialLinks = $$props.socialLinks);
-		if ("title" in $$props) $$invalidate(2, title = $$props.title);
-		if ("articleBody" in $$props) $$invalidate(3, articleBody = $$props.articleBody);
+		if ("title" in $$props) $$invalidate(1, title = $$props.title);
+		if ("articleBody" in $$props) $$invalidate(2, articleBody = $$props.articleBody);
 	};
 
 	return [
 		allPosts,
-		socialLinks,
 		title,
 		articleBody,
 		addrFrom,
 		nameFrst,
 		nameLast,
 		msgBody,
+		socialLinks,
 		contactSend,
 		idxContent,
 		input0_input_handler,
@@ -532,9 +531,8 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 9,
 			allPosts: 0,
-			socialLinks: 1,
-			title: 2,
-			articleBody: 3
+			title: 1,
+			articleBody: 2
 		});
 	}
 }

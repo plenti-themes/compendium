@@ -20,12 +20,12 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import Aside from '../components/aside.js';
+import Aside from './aside.js';
 
 // Cards component for all posts.
-import Cards from '../components/cards.js';
+import Cards from './cards_posts.js';
 
-import Pagination from '../components/paginate.js';
+import Pagination from './paginate.js';
 
 function create_fragment(ctx) {
 	let section;
@@ -52,8 +52,7 @@ function create_fragment(ctx) {
 	pagination = new Pagination({
 			props: {
 				currentPage: /*currentPage*/ ctx[3],
-				totalPages: /*totalPages*/ ctx[4],
-				page
+				totalPages: /*totalPages*/ ctx[4]
 			}
 		});
 
@@ -162,8 +161,6 @@ function create_fragment(ctx) {
 		}
 	};
 }
-
-let page = "post";
 
 function instance($$self, $$props, $$invalidate) {
 	let { allPosts } = $$props, { content } = $$props;

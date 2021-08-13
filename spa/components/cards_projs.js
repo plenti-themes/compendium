@@ -459,7 +459,7 @@ function create_if_block_1(ctx) {
 // (12:14) {#if projArry.find((pst) => pst.proj === proj).title == post.fields.title}
 function create_if_block_4(ctx) {
 	let h2;
-	let i;
+	let span;
 	let t0;
 	let t1;
 	let t2_value = /*proj*/ ctx[6] + "";
@@ -468,31 +468,32 @@ function create_if_block_4(ctx) {
 	return {
 		c() {
 			h2 = element("h2");
-			i = element("i");
-			t0 = text("Project");
-			t1 = text(": ");
+			span = element("span");
+			t0 = text("Project:");
+			t1 = space();
 			t2 = text(t2_value);
 			this.h();
 		},
 		l(nodes) {
 			h2 = claim_element(nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			i = claim_element(h2_nodes, "I", {});
-			var i_nodes = children(i);
-			t0 = claim_text(i_nodes, "Project");
-			i_nodes.forEach(detach);
-			t1 = claim_text(h2_nodes, ": ");
+			span = claim_element(h2_nodes, "SPAN", { class: true });
+			var span_nodes = children(span);
+			t0 = claim_text(span_nodes, "Project:");
+			span_nodes.forEach(detach);
+			t1 = claim_space(h2_nodes);
 			t2 = claim_text(h2_nodes, t2_value);
 			h2_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
+			attr(span, "class", "accent");
 			attr(h2, "class", "header text-lg md:text-xl lg:text-2xl");
 		},
 		m(target, anchor) {
 			insert(target, h2, anchor);
-			append(h2, i);
-			append(i, t0);
+			append(h2, span);
+			append(span, t0);
 			append(h2, t1);
 			append(h2, t2);
 		},
@@ -505,7 +506,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (41:32) {#if i < post.fields.categories.length - 1}
+// (46:32) {#if i < post.fields.categories.length - 1}
 function create_if_block_3(ctx) {
 	let t;
 
@@ -525,7 +526,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (39:22) {#each post.fields.categories as catg, i}
+// (44:22) {#each post.fields.categories as catg, i}
 function create_each_block_3(ctx) {
 	let a;
 	let t0_value = /*catg*/ ctx[14] + "";
@@ -588,7 +589,7 @@ function create_each_block_3(ctx) {
 	};
 }
 
-// (50:31) {#if i < post.fields.tags.length - 1}
+// (55:31) {#if i < post.fields.tags.length - 1}
 function create_if_block_2(ctx) {
 	let t;
 
@@ -608,7 +609,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (48:22) {#each post.fields.tags as tag, i}
+// (53:22) {#each post.fields.tags as tag, i}
 function create_each_block_2(ctx) {
 	let a;
 	let t0_value = /*tag*/ ctx[12] + "";

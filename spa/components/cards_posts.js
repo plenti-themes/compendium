@@ -261,7 +261,7 @@ function create_if_block(ctx) {
 			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[3].fields.image.src)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*post*/ ctx[3].fields.image.alt);
 			attr(a0, "href", a0_href_value = /*post*/ ctx[3].path);
-			attr(h3, "class", "header mb-2 text-base md:text-lg lg:text-xl");
+			attr(h3, "class", "header mb-2 text-xl md:text-2xl");
 			attr(i, "class", "las la-user-astronaut text-base");
 			attr(a1, "href", a1_href_value = /*post*/ ctx[3].fields.author.url);
 			attr(li0, "class", "px-1 inline-flex");

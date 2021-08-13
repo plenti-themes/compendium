@@ -87,8 +87,9 @@ const allContent = [{
 "filename": "about.json",
 "fields": {
   "title": "About Me",
+  "pageType": "About",
   "enabled": true,
-  "menu": "About",
+  "menu": true,
   "author": {
     "name": "Ro Doe",
     "url": "pages/about"
@@ -121,9 +122,21 @@ const allContent = [{
 "filename": "contact.json",
 "fields": {
 	"title": "Contact Us",
+	"pageType": "Contact",
 	"enabled": true,
-	"menu": "Contact",
+	"menu": true,
 	"articleBody": "Swing by for a cup of coffee, or leave us a message:"
+}
+},{
+"pager": 1,
+"path": "pages/projects",
+"type": "pages",
+"filename": "projects.json",
+"fields": {
+	"title": "Projects Page",
+	"pageType": "Projects",
+	"enabled": true,
+	"menu": true
 }
 },{
 "pager": 1,
@@ -306,16 +319,6 @@ const allContent = [{
 
 },{
 "pager": 1,
-"path": "projs",
-"type": "projs",
-"filename": "projs.json",
-"fields": {
-	"title": "Projects Page",
-	"menu": "Projects",
-	"enabled": true
-}
-},{
-"pager": 1,
 "path": "1",
 "type": "index",
 "filename": "index.json",
@@ -326,12 +329,6 @@ const allContent = [{
 "type": "index",
 "filename": "index.json",
 "fields": { "name": "Compendium", "site": "www.example.net", "logo": "las la-feather-alt", "title": "Compendium | Personal Blog Template", "description": "A personal blog template for the Plenti-based SSG built on Svelte.", "theme": { "postsPerPage": 6, "projsPerPage": 3, "tagsPerPage": 12, "mathTypesetting": true, "codeHighlighting": true, "featuredPage": "Bleed", "featuredPageValues": "Bleed, Frame, None", "colorScheme": "Earthliness", "colorSchemeValues": "Earthliness, Simplicity, Technobeat" }, "socialLinks": [ { "src": "https://www.linkedin.com/", "ico": "lab la-linkedin-in", "enabled": true }, { "src": "https://github.com/", "ico": "lab la-github-alt", "enabled": true }, { "src": "https://about.gitlab.com/", "ico": "lab la-gitlab", "enabled": true }, { "src": "https://twitter.com/", "ico": "lab la-twitter", "enabled": false }, { "src": "https://keybase.io/", "ico": "lab la-keybase", "enabled": true }, { "src": "https://www.reddit.com/", "ico": "lab la-reddit", "enabled": true }, { "src": "https://www.instagram.com/", "ico": "lab la-instagram", "enabled": false }, { "src": "https://www.facebook.com/", "ico": "lab la-facebook-f", "enabled": false }, { "src": "", "ico": "", "enabled": false } ] } 
-},{
-"pager": 1,
-"path": "projs/1",
-"type": "projs",
-"filename": "projs.json",
-"fields": { "title": "Projects Page", "menu": "Projects", "enabled": true }
 },];
 
 export default allContent;

@@ -55,20 +55,16 @@ function create_fragment(ctx) {
 	head = new Head({
 			props: {
 				idxContent: /*idxContent*/ ctx[5],
-				allPages: /*allPages*/ ctx[7],
+				allPages: /*allPages*/ ctx[6],
 				env: /*env*/ ctx[4]
 			}
 		});
 
 	function navbar_isDark_binding(value) {
-		/*navbar_isDark_binding*/ ctx[10](value);
+		/*navbar_isDark_binding*/ ctx[9](value);
 	}
 
-	let navbar_props = {
-		idxContent: /*idxContent*/ ctx[5],
-		allProjs: /*allProjs*/ ctx[6],
-		allPages: /*allPages*/ ctx[7]
-	};
+	let navbar_props = { allPages: /*allPages*/ ctx[6] };
 
 	if (/*isDark*/ ctx[0] !== void 0) {
 		navbar_props.isDark = /*isDark*/ ctx[0];
@@ -81,7 +77,7 @@ function create_fragment(ctx) {
 		/*content*/ ctx[2].fields,
 		{ idxContent: /*idxContent*/ ctx[5] },
 		{ allLayouts: /*allLayouts*/ ctx[1] },
-		{ allPosts: /*allPosts*/ ctx[8] },
+		{ allPosts: /*allPosts*/ ctx[7] },
 		{ content: /*content*/ ctx[2] },
 		{ isDark: /*isDark*/ ctx[0] },
 		{ env: /*env*/ ctx[4] }
@@ -175,13 +171,11 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const head_changes = {};
 			if (dirty & /*idxContent*/ 32) head_changes.idxContent = /*idxContent*/ ctx[5];
-			if (dirty & /*allPages*/ 128) head_changes.allPages = /*allPages*/ ctx[7];
+			if (dirty & /*allPages*/ 64) head_changes.allPages = /*allPages*/ ctx[6];
 			if (dirty & /*env*/ 16) head_changes.env = /*env*/ ctx[4];
 			head.$set(head_changes);
 			const navbar_changes = {};
-			if (dirty & /*idxContent*/ 32) navbar_changes.idxContent = /*idxContent*/ ctx[5];
-			if (dirty & /*allProjs*/ 64) navbar_changes.allProjs = /*allProjs*/ ctx[6];
-			if (dirty & /*allPages*/ 128) navbar_changes.allPages = /*allPages*/ ctx[7];
+			if (dirty & /*allPages*/ 64) navbar_changes.allPages = /*allPages*/ ctx[6];
 
 			if (!updating_isDark && dirty & /*isDark*/ 1) {
 				updating_isDark = true;
@@ -195,12 +189,12 @@ function create_fragment(ctx) {
 				attr(header, "class", header_class_value);
 			}
 
-			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, isDark, env*/ 311)
+			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, isDark, env*/ 183)
 			? get_spread_update(switch_instance_spread_levels, [
 					dirty & /*content*/ 4 && get_spread_object(/*content*/ ctx[2].fields),
 					dirty & /*idxContent*/ 32 && { idxContent: /*idxContent*/ ctx[5] },
 					dirty & /*allLayouts*/ 2 && { allLayouts: /*allLayouts*/ ctx[1] },
-					dirty & /*allPosts*/ 256 && { allPosts: /*allPosts*/ ctx[8] },
+					dirty & /*allPosts*/ 128 && { allPosts: /*allPosts*/ ctx[7] },
 					dirty & /*content*/ 4 && { content: /*content*/ ctx[2] },
 					dirty & /*isDark*/ 1 && { isDark: /*isDark*/ ctx[0] },
 					dirty & /*env*/ 16 && { env: /*env*/ ctx[4] }
@@ -274,7 +268,6 @@ function instance($$self, $$props, $$invalidate) {
 		{ env } = $$props;
 
 	let { idxContent = allContent.filter(key => key.path == "/")[0].fields } = $$props;
-	let { allProjs = allContent.filter(key => key.type == "projs") } = $$props;
 	let { allPages = allContent.filter(key => key.type == "pages") } = $$props;
 	let { allPosts = allContent.filter(key => key.type == "posts") } = $$props;
 
@@ -285,15 +278,14 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("isDark" in $$props) $$invalidate(0, isDark = $$props.isDark);
-		if ("allContent" in $$props) $$invalidate(9, allContent = $$props.allContent);
+		if ("allContent" in $$props) $$invalidate(8, allContent = $$props.allContent);
 		if ("allLayouts" in $$props) $$invalidate(1, allLayouts = $$props.allLayouts);
 		if ("content" in $$props) $$invalidate(2, content = $$props.content);
 		if ("layout" in $$props) $$invalidate(3, layout = $$props.layout);
 		if ("env" in $$props) $$invalidate(4, env = $$props.env);
 		if ("idxContent" in $$props) $$invalidate(5, idxContent = $$props.idxContent);
-		if ("allProjs" in $$props) $$invalidate(6, allProjs = $$props.allProjs);
-		if ("allPages" in $$props) $$invalidate(7, allPages = $$props.allPages);
-		if ("allPosts" in $$props) $$invalidate(8, allPosts = $$props.allPosts);
+		if ("allPages" in $$props) $$invalidate(6, allPages = $$props.allPages);
+		if ("allPosts" in $$props) $$invalidate(7, allPosts = $$props.allPosts);
 	};
 
 	return [
@@ -303,7 +295,6 @@ function instance($$self, $$props, $$invalidate) {
 		layout,
 		env,
 		idxContent,
-		allProjs,
 		allPages,
 		allPosts,
 		allContent,
@@ -317,15 +308,14 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			isDark: 0,
-			allContent: 9,
+			allContent: 8,
 			allLayouts: 1,
 			content: 2,
 			layout: 3,
 			env: 4,
 			idxContent: 5,
-			allProjs: 6,
-			allPages: 7,
-			allPosts: 8
+			allPages: 6,
+			allPosts: 7
 		});
 	}
 }
