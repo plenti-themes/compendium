@@ -1,7 +1,22 @@
 <script>
-  export let idxContent, allPages, env;
+  import SEO from "../scripts/SEO.svelte";
+
+  // Values passed in from "html.svelte"
+  export let idxContent,
+    allPages,
+    content,
+    path,
+    env,
+    page_title,
+    isArticle,
+    description,
+    image,
+    dateCreated,
+    dateModified;
 
   let base = env.local ? "/" : env.baseurl;
+
+  // Set flag to enable contact serverless function
   let enabledContact = allPages.filter(
     (key) => key.fields.pageType === "Contact"
   )[0].fields.enabled;
@@ -10,17 +25,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content={idxContent.description} />
 
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content={idxContent.title} />
-  <meta property="og:description" content={idxContent.description} />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content={idxContent.title} />
-  <meta name="twitter:description" content={idxContent.description} />
-
-  <title>{idxContent.title}</title>
+  <SEO
+    {idxContent}
+    {env}
+    {page_title}
+    {isArticle}
+    {description}
+    {path}
+    {image}
+    {dateCreated}
+    {dateModified}
+  />
 
   <base href={base} />
 
