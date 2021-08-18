@@ -4,7 +4,7 @@
   // import { onMount } from "svelte";
 
   // Variables passed in from "html.svelte"
-  export let idxContent, allPosts;
+  export let idxContent, allPosts, tagsList, catgList;
   // Variables passed in from "index.svelte"
   export let title, articleBody;
 
@@ -49,7 +49,7 @@
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     <div class="row md:flex md:flex-wrap">
-      <div class="w-full md:w-9/12 mb-5 mb-lg-0 px-0">
+      <div class="w-full md:w-9/12 mb-lg-0 px-0">
         <div class="">
           <h2 class="header text-2xl mt-0 mb-6">{title}</h2>
           <p class="mb-10">{articleBody}</p>
@@ -64,7 +64,7 @@
                 First Name
               </label>
               <input
-                class="appearance-none block w-full bg-gray-100 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+                class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
                 id="grid-first-name"
                 type="text"
                 placeholder="Jane"
@@ -140,8 +140,8 @@
       <!-- ------------------------------------------------------- -->
       <!-- Set the aside as the last column in the row             -->
       <!-- ------------------------------------------------------- -->
-      <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
-        <Aside {allPosts} {socialLinks} />
+      <div class="w-full md:w-3/12 mb-lg-0 px-0">
+      <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
       </div>
     </div>
   </div>

@@ -1,5 +1,8 @@
 <script>
+  import Meta from "./post_meta.svelte";
   export let allPosts;
+  export let complete = false;
+  export let skipbody = true;
 
   let value = "";
 </script>
@@ -8,7 +11,7 @@
   <h4 class="header mt-0"><span>Search</span></h4>
   <span class="flex flex-wrap items-center">
     <input
-      class="appearance-none block w-full bg-gray-100 border border-gray-400 mb-5 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
+      class="appearance-none block w-full bg-gray-100 border text-gray-700 border-gray-400 mb-5 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
       id="search"
       placeholder="Search articles..."
       bind:value
@@ -28,16 +31,10 @@
               alt={post.fields.image.alt}
             />
             <div class="inline-block ml-2">
-              <h5 class="header my-0">
+              <h5 class="header mt-0 mb-1">
                 <a href={post.path}>{post.fields.title}</a>
               </h5>
-              <ul class="text-meta">
-                <li class="">
-                  <i class="las la-user-astronaut text-base relative" />
-                  <a href={post.fields.author.url}>{post.fields.author.name}</a>
-                  - {post.fields.dateCreated}
-                </li>
-              </ul>
+              <Meta {post} {complete} {skipbody} />
             </div>
           </div>
         {/if}

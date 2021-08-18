@@ -1,8 +1,9 @@
 <script>
+  import { onMount } from "svelte";
   import Search from "../components/search.svelte";
   import Social from "../components/social.svelte";
 
-  export let allPosts, socialLinks;
+  export let allPosts, socialLinks, tagsList, catgList;
 </script>
 
 <aside class="w-full">
@@ -17,36 +18,11 @@
     <div class="row">
       <h4 class="header mb-1"><span>Categories</span></h4>
       <ul class="text-aside mb-4">
-        <li>
-          <a href="catgs/four-seasons" class="inline-flex"
-            >Four seasons
-            <small class="ml-auto">(1)</small></a
-          >
-        </li>
-        <li>
-          <a href="catgs/newyork-city" class="inline-flex"
-            >Newyork city
-            <small class="ml-auto">(2)</small></a
-          >
-        </li>
-        <li>
-          <a href="catgs/photobooth" class="inline-flex"
-            >Photobooth
-            <small class="ml-auto">(1)</small></a
-          >
-        </li>
-        <li>
-          <a href="catgs/photography" class="inline-flex"
-            >Photography
-            <small class="ml-auto">(2)</small></a
-          >
-        </li>
-        <li>
-          <a href="catgs/videography" class="inline-flex"
-            >Videography
-            <small class="ml-auto">(1)</small></a
-          >
-        </li>
+        {#each catgList as catg, i}
+          <li class="flex">
+            <a href="catgs/{i + 1}">{catg}</a>
+          </li>
+        {/each}
       </ul>
     </div>
 
@@ -54,24 +30,11 @@
     <div class="row">
       <h4 class="header mb-1 w-full flex">Tags</h4>
       <ul class="text-aside mb-4">
-        <li class="pr-1 inline-flex">
-          <a href="tags/booth">Booth,</a>
-        </li>
-        <li class="pr-1 inline-flex">
-          <a href="tags/city">City,</a>
-        </li>
-        <li class="pr-1 inline-flex">
-          <a href="tags/image">Image,</a>
-        </li>
-        <li class="pr-1 inline-flex">
-          <a href="tags/new">Nature,</a>
-        </li>
-        <li class="pr-1 inline-flex">
-          <a href="tags/photo">Photo,</a>
-        </li>
-        <li class="pr-1 inline-flex">
-          <a href="tags/video">Video</a>
-        </li>
+        {#each tagsList as tag, i}
+          <li class="flex">
+            <a href="tags/{i + 1}">{tag}</a>
+          </li>
+        {/each}
       </ul>
     </div>
   </div>
