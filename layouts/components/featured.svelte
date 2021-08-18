@@ -1,7 +1,7 @@
 <script>
   import { fade } from "svelte/transition";
   import Hoverable from "../scripts/hoverable.svelte";
-  export let allFeatures, featuredPage;
+  export let allFeatures, featuredPage, tagsList, catgList;
 
   function scrollDown() {
     window.scrollTo({
@@ -64,7 +64,7 @@
         <div class="col-lg-2" />
         <div class="col-lg-8">
           <h2
-            class="w-full text-center pb-3 md:pb-4 lg:pb-5 text-2xl sm:text-3xl md:text-4xl"
+            class="w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl"
           >
             <a href={post.path} class="">{post.fields.title}</a>
           </h2>
@@ -74,24 +74,24 @@
               ? 'md:mb-10 sm:mb-5'
               : 'mb-24'}"
           >
-            <li class="px-1">
-              <i class="las la-user-astronaut text-base top-0.5 relative" />
+            <li class="px-2">
+              <i class="las la-user-astronaut text-lg relative" />
               <a href={post.fields.author.url}>{post.fields.author.name}</a>
             </li>
-            <li class="px-1">Created : {post.fields.dateCreated}</li>
-            <li class="px-1">
-              Categories :
+            <li class="px-2">Updated: {post.fields.dateModified}</li>
+            <li class="px-2">
+              Categories:
               {#each post.fields.categories as catg, i}
-                <a href="catgs/{catg}" class="ml-1"
+                <a href="catgs/{catgList.indexOf(catg) + 1}" class="ml-0.5"
                   >{catg}{#if i < post.fields.categories.length - 1},
                   {/if}</a
                 >
               {/each}
             </li>
-            <li class="px-1">
-              Tags :
+            <li class="px-2">
+              Tags:
               {#each post.fields.tags as tag, i}
-                <a href="tags/{tag}" class="ml-1"
+                <a href="tags/{tagsList.indexOf(tag) + 1}" class="ml-0.5"
                   >{tag}{#if i < post.fields.tags.length - 1}, {/if}</a
                 >
               {/each}

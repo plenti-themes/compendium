@@ -6,13 +6,11 @@
   // * content: values for keys in "index.json"
   // * allPosts: values for keys in all posts
   // * theme: values passed in from layout content {...content.fields}
-  export let allPosts, content, theme;
+  export let allPosts, content, theme, tagsMap, catgsMap, tagsList, catgList;
 
   $: currentPage = content.pager;
   let featuredPage = theme.featuredPage;
-  let allFeatures = allPosts.filter(
-    (content) => content.fields?.featured
-  );
+  let allFeatures = allPosts.filter((content) => content.fields?.featured);
   let totalPosts = allPosts.length;
   let totalPages = Math.ceil(totalPosts / theme.postsPerPage);
   $: postRangeHigh = currentPage * theme.postsPerPage;
@@ -25,7 +23,7 @@
   <!-- ------------------------------------------------------- -->
   {#if featuredPage == "Bleed" && currentPage <= 1}
     <div class="w-full row -mt-16">
-      <Featured {allFeatures} {featuredPage} />
+      <Featured {allFeatures} {featuredPage} {tagsList} {catgList} />
     </div>
   {/if}
 
@@ -48,6 +46,10 @@
         {postRangeLow}
         {currentPage}
         {totalPages}
+        {tagsMap}
+        {catgsMap}
+        {tagsList}
+        {catgList}
       />
     </div>
   </div>
