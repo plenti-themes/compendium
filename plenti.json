@@ -9,6 +9,8 @@
     "index": ":paginate(totalPages)",
     "pages": "pages/:filename",
     "posts": "posts/:filename",
-    "projs": "projs/:paginate(totalProjPages)"
+    "projs": ":filename/:paginate(totalProjPages)",
+    "tags": ":filename/:paginate(totalTagsPages)",
+    "catgs": ":filename/:paginate(totalCatgsPages)"
   }
 }
