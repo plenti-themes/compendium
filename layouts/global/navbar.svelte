@@ -3,8 +3,9 @@
   import { writable } from "svelte/store";
 
   export let allPages;
-  export let isDark, theme;
+  export let isDark, theme, idxContent;
 
+  let site_name = idxContent.name.split(" ");
   let menuShow = false;
 
   function toggleDark() {
@@ -61,12 +62,19 @@
       <!-- logo -->
       <h1 class="font-bold opacity-100 my-0 flex items-center">
         <img width="50" height="50" src="assets/logo.svg" alt="Logo" />
-        <a class="ml-2 text-4xl menu" href="."
-          ><span class="accent" style="opacity: 1;">QUANTIFIED</span><span
-            class="menu"
-            style="border-bottom: 4px solid transparent;">LEAP</span
-          ></a
-        >
+        <a class="ml-2 text-4xl menu" href=".">
+          {#if site_name.length > 1}
+            <span class="accent" style="opacity: 1;"
+              >{site_name[0].toUpperCase()}</span
+            ><span class="menu" style="border-bottom: 4px solid transparent;"
+              >{site_name[1].toUpperCase()}</span
+            >
+          {:else}
+            <span class="menu" style="border-bottom: 4px solid transparent;"
+              >{idxContent.name}</span
+            >
+          {/if}
+        </a>
       </h1>
 
       <!-- hamburger menu -->
