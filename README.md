@@ -6,13 +6,18 @@ This blog template was designed to be readily customized for user preference. Th
 
 ## TODO
 
-1. add Tags and Category pages
-2. ~~add code to save the dark/light theme to localStorage~~
-3. add a "Sendgrid" API function for the contacts page
-4. update for WAI-ARIA
-5. add a detailed README.md that explains how to use the theme
-6. include some additional SEO tweaks
-7. ~~transform the template to the dynamic components approach~~
+1. ~~add code to save the dark/light theme to localStorage~~
+2. ~~transform the template to the dynamic components approach~~
+3. ~~incorporate SEO changes~~
+4. ~~add Tags and Category pages~~
+   1. ~~update aside with actual tags and catg values~~
+   2. ~~create tag page component~~
+   3. ~~create catg page component~~
+   4. ~~create DRY script and update components~~
+   5. ~~resolve page refresh "bug"~~
+5. update for WAI-ARIA
+6. add a detailed README.md that explains how to use the theme
+7. add a "Sendgrid" API function for the contacts page
 
 ## Theme Settings (index.json)
 
