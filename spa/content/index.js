@@ -33,8 +33,10 @@ function create_if_block_1(ctx) {
 
 	featured = new Featured({
 			props: {
-				allFeatures: /*allFeatures*/ ctx[6],
-				featuredPage: /*featuredPage*/ ctx[5]
+				allFeatures: /*allFeatures*/ ctx[10],
+				featuredPage: /*featuredPage*/ ctx[9],
+				tagsList: /*tagsList*/ ctx[4],
+				catgList: /*catgList*/ ctx[5]
 			}
 		});
 
@@ -59,7 +61,12 @@ function create_if_block_1(ctx) {
 			mount_component(featured, div, null);
 			current = true;
 		},
-		p: noop,
+		p(ctx, dirty) {
+			const featured_changes = {};
+			if (dirty & /*tagsList*/ 16) featured_changes.tagsList = /*tagsList*/ ctx[4];
+			if (dirty & /*catgList*/ 32) featured_changes.catgList = /*catgList*/ ctx[5];
+			featured.$set(featured_changes);
+		},
 		i(local) {
 			if (current) return;
 			transition_in(featured.$$.fragment, local);
@@ -76,7 +83,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (34:4) {#if featuredPage == "Frame" && currentPage <= 1}
+// (32:4) {#if featuredPage == "Frame" && currentPage <= 1}
 function create_if_block(ctx) {
 	let div;
 	let featured;
@@ -84,8 +91,8 @@ function create_if_block(ctx) {
 
 	featured = new Featured({
 			props: {
-				allFeatures: /*allFeatures*/ ctx[6],
-				featuredPage: /*featuredPage*/ ctx[5]
+				allFeatures: /*allFeatures*/ ctx[10],
+				featuredPage: /*featuredPage*/ ctx[9]
 			}
 		});
 
@@ -139,17 +146,21 @@ function create_fragment(ctx) {
 	let t3;
 	let div3;
 	let current;
-	let if_block0 = /*featuredPage*/ ctx[5] == "Bleed" && /*currentPage*/ ctx[2] <= 1 && create_if_block_1(ctx);
-	let if_block1 = /*featuredPage*/ ctx[5] == "Frame" && /*currentPage*/ ctx[2] <= 1 && create_if_block(ctx);
+	let if_block0 = /*featuredPage*/ ctx[9] == "Bleed" && /*currentPage*/ ctx[6] <= 1 && create_if_block_1(ctx);
+	let if_block1 = /*featuredPage*/ ctx[9] == "Frame" && /*currentPage*/ ctx[6] <= 1 && create_if_block(ctx);
 
 	mainsection = new MainSection({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
 				content: /*content*/ ctx[1],
-				postRangeHigh: /*postRangeHigh*/ ctx[3],
-				postRangeLow: /*postRangeLow*/ ctx[4],
-				currentPage: /*currentPage*/ ctx[2],
-				totalPages: /*totalPages*/ ctx[7]
+				postRangeHigh: /*postRangeHigh*/ ctx[7],
+				postRangeLow: /*postRangeLow*/ ctx[8],
+				currentPage: /*currentPage*/ ctx[6],
+				totalPages: /*totalPages*/ ctx[11],
+				tagsMap: /*tagsMap*/ ctx[2],
+				catgsMap: /*catgsMap*/ ctx[3],
+				tagsList: /*tagsList*/ ctx[4],
+				catgList: /*catgList*/ ctx[5]
 			}
 		});
 
@@ -215,11 +226,11 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (/*featuredPage*/ ctx[5] == "Bleed" && /*currentPage*/ ctx[2] <= 1) {
+			if (/*featuredPage*/ ctx[9] == "Bleed" && /*currentPage*/ ctx[6] <= 1) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty & /*currentPage*/ 4) {
+					if (dirty & /*currentPage*/ 64) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -238,11 +249,11 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (/*featuredPage*/ ctx[5] == "Frame" && /*currentPage*/ ctx[2] <= 1) {
+			if (/*featuredPage*/ ctx[9] == "Frame" && /*currentPage*/ ctx[6] <= 1) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
-					if (dirty & /*currentPage*/ 4) {
+					if (dirty & /*currentPage*/ 64) {
 						transition_in(if_block1, 1);
 					}
 				} else {
@@ -264,9 +275,13 @@ function create_fragment(ctx) {
 			const mainsection_changes = {};
 			if (dirty & /*allPosts*/ 1) mainsection_changes.allPosts = /*allPosts*/ ctx[0];
 			if (dirty & /*content*/ 2) mainsection_changes.content = /*content*/ ctx[1];
-			if (dirty & /*postRangeHigh*/ 8) mainsection_changes.postRangeHigh = /*postRangeHigh*/ ctx[3];
-			if (dirty & /*postRangeLow*/ 16) mainsection_changes.postRangeLow = /*postRangeLow*/ ctx[4];
-			if (dirty & /*currentPage*/ 4) mainsection_changes.currentPage = /*currentPage*/ ctx[2];
+			if (dirty & /*postRangeHigh*/ 128) mainsection_changes.postRangeHigh = /*postRangeHigh*/ ctx[7];
+			if (dirty & /*postRangeLow*/ 256) mainsection_changes.postRangeLow = /*postRangeLow*/ ctx[8];
+			if (dirty & /*currentPage*/ 64) mainsection_changes.currentPage = /*currentPage*/ ctx[6];
+			if (dirty & /*tagsMap*/ 4) mainsection_changes.tagsMap = /*tagsMap*/ ctx[2];
+			if (dirty & /*catgsMap*/ 8) mainsection_changes.catgsMap = /*catgsMap*/ ctx[3];
+			if (dirty & /*tagsList*/ 16) mainsection_changes.tagsList = /*tagsList*/ ctx[4];
+			if (dirty & /*catgList*/ 32) mainsection_changes.catgList = /*catgList*/ ctx[5];
 			mainsection.$set(mainsection_changes);
 		},
 		i(local) {
@@ -295,7 +310,15 @@ function instance($$self, $$props, $$invalidate) {
 	let currentPage;
 	let postRangeHigh;
 	let postRangeLow;
-	let { allPosts } = $$props, { content } = $$props, { theme } = $$props;
+
+	let { allPosts } = $$props,
+		{ content } = $$props,
+		{ theme } = $$props,
+		{ tagsMap } = $$props,
+		{ catgsMap } = $$props,
+		{ tagsList } = $$props,
+		{ catgList } = $$props;
+
 	let featuredPage = theme.featuredPage;
 	let allFeatures = allPosts.filter(content => content.fields?.featured);
 	let totalPosts = allPosts.length;
@@ -304,26 +327,34 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
-		if ("theme" in $$props) $$invalidate(8, theme = $$props.theme);
+		if ("theme" in $$props) $$invalidate(12, theme = $$props.theme);
+		if ("tagsMap" in $$props) $$invalidate(2, tagsMap = $$props.tagsMap);
+		if ("catgsMap" in $$props) $$invalidate(3, catgsMap = $$props.catgsMap);
+		if ("tagsList" in $$props) $$invalidate(4, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(5, catgList = $$props.catgList);
 	};
 
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty & /*content*/ 2) {
-			$: $$invalidate(2, currentPage = content.pager);
+			$: $$invalidate(6, currentPage = content.pager);
 		}
 
-		if ($$self.$$.dirty & /*currentPage, theme*/ 260) {
-			$: $$invalidate(3, postRangeHigh = currentPage * theme.postsPerPage);
+		if ($$self.$$.dirty & /*currentPage, theme*/ 4160) {
+			$: $$invalidate(7, postRangeHigh = currentPage * theme.postsPerPage);
 		}
 
-		if ($$self.$$.dirty & /*postRangeHigh, theme*/ 264) {
-			$: $$invalidate(4, postRangeLow = postRangeHigh - theme.postsPerPage);
+		if ($$self.$$.dirty & /*postRangeHigh, theme*/ 4224) {
+			$: $$invalidate(8, postRangeLow = postRangeHigh - theme.postsPerPage);
 		}
 	};
 
 	return [
 		allPosts,
 		content,
+		tagsMap,
+		catgsMap,
+		tagsList,
+		catgList,
 		currentPage,
 		postRangeHigh,
 		postRangeLow,
@@ -337,7 +368,16 @@ function instance($$self, $$props, $$invalidate) {
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { allPosts: 0, content: 1, theme: 8 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			allPosts: 0,
+			content: 1,
+			theme: 12,
+			tagsMap: 2,
+			catgsMap: 3,
+			tagsList: 4,
+			catgList: 5
+		});
 	}
 }
 

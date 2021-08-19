@@ -28,16 +28,100 @@ import { writable } from '../web_modules/svelte/store/index.mjs';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[6] = list[i];
-	child_ctx[8] = i;
+	child_ctx[8] = list[i];
+	child_ctx[10] = i;
 	return child_ctx;
 }
 
-// (96:12) {#if page.fields.enabled && page.fields.menu}
+// (72:10) {:else}
+function create_else_block(ctx) {
+	let span;
+	let t_value = /*idxContent*/ ctx[1].name + "";
+	let t;
+
+	return {
+		c() {
+			span = element("span");
+			t = text(t_value);
+			this.h();
+		},
+		l(nodes) {
+			span = claim_element(nodes, "SPAN", { class: true, style: true });
+			var span_nodes = children(span);
+			t = claim_text(span_nodes, t_value);
+			span_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(span, "class", "menu");
+			set_style(span, "border-bottom", "4px solid transparent");
+		},
+		m(target, anchor) {
+			insert(target, span, anchor);
+			append(span, t);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*idxContent*/ 2 && t_value !== (t_value = /*idxContent*/ ctx[1].name + "")) set_data(t, t_value);
+		},
+		d(detaching) {
+			if (detaching) detach(span);
+		}
+	};
+}
+
+// (66:10) {#if site_name.length > 1}
+function create_if_block_1(ctx) {
+	let span0;
+	let t0_value = /*site_name*/ ctx[3][0].toUpperCase() + "";
+	let t0;
+	let span1;
+	let t1_value = /*site_name*/ ctx[3][1].toUpperCase() + "";
+	let t1;
+
+	return {
+		c() {
+			span0 = element("span");
+			t0 = text(t0_value);
+			span1 = element("span");
+			t1 = text(t1_value);
+			this.h();
+		},
+		l(nodes) {
+			span0 = claim_element(nodes, "SPAN", { class: true, style: true });
+			var span0_nodes = children(span0);
+			t0 = claim_text(span0_nodes, t0_value);
+			span0_nodes.forEach(detach);
+			span1 = claim_element(nodes, "SPAN", { class: true, style: true });
+			var span1_nodes = children(span1);
+			t1 = claim_text(span1_nodes, t1_value);
+			span1_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(span0, "class", "accent");
+			set_style(span0, "opacity", "1");
+			attr(span1, "class", "menu");
+			set_style(span1, "border-bottom", "4px solid transparent");
+		},
+		m(target, anchor) {
+			insert(target, span0, anchor);
+			append(span0, t0);
+			insert(target, span1, anchor);
+			append(span1, t1);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(span0);
+			if (detaching) detach(span1);
+		}
+	};
+}
+
+// (104:12) {#if page.fields.enabled && page.fields.menu}
 function create_if_block(ctx) {
 	let a;
 	let span;
-	let t_value = /*page*/ ctx[6].fields.pageType + "";
+	let t_value = /*page*/ ctx[8].fields.pageType + "";
 	let t;
 	let a_href_value;
 
@@ -61,7 +145,7 @@ function create_if_block(ctx) {
 		h() {
 			attr(span, "class", "menu");
 			attr(a, "class", "block md:inline-flex px-2 py-1");
-			attr(a, "href", a_href_value = /*page*/ ctx[6].path);
+			attr(a, "href", a_href_value = /*page*/ ctx[8].path);
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
@@ -69,9 +153,9 @@ function create_if_block(ctx) {
 			append(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPages*/ 1 && t_value !== (t_value = /*page*/ ctx[6].fields.pageType + "")) set_data(t, t_value);
+			if (dirty & /*allPages*/ 1 && t_value !== (t_value = /*page*/ ctx[8].fields.pageType + "")) set_data(t, t_value);
 
-			if (dirty & /*allPages*/ 1 && a_href_value !== (a_href_value = /*page*/ ctx[6].path)) {
+			if (dirty & /*allPages*/ 1 && a_href_value !== (a_href_value = /*page*/ ctx[8].path)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -81,10 +165,10 @@ function create_if_block(ctx) {
 	};
 }
 
-// (95:10) {#each allPages as page, i}
+// (103:10) {#each allPages as page, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
-	let if_block = /*page*/ ctx[6].fields.enabled && /*page*/ ctx[6].fields.menu && create_if_block(ctx);
+	let if_block = /*page*/ ctx[8].fields.enabled && /*page*/ ctx[8].fields.menu && create_if_block(ctx);
 
 	return {
 		c() {
@@ -100,7 +184,7 @@ function create_each_block(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (/*page*/ ctx[6].fields.enabled && /*page*/ ctx[6].fields.menu) {
+			if (/*page*/ ctx[8].fields.enabled && /*page*/ ctx[8].fields.menu) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -131,34 +215,38 @@ function create_fragment(ctx) {
 	let img_src_value;
 	let t1;
 	let a0;
-	let span0;
 	let t2;
-	let span1;
-	let t3;
-	let t4;
 	let div1;
 	let button0;
 	let i0;
 	let i0_class_value;
-	let t5;
+	let t3;
 	let i1;
 	let i1_class_value;
-	let t6;
+	let t4;
 	let div3;
 	let div2;
 	let a1;
-	let span2;
+	let span0;
+	let t5;
+	let t6;
 	let t7;
-	let t8;
-	let t9;
 	let button1;
-	let span3;
+	let span1;
 	let i2;
 	let div3_class_value;
-	let t10;
+	let t8;
 	let div5;
 	let mounted;
 	let dispose;
+
+	function select_block_type(ctx, dirty) {
+		if (/*site_name*/ ctx[3].length > 1) return create_if_block_1;
+		return create_else_block;
+	}
+
+	let current_block_type = select_block_type(ctx, -1);
+	let if_block = current_block_type(ctx);
 	let each_value = /*allPages*/ ctx[0];
 	let each_blocks = [];
 
@@ -177,33 +265,30 @@ function create_fragment(ctx) {
 			img = element("img");
 			t1 = space();
 			a0 = element("a");
-			span0 = element("span");
-			t2 = text("QUANTIFIED");
-			span1 = element("span");
-			t3 = text("LEAP");
-			t4 = space();
+			if_block.c();
+			t2 = space();
 			div1 = element("div");
 			button0 = element("button");
 			i0 = element("i");
-			t5 = space();
+			t3 = space();
 			i1 = element("i");
-			t6 = space();
+			t4 = space();
 			div3 = element("div");
 			div2 = element("div");
 			a1 = element("a");
-			span2 = element("span");
-			t7 = text("Home");
-			t8 = space();
+			span0 = element("span");
+			t5 = text("Home");
+			t6 = space();
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t9 = space();
+			t7 = space();
 			button1 = element("button");
-			span3 = element("span");
+			span1 = element("span");
 			i2 = element("i");
-			t10 = space();
+			t8 = space();
 			div5 = element("div");
 			this.h();
 		},
@@ -230,60 +315,53 @@ function create_fragment(ctx) {
 			t1 = claim_space(h1_nodes);
 			a0 = claim_element(h1_nodes, "A", { class: true, href: true });
 			var a0_nodes = children(a0);
-			span0 = claim_element(a0_nodes, "SPAN", { class: true, style: true });
-			var span0_nodes = children(span0);
-			t2 = claim_text(span0_nodes, "QUANTIFIED");
-			span0_nodes.forEach(detach);
-			span1 = claim_element(a0_nodes, "SPAN", { class: true, style: true });
-			var span1_nodes = children(span1);
-			t3 = claim_text(span1_nodes, "LEAP");
-			span1_nodes.forEach(detach);
+			if_block.l(a0_nodes);
 			a0_nodes.forEach(detach);
 			h1_nodes.forEach(detach);
-			t4 = claim_space(nav_nodes);
+			t2 = claim_space(nav_nodes);
 			div1 = claim_element(nav_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			button0 = claim_element(div1_nodes, "BUTTON", { id: true, type: true, class: true });
 			var button0_nodes = children(button0);
 			i0 = claim_element(button0_nodes, "I", { class: true });
 			children(i0).forEach(detach);
-			t5 = claim_space(button0_nodes);
+			t3 = claim_space(button0_nodes);
 			i1 = claim_element(button0_nodes, "I", { class: true });
 			children(i1).forEach(detach);
 			button0_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t6 = claim_space(nav_nodes);
+			t4 = claim_space(nav_nodes);
 			div3 = claim_element(nav_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
 			div2 = claim_element(div3_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			a1 = claim_element(div2_nodes, "A", { class: true, href: true });
 			var a1_nodes = children(a1);
-			span2 = claim_element(a1_nodes, "SPAN", { class: true });
-			var span2_nodes = children(span2);
-			t7 = claim_text(span2_nodes, "Home");
-			span2_nodes.forEach(detach);
+			span0 = claim_element(a1_nodes, "SPAN", { class: true });
+			var span0_nodes = children(span0);
+			t5 = claim_text(span0_nodes, "Home");
+			span0_nodes.forEach(detach);
 			a1_nodes.forEach(detach);
-			t8 = claim_space(div2_nodes);
+			t6 = claim_space(div2_nodes);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].l(div2_nodes);
 			}
 
-			t9 = claim_space(div2_nodes);
+			t7 = claim_space(div2_nodes);
 			button1 = claim_element(div2_nodes, "BUTTON", { id: true, type: true, class: true });
 			var button1_nodes = children(button1);
-			span3 = claim_element(button1_nodes, "SPAN", { class: true });
-			var span3_nodes = children(span3);
-			i2 = claim_element(span3_nodes, "I", { class: true });
+			span1 = claim_element(button1_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			i2 = claim_element(span1_nodes, "I", { class: true });
 			children(i2).forEach(detach);
-			span3_nodes.forEach(detach);
+			span1_nodes.forEach(detach);
 			button1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			div3_nodes.forEach(detach);
 			nav_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
-			t10 = claim_space(div6_nodes);
+			t8 = claim_space(div6_nodes);
 			div5 = claim_element(div6_nodes, "DIV", { class: true });
 			children(div5).forEach(detach);
 			div6_nodes.forEach(detach);
@@ -295,30 +373,26 @@ function create_fragment(ctx) {
 			attr(img, "height", "50");
 			if (img.src !== (img_src_value = "assets/logo.svg")) attr(img, "src", img_src_value);
 			attr(img, "alt", "Logo");
-			attr(span0, "class", "accent");
-			set_style(span0, "opacity", "1");
-			attr(span1, "class", "menu");
-			set_style(span1, "border-bottom", "4px solid transparent");
 			attr(a0, "class", "ml-2 text-4xl menu");
 			attr(a0, "href", ".");
 			attr(h1, "class", "font-bold opacity-100 my-0 flex items-center");
-			attr(i0, "class", i0_class_value = "las la-bars" + (/*menuShow*/ ctx[1] ? "hidden" : ""));
-			attr(i1, "class", i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[1] ? "" : "hidden"));
+			attr(i0, "class", i0_class_value = "las la-bars" + (/*menuShow*/ ctx[2] ? "hidden" : ""));
+			attr(i1, "class", i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[2] ? "" : "hidden"));
 			attr(button0, "id", "menu");
 			attr(button0, "type", "button");
 			attr(button0, "class", "focus:outline-none");
 			attr(div1, "class", "menu text-4xl flex md:hidden items-center");
-			attr(span2, "class", "menu");
+			attr(span0, "class", "menu");
 			attr(a1, "class", "block md:inline-flex px-2 py-1 md:py-0");
 			attr(a1, "href", ".");
 			attr(i2, "class", "las la-adjust text-2xl");
-			attr(span3, "class", "menu");
+			attr(span1, "class", "menu");
 			attr(button1, "id", "dark");
 			attr(button1, "type", "button");
 			attr(button1, "class", "inline-block md:inline-flex px-2 py-1 md:py-0");
 			attr(div2, "class", "text-xl");
 
-			attr(div3, "class", div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[1]
+			attr(div3, "class", div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[2]
 			? "bg-primary bg-opacity-70"
 			: "hidden"));
 
@@ -337,50 +411,49 @@ function create_fragment(ctx) {
 			append(h1, img);
 			append(h1, t1);
 			append(h1, a0);
-			append(a0, span0);
-			append(span0, t2);
-			append(a0, span1);
-			append(span1, t3);
-			append(nav, t4);
+			if_block.m(a0, null);
+			append(nav, t2);
 			append(nav, div1);
 			append(div1, button0);
 			append(button0, i0);
-			append(button0, t5);
+			append(button0, t3);
 			append(button0, i1);
-			append(nav, t6);
+			append(nav, t4);
 			append(nav, div3);
 			append(div3, div2);
 			append(div2, a1);
-			append(a1, span2);
-			append(span2, t7);
-			append(div2, t8);
+			append(a1, span0);
+			append(span0, t5);
+			append(div2, t6);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(div2, null);
 			}
 
-			append(div2, t9);
+			append(div2, t7);
 			append(div2, button1);
-			append(button1, span3);
-			append(span3, i2);
-			append(div6, t10);
+			append(button1, span1);
+			append(span1, i2);
+			append(div6, t8);
 			append(div6, div5);
 
 			if (!mounted) {
 				dispose = [
-					listen(button0, "click", /*toggleNavbar*/ ctx[3]),
-					listen(button1, "click", /*toggleDark*/ ctx[2])
+					listen(button0, "click", /*toggleNavbar*/ ctx[5]),
+					listen(button1, "click", /*toggleDark*/ ctx[4])
 				];
 
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*menuShow*/ 2 && i0_class_value !== (i0_class_value = "las la-bars" + (/*menuShow*/ ctx[1] ? "hidden" : ""))) {
+			if_block.p(ctx, dirty);
+
+			if (dirty & /*menuShow*/ 4 && i0_class_value !== (i0_class_value = "las la-bars" + (/*menuShow*/ ctx[2] ? "hidden" : ""))) {
 				attr(i0, "class", i0_class_value);
 			}
 
-			if (dirty & /*menuShow*/ 2 && i1_class_value !== (i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[1] ? "" : "hidden"))) {
+			if (dirty & /*menuShow*/ 4 && i1_class_value !== (i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[2] ? "" : "hidden"))) {
 				attr(i1, "class", i1_class_value);
 			}
 
@@ -396,7 +469,7 @@ function create_fragment(ctx) {
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(div2, t9);
+						each_blocks[i].m(div2, t7);
 					}
 				}
 
@@ -407,7 +480,7 @@ function create_fragment(ctx) {
 				each_blocks.length = each_value.length;
 			}
 
-			if (dirty & /*menuShow*/ 2 && div3_class_value !== (div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[1]
+			if (dirty & /*menuShow*/ 4 && div3_class_value !== (div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[2]
 			? "bg-primary bg-opacity-70"
 			: "hidden"))) {
 				attr(div3, "class", div3_class_value);
@@ -417,6 +490,7 @@ function create_fragment(ctx) {
 		o: noop,
 		d(detaching) {
 			if (detaching) detach(div6);
+			if_block.d();
 			destroy_each(each_blocks, detaching);
 			mounted = false;
 			run_all(dispose);
@@ -426,24 +500,25 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { allPages } = $$props;
-	let { isDark } = $$props, { theme } = $$props;
+	let { isDark } = $$props, { theme } = $$props, { idxContent } = $$props;
+	let site_name = idxContent.name.split(" ");
 	let menuShow = false;
 
 	function toggleDark() {
 		// Set the boolean
-		$$invalidate(4, isDark = !isDark);
+		$$invalidate(6, isDark = !isDark);
 
 		// Store the change as local storage value
 		theme.set(isDark ? "dark" : "light");
 	}
 
 	function toggleNavbar() {
-		$$invalidate(1, menuShow = !menuShow);
+		$$invalidate(2, menuShow = !menuShow);
 	}
 
 	onMount(() => {
 		// Get the value out of storage on-load or set a sane default.
-		$$invalidate(5, theme = writable(localStorage.getItem("theme")));
+		$$invalidate(7, theme = writable(localStorage.getItem("theme")));
 
 		// Anytime the store changes, update the local storage value.
 		theme.subscribe(value => {
@@ -451,17 +526,17 @@ function instance($$self, $$props, $$invalidate) {
 		});
 
 		// Set the starting boolean
-		$$invalidate(4, isDark = localStorage.theme === "dark" ? true : false);
+		$$invalidate(6, isDark = localStorage.theme === "dark" ? true : false);
 
 		const handleOutsideClick = event => {
 			if (menuShow && !menu.contains(event.target)) {
-				$$invalidate(1, menuShow = false);
+				$$invalidate(2, menuShow = false);
 			}
 		};
 
 		const handleEscape = event => {
 			if (menuShow && event.key === "Escape") {
-				$$invalidate(1, menuShow = false);
+				$$invalidate(2, menuShow = false);
 			}
 		};
 
@@ -479,17 +554,33 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("allPages" in $$props) $$invalidate(0, allPages = $$props.allPages);
-		if ("isDark" in $$props) $$invalidate(4, isDark = $$props.isDark);
-		if ("theme" in $$props) $$invalidate(5, theme = $$props.theme);
+		if ("isDark" in $$props) $$invalidate(6, isDark = $$props.isDark);
+		if ("theme" in $$props) $$invalidate(7, theme = $$props.theme);
+		if ("idxContent" in $$props) $$invalidate(1, idxContent = $$props.idxContent);
 	};
 
-	return [allPages, menuShow, toggleDark, toggleNavbar, isDark, theme];
+	return [
+		allPages,
+		idxContent,
+		menuShow,
+		site_name,
+		toggleDark,
+		toggleNavbar,
+		isDark,
+		theme
+	];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { allPages: 0, isDark: 4, theme: 5 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			allPages: 0,
+			isDark: 6,
+			theme: 7,
+			idxContent: 1
+		});
 	}
 }
 

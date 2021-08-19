@@ -88,7 +88,9 @@ function create_fragment(ctx) {
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[7]
+				socialLinks: /*socialLinks*/ ctx[9],
+				tagsList: /*tagsList*/ ctx[1],
+				catgList: /*catgList*/ ctx[2]
 			}
 		});
 
@@ -102,10 +104,10 @@ function create_fragment(ctx) {
 			div12 = element("div");
 			div1 = element("div");
 			h2 = element("h2");
-			t1 = text(/*title*/ ctx[1]);
+			t1 = text(/*title*/ ctx[3]);
 			t2 = space();
 			p = element("p");
-			t3 = text(/*articleBody*/ ctx[2]);
+			t3 = text(/*articleBody*/ ctx[4]);
 			t4 = space();
 			form = element("form");
 			div4 = element("div");
@@ -164,12 +166,12 @@ function create_fragment(ctx) {
 			var div1_nodes = children(div1);
 			h2 = claim_element(div1_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t1 = claim_text(h2_nodes, /*title*/ ctx[1]);
+			t1 = claim_text(h2_nodes, /*title*/ ctx[3]);
 			h2_nodes.forEach(detach);
 			t2 = claim_space(div1_nodes);
 			p = claim_element(div1_nodes, "P", { class: true });
 			var p_nodes = children(p);
-			t3 = claim_text(p_nodes, /*articleBody*/ ctx[2]);
+			t3 = claim_text(p_nodes, /*articleBody*/ ctx[4]);
 			p_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
 			t4 = claim_space(div12_nodes);
@@ -281,7 +283,7 @@ function create_fragment(ctx) {
 			attr(div1, "class", "");
 			attr(label0, "class", "block uppercase tracking-wide header mb-2");
 			attr(label0, "for", "grid-first-name");
-			attr(input0, "class", "appearance-none block w-full bg-gray-100 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
+			attr(input0, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
 			attr(input0, "id", "grid-first-name");
 			attr(input0, "type", "text");
 			attr(input0, "placeholder", "Jane");
@@ -318,8 +320,8 @@ function create_fragment(ctx) {
 			attr(div11, "class", "md:flex md:items-center");
 			attr(form, "id", "contactform");
 			attr(form, "class", "w-full max-w-lg");
-			attr(div12, "class", "w-full md:w-9/12 mb-5 mb-lg-0 px-0");
-			attr(div13, "class", "w-full md:w-3/12 mb-5 mb-lg-0 px-0");
+			attr(div12, "class", "w-full md:w-9/12 mb-lg-0 px-0");
+			attr(div13, "class", "w-full md:w-3/12 mb-lg-0 px-0");
 			attr(div14, "class", "row md:flex md:flex-wrap");
 			attr(div15, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
 			attr(div16, "class", "w-0 md:w-1/12 xl:w-2/12");
@@ -346,14 +348,14 @@ function create_fragment(ctx) {
 			append(label0, t5);
 			append(div2, t6);
 			append(div2, input0);
-			set_input_value(input0, /*nameFrst*/ ctx[4]);
+			set_input_value(input0, /*nameFrst*/ ctx[6]);
 			append(div4, t7);
 			append(div4, div3);
 			append(div3, label1);
 			append(label1, t8);
 			append(div3, t9);
 			append(div3, input1);
-			set_input_value(input1, /*nameLast*/ ctx[5]);
+			set_input_value(input1, /*nameLast*/ ctx[7]);
 			append(form, t10);
 			append(form, div6);
 			append(div6, div5);
@@ -361,7 +363,7 @@ function create_fragment(ctx) {
 			append(label2, t11);
 			append(div5, t12);
 			append(div5, input2);
-			set_input_value(input2, /*addrFrom*/ ctx[3]);
+			set_input_value(input2, /*addrFrom*/ ctx[5]);
 			append(form, t13);
 			append(form, div8);
 			append(div8, div7);
@@ -369,7 +371,7 @@ function create_fragment(ctx) {
 			append(label3, t14);
 			append(div7, t15);
 			append(div7, textarea);
-			set_input_value(textarea, /*msgBody*/ ctx[6]);
+			set_input_value(textarea, /*msgBody*/ ctx[8]);
 			append(form, t16);
 			append(form, div11);
 			append(div11, div9);
@@ -386,38 +388,40 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(input0, "input", /*input0_input_handler*/ ctx[10]),
-					listen(input1, "input", /*input1_input_handler*/ ctx[11]),
-					listen(input2, "input", /*input2_input_handler*/ ctx[12]),
-					listen(textarea, "input", /*textarea_input_handler*/ ctx[13]),
-					listen(button, "click", /*contactSend*/ ctx[8])
+					listen(input0, "input", /*input0_input_handler*/ ctx[12]),
+					listen(input1, "input", /*input1_input_handler*/ ctx[13]),
+					listen(input2, "input", /*input2_input_handler*/ ctx[14]),
+					listen(textarea, "input", /*textarea_input_handler*/ ctx[15]),
+					listen(button, "click", /*contactSend*/ ctx[10])
 				];
 
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*title*/ 2) set_data(t1, /*title*/ ctx[1]);
-			if (!current || dirty & /*articleBody*/ 4) set_data(t3, /*articleBody*/ ctx[2]);
+			if (!current || dirty & /*title*/ 8) set_data(t1, /*title*/ ctx[3]);
+			if (!current || dirty & /*articleBody*/ 16) set_data(t3, /*articleBody*/ ctx[4]);
 
-			if (dirty & /*nameFrst*/ 16 && input0.value !== /*nameFrst*/ ctx[4]) {
-				set_input_value(input0, /*nameFrst*/ ctx[4]);
+			if (dirty & /*nameFrst*/ 64 && input0.value !== /*nameFrst*/ ctx[6]) {
+				set_input_value(input0, /*nameFrst*/ ctx[6]);
 			}
 
-			if (dirty & /*nameLast*/ 32 && input1.value !== /*nameLast*/ ctx[5]) {
-				set_input_value(input1, /*nameLast*/ ctx[5]);
+			if (dirty & /*nameLast*/ 128 && input1.value !== /*nameLast*/ ctx[7]) {
+				set_input_value(input1, /*nameLast*/ ctx[7]);
 			}
 
-			if (dirty & /*addrFrom*/ 8 && input2.value !== /*addrFrom*/ ctx[3]) {
-				set_input_value(input2, /*addrFrom*/ ctx[3]);
+			if (dirty & /*addrFrom*/ 32 && input2.value !== /*addrFrom*/ ctx[5]) {
+				set_input_value(input2, /*addrFrom*/ ctx[5]);
 			}
 
-			if (dirty & /*msgBody*/ 64) {
-				set_input_value(textarea, /*msgBody*/ ctx[6]);
+			if (dirty & /*msgBody*/ 256) {
+				set_input_value(textarea, /*msgBody*/ ctx[8]);
 			}
 
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
+			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
+			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -439,7 +443,11 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { idxContent } = $$props, { allPosts } = $$props;
+	let { idxContent } = $$props,
+		{ allPosts } = $$props,
+		{ tagsList } = $$props,
+		{ catgList } = $$props;
+
 	let { title } = $$props, { articleBody } = $$props;
 	let socialLinks = idxContent.socialLinks;
 	let addrFrom = "";
@@ -481,33 +489,37 @@ function instance($$self, $$props, $$invalidate) {
 
 	function input0_input_handler() {
 		nameFrst = this.value;
-		$$invalidate(4, nameFrst);
+		$$invalidate(6, nameFrst);
 	}
 
 	function input1_input_handler() {
 		nameLast = this.value;
-		$$invalidate(5, nameLast);
+		$$invalidate(7, nameLast);
 	}
 
 	function input2_input_handler() {
 		addrFrom = this.value;
-		$$invalidate(3, addrFrom);
+		$$invalidate(5, addrFrom);
 	}
 
 	function textarea_input_handler() {
 		msgBody = this.value;
-		$$invalidate(6, msgBody);
+		$$invalidate(8, msgBody);
 	}
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(9, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(11, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("title" in $$props) $$invalidate(1, title = $$props.title);
-		if ("articleBody" in $$props) $$invalidate(2, articleBody = $$props.articleBody);
+		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
+		if ("title" in $$props) $$invalidate(3, title = $$props.title);
+		if ("articleBody" in $$props) $$invalidate(4, articleBody = $$props.articleBody);
 	};
 
 	return [
 		allPosts,
+		tagsList,
+		catgList,
 		title,
 		articleBody,
 		addrFrom,
@@ -529,10 +541,12 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 9,
+			idxContent: 11,
 			allPosts: 0,
-			title: 1,
-			articleBody: 2
+			tagsList: 1,
+			catgList: 2,
+			title: 3,
+			articleBody: 4
 		});
 	}
 }

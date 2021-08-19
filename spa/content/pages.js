@@ -24,7 +24,7 @@ function create_if_block(ctx) {
 	let div;
 	let switch_instance;
 	let current;
-	var switch_value = /*getComponent*/ ctx[9]();
+	var switch_value = /*getComponent*/ ctx[13]();
 
 	function switch_props(ctx) {
 		return {
@@ -36,7 +36,11 @@ function create_if_block(ctx) {
 				image: /*image*/ ctx[5],
 				hero: /*hero*/ ctx[6],
 				splash: /*splash*/ ctx[7],
-				articleBody: /*articleBody*/ ctx[8]
+				articleBody: /*articleBody*/ ctx[8],
+				tagsMap: /*tagsMap*/ ctx[9],
+				catgsMap: /*catgsMap*/ ctx[10],
+				tagsList: /*tagsList*/ ctx[11],
+				catgList: /*catgList*/ ctx[12]
 			}
 		};
 	}
@@ -80,8 +84,12 @@ function create_if_block(ctx) {
 			if (dirty & /*hero*/ 64) switch_instance_changes.hero = /*hero*/ ctx[6];
 			if (dirty & /*splash*/ 128) switch_instance_changes.splash = /*splash*/ ctx[7];
 			if (dirty & /*articleBody*/ 256) switch_instance_changes.articleBody = /*articleBody*/ ctx[8];
+			if (dirty & /*tagsMap*/ 512) switch_instance_changes.tagsMap = /*tagsMap*/ ctx[9];
+			if (dirty & /*catgsMap*/ 1024) switch_instance_changes.catgsMap = /*catgsMap*/ ctx[10];
+			if (dirty & /*tagsList*/ 2048) switch_instance_changes.tagsList = /*tagsList*/ ctx[11];
+			if (dirty & /*catgList*/ 4096) switch_instance_changes.catgList = /*catgList*/ ctx[12];
 
-			if (switch_value !== (switch_value = /*getComponent*/ ctx[9]())) {
+			if (switch_value !== (switch_value = /*getComponent*/ ctx[13]())) {
 				if (switch_instance) {
 					group_outros();
 					const old_component = switch_instance;
@@ -191,7 +199,11 @@ function instance($$self, $$props, $$invalidate) {
 		{ image } = $$props,
 		{ hero } = $$props,
 		{ splash } = $$props,
-		{ articleBody } = $$props;
+		{ articleBody } = $$props,
+		{ tagsMap } = $$props,
+		{ catgsMap } = $$props,
+		{ tagsList } = $$props,
+		{ catgList } = $$props;
 
 	const getComponent = function () {
 		try {
@@ -203,16 +215,20 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);
-		if ("allLayouts" in $$props) $$invalidate(10, allLayouts = $$props.allLayouts);
+		if ("allLayouts" in $$props) $$invalidate(14, allLayouts = $$props.allLayouts);
 		if ("allPosts" in $$props) $$invalidate(1, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(2, content = $$props.content);
-		if ("pageType" in $$props) $$invalidate(11, pageType = $$props.pageType);
+		if ("pageType" in $$props) $$invalidate(15, pageType = $$props.pageType);
 		if ("enabled" in $$props) $$invalidate(3, enabled = $$props.enabled);
 		if ("title" in $$props) $$invalidate(4, title = $$props.title);
 		if ("image" in $$props) $$invalidate(5, image = $$props.image);
 		if ("hero" in $$props) $$invalidate(6, hero = $$props.hero);
 		if ("splash" in $$props) $$invalidate(7, splash = $$props.splash);
 		if ("articleBody" in $$props) $$invalidate(8, articleBody = $$props.articleBody);
+		if ("tagsMap" in $$props) $$invalidate(9, tagsMap = $$props.tagsMap);
+		if ("catgsMap" in $$props) $$invalidate(10, catgsMap = $$props.catgsMap);
+		if ("tagsList" in $$props) $$invalidate(11, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(12, catgList = $$props.catgList);
 	};
 
 	return [
@@ -225,6 +241,10 @@ function instance($$self, $$props, $$invalidate) {
 		hero,
 		splash,
 		articleBody,
+		tagsMap,
+		catgsMap,
+		tagsList,
+		catgList,
 		getComponent,
 		allLayouts,
 		pageType
@@ -237,16 +257,20 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 0,
-			allLayouts: 10,
+			allLayouts: 14,
 			allPosts: 1,
 			content: 2,
-			pageType: 11,
+			pageType: 15,
 			enabled: 3,
 			title: 4,
 			image: 5,
 			hero: 6,
 			splash: 7,
-			articleBody: 8
+			articleBody: 8,
+			tagsMap: 9,
+			catgsMap: 10,
+			tagsList: 11,
+			catgList: 12
 		});
 	}
 }

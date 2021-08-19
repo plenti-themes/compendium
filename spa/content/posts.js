@@ -26,24 +26,21 @@ import {
 
 import Aside from '../components/aside.js';
 
-// Ogp (Open Graph Protocol): SEO for social networks
-import Ogp from '../scripts/openGraph.js';
-
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[17] = list[i];
-	child_ctx[19] = i;
+	child_ctx[13] = list[i];
+	child_ctx[15] = i;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[20] = list[i];
-	child_ctx[19] = i;
+	child_ctx[16] = list[i];
+	child_ctx[15] = i;
 	return child_ctx;
 }
 
-// (64:22) {#if i < categories.length - 1}
+// (55:22) {#if i < categories.length - 1}
 function create_if_block_1(ctx) {
 	let t;
 
@@ -63,14 +60,14 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (62:12) {#each categories as catg, i}
+// (53:12) {#each categories as catg, i}
 function create_each_block_1(ctx) {
 	let a;
-	let t0_value = /*catg*/ ctx[20] + "";
+	let t0_value = /*catg*/ ctx[16] + "";
 	let t0;
 	let t1;
 	let a_href_value;
-	let if_block = /*i*/ ctx[19] < /*categories*/ ctx[9].length - 1 && create_if_block_1(ctx);
+	let if_block = /*i*/ ctx[15] < /*categories*/ ctx[9].length - 1 && create_if_block_1(ctx);
 
 	return {
 		c() {
@@ -90,7 +87,7 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "catgs/" + /*catg*/ ctx[20]);
+			attr(a, "href", a_href_value = "catgs/" + (/*catgList*/ ctx[2].indexOf(/*catg*/ ctx[16]) + 1));
 			attr(a, "class", "ml-1");
 		},
 		m(target, anchor) {
@@ -100,9 +97,9 @@ function create_each_block_1(ctx) {
 			append(a, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*categories*/ 512 && t0_value !== (t0_value = /*catg*/ ctx[20] + "")) set_data(t0, t0_value);
+			if (dirty & /*categories*/ 512 && t0_value !== (t0_value = /*catg*/ ctx[16] + "")) set_data(t0, t0_value);
 
-			if (/*i*/ ctx[19] < /*categories*/ ctx[9].length - 1) {
+			if (/*i*/ ctx[15] < /*categories*/ ctx[9].length - 1) {
 				if (if_block) {
 					
 				} else {
@@ -115,7 +112,7 @@ function create_each_block_1(ctx) {
 				if_block = null;
 			}
 
-			if (dirty & /*categories*/ 512 && a_href_value !== (a_href_value = "catgs/" + /*catg*/ ctx[20])) {
+			if (dirty & /*catgList, categories*/ 516 && a_href_value !== (a_href_value = "catgs/" + (/*catgList*/ ctx[2].indexOf(/*catg*/ ctx[16]) + 1))) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -126,7 +123,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (72:21) {#if i < tags.length - 1}
+// (64:21) {#if i < tags.length - 1}
 function create_if_block(ctx) {
 	let t;
 
@@ -146,14 +143,14 @@ function create_if_block(ctx) {
 	};
 }
 
-// (70:12) {#each tags as tag, i}
+// (62:12) {#each tags as tag, i}
 function create_each_block(ctx) {
 	let a;
-	let t0_value = /*tag*/ ctx[17] + "";
+	let t0_value = /*tag*/ ctx[13] + "";
 	let t0;
 	let t1;
 	let a_href_value;
-	let if_block = /*i*/ ctx[19] < /*tags*/ ctx[10].length - 1 && create_if_block(ctx);
+	let if_block = /*i*/ ctx[15] < /*tags*/ ctx[10].length - 1 && create_if_block(ctx);
 
 	return {
 		c() {
@@ -173,7 +170,7 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "tags/" + /*tag*/ ctx[17]);
+			attr(a, "href", a_href_value = "tags/" + (/*tagsList*/ ctx[1].indexOf(/*tag*/ ctx[13]) + 1));
 			attr(a, "class", "ml-1");
 		},
 		m(target, anchor) {
@@ -183,9 +180,9 @@ function create_each_block(ctx) {
 			append(a, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tags*/ 1024 && t0_value !== (t0_value = /*tag*/ ctx[17] + "")) set_data(t0, t0_value);
+			if (dirty & /*tags*/ 1024 && t0_value !== (t0_value = /*tag*/ ctx[13] + "")) set_data(t0, t0_value);
 
-			if (/*i*/ ctx[19] < /*tags*/ ctx[10].length - 1) {
+			if (/*i*/ ctx[15] < /*tags*/ ctx[10].length - 1) {
 				if (if_block) {
 					
 				} else {
@@ -198,7 +195,7 @@ function create_each_block(ctx) {
 				if_block = null;
 			}
 
-			if (dirty & /*tags*/ 1024 && a_href_value !== (a_href_value = "tags/" + /*tag*/ ctx[17])) {
+			if (dirty & /*tagsList, tags*/ 1026 && a_href_value !== (a_href_value = "tags/" + (/*tagsList*/ ctx[1].indexOf(/*tag*/ ctx[13]) + 1))) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -211,66 +208,53 @@ function create_each_block(ctx) {
 
 function create_fragment(ctx) {
 	let section;
-	let ogp;
-	let t0;
 	let div0;
-	let t1;
+	let t0;
 	let div5;
 	let div4;
 	let div1;
 	let img;
 	let img_src_value;
 	let img_alt_value;
-	let t2;
+	let t1;
 	let span;
 	let raw0_value = /*image*/ ctx[5].citation.replaceAll("<a ", "<a target='blank' rel='noopener noreferrer'") + "";
-	let t3;
+	let t2;
 	let div2;
 	let h1;
+	let t3;
 	let t4;
-	let t5;
-	let ul;
+	let ul0;
 	let li0;
 	let i;
-	let t6;
+	let t5;
 	let a;
-	let t7_value = /*author*/ ctx[6].name + "";
-	let t7;
+	let t6_value = /*author*/ ctx[6].name + "";
+	let t6;
 	let a_href_value;
-	let t8;
+	let t7;
 	let li1;
+	let t8;
 	let t9;
 	let t10;
-	let t11;
 	let li2;
+	let t11;
 	let t12;
 	let t13;
-	let t14;
+	let ul1;
 	let li3;
+	let t14;
 	let t15;
-	let t16;
 	let li4;
+	let t16;
 	let t17;
-	let t18;
 	let p;
-	let t19;
+	let t18;
 	let div3;
 	let aside;
-	let t20;
+	let t19;
 	let div6;
 	let current;
-
-	ogp = new Ogp({
-			props: {
-				idxContent: /*idxContent*/ ctx[0],
-				title: /*title*/ ctx[4],
-				desc: /*desc*/ ctx[13],
-				image: /*image*/ ctx[5],
-				env: /*env*/ ctx[2],
-				path: /*path*/ ctx[12]
-			}
-		});
-
 	let each_value_1 = /*categories*/ ctx[9];
 	let each_blocks_1 = [];
 
@@ -287,76 +271,75 @@ function create_fragment(ctx) {
 
 	aside = new Aside({
 			props: {
-				allPosts: /*allPosts*/ ctx[1],
-				socialLinks: /*socialLinks*/ ctx[11]
+				allPosts: /*allPosts*/ ctx[0],
+				socialLinks: /*socialLinks*/ ctx[11],
+				tagsList: /*tagsList*/ ctx[1],
+				catgList: /*catgList*/ ctx[2]
 			}
 		});
 
 	return {
 		c() {
 			section = element("section");
-			create_component(ogp.$$.fragment);
-			t0 = space();
 			div0 = element("div");
-			t1 = space();
+			t0 = space();
 			div5 = element("div");
 			div4 = element("div");
 			div1 = element("div");
 			img = element("img");
-			t2 = space();
+			t1 = space();
 			span = element("span");
-			t3 = space();
+			t2 = space();
 			div2 = element("div");
 			h1 = element("h1");
-			t4 = text(/*title*/ ctx[4]);
-			t5 = space();
-			ul = element("ul");
+			t3 = text(/*title*/ ctx[4]);
+			t4 = space();
+			ul0 = element("ul");
 			li0 = element("li");
 			i = element("i");
-			t6 = space();
+			t5 = space();
 			a = element("a");
-			t7 = text(t7_value);
-			t8 = space();
+			t6 = text(t6_value);
+			t7 = space();
 			li1 = element("li");
-			t9 = text("Created : ");
-			t10 = text(/*dateCreated*/ ctx[7]);
-			t11 = space();
+			t8 = text("Created : ");
+			t9 = text(/*dateCreated*/ ctx[7]);
+			t10 = space();
 			li2 = element("li");
-			t12 = text("Updated : ");
-			t13 = text(/*dateModified*/ ctx[8]);
-			t14 = space();
+			t11 = text("Updated : ");
+			t12 = text(/*dateModified*/ ctx[8]);
+			t13 = space();
+			ul1 = element("ul");
 			li3 = element("li");
-			t15 = text("Categories:\n            ");
+			t14 = text("Categories:\n            ");
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].c();
 			}
 
-			t16 = space();
+			t15 = space();
 			li4 = element("li");
-			t17 = text("Tags:\n            ");
+			t16 = text("Tags:\n            ");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t18 = space();
+			t17 = space();
 			p = element("p");
-			t19 = space();
+			t18 = space();
 			div3 = element("div");
 			create_component(aside.$$.fragment);
-			t20 = space();
+			t19 = space();
 			div6 = element("div");
 			this.h();
 		},
 		l(nodes) {
 			section = claim_element(nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
-			claim_component(ogp.$$.fragment, section_nodes);
-			t0 = claim_space(section_nodes);
 			div0 = claim_element(section_nodes, "DIV", { class: true });
 			children(div0).forEach(detach);
-			t1 = claim_space(section_nodes);
+			t0 = claim_space(section_nodes);
 			div5 = claim_element(section_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
 			div4 = claim_element(div5_nodes, "DIV", { class: true });
@@ -364,77 +347,80 @@ function create_fragment(ctx) {
 			div1 = claim_element(div4_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
 			img = claim_element(div1_nodes, "IMG", { class: true, src: true, alt: true });
-			t2 = claim_space(div1_nodes);
+			t1 = claim_space(div1_nodes);
 			span = claim_element(div1_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
 			span_nodes.forEach(detach);
 			div1_nodes.forEach(detach);
-			t3 = claim_space(div4_nodes);
+			t2 = claim_space(div4_nodes);
 			div2 = claim_element(div4_nodes, "DIV", { class: true });
 			var div2_nodes = children(div2);
 			h1 = claim_element(div2_nodes, "H1", { class: true });
 			var h1_nodes = children(h1);
-			t4 = claim_text(h1_nodes, /*title*/ ctx[4]);
+			t3 = claim_text(h1_nodes, /*title*/ ctx[4]);
 			h1_nodes.forEach(detach);
-			t5 = claim_space(div2_nodes);
-			ul = claim_element(div2_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-			li0 = claim_element(ul_nodes, "LI", { class: true });
+			t4 = claim_space(div2_nodes);
+			ul0 = claim_element(div2_nodes, "UL", { class: true });
+			var ul0_nodes = children(ul0);
+			li0 = claim_element(ul0_nodes, "LI", { class: true });
 			var li0_nodes = children(li0);
 			i = claim_element(li0_nodes, "I", { class: true });
 			children(i).forEach(detach);
-			t6 = claim_space(li0_nodes);
+			t5 = claim_space(li0_nodes);
 			a = claim_element(li0_nodes, "A", { href: true });
 			var a_nodes = children(a);
-			t7 = claim_text(a_nodes, t7_value);
+			t6 = claim_text(a_nodes, t6_value);
 			a_nodes.forEach(detach);
 			li0_nodes.forEach(detach);
-			t8 = claim_space(ul_nodes);
-			li1 = claim_element(ul_nodes, "LI", { class: true });
+			t7 = claim_space(ul0_nodes);
+			li1 = claim_element(ul0_nodes, "LI", { class: true });
 			var li1_nodes = children(li1);
-			t9 = claim_text(li1_nodes, "Created : ");
-			t10 = claim_text(li1_nodes, /*dateCreated*/ ctx[7]);
+			t8 = claim_text(li1_nodes, "Created : ");
+			t9 = claim_text(li1_nodes, /*dateCreated*/ ctx[7]);
 			li1_nodes.forEach(detach);
-			t11 = claim_space(ul_nodes);
-			li2 = claim_element(ul_nodes, "LI", { class: true });
+			t10 = claim_space(ul0_nodes);
+			li2 = claim_element(ul0_nodes, "LI", { class: true });
 			var li2_nodes = children(li2);
-			t12 = claim_text(li2_nodes, "Updated : ");
-			t13 = claim_text(li2_nodes, /*dateModified*/ ctx[8]);
+			t11 = claim_text(li2_nodes, "Updated : ");
+			t12 = claim_text(li2_nodes, /*dateModified*/ ctx[8]);
 			li2_nodes.forEach(detach);
-			t14 = claim_space(ul_nodes);
-			li3 = claim_element(ul_nodes, "LI", { class: true });
+			ul0_nodes.forEach(detach);
+			t13 = claim_space(div2_nodes);
+			ul1 = claim_element(div2_nodes, "UL", { class: true });
+			var ul1_nodes = children(ul1);
+			li3 = claim_element(ul1_nodes, "LI", { class: true });
 			var li3_nodes = children(li3);
-			t15 = claim_text(li3_nodes, "Categories:\n            ");
+			t14 = claim_text(li3_nodes, "Categories:\n            ");
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].l(li3_nodes);
 			}
 
 			li3_nodes.forEach(detach);
-			t16 = claim_space(ul_nodes);
-			li4 = claim_element(ul_nodes, "LI", { class: true });
+			t15 = claim_space(ul1_nodes);
+			li4 = claim_element(ul1_nodes, "LI", { class: true });
 			var li4_nodes = children(li4);
-			t17 = claim_text(li4_nodes, "Tags:\n            ");
+			t16 = claim_text(li4_nodes, "Tags:\n            ");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].l(li4_nodes);
 			}
 
 			li4_nodes.forEach(detach);
-			ul_nodes.forEach(detach);
-			t18 = claim_space(div2_nodes);
+			ul1_nodes.forEach(detach);
+			t17 = claim_space(div2_nodes);
 			p = claim_element(div2_nodes, "P", {});
 			var p_nodes = children(p);
 			p_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t19 = claim_space(div4_nodes);
+			t18 = claim_space(div4_nodes);
 			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
 			claim_component(aside.$$.fragment, div3_nodes);
 			div3_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t20 = claim_space(section_nodes);
+			t19 = claim_space(section_nodes);
 			div6 = claim_element(section_nodes, "DIV", { class: true });
 			children(div6).forEach(detach);
 			section_nodes.forEach(detach);
@@ -453,9 +439,10 @@ function create_fragment(ctx) {
 			attr(li0, "class", "px-1 inline-flex");
 			attr(li1, "class", "px-1 inline-flex");
 			attr(li2, "class", "px-1 inline-flex");
+			attr(ul0, "class", "text-meta flex flex-wrap");
 			attr(li3, "class", "px-1 inline-flex");
 			attr(li4, "class", "px-1 inline-flex");
-			attr(ul, "class", "text-meta flex flex-wrap mb-4");
+			attr(ul1, "class", "text-meta flex flex-wrap mb-6");
 			attr(div2, "class", "w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10");
 			attr(div3, "class", "w-full md:w-3/12 mb-5 mb-lg-0 px-0");
 			attr(div4, "class", "row flex flex-wrap");
@@ -465,70 +452,62 @@ function create_fragment(ctx) {
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
-			mount_component(ogp, section, null);
-			append(section, t0);
 			append(section, div0);
-			append(section, t1);
+			append(section, t0);
 			append(section, div5);
 			append(div5, div4);
 			append(div4, div1);
 			append(div1, img);
-			append(div1, t2);
+			append(div1, t1);
 			append(div1, span);
 			span.innerHTML = raw0_value;
-			append(div4, t3);
+			append(div4, t2);
 			append(div4, div2);
 			append(div2, h1);
-			append(h1, t4);
-			append(div2, t5);
-			append(div2, ul);
-			append(ul, li0);
+			append(h1, t3);
+			append(div2, t4);
+			append(div2, ul0);
+			append(ul0, li0);
 			append(li0, i);
-			append(li0, t6);
+			append(li0, t5);
 			append(li0, a);
-			append(a, t7);
-			append(ul, t8);
-			append(ul, li1);
+			append(a, t6);
+			append(ul0, t7);
+			append(ul0, li1);
+			append(li1, t8);
 			append(li1, t9);
-			append(li1, t10);
-			append(ul, t11);
-			append(ul, li2);
+			append(ul0, t10);
+			append(ul0, li2);
+			append(li2, t11);
 			append(li2, t12);
-			append(li2, t13);
-			append(ul, t14);
-			append(ul, li3);
-			append(li3, t15);
+			append(div2, t13);
+			append(div2, ul1);
+			append(ul1, li3);
+			append(li3, t14);
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].m(li3, null);
 			}
 
-			append(ul, t16);
-			append(ul, li4);
-			append(li4, t17);
+			append(ul1, t15);
+			append(ul1, li4);
+			append(li4, t16);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(li4, null);
 			}
 
-			append(div2, t18);
+			append(div2, t17);
 			append(div2, p);
 			p.innerHTML = /*articleBody*/ ctx[3];
-			append(div4, t19);
+			append(div4, t18);
 			append(div4, div3);
 			mount_component(aside, div3, null);
-			append(section, t20);
+			append(section, t19);
 			append(section, div6);
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			const ogp_changes = {};
-			if (dirty & /*idxContent*/ 1) ogp_changes.idxContent = /*idxContent*/ ctx[0];
-			if (dirty & /*title*/ 16) ogp_changes.title = /*title*/ ctx[4];
-			if (dirty & /*image*/ 32) ogp_changes.image = /*image*/ ctx[5];
-			if (dirty & /*env*/ 4) ogp_changes.env = /*env*/ ctx[2];
-			ogp.$set(ogp_changes);
-
 			if (!current || dirty & /*image*/ 32 && img.src !== (img_src_value = "assets/posts/" + /*image*/ ctx[5].src)) {
 				attr(img, "src", img_src_value);
 			}
@@ -538,17 +517,17 @@ function create_fragment(ctx) {
 			}
 
 			if ((!current || dirty & /*image*/ 32) && raw0_value !== (raw0_value = /*image*/ ctx[5].citation.replaceAll("<a ", "<a target='blank' rel='noopener noreferrer'") + "")) span.innerHTML = raw0_value;;
-			if (!current || dirty & /*title*/ 16) set_data(t4, /*title*/ ctx[4]);
-			if ((!current || dirty & /*author*/ 64) && t7_value !== (t7_value = /*author*/ ctx[6].name + "")) set_data(t7, t7_value);
+			if (!current || dirty & /*title*/ 16) set_data(t3, /*title*/ ctx[4]);
+			if ((!current || dirty & /*author*/ 64) && t6_value !== (t6_value = /*author*/ ctx[6].name + "")) set_data(t6, t6_value);
 
 			if (!current || dirty & /*author*/ 64 && a_href_value !== (a_href_value = /*author*/ ctx[6].url)) {
 				attr(a, "href", a_href_value);
 			}
 
-			if (!current || dirty & /*dateCreated*/ 128) set_data(t10, /*dateCreated*/ ctx[7]);
-			if (!current || dirty & /*dateModified*/ 256) set_data(t13, /*dateModified*/ ctx[8]);
+			if (!current || dirty & /*dateCreated*/ 128) set_data(t9, /*dateCreated*/ ctx[7]);
+			if (!current || dirty & /*dateModified*/ 256) set_data(t12, /*dateModified*/ ctx[8]);
 
-			if (dirty & /*categories*/ 512) {
+			if (dirty & /*catgList, categories*/ 516) {
 				each_value_1 = /*categories*/ ctx[9];
 				let i;
 
@@ -571,7 +550,7 @@ function create_fragment(ctx) {
 				each_blocks_1.length = each_value_1.length;
 			}
 
-			if (dirty & /*tags*/ 1024) {
+			if (dirty & /*tagsList, tags*/ 1026) {
 				each_value = /*tags*/ ctx[10];
 				let i;
 
@@ -596,23 +575,22 @@ function create_fragment(ctx) {
 
 			if (!current || dirty & /*articleBody*/ 8) p.innerHTML = /*articleBody*/ ctx[3];;
 			const aside_changes = {};
-			if (dirty & /*allPosts*/ 2) aside_changes.allPosts = /*allPosts*/ ctx[1];
+			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
+			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
+			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
 			if (current) return;
-			transition_in(ogp.$$.fragment, local);
 			transition_in(aside.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
-			transition_out(ogp.$$.fragment, local);
 			transition_out(aside.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(section);
-			destroy_component(ogp);
 			destroy_each(each_blocks_1, detaching);
 			destroy_each(each_blocks, detaching);
 			destroy_component(aside);
@@ -623,8 +601,8 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
 		{ allPosts } = $$props,
-		{ content } = $$props,
-		{ env } = $$props;
+		{ tagsList } = $$props,
+		{ catgList } = $$props;
 
 	let { articleBody } = $$props,
 		{ title } = $$props,
@@ -636,19 +614,12 @@ function instance($$self, $$props, $$invalidate) {
 		{ tags } = $$props;
 
 	let socialLinks = idxContent.socialLinks;
-	let path = content.path;
-
-	// Ogp description length - setting to last word on-or-before 110 characters
-	let desc_start = articleBody.indexOf("<p>");
-
-	let desc_end = desc_start + 110;
-	let desc = articleBody.substring(desc_start, Math.min(desc_end, articleBody.substring(0, desc_end).lastIndexOf(" ")));
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);
-		if ("allPosts" in $$props) $$invalidate(1, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(14, content = $$props.content);
-		if ("env" in $$props) $$invalidate(2, env = $$props.env);
+		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
+		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
+		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
 		if ("articleBody" in $$props) $$invalidate(3, articleBody = $$props.articleBody);
 		if ("title" in $$props) $$invalidate(4, title = $$props.title);
 		if ("image" in $$props) $$invalidate(5, image = $$props.image);
@@ -660,9 +631,9 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	return [
-		idxContent,
 		allPosts,
-		env,
+		tagsList,
+		catgList,
 		articleBody,
 		title,
 		image,
@@ -672,9 +643,7 @@ function instance($$self, $$props, $$invalidate) {
 		categories,
 		tags,
 		socialLinks,
-		path,
-		desc,
-		content
+		idxContent
 	];
 }
 
@@ -683,10 +652,10 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 0,
-			allPosts: 1,
-			content: 14,
-			env: 2,
+			idxContent: 12,
+			allPosts: 0,
+			tagsList: 1,
+			catgList: 2,
 			articleBody: 3,
 			title: 4,
 			image: 5,

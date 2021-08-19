@@ -32,6 +32,7 @@ import {
 import Head from './head.js';
 import Navbar from './navbar.js';
 import Footer from './footer.js';
+import { catgs_tags } from '../scripts/catgs_tags.js';
 
 function create_fragment(ctx) {
 	let html;
@@ -45,7 +46,7 @@ function create_fragment(ctx) {
 	let body;
 	let main;
 	let switch_instance;
-	let main_class_value;
+	let body_class_value;
 	let t2;
 	let footer1;
 	let footer0;
@@ -56,15 +57,19 @@ function create_fragment(ctx) {
 			props: {
 				idxContent: /*idxContent*/ ctx[5],
 				allPages: /*allPages*/ ctx[6],
+				content: /*content*/ ctx[2],
 				env: /*env*/ ctx[4]
 			}
 		});
 
 	function navbar_isDark_binding(value) {
-		/*navbar_isDark_binding*/ ctx[9](value);
+		/*navbar_isDark_binding*/ ctx[13](value);
 	}
 
-	let navbar_props = { allPages: /*allPages*/ ctx[6] };
+	let navbar_props = {
+		allPages: /*allPages*/ ctx[6],
+		idxContent: /*idxContent*/ ctx[5]
+	};
 
 	if (/*isDark*/ ctx[0] !== void 0) {
 		navbar_props.isDark = /*isDark*/ ctx[0];
@@ -80,7 +85,11 @@ function create_fragment(ctx) {
 		{ allPosts: /*allPosts*/ ctx[7] },
 		{ content: /*content*/ ctx[2] },
 		{ isDark: /*isDark*/ ctx[0] },
-		{ env: /*env*/ ctx[4] }
+		{ env: /*env*/ ctx[4] },
+		{ tagsMap: /*tagsMap*/ ctx[8] },
+		{ catgsMap: /*catgsMap*/ ctx[9] },
+		{ tagsList: /*tagsList*/ ctx[10] },
+		{ catgList: /*catgList*/ ctx[11] }
 	];
 
 	var switch_value = /*layout*/ ctx[3];
@@ -127,9 +136,9 @@ function create_fragment(ctx) {
 			claim_component(navbar.$$.fragment, header_nodes);
 			header_nodes.forEach(detach);
 			t1 = claim_space(html_nodes);
-			body = claim_element(html_nodes, "BODY", {});
+			body = claim_element(html_nodes, "BODY", { class: true });
 			var body_nodes = children(body);
-			main = claim_element(body_nodes, "MAIN", { class: true });
+			main = claim_element(body_nodes, "MAIN", {});
 			var main_nodes = children(main);
 			if (switch_instance) claim_component(switch_instance.$$.fragment, main_nodes);
 			main_nodes.forEach(detach);
@@ -145,7 +154,7 @@ function create_fragment(ctx) {
 		h() {
 			attr(header, "class", header_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-primary sticky top-0 z-50"));
 			set_style(header, "box-shadow", "0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20)");
-			attr(main, "class", main_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-main"));
+			attr(body, "class", body_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-main"));
 			attr(footer1, "class", footer1_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme border-t-2") + " bg-primary"));
 			attr(html, "lang", "en");
 		},
@@ -172,10 +181,12 @@ function create_fragment(ctx) {
 			const head_changes = {};
 			if (dirty & /*idxContent*/ 32) head_changes.idxContent = /*idxContent*/ ctx[5];
 			if (dirty & /*allPages*/ 64) head_changes.allPages = /*allPages*/ ctx[6];
+			if (dirty & /*content*/ 4) head_changes.content = /*content*/ ctx[2];
 			if (dirty & /*env*/ 16) head_changes.env = /*env*/ ctx[4];
 			head.$set(head_changes);
 			const navbar_changes = {};
 			if (dirty & /*allPages*/ 64) navbar_changes.allPages = /*allPages*/ ctx[6];
+			if (dirty & /*idxContent*/ 32) navbar_changes.idxContent = /*idxContent*/ ctx[5];
 
 			if (!updating_isDark && dirty & /*isDark*/ 1) {
 				updating_isDark = true;
@@ -189,7 +200,7 @@ function create_fragment(ctx) {
 				attr(header, "class", header_class_value);
 			}
 
-			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, isDark, env*/ 183)
+			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, isDark, env, tagsMap, catgsMap, tagsList, catgList*/ 4023)
 			? get_spread_update(switch_instance_spread_levels, [
 					dirty & /*content*/ 4 && get_spread_object(/*content*/ ctx[2].fields),
 					dirty & /*idxContent*/ 32 && { idxContent: /*idxContent*/ ctx[5] },
@@ -197,7 +208,11 @@ function create_fragment(ctx) {
 					dirty & /*allPosts*/ 128 && { allPosts: /*allPosts*/ ctx[7] },
 					dirty & /*content*/ 4 && { content: /*content*/ ctx[2] },
 					dirty & /*isDark*/ 1 && { isDark: /*isDark*/ ctx[0] },
-					dirty & /*env*/ 16 && { env: /*env*/ ctx[4] }
+					dirty & /*env*/ 16 && { env: /*env*/ ctx[4] },
+					dirty & /*tagsMap*/ 256 && { tagsMap: /*tagsMap*/ ctx[8] },
+					dirty & /*catgsMap*/ 512 && { catgsMap: /*catgsMap*/ ctx[9] },
+					dirty & /*tagsList*/ 1024 && { tagsList: /*tagsList*/ ctx[10] },
+					dirty & /*catgList*/ 2048 && { catgList: /*catgList*/ ctx[11] }
 				])
 			: {};
 
@@ -225,8 +240,8 @@ function create_fragment(ctx) {
 				switch_instance.$set(switch_instance_changes);
 			}
 
-			if (!current || dirty & /*isDark*/ 1 && main_class_value !== (main_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-main"))) {
-				attr(main, "class", main_class_value);
+			if (!current || dirty & /*isDark*/ 1 && body_class_value !== (body_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-main"))) {
+				attr(body, "class", body_class_value);
 			}
 
 			if (!current || dirty & /*isDark*/ 1 && footer1_class_value !== (footer1_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme border-t-2") + " bg-primary"))) {
@@ -271,6 +286,14 @@ function instance($$self, $$props, $$invalidate) {
 	let { allPages = allContent.filter(key => key.type == "pages") } = $$props;
 	let { allPosts = allContent.filter(key => key.type == "posts") } = $$props;
 
+	// Assign the two maps
+	let metaVals = catgs_tags(allPosts);
+
+	let { tagsMap = new Map(Object.entries(metaVals.tagsObj)) } = $$props;
+	let { catgsMap = new Map(Object.entries(metaVals.catgObj)) } = $$props;
+	let { tagsList = Array.from(tagsMap.keys()).sort() } = $$props;
+	let { catgList = Array.from(catgsMap.keys()).sort() } = $$props;
+
 	function navbar_isDark_binding(value) {
 		isDark = value;
 		$$invalidate(0, isDark);
@@ -278,7 +301,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("isDark" in $$props) $$invalidate(0, isDark = $$props.isDark);
-		if ("allContent" in $$props) $$invalidate(8, allContent = $$props.allContent);
+		if ("allContent" in $$props) $$invalidate(12, allContent = $$props.allContent);
 		if ("allLayouts" in $$props) $$invalidate(1, allLayouts = $$props.allLayouts);
 		if ("content" in $$props) $$invalidate(2, content = $$props.content);
 		if ("layout" in $$props) $$invalidate(3, layout = $$props.layout);
@@ -286,6 +309,10 @@ function instance($$self, $$props, $$invalidate) {
 		if ("idxContent" in $$props) $$invalidate(5, idxContent = $$props.idxContent);
 		if ("allPages" in $$props) $$invalidate(6, allPages = $$props.allPages);
 		if ("allPosts" in $$props) $$invalidate(7, allPosts = $$props.allPosts);
+		if ("tagsMap" in $$props) $$invalidate(8, tagsMap = $$props.tagsMap);
+		if ("catgsMap" in $$props) $$invalidate(9, catgsMap = $$props.catgsMap);
+		if ("tagsList" in $$props) $$invalidate(10, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(11, catgList = $$props.catgList);
 	};
 
 	return [
@@ -297,6 +324,10 @@ function instance($$self, $$props, $$invalidate) {
 		idxContent,
 		allPages,
 		allPosts,
+		tagsMap,
+		catgsMap,
+		tagsList,
+		catgList,
 		allContent,
 		navbar_isDark_binding
 	];
@@ -308,14 +339,18 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			isDark: 0,
-			allContent: 8,
+			allContent: 12,
 			allLayouts: 1,
 			content: 2,
 			layout: 3,
 			env: 4,
 			idxContent: 5,
 			allPages: 6,
-			allPosts: 7
+			allPosts: 7,
+			tagsMap: 8,
+			catgsMap: 9,
+			tagsList: 10,
+			catgList: 11
 		});
 	}
 }

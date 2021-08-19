@@ -6,12 +6,138 @@ import {
 	claim_space,
 	detach,
 	element,
+	empty,
 	init,
 	insert,
 	noop,
 	safe_not_equal,
 	space
 } from '../web_modules/svelte/internal/index.mjs';
+
+function create_if_block_1(ctx) {
+	let meta0;
+	let t;
+	let meta1;
+
+	return {
+		c() {
+			meta0 = element("meta");
+			t = space();
+			meta1 = element("meta");
+			this.h();
+		},
+		l(nodes) {
+			meta0 = claim_element(nodes, "META", { property: true, content: true });
+			t = claim_space(nodes);
+			meta1 = claim_element(nodes, "META", { property: true, content: true });
+			this.h();
+		},
+		h() {
+			attr(meta0, "property", "og:image");
+			attr(meta0, "content", /*image_url*/ ctx[6]);
+			attr(meta1, "property", "og:image:alt");
+			attr(meta1, "content", /*image_alt*/ ctx[7]);
+		},
+		m(target, anchor) {
+			insert(target, meta0, anchor);
+			insert(target, t, anchor);
+			insert(target, meta1, anchor);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*image_url*/ 64) {
+				attr(meta0, "content", /*image_url*/ ctx[6]);
+			}
+
+			if (dirty & /*image_alt*/ 128) {
+				attr(meta1, "content", /*image_alt*/ ctx[7]);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(meta0);
+			if (detaching) detach(t);
+			if (detaching) detach(meta1);
+		}
+	};
+}
+
+// (32:0) {#if isArticle}
+function create_if_block(ctx) {
+	let meta0;
+	let t0;
+	let meta1;
+	let t1;
+	let meta2;
+	let t2;
+	let meta3;
+
+	return {
+		c() {
+			meta0 = element("meta");
+			t0 = space();
+			meta1 = element("meta");
+			t1 = space();
+			meta2 = element("meta");
+			t2 = space();
+			meta3 = element("meta");
+			this.h();
+		},
+		l(nodes) {
+			meta0 = claim_element(nodes, "META", { property: true, content: true });
+			t0 = claim_space(nodes);
+			meta1 = claim_element(nodes, "META", { property: true, content: true });
+			t1 = claim_space(nodes);
+			meta2 = claim_element(nodes, "META", { property: true, content: true });
+			t2 = claim_space(nodes);
+			meta3 = claim_element(nodes, "META", { property: true, content: true });
+			this.h();
+		},
+		h() {
+			attr(meta0, "property", "article:publisher");
+			attr(meta0, "content", /*site_name*/ ctx[1]);
+			attr(meta1, "property", "article:author");
+			attr(meta1, "content", /*author_site*/ ctx[8]);
+			attr(meta2, "property", "article:published_time");
+			attr(meta2, "content", /*dateCreated*/ ctx[9]);
+			attr(meta3, "property", "article:modified_time");
+			attr(meta3, "content", /*dateModified*/ ctx[10]);
+		},
+		m(target, anchor) {
+			insert(target, meta0, anchor);
+			insert(target, t0, anchor);
+			insert(target, meta1, anchor);
+			insert(target, t1, anchor);
+			insert(target, meta2, anchor);
+			insert(target, t2, anchor);
+			insert(target, meta3, anchor);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*site_name*/ 2) {
+				attr(meta0, "content", /*site_name*/ ctx[1]);
+			}
+
+			if (dirty & /*author_site*/ 256) {
+				attr(meta1, "content", /*author_site*/ ctx[8]);
+			}
+
+			if (dirty & /*dateCreated*/ 512) {
+				attr(meta2, "content", /*dateCreated*/ ctx[9]);
+			}
+
+			if (dirty & /*dateModified*/ 1024) {
+				attr(meta3, "content", /*dateModified*/ ctx[10]);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(meta0);
+			if (detaching) detach(t0);
+			if (detaching) detach(meta1);
+			if (detaching) detach(t1);
+			if (detaching) detach(meta2);
+			if (detaching) detach(t2);
+			if (detaching) detach(meta3);
+		}
+	};
+}
 
 function create_fragment(ctx) {
 	let meta0;
@@ -21,14 +147,16 @@ function create_fragment(ctx) {
 	let meta2;
 	let t2;
 	let meta3;
+	let meta3_content_value;
 	let t3;
 	let meta4;
 	let t4;
 	let meta5;
 	let t5;
-	let meta6;
 	let t6;
-	let meta7;
+	let if_block1_anchor;
+	let if_block0 = /*image_url*/ ctx[6] && create_if_block_1(ctx);
+	let if_block1 = /*isArticle*/ ctx[3] && create_if_block(ctx);
 
 	return {
 		c() {
@@ -44,9 +172,10 @@ function create_fragment(ctx) {
 			t4 = space();
 			meta5 = element("meta");
 			t5 = space();
-			meta6 = element("meta");
+			if (if_block0) if_block0.c();
 			t6 = space();
-			meta7 = element("meta");
+			if (if_block1) if_block1.c();
+			if_block1_anchor = empty();
 			this.h();
 		},
 		l(nodes) {
@@ -62,28 +191,25 @@ function create_fragment(ctx) {
 			t4 = claim_space(nodes);
 			meta5 = claim_element(nodes, "META", { property: true, content: true });
 			t5 = claim_space(nodes);
-			meta6 = claim_element(nodes, "META", { property: true, content: true });
+			if (if_block0) if_block0.l(nodes);
 			t6 = claim_space(nodes);
-			meta7 = claim_element(nodes, "META", { property: true, content: true });
+			if (if_block1) if_block1.l(nodes);
+			if_block1_anchor = empty();
 			this.h();
 		},
 		h() {
-			attr(meta0, "property", "og:site_name");
-			attr(meta0, "content", /*site_name*/ ctx[4]);
-			attr(meta1, "property", "og:title");
-			attr(meta1, "content", /*title*/ ctx[1]);
-			attr(meta2, "property", "og:description");
-			attr(meta2, "content", /*desc*/ ctx[2]);
-			attr(meta3, "property", "og:url");
-			attr(meta3, "content", /*path*/ ctx[3]);
-			attr(meta4, "property", "og:image");
-			attr(meta4, "content", /*image_url*/ ctx[0]);
-			attr(meta5, "property", "og:type");
-			attr(meta5, "content", "article");
-			attr(meta6, "property", "article:publisher");
-			attr(meta6, "content", /*site_name*/ ctx[4]);
-			attr(meta7, "property", "article:section");
-			attr(meta7, "content", "Posts");
+			attr(meta0, "property", "og:url");
+			attr(meta0, "content", /*url*/ ctx[0]);
+			attr(meta1, "property", "og:site_name");
+			attr(meta1, "content", /*site_name*/ ctx[1]);
+			attr(meta2, "property", "og:locale");
+			attr(meta2, "content", /*locale*/ ctx[2]);
+			attr(meta3, "property", "og:type");
+			attr(meta3, "content", meta3_content_value = /*isArticle*/ ctx[3] ? "article" : "website");
+			attr(meta4, "property", "og:title");
+			attr(meta4, "content", /*page_title*/ ctx[4]);
+			attr(meta5, "property", "og:description");
+			attr(meta5, "content", /*description*/ ctx[5]);
 		},
 		m(target, anchor) {
 			insert(target, meta0, anchor);
@@ -98,25 +224,60 @@ function create_fragment(ctx) {
 			insert(target, t4, anchor);
 			insert(target, meta5, anchor);
 			insert(target, t5, anchor);
-			insert(target, meta6, anchor);
+			if (if_block0) if_block0.m(target, anchor);
 			insert(target, t6, anchor);
-			insert(target, meta7, anchor);
+			if (if_block1) if_block1.m(target, anchor);
+			insert(target, if_block1_anchor, anchor);
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*title*/ 2) {
-				attr(meta1, "content", /*title*/ ctx[1]);
+			if (dirty & /*url*/ 1) {
+				attr(meta0, "content", /*url*/ ctx[0]);
 			}
 
-			if (dirty & /*desc*/ 4) {
-				attr(meta2, "content", /*desc*/ ctx[2]);
+			if (dirty & /*site_name*/ 2) {
+				attr(meta1, "content", /*site_name*/ ctx[1]);
 			}
 
-			if (dirty & /*path*/ 8) {
-				attr(meta3, "content", /*path*/ ctx[3]);
+			if (dirty & /*locale*/ 4) {
+				attr(meta2, "content", /*locale*/ ctx[2]);
 			}
 
-			if (dirty & /*image_url*/ 1) {
-				attr(meta4, "content", /*image_url*/ ctx[0]);
+			if (dirty & /*isArticle*/ 8 && meta3_content_value !== (meta3_content_value = /*isArticle*/ ctx[3] ? "article" : "website")) {
+				attr(meta3, "content", meta3_content_value);
+			}
+
+			if (dirty & /*page_title*/ 16) {
+				attr(meta4, "content", /*page_title*/ ctx[4]);
+			}
+
+			if (dirty & /*description*/ 32) {
+				attr(meta5, "content", /*description*/ ctx[5]);
+			}
+
+			if (/*image_url*/ ctx[6]) {
+				if (if_block0) {
+					if_block0.p(ctx, dirty);
+				} else {
+					if_block0 = create_if_block_1(ctx);
+					if_block0.c();
+					if_block0.m(t6.parentNode, t6);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (/*isArticle*/ ctx[3]) {
+				if (if_block1) {
+					if_block1.p(ctx, dirty);
+				} else {
+					if_block1 = create_if_block(ctx);
+					if_block1.c();
+					if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
 			}
 		},
 		i: noop,
@@ -134,39 +295,54 @@ function create_fragment(ctx) {
 			if (detaching) detach(t4);
 			if (detaching) detach(meta5);
 			if (detaching) detach(t5);
-			if (detaching) detach(meta6);
+			if (if_block0) if_block0.d(detaching);
 			if (detaching) detach(t6);
-			if (detaching) detach(meta7);
+			if (if_block1) if_block1.d(detaching);
+			if (detaching) detach(if_block1_anchor);
 		}
 	};
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { idxContent } = $$props, { env } = $$props;
-
-	let { title } = $$props,
-		{ desc } = $$props,
-		{ image } = $$props,
-		{ path } = $$props;
-
-	let { post_url } = $$props, { image_url } = $$props;
-	let site_name = idxContent.title;
-	let site_url = env.local ? "" : idxContent.site;
-	post_url = site_url + env.baseurl + path;
-	image_url = site_url + env.baseurl + "assets/posts/" + image.src;
+	let { url } = $$props,
+		{ site_name } = $$props,
+		{ locale } = $$props,
+		{ isArticle } = $$props,
+		{ page_title } = $$props,
+		{ description } = $$props,
+		{ image_url } = $$props,
+		{ image_alt } = $$props,
+		{ author_site } = $$props,
+		{ dateCreated } = $$props,
+		{ dateModified } = $$props;
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(6, idxContent = $$props.idxContent);
-		if ("env" in $$props) $$invalidate(7, env = $$props.env);
-		if ("title" in $$props) $$invalidate(1, title = $$props.title);
-		if ("desc" in $$props) $$invalidate(2, desc = $$props.desc);
-		if ("image" in $$props) $$invalidate(8, image = $$props.image);
-		if ("path" in $$props) $$invalidate(3, path = $$props.path);
-		if ("post_url" in $$props) $$invalidate(5, post_url = $$props.post_url);
-		if ("image_url" in $$props) $$invalidate(0, image_url = $$props.image_url);
+		if ("url" in $$props) $$invalidate(0, url = $$props.url);
+		if ("site_name" in $$props) $$invalidate(1, site_name = $$props.site_name);
+		if ("locale" in $$props) $$invalidate(2, locale = $$props.locale);
+		if ("isArticle" in $$props) $$invalidate(3, isArticle = $$props.isArticle);
+		if ("page_title" in $$props) $$invalidate(4, page_title = $$props.page_title);
+		if ("description" in $$props) $$invalidate(5, description = $$props.description);
+		if ("image_url" in $$props) $$invalidate(6, image_url = $$props.image_url);
+		if ("image_alt" in $$props) $$invalidate(7, image_alt = $$props.image_alt);
+		if ("author_site" in $$props) $$invalidate(8, author_site = $$props.author_site);
+		if ("dateCreated" in $$props) $$invalidate(9, dateCreated = $$props.dateCreated);
+		if ("dateModified" in $$props) $$invalidate(10, dateModified = $$props.dateModified);
 	};
 
-	return [image_url, title, desc, path, site_name, post_url, idxContent, env, image];
+	return [
+		url,
+		site_name,
+		locale,
+		isArticle,
+		page_title,
+		description,
+		image_url,
+		image_alt,
+		author_site,
+		dateCreated,
+		dateModified
+	];
 }
 
 class Component extends SvelteComponent {
@@ -174,14 +350,17 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 6,
-			env: 7,
-			title: 1,
-			desc: 2,
-			image: 8,
-			path: 3,
-			post_url: 5,
-			image_url: 0
+			url: 0,
+			site_name: 1,
+			locale: 2,
+			isArticle: 3,
+			page_title: 4,
+			description: 5,
+			image_url: 6,
+			image_alt: 7,
+			author_site: 8,
+			dateCreated: 9,
+			dateModified: 10
 		});
 	}
 }

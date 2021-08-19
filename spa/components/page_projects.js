@@ -20,6 +20,7 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
+import Tags from '../content/tags.js';
 import Aside from './aside.js';
 import Cards from './cards_projs.js';
 import Pagination from './paginate.js';
@@ -45,26 +46,30 @@ function create_fragment(ctx) {
 
 	cards = new Cards({
 			props: {
-				projArry: /*projArry*/ ctx[6],
-				uniqProjs: /*uniqProjs*/ ctx[7],
-				allProjs: /*allProjs*/ ctx[4],
-				projRangeHigh: /*projRangeHigh*/ ctx[2],
-				projRangeLow: /*projRangeLow*/ ctx[3]
+				projArry: /*projArry*/ ctx[8],
+				uniqProjs: /*uniqProjs*/ ctx[9],
+				allProjs: /*allProjs*/ ctx[6],
+				projRangeHigh: /*projRangeHigh*/ ctx[4],
+				projRangeLow: /*projRangeLow*/ ctx[5],
+				tagsList: /*tagsList*/ ctx[1],
+				catgList: /*catgList*/ ctx[2]
 			}
 		});
 
 	pagination = new Pagination({
 			props: {
-				currentPage: /*currentPage*/ ctx[1],
-				totalPages: /*totalPages*/ ctx[8],
-				totalProjPages: /*totalProjPages*/ ctx[9]
+				currentPage: /*currentPage*/ ctx[3],
+				totalPages: /*totalPages*/ ctx[10],
+				totalProjPages: /*totalProjPages*/ ctx[11]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[5]
+				socialLinks: /*socialLinks*/ ctx[7],
+				tagsList: /*tagsList*/ ctx[1],
+				catgList: /*catgList*/ ctx[2]
 			}
 		});
 
@@ -126,13 +131,13 @@ function create_fragment(ctx) {
 		h() {
 			attr(div0, "class", "w-0 md:w-1/12 xl:w-2/12");
 			attr(div1, "class", "grid grid-cols-1 gap-6 md:pr-10");
-			attr(div2, "class", "row mt-8 md:pr-10");
-			attr(div3, "class", "w-full md:w-9/12 mb-5 mb-lg-0 px-0");
-			attr(div4, "class", "w-full md:w-3/12 mb-5 mb-lg-0 px-0");
+			attr(div2, "class", "row mt-8 md:pr-10 mb-6 sm:mb-0");
+			attr(div3, "class", "w-full md:w-9/12 mb-lg-0 px-0");
+			attr(div4, "class", "w-full md:w-3/12 mb-lg-0 px-0");
 			attr(div5, "class", "row md:flex md:flex-wrap");
 			attr(div6, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
 			attr(div7, "class", "w-0 md:w-1/12 xl:w-2/12");
-			attr(section, "class", "w-full flex flex-wrap items-center justify-between  py-6 sm:py-16");
+			attr(section, "class", "w-full flex flex-wrap items-center justify-between");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
@@ -155,14 +160,18 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			const cards_changes = {};
-			if (dirty & /*projRangeHigh*/ 4) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[2];
-			if (dirty & /*projRangeLow*/ 8) cards_changes.projRangeLow = /*projRangeLow*/ ctx[3];
+			if (dirty & /*projRangeHigh*/ 16) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[4];
+			if (dirty & /*projRangeLow*/ 32) cards_changes.projRangeLow = /*projRangeLow*/ ctx[5];
+			if (dirty & /*tagsList*/ 2) cards_changes.tagsList = /*tagsList*/ ctx[1];
+			if (dirty & /*catgList*/ 4) cards_changes.catgList = /*catgList*/ ctx[2];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
-			if (dirty & /*currentPage*/ 2) pagination_changes.currentPage = /*currentPage*/ ctx[1];
+			if (dirty & /*currentPage*/ 8) pagination_changes.currentPage = /*currentPage*/ ctx[3];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
+			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
+			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -191,7 +200,13 @@ function instance($$self, $$props, $$invalidate) {
 	let currentPage;
 	let projRangeHigh;
 	let projRangeLow;
-	let { idxContent } = $$props, { allPosts } = $$props, { content } = $$props;
+
+	let { idxContent } = $$props,
+		{ allPosts } = $$props,
+		{ content } = $$props,
+		{ tagsList } = $$props,
+		{ catgList } = $$props;
+
 	let allProjs = allPosts.filter(content => content.fields?.project != "");
 	let socialLinks = idxContent.socialLinks;
 	let projsPerPage = idxContent.theme.projsPerPage;
@@ -207,7 +222,6 @@ function instance($$self, $$props, $$invalidate) {
 		projList.push(element.fields.project);
 	});
 
-	console.log(projArry);
 	let uniqProjs = [...new Set(projList)];
 	let totalProjs = uniqProjs.length;
 	let totalPages = Math.ceil(totalProjs / projsPerPage);
@@ -216,27 +230,31 @@ function instance($$self, $$props, $$invalidate) {
 	let totalProjPages = totalPages;
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(11, content = $$props.content);
+		if ("content" in $$props) $$invalidate(13, content = $$props.content);
+		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*content*/ 2048) {
-			$: $$invalidate(1, currentPage = content.pager);
+		if ($$self.$$.dirty & /*content*/ 8192) {
+			$: $$invalidate(3, currentPage = content.pager);
 		}
 
-		if ($$self.$$.dirty & /*currentPage*/ 2) {
-			$: $$invalidate(2, projRangeHigh = currentPage * projsPerPage);
+		if ($$self.$$.dirty & /*currentPage*/ 8) {
+			$: $$invalidate(4, projRangeHigh = currentPage * projsPerPage);
 		}
 
-		if ($$self.$$.dirty & /*projRangeHigh*/ 4) {
-			$: $$invalidate(3, projRangeLow = projRangeHigh - projsPerPage);
+		if ($$self.$$.dirty & /*projRangeHigh*/ 16) {
+			$: $$invalidate(5, projRangeLow = projRangeHigh - projsPerPage);
 		}
 	};
 
 	return [
 		allPosts,
+		tagsList,
+		catgList,
 		currentPage,
 		projRangeHigh,
 		projRangeLow,
@@ -254,7 +272,14 @@ function instance($$self, $$props, $$invalidate) {
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { idxContent: 10, allPosts: 0, content: 11 });
+
+		init(this, options, instance, create_fragment, safe_not_equal, {
+			idxContent: 12,
+			allPosts: 0,
+			content: 13,
+			tagsList: 1,
+			catgList: 2
+		});
 	}
 }
 

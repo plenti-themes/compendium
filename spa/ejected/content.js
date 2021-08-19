@@ -15,15 +15,28 @@ const allContent = [{
 
 },{
 "pager": 1,
+"path": "catgs",
+"type": "catgs",
+"filename": "catgs.json",
+"fields": {}
+},{
+"pager": 1,
 "path": "/",
 "type": "index",
 "filename": "index.json",
 "fields": {
   "name": "Compendium",
   "site": "www.example.net",
-  "logo": "las la-feather-alt",
+  "logo": "logo.svg",
   "title": "Compendium | Personal Blog Template",
   "description": "A personal blog template for the Plenti-based SSG built on Svelte.",
+  "SEO": {
+    "locale": "en_US",
+    "twitteruser": "@mytag",
+    "author": "Jo Doe",
+    "author_site": "",
+    "image": "logo.png"
+  },
   "theme": {
     "postsPerPage": 6,
     "projsPerPage": 3,
@@ -319,16 +332,52 @@ const allContent = [{
 
 },{
 "pager": 1,
+"path": "tags",
+"type": "tags",
+"filename": "tags.json",
+"fields": {}
+},{
+"pager": 1,
+"path": "catgs/1",
+"type": "catgs",
+"filename": "catgs.json",
+"fields": {}
+},{
+"pager": 1,
 "path": "1",
 "type": "index",
 "filename": "index.json",
-"fields": { "name": "Compendium", "site": "www.example.net", "logo": "las la-feather-alt", "title": "Compendium | Personal Blog Template", "description": "A personal blog template for the Plenti-based SSG built on Svelte.", "theme": { "postsPerPage": 6, "projsPerPage": 3, "tagsPerPage": 12, "mathTypesetting": true, "codeHighlighting": true, "featuredPage": "Bleed", "featuredPageValues": "Bleed, Frame, None", "colorScheme": "Earthliness", "colorSchemeValues": "Earthliness, Simplicity, Technobeat" }, "socialLinks": [ { "src": "https://www.linkedin.com/", "ico": "lab la-linkedin-in", "enabled": true }, { "src": "https://github.com/", "ico": "lab la-github-alt", "enabled": true }, { "src": "https://about.gitlab.com/", "ico": "lab la-gitlab", "enabled": true }, { "src": "https://twitter.com/", "ico": "lab la-twitter", "enabled": false }, { "src": "https://keybase.io/", "ico": "lab la-keybase", "enabled": true }, { "src": "https://www.reddit.com/", "ico": "lab la-reddit", "enabled": true }, { "src": "https://www.instagram.com/", "ico": "lab la-instagram", "enabled": false }, { "src": "https://www.facebook.com/", "ico": "lab la-facebook-f", "enabled": false }, { "src": "", "ico": "", "enabled": false } ] } 
+"fields": { "name": "Compendium", "site": "www.example.net", "logo": "logo.svg", "title": "Compendium | Personal Blog Template", "description": "A personal blog template for the Plenti-based SSG built on Svelte.", "SEO": { "locale": "en_US", "twitteruser": "@mytag", "author": "Jo Doe", "author_site": "", "image": "logo.png" }, "theme": { "postsPerPage": 6, "projsPerPage": 3, "tagsPerPage": 12, "mathTypesetting": true, "codeHighlighting": true, "featuredPage": "Bleed", "featuredPageValues": "Bleed, Frame, None", "colorScheme": "Earthliness", "colorSchemeValues": "Earthliness, Simplicity, Technobeat" }, "socialLinks": [ { "src": "https://www.linkedin.com/", "ico": "lab la-linkedin-in", "enabled": true }, { "src": "https://github.com/", "ico": "lab la-github-alt", "enabled": true }, { "src": "https://about.gitlab.com/", "ico": "lab la-gitlab", "enabled": true }, { "src": "https://twitter.com/", "ico": "lab la-twitter", "enabled": false }, { "src": "https://keybase.io/", "ico": "lab la-keybase", "enabled": true }, { "src": "https://www.reddit.com/", "ico": "lab la-reddit", "enabled": true }, { "src": "https://www.instagram.com/", "ico": "lab la-instagram", "enabled": false }, { "src": "https://www.facebook.com/", "ico": "lab la-facebook-f", "enabled": false }, { "src": "", "ico": "", "enabled": false } ] } 
 },{
 "pager": 2,
 "path": "2",
 "type": "index",
 "filename": "index.json",
-"fields": { "name": "Compendium", "site": "www.example.net", "logo": "las la-feather-alt", "title": "Compendium | Personal Blog Template", "description": "A personal blog template for the Plenti-based SSG built on Svelte.", "theme": { "postsPerPage": 6, "projsPerPage": 3, "tagsPerPage": 12, "mathTypesetting": true, "codeHighlighting": true, "featuredPage": "Bleed", "featuredPageValues": "Bleed, Frame, None", "colorScheme": "Earthliness", "colorSchemeValues": "Earthliness, Simplicity, Technobeat" }, "socialLinks": [ { "src": "https://www.linkedin.com/", "ico": "lab la-linkedin-in", "enabled": true }, { "src": "https://github.com/", "ico": "lab la-github-alt", "enabled": true }, { "src": "https://about.gitlab.com/", "ico": "lab la-gitlab", "enabled": true }, { "src": "https://twitter.com/", "ico": "lab la-twitter", "enabled": false }, { "src": "https://keybase.io/", "ico": "lab la-keybase", "enabled": true }, { "src": "https://www.reddit.com/", "ico": "lab la-reddit", "enabled": true }, { "src": "https://www.instagram.com/", "ico": "lab la-instagram", "enabled": false }, { "src": "https://www.facebook.com/", "ico": "lab la-facebook-f", "enabled": false }, { "src": "", "ico": "", "enabled": false } ] } 
+"fields": { "name": "Compendium", "site": "www.example.net", "logo": "logo.svg", "title": "Compendium | Personal Blog Template", "description": "A personal blog template for the Plenti-based SSG built on Svelte.", "SEO": { "locale": "en_US", "twitteruser": "@mytag", "author": "Jo Doe", "author_site": "", "image": "logo.png" }, "theme": { "postsPerPage": 6, "projsPerPage": 3, "tagsPerPage": 12, "mathTypesetting": true, "codeHighlighting": true, "featuredPage": "Bleed", "featuredPageValues": "Bleed, Frame, None", "colorScheme": "Earthliness", "colorSchemeValues": "Earthliness, Simplicity, Technobeat" }, "socialLinks": [ { "src": "https://www.linkedin.com/", "ico": "lab la-linkedin-in", "enabled": true }, { "src": "https://github.com/", "ico": "lab la-github-alt", "enabled": true }, { "src": "https://about.gitlab.com/", "ico": "lab la-gitlab", "enabled": true }, { "src": "https://twitter.com/", "ico": "lab la-twitter", "enabled": false }, { "src": "https://keybase.io/", "ico": "lab la-keybase", "enabled": true }, { "src": "https://www.reddit.com/", "ico": "lab la-reddit", "enabled": true }, { "src": "https://www.instagram.com/", "ico": "lab la-instagram", "enabled": false }, { "src": "https://www.facebook.com/", "ico": "lab la-facebook-f", "enabled": false }, { "src": "", "ico": "", "enabled": false } ] } 
+},{
+"pager": 1,
+"path": "tags/1",
+"type": "tags",
+"filename": "tags.json",
+"fields": {}
+},{
+"pager": 2,
+"path": "tags/2",
+"type": "tags",
+"filename": "tags.json",
+"fields": {}
+},{
+"pager": 3,
+"path": "tags/3",
+"type": "tags",
+"filename": "tags.json",
+"fields": {}
+},{
+"pager": 4,
+"path": "tags/4",
+"type": "tags",
+"filename": "tags.json",
+"fields": {}
 },];
 
 export default allContent;

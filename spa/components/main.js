@@ -44,22 +44,26 @@ function create_fragment(ctx) {
 	cards = new Cards({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				postRangeHigh: /*postRangeHigh*/ ctx[1],
-				postRangeLow: /*postRangeLow*/ ctx[2]
+				postRangeHigh: /*postRangeHigh*/ ctx[3],
+				postRangeLow: /*postRangeLow*/ ctx[4],
+				tagsList: /*tagsList*/ ctx[1],
+				catgList: /*catgList*/ ctx[2]
 			}
 		});
 
 	pagination = new Pagination({
 			props: {
-				currentPage: /*currentPage*/ ctx[3],
-				totalPages: /*totalPages*/ ctx[4]
+				currentPage: /*currentPage*/ ctx[5],
+				totalPages: /*totalPages*/ ctx[6]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[5]
+				socialLinks: /*socialLinks*/ ctx[7],
+				tagsList: /*tagsList*/ ctx[1],
+				catgList: /*catgList*/ ctx[2]
 			}
 		});
 
@@ -106,9 +110,9 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(div0, "class", "grid grid-cols-1 lg:grid-cols-2 gap-6 md:pr-10");
-			attr(div1, "class", "row mt-8 md:pr-10");
-			attr(div2, "class", "w-full md:w-9/12 mb-5 mb-lg-0 px-0");
-			attr(div3, "class", "w-full md:w-3/12 mb-5 mb-lg-0 px-0");
+			attr(div1, "class", "row mt-8 md:pr-10 mb-6 sm:mb-0");
+			attr(div2, "class", "w-full md:w-9/12 mb-lg-0 px-0");
+			attr(div3, "class", "w-full md:w-3/12 mb-lg-0 px-0");
 			attr(div4, "class", "row md:flex md:flex-wrap");
 			attr(section, "class", "mt-6 sm:mt-16");
 		},
@@ -129,15 +133,19 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const cards_changes = {};
 			if (dirty & /*allPosts*/ 1) cards_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*postRangeHigh*/ 2) cards_changes.postRangeHigh = /*postRangeHigh*/ ctx[1];
-			if (dirty & /*postRangeLow*/ 4) cards_changes.postRangeLow = /*postRangeLow*/ ctx[2];
+			if (dirty & /*postRangeHigh*/ 8) cards_changes.postRangeHigh = /*postRangeHigh*/ ctx[3];
+			if (dirty & /*postRangeLow*/ 16) cards_changes.postRangeLow = /*postRangeLow*/ ctx[4];
+			if (dirty & /*tagsList*/ 2) cards_changes.tagsList = /*tagsList*/ ctx[1];
+			if (dirty & /*catgList*/ 4) cards_changes.catgList = /*catgList*/ ctx[2];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
-			if (dirty & /*currentPage*/ 8) pagination_changes.currentPage = /*currentPage*/ ctx[3];
-			if (dirty & /*totalPages*/ 16) pagination_changes.totalPages = /*totalPages*/ ctx[4];
+			if (dirty & /*currentPage*/ 32) pagination_changes.currentPage = /*currentPage*/ ctx[5];
+			if (dirty & /*totalPages*/ 64) pagination_changes.totalPages = /*totalPages*/ ctx[6];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
+			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
+			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -163,7 +171,10 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { allPosts } = $$props, { content } = $$props;
+	let { allPosts } = $$props,
+		{ content } = $$props,
+		{ tagsList } = $$props,
+		{ catgList } = $$props;
 
 	let { postRangeHigh } = $$props,
 		{ postRangeLow } = $$props,
@@ -174,15 +185,19 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(6, content = $$props.content);
-		if ("postRangeHigh" in $$props) $$invalidate(1, postRangeHigh = $$props.postRangeHigh);
-		if ("postRangeLow" in $$props) $$invalidate(2, postRangeLow = $$props.postRangeLow);
-		if ("currentPage" in $$props) $$invalidate(3, currentPage = $$props.currentPage);
-		if ("totalPages" in $$props) $$invalidate(4, totalPages = $$props.totalPages);
+		if ("content" in $$props) $$invalidate(8, content = $$props.content);
+		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
+		if ("postRangeHigh" in $$props) $$invalidate(3, postRangeHigh = $$props.postRangeHigh);
+		if ("postRangeLow" in $$props) $$invalidate(4, postRangeLow = $$props.postRangeLow);
+		if ("currentPage" in $$props) $$invalidate(5, currentPage = $$props.currentPage);
+		if ("totalPages" in $$props) $$invalidate(6, totalPages = $$props.totalPages);
 	};
 
 	return [
 		allPosts,
+		tagsList,
+		catgList,
 		postRangeHigh,
 		postRangeLow,
 		currentPage,
@@ -198,11 +213,13 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			allPosts: 0,
-			content: 6,
-			postRangeHigh: 1,
-			postRangeLow: 2,
-			currentPage: 3,
-			totalPages: 4
+			content: 8,
+			tagsList: 1,
+			catgList: 2,
+			postRangeHigh: 3,
+			postRangeLow: 4,
+			currentPage: 5,
+			totalPages: 6
 		});
 	}
 }
