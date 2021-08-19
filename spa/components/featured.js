@@ -16,11 +16,13 @@ import {
 	destroy_each,
 	detach,
 	element,
+	empty,
 	group_outros,
 	init,
 	insert,
 	listen,
 	mount_component,
+	noop,
 	run_all,
 	safe_not_equal,
 	set_data,
@@ -55,7 +57,7 @@ function get_each_context_2(ctx, list, i) {
 	return child_ctx;
 }
 
-// (86:25) {#if i < post.fields.categories.length - 1}
+// (87:25) {#if i < post.fields.categories.length - 1}
 function create_if_block_2(ctx) {
 	let t;
 
@@ -75,7 +77,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (84:14) {#each post.fields.categories as catg, i}
+// (85:14) {#each post.fields.categories as catg, i}
 function create_each_block_2(ctx) {
 	let a;
 	let t_value = /*catg*/ ctx[14] + "";
@@ -100,7 +102,7 @@ function create_each_block_2(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = "catgs/" + (/*catgList*/ ctx[3].indexOf(/*catg*/ ctx[14]) + 1));
-			attr(a, "class", "ml-0.5 svelte-s3q040");
+			attr(a, "class", "ml-0.5 svelte-31wosj");
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
@@ -134,7 +136,7 @@ function create_each_block_2(ctx) {
 	};
 }
 
-// (95:24) {#if i < post.fields.tags.length - 1}
+// (96:24) {#if i < post.fields.tags.length - 1}
 function create_if_block_1(ctx) {
 	let t;
 
@@ -154,7 +156,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (93:14) {#each post.fields.tags as tag, i}
+// (94:14) {#each post.fields.tags as tag, i}
 function create_each_block_1(ctx) {
 	let a;
 	let t_value = /*tag*/ ctx[12] + "";
@@ -179,7 +181,7 @@ function create_each_block_1(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = "tags/" + (/*tagsList*/ ctx[2].indexOf(/*tag*/ ctx[12]) + 1));
-			attr(a, "class", "ml-0.5 svelte-s3q040");
+			attr(a, "class", "ml-0.5 svelte-31wosj");
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
@@ -213,7 +215,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (122:6) {#if featuredPage == "Bleed"}
+// (123:6) {#if featuredPage == "Bleed"}
 function create_if_block(ctx) {
 	let button;
 	let hoverable;
@@ -291,7 +293,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (129:10) <Hoverable let:hovering>
+// (130:10) <Hoverable let:hovering>
 function create_default_slot(ctx) {
 	let span;
 	let i;
@@ -330,7 +332,7 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (40:2) {#each allFeatures as post, i}
+// (41:2) {#each allFeatures as post, i}
 function create_each_block(ctx) {
 	let div5;
 	let div0;
@@ -564,11 +566,11 @@ function create_each_block(ctx) {
 			attr(div0, "class", "w-full");
 			attr(div1, "class", "col-lg-2");
 			attr(a0, "href", a0_href_value = /*post*/ ctx[8].path);
-			attr(a0, "class", " svelte-s3q040");
+			attr(a0, "class", " svelte-31wosj");
 			attr(h2, "class", "w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl");
 			attr(i0, "class", "las la-user-astronaut text-lg relative");
 			attr(a1, "href", a1_href_value = /*post*/ ctx[8].fields.author.url);
-			attr(a1, "class", "svelte-s3q040");
+			attr(a1, "class", "svelte-31wosj");
 			attr(li0, "class", "px-2");
 			attr(li1, "class", "px-2");
 			attr(li2, "class", "px-2");
@@ -576,12 +578,12 @@ function create_each_block(ctx) {
 
 			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24"));
+			: "mb-24") + " svelte-31wosj");
 
 			attr(div2, "class", "col-lg-8");
 			attr(div3, "class", "col-lg-2");
 			attr(div4, "id", "featureOverlayText");
-			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-s3q040");
+			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-31wosj");
 			attr(i1, "class", "");
 			attr(i2, "class", "accent las la-chevron-circle-left text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button0, "class", "absolute m-2 left-2");
@@ -733,7 +735,7 @@ function create_each_block(ctx) {
 
 			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24"))) {
+			: "mb-24") + " svelte-31wosj")) {
 				attr(ul, "class", ul_class_value);
 			}
 
@@ -784,7 +786,8 @@ function create_each_block(ctx) {
 	};
 }
 
-function create_fragment(ctx) {
+// (38:0) {#key featureIdx}
+function create_key_block(ctx) {
 	let div;
 	let div_transition;
 	let current;
@@ -826,7 +829,7 @@ function create_fragment(ctx) {
 
 			current = true;
 		},
-		p(ctx, [dirty]) {
+		p(ctx, dirty) {
 			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, allFeatures, tagsList, catgList*/ 2175) {
 				each_value = /*allFeatures*/ ctx[0];
 				let i;
@@ -883,6 +886,55 @@ function create_fragment(ctx) {
 			if (detaching) detach(div);
 			destroy_each(each_blocks, detaching);
 			if (detaching && div_transition) div_transition.end();
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let previous_key = /*featureIdx*/ ctx[4];
+	let key_block_anchor;
+	let current;
+	let key_block = create_key_block(ctx);
+
+	return {
+		c() {
+			key_block.c();
+			key_block_anchor = empty();
+		},
+		l(nodes) {
+			key_block.l(nodes);
+			key_block_anchor = empty();
+		},
+		m(target, anchor) {
+			key_block.m(target, anchor);
+			insert(target, key_block_anchor, anchor);
+			current = true;
+		},
+		p(ctx, [dirty]) {
+			if (dirty & /*featureIdx*/ 16 && safe_not_equal(previous_key, previous_key = /*featureIdx*/ ctx[4])) {
+				group_outros();
+				transition_out(key_block, 1, 1, noop);
+				check_outros();
+				key_block = create_key_block(ctx);
+				key_block.c();
+				transition_in(key_block);
+				key_block.m(key_block_anchor.parentNode, key_block_anchor);
+			} else {
+				key_block.p(ctx, dirty);
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(key_block);
+			current = true;
+		},
+		o(local) {
+			transition_out(key_block);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(key_block_anchor);
+			key_block.d(detaching);
 		}
 	};
 }

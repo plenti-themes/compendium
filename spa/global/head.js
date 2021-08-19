@@ -3,6 +3,7 @@ import {
 	SvelteComponent,
 	append,
 	attr,
+	check_outros,
 	children,
 	claim_component,
 	claim_element,
@@ -11,6 +12,7 @@ import {
 	destroy_component,
 	detach,
 	element,
+	group_outros,
 	init,
 	insert,
 	mount_component,
@@ -23,11 +25,57 @@ import {
 
 import SEO from '../scripts/SEO.js';
 
+function create_key_block(ctx) {
+	let seo;
+	let current;
+
+	seo = new SEO({
+			props: {
+				idxContent: /*idxContent*/ ctx[0],
+				content: /*content*/ ctx[1],
+				env: /*env*/ ctx[2]
+			}
+		});
+
+	return {
+		c() {
+			create_component(seo.$$.fragment);
+		},
+		l(nodes) {
+			claim_component(seo.$$.fragment, nodes);
+		},
+		m(target, anchor) {
+			mount_component(seo, target, anchor);
+			current = true;
+		},
+		p(ctx, dirty) {
+			const seo_changes = {};
+			if (dirty & /*idxContent*/ 1) seo_changes.idxContent = /*idxContent*/ ctx[0];
+			if (dirty & /*content*/ 2) seo_changes.content = /*content*/ ctx[1];
+			if (dirty & /*env*/ 4) seo_changes.env = /*env*/ ctx[2];
+			seo.$set(seo_changes);
+		},
+		i(local) {
+			if (current) return;
+			transition_in(seo.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(seo.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			destroy_component(seo, detaching);
+		}
+	};
+}
+
+// (34:2) {#if enableContact}
 function create_if_block_2(ctx) {
 	return { c: noop, l: noop, m: noop, d: noop };
 }
 
-// (32:2) {#if idxContent.theme.codeHighlighting}
+// (38:2) {#if idxContent.theme.codeHighlighting}
 function create_if_block_1(ctx) {
 	let link;
 
@@ -53,7 +101,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (36:2) {#if idxContent.theme.mathTypesetting}
+// (42:2) {#if idxContent.theme.mathTypesetting}
 function create_if_block(ctx) {
 	let link;
 
@@ -85,7 +133,7 @@ function create_fragment(ctx) {
 	let t0;
 	let meta1;
 	let t1;
-	let seo;
+	let previous_key = /*isPost*/ ctx[3];
 	let t2;
 	let base_1;
 	let t3;
@@ -101,16 +149,8 @@ function create_fragment(ctx) {
 	let t9;
 	let link2;
 	let current;
-
-	seo = new SEO({
-			props: {
-				idxContent: /*idxContent*/ ctx[0],
-				content: /*content*/ ctx[1],
-				env: /*env*/ ctx[2]
-			}
-		});
-
-	let if_block0 = /*enableContact*/ ctx[4] && create_if_block_2(ctx);
+	let key_block = create_key_block(ctx);
+	let if_block0 = /*enableContact*/ ctx[5] && create_if_block_2(ctx);
 	let if_block1 = /*idxContent*/ ctx[0].theme.codeHighlighting && create_if_block_1(ctx);
 	let if_block2 = /*idxContent*/ ctx[0].theme.mathTypesetting && create_if_block(ctx);
 
@@ -121,7 +161,7 @@ function create_fragment(ctx) {
 			t0 = space();
 			meta1 = element("meta");
 			t1 = space();
-			create_component(seo.$$.fragment);
+			key_block.c();
 			t2 = space();
 			base_1 = element("base");
 			t3 = space();
@@ -147,7 +187,7 @@ function create_fragment(ctx) {
 			t0 = claim_space(head_nodes);
 			meta1 = claim_element(head_nodes, "META", { name: true, content: true });
 			t1 = claim_space(head_nodes);
-			claim_component(seo.$$.fragment, head_nodes);
+			key_block.l(head_nodes);
 			t2 = claim_space(head_nodes);
 			base_1 = claim_element(head_nodes, "BASE", { href: true });
 			t3 = claim_space(head_nodes);
@@ -173,7 +213,7 @@ function create_fragment(ctx) {
 			attr(meta0, "charset", "utf-8");
 			attr(meta1, "name", "viewport");
 			attr(meta1, "content", "width=device-width,initial-scale=1");
-			attr(base_1, "href", /*base*/ ctx[3]);
+			attr(base_1, "href", /*base*/ ctx[4]);
 			attr(script, "type", "module");
 			if (script.src !== (script_src_value = "spa/ejected/main.js")) attr(script, "src", script_src_value);
 			attr(link0, "rel", "icon");
@@ -190,7 +230,7 @@ function create_fragment(ctx) {
 			append(head, t0);
 			append(head, meta1);
 			append(head, t1);
-			mount_component(seo, head, null);
+			key_block.m(head, null);
 			append(head, t2);
 			append(head, base_1);
 			append(head, t3);
@@ -210,11 +250,17 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			const seo_changes = {};
-			if (dirty & /*idxContent*/ 1) seo_changes.idxContent = /*idxContent*/ ctx[0];
-			if (dirty & /*content*/ 2) seo_changes.content = /*content*/ ctx[1];
-			if (dirty & /*env*/ 4) seo_changes.env = /*env*/ ctx[2];
-			seo.$set(seo_changes);
+			if (dirty & /*isPost*/ 8 && safe_not_equal(previous_key, previous_key = /*isPost*/ ctx[3])) {
+				group_outros();
+				transition_out(key_block, 1, 1, noop);
+				check_outros();
+				key_block = create_key_block(ctx);
+				key_block.c();
+				transition_in(key_block);
+				key_block.m(head, t2);
+			} else {
+				key_block.p(ctx, dirty);
+			}
 
 			if (/*idxContent*/ ctx[0].theme.codeHighlighting) {
 				if (if_block1) {
@@ -244,16 +290,16 @@ function create_fragment(ctx) {
 		},
 		i(local) {
 			if (current) return;
-			transition_in(seo.$$.fragment, local);
+			transition_in(key_block);
 			current = true;
 		},
 		o(local) {
-			transition_out(seo.$$.fragment, local);
+			transition_out(key_block);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(head);
-			destroy_component(seo);
+			key_block.d(detaching);
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
 			if (if_block2) if_block2.d();
@@ -268,18 +314,26 @@ function instance($$self, $$props, $$invalidate) {
 		{ env } = $$props;
 
 	let base = env.local ? "/" : env.baseurl;
+	let isPost;
 
 	// Set flag to enable contact serverless function
 	let enableContact = allPages.filter(key => key.fields.pageType === "Contact")[0].fields.enabled;
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);
-		if ("allPages" in $$props) $$invalidate(5, allPages = $$props.allPages);
+		if ("allPages" in $$props) $$invalidate(6, allPages = $$props.allPages);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
 		if ("env" in $$props) $$invalidate(2, env = $$props.env);
 	};
 
-	return [idxContent, content, env, base, enableContact, allPages];
+	$$self.$$.update = () => {
+		if ($$self.$$.dirty & /*content*/ 2) {
+			// Defne key value for SEO updates
+			$: $$invalidate(3, isPost = content.type === "posts" ? true : false);
+		}
+	};
+
+	return [idxContent, content, env, isPost, base, enableContact, allPages];
 }
 
 class Component extends SvelteComponent {
@@ -288,7 +342,7 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 0,
-			allPages: 5,
+			allPages: 6,
 			content: 1,
 			env: 2
 		});
