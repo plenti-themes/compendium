@@ -15,9 +15,10 @@ This blog template was designed to be readily customized for user preference. Th
    3. ~~create catg page component~~
    4. ~~create DRY script and update components~~
    5. ~~resolve page refresh "bug"~~
-5. update for WAI-ARIA
-6. add a detailed README.md that explains how to use the theme
-7. add a "Sendgrid" API function for the contacts page
+5. ~~fix: wrap features and SEO components in key block ensure expected updates~~
+6. update for WAI-ARIA
+7. add a detailed README.md that explains how to use the theme
+8. add a "Sendgrid" API function for the contacts page
 
 ## Theme Settings (index.json)
 

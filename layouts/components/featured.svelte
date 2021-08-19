@@ -35,6 +35,7 @@
   }
 </script>
 
+{#key featureIdx}
 <div transition:fade>
   <!-- {#each [features[featureIdx]] as { post } (featureIdx)} -->
   {#each allFeatures as post, i}
@@ -138,13 +139,14 @@
     </div>
   {/each}
 </div>
+{/key}
 
 <style>
   .feature {
     color: rgba(255, 255, 255, 0.9);
   }
   .feature a {
-    font-weight: 600;
+    font-weight: 400;
     color: rgba(255, 255, 255, 0.9);
   }
   .feature a:hover {
@@ -152,5 +154,9 @@
   }
   .feature {
     bottom: 3%;
+  }
+  ul {
+    font-family: Anton, sans-serif;
+    font-weight: 300;
   }
 </style>

@@ -4,6 +4,10 @@
   // Values passed in from "html.svelte"
   export let idxContent, allPages, content, env;
   let base = env.local ? "/" : env.baseurl;
+  let isPost;
+
+  // Defne key value for SEO updates
+  $: isPost = content.type === "posts" ? true : false;
 
   // Set flag to enable contact serverless function
   let enableContact = allPages.filter(
@@ -15,7 +19,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <SEO {idxContent} {content} {env} />
+  {#key isPost}
+    <SEO {idxContent} {content} {env} />
+  {/key}
 
   <base href={base} />
 
