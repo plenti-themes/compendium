@@ -2,22 +2,11 @@
   import SEO from "../scripts/SEO.svelte";
 
   // Values passed in from "html.svelte"
-  export let idxContent,
-    allPages,
-    content,
-    path,
-    env,
-    page_title,
-    isArticle,
-    description,
-    image,
-    dateCreated,
-    dateModified;
-
+  export let idxContent, allPages, content, env;
   let base = env.local ? "/" : env.baseurl;
 
   // Set flag to enable contact serverless function
-  let enabledContact = allPages.filter(
+  let enableContact = allPages.filter(
     (key) => key.fields.pageType === "Contact"
   )[0].fields.enabled;
 </script>
@@ -26,17 +15,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-  <SEO
-    {idxContent}
-    {env}
-    {page_title}
-    {isArticle}
-    {description}
-    {path}
-    {image}
-    {dateCreated}
-    {dateModified}
-  />
+  <SEO {idxContent} {content} {env} />
 
   <base href={base} />
 
@@ -46,7 +25,7 @@
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
   <link rel="stylesheet" href="assets/tailwind.global.css" />
 
-  {#if enabledContact}
+  {#if enableContact}
     <!-- Setup contacts assets as needed -->
   {/if}
 

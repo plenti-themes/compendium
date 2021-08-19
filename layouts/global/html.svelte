@@ -4,48 +4,24 @@
   import Navbar from "./navbar.svelte";
   import Footer from "./footer.svelte";
   import { catgs_tags } from "../scripts/catgs_tags.svelte";
-  import { get_description } from "../scripts/get_description.svelte";
 
   // Set the bind variable for capturing light/dark theme state
-  export let isDark, isArticle, page_title, description, path;
+  export let isDark;
 
   // Plenti system variables
   // * allContent: consolidated content data (public/spa/ejected/content.js)
   // * allLayouts: list of layout files
-  // * content: key values from specific content file
+  // * content: properties from the specific content file
   // * layout: layout for the specific content file
   // * env: state values from "plenti.json"
   export let allContent, allLayouts, content, layout, env;
 
-  // Capture key values from "index.json" for theming and ogp content.
+  // Capture key values from "index.json" for links, theming and SEO content.
   export let idxContent = allContent.filter((key) => key.path == "/")[0].fields;
+
   // Capture key content for all posts.
   export let allPages = allContent.filter((key) => key.type == "pages");
   export let allPosts = allContent.filter((key) => key.type == "posts");
-  export let image, dateCreated, dateModified;
-
-  // Define SEO metadata depending whether post or not
-  if (content.type === "posts") {
-    isArticle = true;
-    page_title = content.fields.title;
-    description = get_description(content.fields.articleBody, 160);
-    path = content.path + "/";
-    image = {
-      src: "assets/posts/" + content.fields.image.src,
-      alt: content.fields.image.alt,
-    };
-    dateCreated = content.fields.dateCreated;
-    dateModified = content.fields.dateModified;
-  } else {
-    isArticle = false;
-    page_title = idxContent.title;
-    description = idxContent.description;
-    path = "";
-    image = {
-      src: "assets/" + idxContent.SEO.image,
-      alt: page_title,
-    };
-  }
 
   // Assign the two maps
   let metaVals = catgs_tags(allPosts);
@@ -59,19 +35,7 @@
 
 <html lang="en">
   <!-- Setup meta, styles, scripts, and SEO -->
-  <Head
-    {idxContent}
-    {allPages}
-    {content}
-    {path}
-    {env}
-    {page_title}
-    {isArticle}
-    {description}
-    {image}
-    {dateCreated}
-    {dateModified}
-  />
+  <Head {idxContent} {allPages} {content} {env} />
 
   <!-- Setup sticky nav menu at the top -->
   <header
@@ -88,7 +52,6 @@
         this={layout}
         {...content.fields}
         {idxContent}
-        {description}
         {allLayouts}
         {allPosts}
         {content}
