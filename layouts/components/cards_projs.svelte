@@ -12,9 +12,9 @@
 </script>
 
 {#each uniqProjs as proj, i}
-  <div class="rounded-xl overflow-hidden shadow-md bg-secondary">
-    <div class="flex-none lg:flex">
-      {#if i >= projRangeLow && i < projRangeHigh}
+  {#if i >= projRangeLow && i < projRangeHigh}
+    <div class="rounded-xl overflow-hidden shadow-md bg-secondary">
+      <div class="flex-none lg:flex">
         <div class="mx-2 md:mx-6 mb-2 md:mb-3 my-1">
           {#each allProjs as post, p}
             {#if proj == post.fields.project}
@@ -40,7 +40,7 @@
             {/if}
           {/each}
         </div>
-      {/if}
+      </div>
     </div>
-  </div>
+  {/if}
 {/each}

@@ -27,7 +27,7 @@
       <!-- Paginate each page as necessary                         -->
       <!-- ------------------------------------------------------- -->
       <div class="row mt-8 md:pr-10 mb-6 sm:mb-0">
-        <Pagination {currentPage} {totalPages} />
+        <Pagination {content} {currentPage} {totalPages} />
       </div>
     </div>
 
