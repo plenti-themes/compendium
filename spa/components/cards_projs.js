@@ -43,9 +43,12 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (17:6) {#if i >= projRangeLow && i < projRangeHigh}
+// (15:2) {#if i >= projRangeLow && i < projRangeHigh}
 function create_if_block(ctx) {
-	let div;
+	let div2;
+	let div1;
+	let div0;
+	let t;
 	let current;
 	let each_value_1 = /*allProjs*/ ctx[2];
 	let each_blocks = [];
@@ -60,35 +63,50 @@ function create_if_block(ctx) {
 
 	return {
 		c() {
-			div = element("div");
+			div2 = element("div");
+			div1 = element("div");
+			div0 = element("div");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
+			t = space();
 			this.h();
 		},
 		l(nodes) {
-			div = claim_element(nodes, "DIV", { class: true });
-			var div_nodes = children(div);
+			div2 = claim_element(nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(div_nodes);
+				each_blocks[i].l(div0_nodes);
 			}
 
-			div_nodes.forEach(detach);
+			div0_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			t = claim_space(div2_nodes);
+			div2_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(div, "class", "mx-2 md:mx-6 mb-2 md:mb-3 my-1");
+			attr(div0, "class", "mx-2 md:mx-6 mb-2 md:mb-3 my-1");
+			attr(div1, "class", "flex-none lg:flex");
+			attr(div2, "class", "rounded-xl overflow-hidden shadow-md bg-secondary");
 		},
 		m(target, anchor) {
-			insert(target, div, anchor);
+			insert(target, div2, anchor);
+			append(div2, div1);
+			append(div1, div0);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].m(div, null);
+				each_blocks[i].m(div0, null);
 			}
 
+			append(div2, t);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -106,7 +124,7 @@ function create_if_block(ctx) {
 						each_blocks[i] = create_each_block_1(child_ctx);
 						each_blocks[i].c();
 						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(div, null);
+						each_blocks[i].m(div0, null);
 					}
 				}
 
@@ -138,7 +156,7 @@ function create_if_block(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div);
+			if (detaching) detach(div2);
 			destroy_each(each_blocks, detaching);
 		}
 	};
@@ -412,40 +430,22 @@ function create_each_block_1(ctx) {
 
 // (14:0) {#each uniqProjs as proj, i}
 function create_each_block(ctx) {
-	let div1;
-	let div0;
-	let t;
+	let if_block_anchor;
 	let current;
 	let if_block = /*i*/ ctx[12] >= /*projRangeLow*/ ctx[4] && /*i*/ ctx[12] < /*projRangeHigh*/ ctx[3] && create_if_block(ctx);
 
 	return {
 		c() {
-			div1 = element("div");
-			div0 = element("div");
 			if (if_block) if_block.c();
-			t = space();
-			this.h();
+			if_block_anchor = empty();
 		},
 		l(nodes) {
-			div1 = claim_element(nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			if (if_block) if_block.l(div0_nodes);
-			div0_nodes.forEach(detach);
-			t = claim_space(div1_nodes);
-			div1_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(div0, "class", "flex-none lg:flex");
-			attr(div1, "class", "rounded-xl overflow-hidden shadow-md bg-secondary");
+			if (if_block) if_block.l(nodes);
+			if_block_anchor = empty();
 		},
 		m(target, anchor) {
-			insert(target, div1, anchor);
-			append(div1, div0);
-			if (if_block) if_block.m(div0, null);
-			append(div1, t);
+			if (if_block) if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -460,7 +460,7 @@ function create_each_block(ctx) {
 					if_block = create_if_block(ctx);
 					if_block.c();
 					transition_in(if_block, 1);
-					if_block.m(div0, null);
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
 				}
 			} else if (if_block) {
 				group_outros();
@@ -482,8 +482,8 @@ function create_each_block(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div1);
-			if (if_block) if_block.d();
+			if (if_block) if_block.d(detaching);
+			if (detaching) detach(if_block_anchor);
 		}
 	};
 }

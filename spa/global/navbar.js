@@ -117,7 +117,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (104:12) {#if page.fields.enabled && page.fields.menu}
+// (107:12) {#if page.fields.enabled && page.fields.menu}
 function create_if_block(ctx) {
 	let a;
 	let span;
@@ -165,7 +165,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (103:10) {#each allPages as page, i}
+// (106:10) {#each allPages as page, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let if_block = /*page*/ ctx[8].fields.enabled && /*page*/ ctx[8].fields.menu && create_if_block(ctx);
@@ -230,12 +230,16 @@ function create_fragment(ctx) {
 	let span0;
 	let t5;
 	let t6;
-	let t7;
-	let button1;
+	let a2;
 	let span1;
+	let t7;
+	let t8;
+	let t9;
+	let button1;
+	let span2;
 	let i2;
 	let div3_class_value;
-	let t8;
+	let t10;
 	let div5;
 	let mounted;
 	let dispose;
@@ -279,16 +283,20 @@ function create_fragment(ctx) {
 			span0 = element("span");
 			t5 = text("Home");
 			t6 = space();
+			a2 = element("a");
+			span1 = element("span");
+			t7 = text("Projects");
+			t8 = space();
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			t7 = space();
+			t9 = space();
 			button1 = element("button");
-			span1 = element("span");
+			span2 = element("span");
 			i2 = element("i");
-			t8 = space();
+			t10 = space();
 			div5 = element("div");
 			this.h();
 		},
@@ -343,25 +351,33 @@ function create_fragment(ctx) {
 			span0_nodes.forEach(detach);
 			a1_nodes.forEach(detach);
 			t6 = claim_space(div2_nodes);
+			a2 = claim_element(div2_nodes, "A", { class: true, href: true });
+			var a2_nodes = children(a2);
+			span1 = claim_element(a2_nodes, "SPAN", { class: true });
+			var span1_nodes = children(span1);
+			t7 = claim_text(span1_nodes, "Projects");
+			span1_nodes.forEach(detach);
+			a2_nodes.forEach(detach);
+			t8 = claim_space(div2_nodes);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].l(div2_nodes);
 			}
 
-			t7 = claim_space(div2_nodes);
+			t9 = claim_space(div2_nodes);
 			button1 = claim_element(div2_nodes, "BUTTON", { id: true, type: true, class: true });
 			var button1_nodes = children(button1);
-			span1 = claim_element(button1_nodes, "SPAN", { class: true });
-			var span1_nodes = children(span1);
-			i2 = claim_element(span1_nodes, "I", { class: true });
+			span2 = claim_element(button1_nodes, "SPAN", { class: true });
+			var span2_nodes = children(span2);
+			i2 = claim_element(span2_nodes, "I", { class: true });
 			children(i2).forEach(detach);
-			span1_nodes.forEach(detach);
+			span2_nodes.forEach(detach);
 			button1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
 			div3_nodes.forEach(detach);
 			nav_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
-			t8 = claim_space(div6_nodes);
+			t10 = claim_space(div6_nodes);
 			div5 = claim_element(div6_nodes, "DIV", { class: true });
 			children(div5).forEach(detach);
 			div6_nodes.forEach(detach);
@@ -385,8 +401,11 @@ function create_fragment(ctx) {
 			attr(span0, "class", "menu");
 			attr(a1, "class", "block md:inline-flex px-2 py-1 md:py-0");
 			attr(a1, "href", ".");
-			attr(i2, "class", "las la-adjust text-2xl");
 			attr(span1, "class", "menu");
+			attr(a2, "class", "block md:inline-flex px-2 py-1 md:py-0");
+			attr(a2, "href", "projs/");
+			attr(i2, "class", "las la-adjust text-2xl");
+			attr(span2, "class", "menu");
 			attr(button1, "id", "dark");
 			attr(button1, "type", "button");
 			attr(button1, "class", "inline-block md:inline-flex px-2 py-1 md:py-0");
@@ -425,16 +444,20 @@ function create_fragment(ctx) {
 			append(a1, span0);
 			append(span0, t5);
 			append(div2, t6);
+			append(div2, a2);
+			append(a2, span1);
+			append(span1, t7);
+			append(div2, t8);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(div2, null);
 			}
 
-			append(div2, t7);
+			append(div2, t9);
 			append(div2, button1);
-			append(button1, span1);
-			append(span1, i2);
-			append(div6, t8);
+			append(button1, span2);
+			append(span2, i2);
+			append(div6, t10);
 			append(div6, div5);
 
 			if (!mounted) {
@@ -469,7 +492,7 @@ function create_fragment(ctx) {
 					} else {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
-						each_blocks[i].m(div2, t7);
+						each_blocks[i].m(div2, t9);
 					}
 				}
 

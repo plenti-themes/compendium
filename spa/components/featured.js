@@ -102,7 +102,7 @@ function create_each_block_2(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = "catgs/" + (/*catgList*/ ctx[3].indexOf(/*catg*/ ctx[14]) + 1));
-			attr(a, "class", "ml-0.5 svelte-31wosj");
+			attr(a, "class", "ml-0.5 svelte-lpqugq");
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
@@ -181,7 +181,7 @@ function create_each_block_1(ctx) {
 		},
 		h() {
 			attr(a, "href", a_href_value = "tags/" + (/*tagsList*/ ctx[2].indexOf(/*tag*/ ctx[12]) + 1));
-			attr(a, "class", "ml-0.5 svelte-31wosj");
+			attr(a, "class", "ml-0.5 svelte-lpqugq");
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
@@ -566,11 +566,11 @@ function create_each_block(ctx) {
 			attr(div0, "class", "w-full");
 			attr(div1, "class", "col-lg-2");
 			attr(a0, "href", a0_href_value = /*post*/ ctx[8].path);
-			attr(a0, "class", " svelte-31wosj");
+			attr(a0, "class", " svelte-lpqugq");
 			attr(h2, "class", "w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl");
 			attr(i0, "class", "las la-user-astronaut text-lg relative");
 			attr(a1, "href", a1_href_value = /*post*/ ctx[8].fields.author.url);
-			attr(a1, "class", "svelte-31wosj");
+			attr(a1, "class", "svelte-lpqugq");
 			attr(li0, "class", "px-2");
 			attr(li1, "class", "px-2");
 			attr(li2, "class", "px-2");
@@ -578,12 +578,12 @@ function create_each_block(ctx) {
 
 			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24") + " svelte-31wosj");
+			: "mb-24"));
 
 			attr(div2, "class", "col-lg-8");
 			attr(div3, "class", "col-lg-2");
 			attr(div4, "id", "featureOverlayText");
-			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-31wosj");
+			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-lpqugq");
 			attr(i1, "class", "");
 			attr(i2, "class", "accent las la-chevron-circle-left text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button0, "class", "absolute m-2 left-2");
@@ -735,7 +735,7 @@ function create_each_block(ctx) {
 
 			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24") + " svelte-31wosj")) {
+			: "mb-24"))) {
 				attr(ul, "class", ul_class_value);
 			}
 

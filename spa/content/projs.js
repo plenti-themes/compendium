@@ -20,12 +20,12 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import Tags from '../content/tags.js';
-import Aside from './aside.js';
-import Cards from './cards_projs.js';
-import Pagination from './paginate.js';
+import Aside from '../components/aside.js';
+import Cards from '../components/cards_projs.js';
+import Pagination from '../components/paginate.js';
 
 function create_fragment(ctx) {
+	let div8;
 	let section;
 	let div0;
 	let t0;
@@ -46,35 +46,36 @@ function create_fragment(ctx) {
 
 	cards = new Cards({
 			props: {
-				projArry: /*projArry*/ ctx[8],
-				uniqProjs: /*uniqProjs*/ ctx[9],
-				allProjs: /*allProjs*/ ctx[6],
-				projRangeHigh: /*projRangeHigh*/ ctx[4],
-				projRangeLow: /*projRangeLow*/ ctx[5],
-				tagsList: /*tagsList*/ ctx[1],
-				catgList: /*catgList*/ ctx[2]
+				projArry: /*projArry*/ ctx[9],
+				uniqProjs: /*uniqProjs*/ ctx[10],
+				allProjs: /*allProjs*/ ctx[7],
+				projRangeHigh: /*projRangeHigh*/ ctx[5],
+				projRangeLow: /*projRangeLow*/ ctx[6],
+				tagsList: /*tagsList*/ ctx[2],
+				catgList: /*catgList*/ ctx[3]
 			}
 		});
 
 	pagination = new Pagination({
 			props: {
-				currentPage: /*currentPage*/ ctx[3],
-				totalPages: /*totalPages*/ ctx[10],
-				totalProjPages: /*totalProjPages*/ ctx[11]
+				content: /*content*/ ctx[1],
+				currentPage: /*currentPage*/ ctx[4],
+				totalPages: /*totalPages*/ ctx[11]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[7],
-				tagsList: /*tagsList*/ ctx[1],
-				catgList: /*catgList*/ ctx[2]
+				socialLinks: /*socialLinks*/ ctx[8],
+				tagsList: /*tagsList*/ ctx[2],
+				catgList: /*catgList*/ ctx[3]
 			}
 		});
 
 	return {
 		c() {
+			div8 = element("div");
 			section = element("section");
 			div0 = element("div");
 			t0 = space();
@@ -94,7 +95,9 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			section = claim_element(nodes, "SECTION", { class: true });
+			div8 = claim_element(nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			section = claim_element(div8_nodes, "SECTION", { class: true });
 			var section_nodes = children(section);
 			div0 = claim_element(section_nodes, "DIV", { class: true });
 			children(div0).forEach(detach);
@@ -126,6 +129,7 @@ function create_fragment(ctx) {
 			div7 = claim_element(section_nodes, "DIV", { class: true });
 			children(div7).forEach(detach);
 			section_nodes.forEach(detach);
+			div8_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
@@ -138,9 +142,11 @@ function create_fragment(ctx) {
 			attr(div6, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
 			attr(div7, "class", "w-0 md:w-1/12 xl:w-2/12");
 			attr(section, "class", "w-full flex flex-wrap items-center justify-between");
+			attr(div8, "class", "w-full py-6 sm:py-16");
 		},
 		m(target, anchor) {
-			insert(target, section, anchor);
+			insert(target, div8, anchor);
+			append(div8, section);
 			append(section, div0);
 			append(section, t0);
 			append(section, div6);
@@ -160,18 +166,19 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			const cards_changes = {};
-			if (dirty & /*projRangeHigh*/ 16) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[4];
-			if (dirty & /*projRangeLow*/ 32) cards_changes.projRangeLow = /*projRangeLow*/ ctx[5];
-			if (dirty & /*tagsList*/ 2) cards_changes.tagsList = /*tagsList*/ ctx[1];
-			if (dirty & /*catgList*/ 4) cards_changes.catgList = /*catgList*/ ctx[2];
+			if (dirty & /*projRangeHigh*/ 32) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[5];
+			if (dirty & /*projRangeLow*/ 64) cards_changes.projRangeLow = /*projRangeLow*/ ctx[6];
+			if (dirty & /*tagsList*/ 4) cards_changes.tagsList = /*tagsList*/ ctx[2];
+			if (dirty & /*catgList*/ 8) cards_changes.catgList = /*catgList*/ ctx[3];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
-			if (dirty & /*currentPage*/ 8) pagination_changes.currentPage = /*currentPage*/ ctx[3];
+			if (dirty & /*content*/ 2) pagination_changes.content = /*content*/ ctx[1];
+			if (dirty & /*currentPage*/ 16) pagination_changes.currentPage = /*currentPage*/ ctx[4];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
-			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
+			if (dirty & /*tagsList*/ 4) aside_changes.tagsList = /*tagsList*/ ctx[2];
+			if (dirty & /*catgList*/ 8) aside_changes.catgList = /*catgList*/ ctx[3];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -188,7 +195,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(section);
+			if (detaching) detach(div8);
 			destroy_component(cards);
 			destroy_component(pagination);
 			destroy_component(aside);
@@ -229,30 +236,33 @@ function instance($$self, $$props, $$invalidate) {
 	// Setting variable for pagination logic.
 	let totalProjPages = totalPages;
 
+	console.log(totalProjPages);
+
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(13, content = $$props.content);
-		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
+		if ("content" in $$props) $$invalidate(1, content = $$props.content);
+		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
+		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*content*/ 8192) {
-			$: $$invalidate(3, currentPage = content.pager);
+		if ($$self.$$.dirty & /*content*/ 2) {
+			$: $$invalidate(4, currentPage = content.pager);
 		}
 
-		if ($$self.$$.dirty & /*currentPage*/ 8) {
-			$: $$invalidate(4, projRangeHigh = currentPage * projsPerPage);
+		if ($$self.$$.dirty & /*currentPage*/ 16) {
+			$: $$invalidate(5, projRangeHigh = currentPage * projsPerPage);
 		}
 
-		if ($$self.$$.dirty & /*projRangeHigh*/ 16) {
-			$: $$invalidate(5, projRangeLow = projRangeHigh - projsPerPage);
+		if ($$self.$$.dirty & /*projRangeHigh*/ 32) {
+			$: $$invalidate(6, projRangeLow = projRangeHigh - projsPerPage);
 		}
 	};
 
 	return [
 		allPosts,
+		content,
 		tagsList,
 		catgList,
 		currentPage,
@@ -263,9 +273,7 @@ function instance($$self, $$props, $$invalidate) {
 		projArry,
 		uniqProjs,
 		totalPages,
-		totalProjPages,
-		idxContent,
-		content
+		idxContent
 	];
 }
 
@@ -276,9 +284,9 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 12,
 			allPosts: 0,
-			content: 13,
-			tagsList: 1,
-			catgList: 2
+			content: 1,
+			tagsList: 2,
+			catgList: 3
 		});
 	}
 }

@@ -142,17 +142,6 @@ const allContent = [{
 }
 },{
 "pager": 1,
-"path": "pages/projects",
-"type": "pages",
-"filename": "projects.json",
-"fields": {
-	"title": "Projects Page",
-	"pageType": "Projects",
-	"enabled": true,
-	"menu": true
-}
-},{
-"pager": 1,
 "path": "posts/post-01",
 "type": "posts",
 "filename": "post-01.json",
@@ -332,6 +321,95 @@ const allContent = [{
 
 },{
 "pager": 1,
+"path": "posts/post-08",
+"type": "posts",
+"filename": "post-08.json",
+"fields": {
+  "title": "Curabitur vestibulum laoreet velit eget",
+  "project": "Lorem Three",
+  "image": {
+    "src": "anastasiya-yilmaz-oBO_UCnkyXA-unsplash.jpg",
+    "alt": "Post Image",
+    "citation": "Photo by <a href='https://unsplash.com/@anastasiayilmaz?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Anastasiya Yilmaz</a> on <a href='https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+  },
+  "author": {
+    "name": "Ro Doe",
+    "url": "pages/about"
+  },
+  "dateCreated": "1/11/2020",
+  "dateModified": "1/8/2021",
+  "categories": ["Photography"],
+  "tags": ["Image", "Other"],
+  "featured": true,
+  "draft": true,
+  "articleBody": "Nulla libero elit, ultrices eget dolor eget, condimentum faucibus odio. In porta turpis ac purus gravida, nec venenatis erat molestie. In imperdiet mollis laoreet. Proin sed eleifend nulla, sed finibus enim. Fusce nec velit ac odio convallis accumsan quis ut eros. Suspendisse placerat nunc sit amet lacus sagittis, non viverra lacus gravida. Fusce tempus tellus nulla, ut maximus urna ornare a. Vestibulum nec pellentesque magna, bibendum facilisis orci. Donec consectetur ante non nunc pulvinar dapibus. Nam eleifend leo id turpis porta iaculis. Vivamus fermentum porttitor elit, et pellentesque erat sollicitudin ac. Aliquam euismod arcu et euismod lobortis. Praesent vitae augue at libero porttitor ultricies eu eu nulla. Integer ac neque et orci consectetur euismod dapibus vel augue.<br/><br/>Nunc eu volutpat erat. Quisque tempus augue neque. Mauris volutpat dolor ac enim hendrerit rutrum. Aenean feugiat orci nisl, vel pellentesque purus fringilla vel. Nam sit amet sapien massa. Vestibulum rutrum sagittis ex, quis semper sem gravida nec. Ut sapien est, varius ut mauris ac, commodo scelerisque neque.<br/><br/>Praesent facilisis ligula eget turpis mollis aliquam vel pellentesque tortor. Cras at porttitor metus. Pellentesque elementum id magna vel bibendum. Etiam nec mauris ligula. Etiam vitae convallis turpis. In dapibus rutrum auctor. Aliquam at ultricies tellus. Proin et bibendum tellus, iaculis sodales ipsum. Maecenas feugiat mi ligula, a pellentesque erat mattis eget. Aliquam in egestas neque, consequat varius ipsum. Cras sit amet urna non odio rutrum eleifend. Proin cursus nisl urna. Quisque a urna arcu. Mauris eu faucibus purus, et tristique est. Lorem ipsum dolor sit amet, consectetur adipiscing elit.<br/><br/>Donec a dui et dui sagittis blandit. Pellentesque vel euismod purus, id pharetra quam. Aliquam volutpat nisi et sollicitudin accumsan. Cras at sapien malesuada, tincidunt libero vitae, dictum turpis. Vivamus sem metus, rutrum nec velit sed, convallis eleifend ipsum. Maecenas dignissim ex quis massa pulvinar, et posuere libero facilisis. Fusce a ante leo. Fusce luctus justo id scelerisque tristique. Etiam commodo metus in est varius viverra in id tortor. Cras tristique neque at tellus egestas egestas. Fusce in tristique velit, sed aliquet eros. Etiam id metus suscipit, feugiat dolor eget, imperdiet nisl. Donec sit amet quam fringilla, sodales mauris at, imperdiet ipsum."
+}
+
+},{
+"pager": 1,
+"path": "posts/post-09",
+"type": "posts",
+"filename": "post-09.json",
+"fields": {
+  "title": "Curabitur nec ipsum pretium aliquam",
+  "project": "Lorem Three",
+  "image": {
+    "src": "john-schnobrich-2FPjlAyMQTA-unsplash.jpg",
+    "alt": "Post Image",
+    "citation": "Photo by <a href='https://unsplash.com/@johnschno?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>John Schnobrich</a> on <a href='https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+  },
+  "author": {
+    "name": "Ro Doe",
+    "url": "pages/about"
+  },
+  "dateCreated": "1/12/2020",
+  "dateModified": "1/8/2021",
+  "categories": ["Photography"],
+  "tags": ["Image", "Other"],
+  "featured": true,
+  "draft": true,
+  "articleBody": "Aenean aliquam, mi vel tempor volutpat, neque velit finibus libero, eu sagittis orci arcu non nisi. Sed rhoncus mi ornare vestibulum pretium. Fusce eget ullamcorper lectus. Donec in tortor sollicitudin dolor consequat tristique. Mauris rutrum nunc sit amet nisl ornare, eget volutpat tortor eleifend. Pellentesque eget neque sit amet arcu tincidunt porttitor. Nulla facilisi. Cras erat elit, hendrerit in orci ac, dignissim faucibus odio.<br/><br/>Integer augue ex, accumsan quis placerat ac, egestas in risus. Morbi elementum mi sit amet risus aliquet gravida. Duis interdum, lacus sed sagittis malesuada, purus ligula vulputate velit, quis posuere sem dolor sit amet erat. Vestibulum vestibulum justo nec pellentesque mattis. Quisque sit amet dignissim nunc. Donec mattis id erat vitae consectetur. Curabitur rhoncus interdum mauris, vitae vulputate augue tempor placerat. Morbi nunc mi, mollis et commodo quis, convallis et elit. Mauris id tellus semper, rhoncus lorem consequat, sagittis ex. Cras imperdiet arcu massa, et porttitor eros lobortis non.<br/><br/>Aliquam ac ex mi. Nullam cursus nunc quis eros scelerisque, eu porttitor lacus efficitur. Sed pharetra tempor ipsum, eget porta risus sollicitudin vitae. In iaculis velit ut magna eleifend, non dapibus purus dictum. Curabitur egestas orci eu purus fermentum, in elementum metus venenatis. Maecenas luctus ligula ac augue commodo, non sollicitudin dui luctus. Sed pharetra ex id magna accumsan congue. Sed quis aliquam elit, in faucibus elit. Nunc semper cursus sodales. Integer dictum ante eu tellus condimentum, et aliquam risus iaculis. Vivamus a odio rutrum, efficitur sapien ut, lobortis ex. Proin nisi ipsum, egestas id rutrum in, suscipit in libero. Aenean pharetra velit dolor, et mattis tortor ultrices vel. Maecenas non eros nec turpis porttitor rhoncus non a massa. Quisque consequat vitae justo a tincidunt.<br/><br/>Curabitur finibus viverra elit id interdum. In ac nisl in lorem convallis elementum in vel erat. Vivamus nulla nisi, consequat sit amet varius quis, vulputate hendrerit nulla. Fusce eu quam feugiat, egestas nisl a, iaculis augue. Vestibulum id lobortis tellus. Nunc eleifend quam nec lectus ultricies, non accumsan nibh ornare. Aenean dictum iaculis leo, nec sodales tortor semper in. Nulla facilisi. Vestibulum tristique tellus at iaculis tincidunt. Fusce congue tincidunt condimentum. Fusce vitae mattis odio, porttitor aliquam sem. Proin eu dolor eu ex imperdiet consectetur. Mauris rhoncus dui sit amet quam elementum, sit amet sodales ante pellentesque. Nam pretium elit id placerat congue.<br/><br/>Aenean vel felis congue, sagittis odio non, dapibus nisl. Vivamus dignissim diam et justo gravida tincidunt. Donec diam mauris, porttitor in tristique ac, congue et lorem. Vestibulum sit amet ipsum lacus. Sed fringilla urna at mi posuere cursus. Nunc in risus dui. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Suspendisse eget metus in nulla egestas lacinia. Quisque vulputate lacus non mauris venenatis laoreet. Fusce vitae molestie libero. Pellentesque gravida nunc sed tempus euismod. Aenean malesuada tempus dui, id interdum nibh facilisis sed. Aliquam rutrum aliquam molestie. Ut id suscipit justo, a gravida dui. Mauris luctus erat tristique rutrum tristique. Integer pretium sem magna, a cursus nulla condimentum vitae.<br/><br/>Suspendisse eu ipsum risus. Morbi erat eros, scelerisque a sollicitudin non, rhoncus quis ante. Etiam in nulla eu mi volutpat sodales. In molestie sagittis nisi at egestas. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi neque augue, mollis ut felis in, convallis feugiat dui. Maecenas sit amet posuere lacus. Suspendisse interdum porttitor ligula id suscipit. Sed in felis in tellus dictum molestie. Nunc hendrerit nunc leo, at euismod sem consectetur non. Mauris a tortor augue."
+}
+
+},{
+"pager": 1,
+"path": "posts/post-10",
+"type": "posts",
+"filename": "post-10.json",
+"fields": {
+  "title": "Donec odio risus, mattis a ligula",
+  "project": "Lorem Four",
+  "image": {
+    "src": "antonio-rull-tMH2UgXW3c0-unsplash.jpg",
+    "alt": "Post Image",
+    "citation": "Photo by <a href='https://unsplash.com/@antoniorull?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Antonio Rull</a> on <a href='https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+  },
+  "author": {
+    "name": "Ro Doe",
+    "url": "pages/about"
+  },
+  "dateCreated": "1/13/2020",
+  "dateModified": "1/8/2021",
+  "categories": ["Photography"],
+  "tags": ["Image", "Other"],
+  "featured": false,
+  "draft": true,
+  "articleBody": "Phasellus fermentum felis ut magna hendrerit, ut egestas augue elementum. Aliquam pharetra sagittis mollis. Maecenas ut libero vestibulum, pharetra dolor sed, mollis turpis. Nulla sodales volutpat ex, eu viverra dolor pulvinar a. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque aliquet, nunc sit amet suscipit vestibulum, nisl tortor fringilla purus, et tristique ex massa eu risus. Donec sed viverra neque. Mauris hendrerit mattis purus sed pellentesque. Ut dignissim commodo massa, at pulvinar dolor ultrices sed. Nulla justo augue, vulputate eget mollis in, consectetur vitae lorem.<br/><br/>Suspendisse imperdiet eleifend mi vitae varius. Sed in interdum ante, vitae aliquet lorem. Vivamus a metus at enim lobortis rhoncus id sit amet dolor. Suspendisse dignissim arcu id odio cursus vulputate. Ut dictum finibus eros id lacinia. Proin in congue turpis, eu blandit sem. Proin gravida a est vitae suscipit. Donec mollis malesuada nibh a porta. Sed vel dignissim sem, et mattis dui. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Suspendisse erat nisl, varius quis viverra quis, malesuada at arcu. Duis condimentum massa suscipit erat vestibulum, eu congue sapien commodo. Maecenas et egestas quam.<br/><br/>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Proin vel odio est. Etiam iaculis imperdiet massa, nec iaculis ante. Nullam dui nisl, euismod ut ante quis, vulputate commodo lorem. Donec bibendum euismod arcu sit amet dignissim. Ut rhoncus auctor cursus. Proin scelerisque eleifend tellus eu euismod. Aliquam cursus in ex vel efficitur. Pellentesque molestie neque quis massa finibus cursus. Mauris lacinia venenatis mattis.<br/><br/>Duis fermentum ac arcu eu gravida. Fusce faucibus, tortor at imperdiet ullamcorper, mi turpis ornare massa, eu viverra sapien quam in lorem. Donec sodales venenatis nisi, in dignissim sem ornare id. Sed sapien risus, condimentum id nibh ac, molestie malesuada ligula. In ut neque scelerisque, posuere nisl sit amet, maximus justo. Maecenas varius nisi id nulla scelerisque posuere. Maecenas quam eros, tincidunt ut turpis vitae, iaculis varius ipsum. Vestibulum elementum enim urna, a tristique nisl congue quis. Vivamus porttitor eleifend magna in consequat. Aliquam bibendum iaculis auctor. In consectetur eget justo et accumsan. Proin non suscipit leo, vel lacinia urna. Cras lobortis in eros et pulvinar."
+}
+
+},{
+"pager": 1,
+"path": "projs",
+"type": "projs",
+"filename": "projs.json",
+"fields": {
+	"title": "Projects Page",
+	"pageType": "Projects",
+	"enabled": true,
+	"menu": true
+}
+},{
+"pager": 1,
 "path": "tags",
 "type": "tags",
 "filename": "tags.json",
@@ -354,6 +432,18 @@ const allContent = [{
 "type": "index",
 "filename": "index.json",
 "fields": { "name": "Compendium", "site": "www.example.net", "logo": "logo.svg", "title": "Compendium | Personal Blog Template", "description": "A personal blog template for the Plenti-based SSG built on Svelte.", "SEO": { "locale": "en_US", "twitteruser": "@mytag", "author": "Jo Doe", "author_site": "", "image": "logo.png" }, "theme": { "postsPerPage": 6, "projsPerPage": 3, "tagsPerPage": 12, "mathTypesetting": true, "codeHighlighting": true, "featuredPage": "Bleed", "featuredPageValues": "Bleed, Frame, None", "colorScheme": "Earthliness", "colorSchemeValues": "Earthliness, Simplicity, Technobeat" }, "socialLinks": [ { "src": "https://www.linkedin.com/", "ico": "lab la-linkedin-in", "enabled": true }, { "src": "https://github.com/", "ico": "lab la-github-alt", "enabled": true }, { "src": "https://about.gitlab.com/", "ico": "lab la-gitlab", "enabled": true }, { "src": "https://twitter.com/", "ico": "lab la-twitter", "enabled": false }, { "src": "https://keybase.io/", "ico": "lab la-keybase", "enabled": true }, { "src": "https://www.reddit.com/", "ico": "lab la-reddit", "enabled": true }, { "src": "https://www.instagram.com/", "ico": "lab la-instagram", "enabled": false }, { "src": "https://www.facebook.com/", "ico": "lab la-facebook-f", "enabled": false }, { "src": "", "ico": "", "enabled": false } ] } 
+},{
+"pager": 1,
+"path": "projs/1",
+"type": "projs",
+"filename": "projs.json",
+"fields": { "title": "Projects Page", "pageType": "Projects", "enabled": true, "menu": true }
+},{
+"pager": 2,
+"path": "projs/2",
+"type": "projs",
+"filename": "projs.json",
+"fields": { "title": "Projects Page", "pageType": "Projects", "enabled": true, "menu": true }
 },{
 "pager": 1,
 "path": "tags/1",
