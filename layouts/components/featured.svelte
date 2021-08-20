@@ -155,8 +155,4 @@
   .feature {
     bottom: 3%;
   }
-  ul {
-    font-family: Anton, sans-serif;
-    font-weight: 300;
-  }
 </style>
