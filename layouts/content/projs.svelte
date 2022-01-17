@@ -13,6 +13,15 @@
 
   let projArry = [];
   let projList = [];
+
+  // Sort project posts in ascending order
+  allProjs.sort(function(a, b) {
+    // var s = new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
+    var p = a.fields.project.localeCompare(b.fields.project)
+    return p == 0? a.path.localeCompare(b.path) : p;
+  });
+
+  // create array of projects
   allProjs.forEach((element) => {
     projArry.push({
       proj: element.fields.project,
