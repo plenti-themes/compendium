@@ -1,5 +1,5 @@
 <script>
-  import Meta from "./post_meta.svelte";
+  import PostMeta from "./post_meta.svelte";
   export let projArry,
     uniqProjs,
     allProjs,
@@ -23,6 +23,13 @@
                   <span class="accent">Project:</span>
                   {proj}
                 </h2>
+                <p class="text-base mb-5">
+                  {post.fields.articleBody.substring(
+                    post.fields.articleBody.indexOf("<p>")+3,
+                    post.fields.articleBody.indexOf("<h2")
+                    )
+                  }
+                </p>
               {/if}
               <div class="flex items-center mb-3">
                 <img
@@ -31,10 +38,21 @@
                   alt={post.fields.image.alt}
                 />
                 <div class="inline-block ml-2">
-                  <h3 class="header my-0 text-xl md:text-2xl">
+                  <h3 class="header mt-0 mb-1 text-xl md:text-2xl">
                     <a href={post.path}>{post.fields.title}</a>
                   </h3>
-                  <Meta {post} {tagsList} {catgList} {complete} {skipbody} />
+                  <ul class="text-meta flex flex-wrap">
+                    <li class="mx-0 -mt-1 text-meta inline-flex">
+                      <i class="las la-user-astronaut text-lg" />
+                    </li>
+                    <PostMeta
+                      {post}
+                      {tagsList}
+                      {catgList}
+                      {complete}
+                      {skipbody}
+                    />
+                  </ul>
                 </div>
               </div>
             {/if}
