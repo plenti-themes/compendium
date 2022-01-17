@@ -1,5 +1,5 @@
 <script>
-  import Meta from "./post_meta.svelte";
+  import PostMeta from "./post_meta.svelte";
   export let allPosts;
   export let complete = false;
   export let skipbody = true;
@@ -34,7 +34,12 @@
               <h5 class="header mt-0 mb-1">
                 <a href={post.path}>{post.fields.title}</a>
               </h5>
-              <Meta {post} {complete} {skipbody} />
+              <ul class="text-meta flex flex-wrap">
+                <li class="mx-0 -mt-1 text-meta inline-flex">
+                  <i class="las la-user-astronaut text-lg" />
+                </li>
+                <PostMeta {post} {complete} {skipbody} />
+              </ul>
             </div>
           </div>
         {/if}
