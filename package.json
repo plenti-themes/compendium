@@ -1,6 +1,6 @@
 {
   "name": "compendium-theme",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "scripts": {
     "update:scheme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
     "predevlop": "npm run update:scheme",
