@@ -31,7 +31,7 @@
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     {#if featuredPage == "Frame" && currentPage <= 1}
       <div class="w-full row mt-6 sm:mt-16">
-        <Featured {allFeatures} {featuredPage} />
+        <Featured {allFeatures} {featuredPage} {tagsList} {catgList} />
       </div>
     {/if}
 
