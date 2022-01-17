@@ -81,6 +81,8 @@
   :global(ol) {
     margin-left: 2rem;
     margin-bottom: 1.5rem;
+    margin-right: 2rem;
+    list-style: decimal;
   }
   :global(hr) {
     border-top: 1px solid var(--accent);
@@ -150,17 +152,17 @@
   :global(.header) {
     color: var(--on-secondary);
   }
-  :global(.menu) {
+  :global(.navmenu) {
     font-family: montserrat, sans-serif;
     font-weight: 500;
     color: var(--on-primary);
     border-bottom: 4px solid transparent;
   }
-  :global(.menu:hover) {
+  :global(.navmenu:hover) {
     border-bottom: 4px solid var(--accent);
     transition: all 0.25s ease-in;
   }
-  :global(.menu.active) {
+  :global(.navmenu.active) {
     border-bottom: 4px solid var(--accent);
   }
 
@@ -249,7 +251,7 @@
   :global(.tabcontent pre) {
     max-height: none;
   }
-  :global(.footer) {
+  :global(.footnote) {
     color: var(--on-primary);
     line-height: 1.2;
     font-family: montserrat, sans-serif;
@@ -257,7 +259,7 @@
     font-size: 0.9rem;
     opacity: 0.85;
   }
-  :global(.footer a) {
+  :global(.footnote a) {
     text-decoration: underline;
   }
 
