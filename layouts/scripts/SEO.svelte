@@ -24,7 +24,7 @@
   let author_site = idxContent.SEO.author_site;
   let twitterUsername = idxContent.SEO.twitterUsername;
 
-  // Define attributes based on post or not
+  // Generate SEO card based on post attributes
   if (content.type === "posts") {
     isArticle = true;
     page_title = content.fields.title;
@@ -34,6 +34,15 @@
     image_alt = content.fields.image.alt;
     dateCreated = content.fields.dateCreated;
     dateModified = content.fields.dateModified;
+  // Generate SEO card based on About me page attributes
+  } else if (content.path === "pages/about") {
+    isArticle = true;
+    page_title = idxContent.name + " | " + content.fields.title;
+    description = content.fields.hero.tagline;
+    url = site_url + content.path + "/";
+    image_url = site_url + "assets/pages/" + content.fields.image.src;
+    image_alt = content.fields.image.alt;
+  // Default SEO card to site attributes
   } else {
     isArticle = false;
     page_title = idxContent.title;
