@@ -20,7 +20,13 @@
         <!-- ------------------------------------------------------- -->
         <!-- Setup a Card for each post as necessary                 -->
         <!-- ------------------------------------------------------- -->
-        <Cards {allPosts} {postRangeHigh} {postRangeLow} {tagsList} {catgList} />
+        <Cards
+          {allPosts}
+          {postRangeHigh}
+          {postRangeLow}
+          {tagsList}
+          {catgList}
+        />
       </div>
 
       <!-- ------------------------------------------------------- -->
