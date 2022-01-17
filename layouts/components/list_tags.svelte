@@ -1,10 +1,10 @@
 <script>
-  import Meta from "./post_meta.svelte";
+  import PostMeta from "./post_meta.svelte";
   export let tagsMap, tag, tagsList, catgList;
   export let complete = true;
   export let skipbody = true;
   let Posts;
-  
+
   $: Posts = tagsMap.get(tag);
 </script>
 
@@ -26,7 +26,12 @@
             <h3 class="header my-0 text-xl md:text-2xl">
               <a href={post.path}>{post.title}</a>
             </h3>
-            <Meta {post} {tagsList} {catgList} {complete} {skipbody} />
+            <ul class="text-meta flex flex-wrap">
+              <li class="mx-0 -mt-1 text-meta inline-flex">
+                <i class="las la-user-astronaut text-lg" />
+              </li>
+              <PostMeta {post} {tagsList} {catgList} {complete} {skipbody} />
+            </ul>
           </div>
         </div>
       {/each}
