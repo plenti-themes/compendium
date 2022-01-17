@@ -16,7 +16,6 @@ import {
 	init,
 	insert,
 	mount_component,
-	noop,
 	safe_not_equal,
 	space,
 	transition_in,
@@ -92,7 +91,9 @@ function create_if_block(ctx) {
 	featured = new Featured({
 			props: {
 				allFeatures: /*allFeatures*/ ctx[10],
-				featuredPage: /*featuredPage*/ ctx[9]
+				featuredPage: /*featuredPage*/ ctx[9],
+				tagsList: /*tagsList*/ ctx[4],
+				catgList: /*catgList*/ ctx[5]
 			}
 		});
 
@@ -117,7 +118,12 @@ function create_if_block(ctx) {
 			mount_component(featured, div, null);
 			current = true;
 		},
-		p: noop,
+		p(ctx, dirty) {
+			const featured_changes = {};
+			if (dirty & /*tagsList*/ 16) featured_changes.tagsList = /*tagsList*/ ctx[4];
+			if (dirty & /*catgList*/ 32) featured_changes.catgList = /*catgList*/ ctx[5];
+			featured.$set(featured_changes);
+		},
 		i(local) {
 			if (current) return;
 			transition_in(featured.$$.fragment, local);

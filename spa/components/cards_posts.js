@@ -27,7 +27,7 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import Meta from './post_meta.js';
+import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
@@ -36,7 +36,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (10:2) {#if i >= postRangeLow && i < postRangeHigh}
+// (18:2) {#if i >= postRangeLow && i < postRangeHigh}
 function create_if_block(ctx) {
 	let div1;
 	let img;
@@ -50,11 +50,15 @@ function create_if_block(ctx) {
 	let t1;
 	let a_href_value;
 	let t2;
-	let meta;
+	let ul;
+	let li;
+	let i;
 	let t3;
+	let postmeta;
+	let t4;
 	let current;
 
-	meta = new Meta({
+	postmeta = new PostMeta({
 			props: {
 				post: /*post*/ ctx[7],
 				tagsList: /*tagsList*/ ctx[3],
@@ -74,8 +78,12 @@ function create_if_block(ctx) {
 			a = element("a");
 			t1 = text(t1_value);
 			t2 = space();
-			create_component(meta.$$.fragment);
+			ul = element("ul");
+			li = element("li");
+			i = element("i");
 			t3 = space();
+			create_component(postmeta.$$.fragment);
+			t4 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -93,9 +101,18 @@ function create_if_block(ctx) {
 			a_nodes.forEach(detach);
 			h3_nodes.forEach(detach);
 			t2 = claim_space(div0_nodes);
-			claim_component(meta.$$.fragment, div0_nodes);
+			ul = claim_element(div0_nodes, "UL", { class: true });
+			var ul_nodes = children(ul);
+			li = claim_element(ul_nodes, "LI", { class: true });
+			var li_nodes = children(li);
+			i = claim_element(li_nodes, "I", { class: true });
+			children(i).forEach(detach);
+			li_nodes.forEach(detach);
+			t3 = claim_space(ul_nodes);
+			claim_component(postmeta.$$.fragment, ul_nodes);
+			ul_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
-			t3 = claim_space(div1_nodes);
+			t4 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
 			this.h();
 		},
@@ -104,7 +121,10 @@ function create_if_block(ctx) {
 			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[7].fields.image.src)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*post*/ ctx[7].fields.image.alt);
 			attr(a, "href", a_href_value = /*post*/ ctx[7].path);
-			attr(h3, "class", "header mt-0 mb-2 text-xl md:text-2xl");
+			attr(h3, "class", "header mt-0 mb-1 text-xl md:text-2xl");
+			attr(i, "class", "las la-user-astronaut text-lg");
+			attr(li, "class", "mx-0 -mt-1 text-meta inline-flex");
+			attr(ul, "class", "text-meta flex flex-wrap");
 			attr(div0, "class", "px-5 py-4");
 			attr(div1, "class", "rounded-lg overflow-hidden shadow-md bg-secondary");
 		},
@@ -117,8 +137,12 @@ function create_if_block(ctx) {
 			append(h3, a);
 			append(a, t1);
 			append(div0, t2);
-			mount_component(meta, div0, null);
-			append(div1, t3);
+			append(div0, ul);
+			append(ul, li);
+			append(li, i);
+			append(ul, t3);
+			mount_component(postmeta, ul, null);
+			append(div1, t4);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -136,31 +160,31 @@ function create_if_block(ctx) {
 				attr(a, "href", a_href_value);
 			}
 
-			const meta_changes = {};
-			if (dirty & /*allPosts*/ 1) meta_changes.post = /*post*/ ctx[7];
-			if (dirty & /*tagsList*/ 8) meta_changes.tagsList = /*tagsList*/ ctx[3];
-			if (dirty & /*catgList*/ 16) meta_changes.catgList = /*catgList*/ ctx[4];
-			if (dirty & /*complete*/ 32) meta_changes.complete = /*complete*/ ctx[5];
-			if (dirty & /*skipbody*/ 64) meta_changes.skipbody = /*skipbody*/ ctx[6];
-			meta.$set(meta_changes);
+			const postmeta_changes = {};
+			if (dirty & /*allPosts*/ 1) postmeta_changes.post = /*post*/ ctx[7];
+			if (dirty & /*tagsList*/ 8) postmeta_changes.tagsList = /*tagsList*/ ctx[3];
+			if (dirty & /*catgList*/ 16) postmeta_changes.catgList = /*catgList*/ ctx[4];
+			if (dirty & /*complete*/ 32) postmeta_changes.complete = /*complete*/ ctx[5];
+			if (dirty & /*skipbody*/ 64) postmeta_changes.skipbody = /*skipbody*/ ctx[6];
+			postmeta.$set(postmeta_changes);
 		},
 		i(local) {
 			if (current) return;
-			transition_in(meta.$$.fragment, local);
+			transition_in(postmeta.$$.fragment, local);
 			current = true;
 		},
 		o(local) {
-			transition_out(meta.$$.fragment, local);
+			transition_out(postmeta.$$.fragment, local);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(div1);
-			destroy_component(meta);
+			destroy_component(postmeta);
 		}
 	};
 }
 
-// (9:0) {#each allPosts as post, i}
+// (17:0) {#each allPosts as post, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let current;
@@ -328,6 +352,15 @@ function instance($$self, $$props, $$invalidate) {
 		if ("catgList" in $$props) $$invalidate(4, catgList = $$props.catgList);
 		if ("complete" in $$props) $$invalidate(5, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(6, skipbody = $$props.skipbody);
+	};
+
+	$$self.$$.update = () => {
+		if ($$self.$$.dirty & /*allPosts*/ 1) {
+			// Sort posts in descending order
+			$: allPosts.sort(function (a, b) {
+				return new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
+			});
+		}
 	};
 
 	return [allPosts, postRangeHigh, postRangeLow, tagsList, catgList, complete, skipbody];

@@ -118,18 +118,18 @@ function create_fragment(ctx) {
 		h() {
 			attr(i, "class", "las la-chevron-circle-up text-5xl md:text-6xl rounded-full overflow-hidden bg-clip-content opacity-70 hover:opacity-100 accent");
 			attr(a0, "target", "_blank");
-			attr(a0, "rel", "noopener noreferrer");
+			attr(a0, "rel", "noopener");
 			attr(a0, "href", "https://plenti.co/");
 			attr(a1, "target", "_blank");
-			attr(a1, "rel", "noopener noreferrer");
+			attr(a1, "rel", "noopener");
 			attr(a1, "href", "https://svelte.dev/");
 			attr(a2, "target", "_blank");
-			attr(a2, "rel", "noopener noreferrer");
+			attr(a2, "rel", "noopener");
 			attr(a2, "href", "https://icons8.com/line-awesome");
 			attr(a3, "target", "_blank");
-			attr(a3, "rel", "noopener noreferrer");
+			attr(a3, "rel", "noopener");
 			attr(a3, "href", "https://tailwindcss.com/");
-			attr(div0, "class", "footer mt-2");
+			attr(div0, "class", "footnote mt-2");
 			attr(div1, "class", "w-full text-center");
 			attr(div2, "class", "flex flex-wrap items-center justify-between pb-4 pt-2");
 		},

@@ -16,10 +16,12 @@ import {
 	insert,
 	listen,
 	mount_component,
+	noop,
 	run_all,
 	safe_not_equal,
 	set_data,
 	set_input_value,
+	set_style,
 	space,
 	text,
 	transition_in,
@@ -28,62 +30,142 @@ import {
 
 import Aside from './aside.js';
 
+function create_else_block(ctx) {
+	let t;
+
+	return {
+		c() {
+			t = text(/*title*/ ctx[3]);
+		},
+		l(nodes) {
+			t = claim_text(nodes, /*title*/ ctx[3]);
+		},
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*title*/ 8) set_data(t, /*title*/ ctx[3]);
+		},
+		d(detaching) {
+			if (detaching) detach(t);
+		}
+	};
+}
+
+// (58:14) {#if tname.length > 1}
+function create_if_block(ctx) {
+	let span0;
+	let t0_value = /*tname*/ ctx[11][0].toUpperCase() + "";
+	let t0;
+	let t1;
+	let span1;
+	let t2_value = /*tname*/ ctx[11][1].toUpperCase() + "";
+	let t2;
+
+	return {
+		c() {
+			span0 = element("span");
+			t0 = text(t0_value);
+			t1 = space();
+			span1 = element("span");
+			t2 = text(t2_value);
+			this.h();
+		},
+		l(nodes) {
+			span0 = claim_element(nodes, "SPAN", { class: true, style: true });
+			var span0_nodes = children(span0);
+			t0 = claim_text(span0_nodes, t0_value);
+			t1 = claim_space(span0_nodes);
+			span0_nodes.forEach(detach);
+			span1 = claim_element(nodes, "SPAN", {});
+			var span1_nodes = children(span1);
+			t2 = claim_text(span1_nodes, t2_value);
+			span1_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(span0, "class", "accent");
+			set_style(span0, "opacity", "1");
+		},
+		m(target, anchor) {
+			insert(target, span0, anchor);
+			append(span0, t0);
+			append(span0, t1);
+			insert(target, span1, anchor);
+			append(span1, t2);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(span0);
+			if (detaching) detach(span1);
+		}
+	};
+}
+
 function create_fragment(ctx) {
 	let section;
 	let div0;
 	let t0;
+	let div16;
 	let div15;
-	let div14;
+	let div13;
 	let div12;
-	let div1;
+	let div11;
 	let h2;
 	let t1;
-	let t2;
 	let p;
+	let t2;
 	let t3;
-	let t4;
 	let form;
-	let div4;
-	let div2;
-	let label0;
-	let t5;
-	let t6;
-	let input0;
-	let t7;
 	let div3;
+	let div1;
+	let label0;
+	let t4;
+	let t5;
+	let input0;
+	let t6;
+	let div2;
 	let label1;
+	let t7;
 	let t8;
-	let t9;
 	let input1;
-	let t10;
-	let div6;
+	let t9;
 	let div5;
+	let div4;
 	let label2;
+	let t10;
 	let t11;
-	let t12;
 	let input2;
-	let t13;
-	let div8;
+	let t12;
 	let div7;
+	let div6;
 	let label3;
+	let t13;
 	let t14;
-	let t15;
 	let textarea;
-	let t16;
-	let div11;
-	let div9;
-	let button;
-	let t17;
-	let t18;
+	let t15;
 	let div10;
-	let t19;
-	let div13;
+	let div8;
+	let button;
+	let t16;
+	let t17;
+	let div9;
+	let t18;
+	let div14;
 	let aside;
-	let t20;
-	let div16;
+	let t19;
+	let div17;
 	let current;
 	let mounted;
 	let dispose;
+
+	function select_block_type(ctx, dirty) {
+		if (/*tname*/ ctx[11].length > 1) return create_if_block;
+		return create_else_block;
+	}
+
+	let current_block_type = select_block_type(ctx, -1);
+	let if_block = current_block_type(ctx);
 
 	aside = new Aside({
 			props: {
@@ -99,55 +181,56 @@ function create_fragment(ctx) {
 			section = element("section");
 			div0 = element("div");
 			t0 = space();
-			div15 = element("div");
-			div14 = element("div");
-			div12 = element("div");
-			div1 = element("div");
-			h2 = element("h2");
-			t1 = text(/*title*/ ctx[3]);
-			t2 = space();
-			p = element("p");
-			t3 = text(/*articleBody*/ ctx[4]);
-			t4 = space();
-			form = element("form");
-			div4 = element("div");
-			div2 = element("div");
-			label0 = element("label");
-			t5 = text("First Name");
-			t6 = space();
-			input0 = element("input");
-			t7 = space();
-			div3 = element("div");
-			label1 = element("label");
-			t8 = text("Last Name");
-			t9 = space();
-			input1 = element("input");
-			t10 = space();
-			div6 = element("div");
-			div5 = element("div");
-			label2 = element("label");
-			t11 = text("E-mail");
-			t12 = space();
-			input2 = element("input");
-			t13 = space();
-			div8 = element("div");
-			div7 = element("div");
-			label3 = element("label");
-			t14 = text("Message");
-			t15 = space();
-			textarea = element("textarea");
-			t16 = space();
-			div11 = element("div");
-			div9 = element("div");
-			button = element("button");
-			t17 = text("Send");
-			t18 = space();
-			div10 = element("div");
-			t19 = space();
-			div13 = element("div");
-			create_component(aside.$$.fragment);
-			t20 = space();
 			div16 = element("div");
+			div15 = element("div");
+			div13 = element("div");
+			div12 = element("div");
+			div11 = element("div");
+			h2 = element("h2");
+			if_block.c();
+			t1 = space();
+			p = element("p");
+			t2 = text(/*articleBody*/ ctx[4]);
+			t3 = space();
+			form = element("form");
+			div3 = element("div");
+			div1 = element("div");
+			label0 = element("label");
+			t4 = text("First Name");
+			t5 = space();
+			input0 = element("input");
+			t6 = space();
+			div2 = element("div");
+			label1 = element("label");
+			t7 = text("Last Name");
+			t8 = space();
+			input1 = element("input");
+			t9 = space();
+			div5 = element("div");
+			div4 = element("div");
+			label2 = element("label");
+			t10 = text("E-mail");
+			t11 = space();
+			input2 = element("input");
+			t12 = space();
+			div7 = element("div");
+			div6 = element("div");
+			label3 = element("label");
+			t13 = text("Message");
+			t14 = space();
+			textarea = element("textarea");
+			t15 = space();
+			div10 = element("div");
+			div8 = element("div");
+			button = element("button");
+			t16 = text("Send");
+			t17 = space();
+			div9 = element("div");
+			t18 = space();
+			div14 = element("div");
+			create_component(aside.$$.fragment);
+			t19 = space();
+			div17 = element("div");
 			this.h();
 		},
 		l(nodes) {
@@ -156,38 +239,56 @@ function create_fragment(ctx) {
 			div0 = claim_element(section_nodes, "DIV", { class: true });
 			children(div0).forEach(detach);
 			t0 = claim_space(section_nodes);
-			div15 = claim_element(section_nodes, "DIV", { class: true });
+			div16 = claim_element(section_nodes, "DIV", { class: true });
+			var div16_nodes = children(div16);
+			div15 = claim_element(div16_nodes, "DIV", { class: true });
 			var div15_nodes = children(div15);
-			div14 = claim_element(div15_nodes, "DIV", { class: true });
-			var div14_nodes = children(div14);
-			div12 = claim_element(div14_nodes, "DIV", { class: true });
+			div13 = claim_element(div15_nodes, "DIV", { class: true });
+			var div13_nodes = children(div13);
+			div12 = claim_element(div13_nodes, "DIV", { class: true });
 			var div12_nodes = children(div12);
-			div1 = claim_element(div12_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			h2 = claim_element(div1_nodes, "H2", { class: true });
+			div11 = claim_element(div12_nodes, "DIV", { class: true });
+			var div11_nodes = children(div11);
+			h2 = claim_element(div11_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			t1 = claim_text(h2_nodes, /*title*/ ctx[3]);
+			if_block.l(h2_nodes);
 			h2_nodes.forEach(detach);
-			t2 = claim_space(div1_nodes);
-			p = claim_element(div1_nodes, "P", { class: true });
+			t1 = claim_space(div11_nodes);
+			p = claim_element(div11_nodes, "P", { class: true });
 			var p_nodes = children(p);
-			t3 = claim_text(p_nodes, /*articleBody*/ ctx[4]);
+			t2 = claim_text(p_nodes, /*articleBody*/ ctx[4]);
 			p_nodes.forEach(detach);
-			div1_nodes.forEach(detach);
-			t4 = claim_space(div12_nodes);
-			form = claim_element(div12_nodes, "FORM", { id: true, class: true });
+			t3 = claim_space(div11_nodes);
+			form = claim_element(div11_nodes, "FORM", { id: true, class: true });
 			var form_nodes = children(form);
-			div4 = claim_element(form_nodes, "DIV", { class: true });
-			var div4_nodes = children(div4);
-			div2 = claim_element(div4_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			label0 = claim_element(div2_nodes, "LABEL", { class: true, for: true });
+			div3 = claim_element(form_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			div1 = claim_element(div3_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			label0 = claim_element(div1_nodes, "LABEL", { class: true, for: true });
 			var label0_nodes = children(label0);
-			t5 = claim_text(label0_nodes, "First Name");
+			t4 = claim_text(label0_nodes, "First Name");
 			label0_nodes.forEach(detach);
-			t6 = claim_space(div2_nodes);
+			t5 = claim_space(div1_nodes);
 
-			input0 = claim_element(div2_nodes, "INPUT", {
+			input0 = claim_element(div1_nodes, "INPUT", {
+				class: true,
+				id: true,
+				type: true,
+				placeholder: true
+			});
+
+			div1_nodes.forEach(detach);
+			t6 = claim_space(div3_nodes);
+			div2 = claim_element(div3_nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			label1 = claim_element(div2_nodes, "LABEL", { class: true, for: true });
+			var label1_nodes = children(label1);
+			t7 = claim_text(label1_nodes, "Last Name");
+			label1_nodes.forEach(detach);
+			t8 = claim_space(div2_nodes);
+
+			input1 = claim_element(div2_nodes, "INPUT", {
 				class: true,
 				id: true,
 				type: true,
@@ -195,107 +296,91 @@ function create_fragment(ctx) {
 			});
 
 			div2_nodes.forEach(detach);
-			t7 = claim_space(div4_nodes);
-			div3 = claim_element(div4_nodes, "DIV", { class: true });
-			var div3_nodes = children(div3);
-			label1 = claim_element(div3_nodes, "LABEL", { class: true, for: true });
-			var label1_nodes = children(label1);
-			t8 = claim_text(label1_nodes, "Last Name");
-			label1_nodes.forEach(detach);
-			t9 = claim_space(div3_nodes);
-
-			input1 = claim_element(div3_nodes, "INPUT", {
-				class: true,
-				id: true,
-				type: true,
-				placeholder: true
-			});
-
 			div3_nodes.forEach(detach);
-			div4_nodes.forEach(detach);
-			t10 = claim_space(form_nodes);
-			div6 = claim_element(form_nodes, "DIV", { class: true });
-			var div6_nodes = children(div6);
-			div5 = claim_element(div6_nodes, "DIV", { class: true });
+			t9 = claim_space(form_nodes);
+			div5 = claim_element(form_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
-			label2 = claim_element(div5_nodes, "LABEL", { class: true, for: true });
+			div4 = claim_element(div5_nodes, "DIV", { class: true });
+			var div4_nodes = children(div4);
+			label2 = claim_element(div4_nodes, "LABEL", { class: true, for: true });
 			var label2_nodes = children(label2);
-			t11 = claim_text(label2_nodes, "E-mail");
+			t10 = claim_text(label2_nodes, "E-mail");
 			label2_nodes.forEach(detach);
-			t12 = claim_space(div5_nodes);
+			t11 = claim_space(div4_nodes);
 
-			input2 = claim_element(div5_nodes, "INPUT", {
+			input2 = claim_element(div4_nodes, "INPUT", {
 				class: true,
 				id: true,
 				type: true,
 				placeholder: true
 			});
 
+			div4_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			div6_nodes.forEach(detach);
-			t13 = claim_space(form_nodes);
-			div8 = claim_element(form_nodes, "DIV", { class: true });
-			var div8_nodes = children(div8);
-			div7 = claim_element(div8_nodes, "DIV", { class: true });
+			t12 = claim_space(form_nodes);
+			div7 = claim_element(form_nodes, "DIV", { class: true });
 			var div7_nodes = children(div7);
-			label3 = claim_element(div7_nodes, "LABEL", { class: true, for: true });
+			div6 = claim_element(div7_nodes, "DIV", { class: true });
+			var div6_nodes = children(div6);
+			label3 = claim_element(div6_nodes, "LABEL", { class: true, for: true });
 			var label3_nodes = children(label3);
-			t14 = claim_text(label3_nodes, "Message");
+			t13 = claim_text(label3_nodes, "Message");
 			label3_nodes.forEach(detach);
-			t15 = claim_space(div7_nodes);
-			textarea = claim_element(div7_nodes, "TEXTAREA", { class: true, id: true, placeholder: true });
+			t14 = claim_space(div6_nodes);
+			textarea = claim_element(div6_nodes, "TEXTAREA", { class: true, id: true, placeholder: true });
 			children(textarea).forEach(detach);
+			div6_nodes.forEach(detach);
 			div7_nodes.forEach(detach);
-			div8_nodes.forEach(detach);
-			t16 = claim_space(form_nodes);
-			div11 = claim_element(form_nodes, "DIV", { class: true });
-			var div11_nodes = children(div11);
-			div9 = claim_element(div11_nodes, "DIV", { class: true });
-			var div9_nodes = children(div9);
-			button = claim_element(div9_nodes, "BUTTON", { class: true, id: true, type: true });
+			t15 = claim_space(form_nodes);
+			div10 = claim_element(form_nodes, "DIV", { class: true });
+			var div10_nodes = children(div10);
+			div8 = claim_element(div10_nodes, "DIV", { class: true });
+			var div8_nodes = children(div8);
+			button = claim_element(div8_nodes, "BUTTON", { class: true, id: true, type: true });
 			var button_nodes = children(button);
-			t17 = claim_text(button_nodes, "Send");
+			t16 = claim_text(button_nodes, "Send");
 			button_nodes.forEach(detach);
-			div9_nodes.forEach(detach);
-			t18 = claim_space(div11_nodes);
-			div10 = claim_element(div11_nodes, "DIV", { class: true });
-			children(div10).forEach(detach);
-			div11_nodes.forEach(detach);
+			div8_nodes.forEach(detach);
+			t17 = claim_space(div10_nodes);
+			div9 = claim_element(div10_nodes, "DIV", { class: true });
+			children(div9).forEach(detach);
+			div10_nodes.forEach(detach);
 			form_nodes.forEach(detach);
+			div11_nodes.forEach(detach);
 			div12_nodes.forEach(detach);
-			t19 = claim_space(div14_nodes);
-			div13 = claim_element(div14_nodes, "DIV", { class: true });
-			var div13_nodes = children(div13);
-			claim_component(aside.$$.fragment, div13_nodes);
 			div13_nodes.forEach(detach);
+			t18 = claim_space(div15_nodes);
+			div14 = claim_element(div15_nodes, "DIV", { class: true });
+			var div14_nodes = children(div14);
+			claim_component(aside.$$.fragment, div14_nodes);
 			div14_nodes.forEach(detach);
 			div15_nodes.forEach(detach);
-			t20 = claim_space(section_nodes);
-			div16 = claim_element(section_nodes, "DIV", { class: true });
-			children(div16).forEach(detach);
+			div16_nodes.forEach(detach);
+			t19 = claim_space(section_nodes);
+			div17 = claim_element(section_nodes, "DIV", { class: true });
+			children(div17).forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(div0, "class", "w-0 md:w-1/12 xl:w-2/12");
-			attr(h2, "class", "header text-2xl mt-0 mb-6");
+			attr(h2, "class", "header text-xl md:text-2xl lg:text-3xl my-6");
 			attr(p, "class", "mb-10");
-			attr(div1, "class", "");
 			attr(label0, "class", "block uppercase tracking-wide header mb-2");
 			attr(label0, "for", "grid-first-name");
 			attr(input0, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
 			attr(input0, "id", "grid-first-name");
 			attr(input0, "type", "text");
 			attr(input0, "placeholder", "Jane");
-			attr(div2, "class", "w-full md:w-1/2 px-3 mb-6 md:mb-0");
+			attr(div1, "class", "w-full md:w-1/2 px-3 mb-6 md:mb-0");
 			attr(label1, "class", "block uppercase tracking-wide header mb-2");
 			attr(label1, "for", "grid-last-name");
 			attr(input1, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
 			attr(input1, "id", "grid-last-name");
 			attr(input1, "type", "text");
 			attr(input1, "placeholder", "Doe");
-			attr(div3, "class", "w-full md:w-1/2 px-3");
-			attr(div4, "class", "flex flex-wrap -mx-3 mb-6");
+			attr(div2, "class", "w-full md:w-1/2 px-3");
+			attr(div3, "class", "flex flex-wrap -mx-3 mb-6");
 			attr(label2, "class", "block uppercase tracking-wide header mb-2");
 			attr(label2, "for", "grid-password");
 			attr(input2, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
@@ -303,95 +388,98 @@ function create_fragment(ctx) {
 			attr(input2, "type", "email");
 			attr(input2, "placeholder", "Jane.Doe@example.net");
 			input2.required = true;
-			attr(div5, "class", "w-full px-3");
-			attr(div6, "class", "flex flex-wrap -mx-3 mb-6");
+			attr(div4, "class", "w-full px-3");
+			attr(div5, "class", "flex flex-wrap -mx-3 mb-6");
 			attr(label3, "class", "block uppercase tracking-wide header mb-2");
 			attr(label3, "for", "grid-password");
 			attr(textarea, "class", " no-resize appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white h-48 resize-none");
 			attr(textarea, "id", "message");
 			attr(textarea, "placeholder", "Write something here...");
-			attr(div7, "class", "w-full px-3");
-			attr(div8, "class", "flex flex-wrap -mx-3 mb-6");
+			attr(div6, "class", "w-full px-3");
+			attr(div7, "class", "flex flex-wrap -mx-3 mb-6");
 			attr(button, "class", "btn-outline mb-6 px-4 rounded");
 			attr(button, "id", "submit");
 			attr(button, "type", "submit");
-			attr(div9, "class", "md:w-1/3");
-			attr(div10, "class", "md:w-2/3");
-			attr(div11, "class", "md:flex md:items-center");
+			attr(div8, "class", "md:w-1/3");
+			attr(div9, "class", "md:w-2/3");
+			attr(div10, "class", "md:flex md:items-center");
 			attr(form, "id", "contactform");
 			attr(form, "class", "w-full max-w-lg");
-			attr(div12, "class", "w-full md:w-9/12 mb-lg-0 px-0");
-			attr(div13, "class", "w-full md:w-3/12 mb-lg-0 px-0");
-			attr(div14, "class", "row md:flex md:flex-wrap");
-			attr(div15, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
-			attr(div16, "class", "w-0 md:w-1/12 xl:w-2/12");
+			attr(div11, "class", "mx-2 md:mx-6 mb-2 md:mb-3 my-1");
+			attr(div12, "class", "rounded-xl overflow-hidden shadow-md bg-secondary");
+			attr(div13, "class", "w-full md:w-9/12 mb-lg-0 px-0 sm:pr-10");
+			attr(div14, "class", "w-full md:w-3/12 mb-lg-0 px-0");
+			attr(div15, "class", "row md:flex md:flex-wrap");
+			attr(div16, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
+			attr(div17, "class", "w-0 md:w-1/12 xl:w-2/12");
 			attr(section, "class", "section flex flex-wrap items-center justify-between");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
 			append(section, div0);
 			append(section, t0);
-			append(section, div15);
-			append(div15, div14);
-			append(div14, div12);
-			append(div12, div1);
-			append(div1, h2);
-			append(h2, t1);
-			append(div1, t2);
-			append(div1, p);
-			append(p, t3);
-			append(div12, t4);
-			append(div12, form);
-			append(form, div4);
-			append(div4, div2);
-			append(div2, label0);
-			append(label0, t5);
-			append(div2, t6);
-			append(div2, input0);
-			set_input_value(input0, /*nameFrst*/ ctx[6]);
-			append(div4, t7);
-			append(div4, div3);
-			append(div3, label1);
-			append(label1, t8);
-			append(div3, t9);
-			append(div3, input1);
-			set_input_value(input1, /*nameLast*/ ctx[7]);
-			append(form, t10);
-			append(form, div6);
-			append(div6, div5);
-			append(div5, label2);
-			append(label2, t11);
-			append(div5, t12);
-			append(div5, input2);
-			set_input_value(input2, /*addrFrom*/ ctx[5]);
-			append(form, t13);
-			append(form, div8);
-			append(div8, div7);
-			append(div7, label3);
-			append(label3, t14);
-			append(div7, t15);
-			append(div7, textarea);
-			set_input_value(textarea, /*msgBody*/ ctx[8]);
-			append(form, t16);
-			append(form, div11);
-			append(div11, div9);
-			append(div9, button);
-			append(button, t17);
-			append(div11, t18);
-			append(div11, div10);
-			append(div14, t19);
-			append(div14, div13);
-			mount_component(aside, div13, null);
-			append(section, t20);
 			append(section, div16);
+			append(div16, div15);
+			append(div15, div13);
+			append(div13, div12);
+			append(div12, div11);
+			append(div11, h2);
+			if_block.m(h2, null);
+			append(div11, t1);
+			append(div11, p);
+			append(p, t2);
+			append(div11, t3);
+			append(div11, form);
+			append(form, div3);
+			append(div3, div1);
+			append(div1, label0);
+			append(label0, t4);
+			append(div1, t5);
+			append(div1, input0);
+			set_input_value(input0, /*nameFrst*/ ctx[6]);
+			append(div3, t6);
+			append(div3, div2);
+			append(div2, label1);
+			append(label1, t7);
+			append(div2, t8);
+			append(div2, input1);
+			set_input_value(input1, /*nameLast*/ ctx[7]);
+			append(form, t9);
+			append(form, div5);
+			append(div5, div4);
+			append(div4, label2);
+			append(label2, t10);
+			append(div4, t11);
+			append(div4, input2);
+			set_input_value(input2, /*addrFrom*/ ctx[5]);
+			append(form, t12);
+			append(form, div7);
+			append(div7, div6);
+			append(div6, label3);
+			append(label3, t13);
+			append(div6, t14);
+			append(div6, textarea);
+			set_input_value(textarea, /*msgBody*/ ctx[8]);
+			append(form, t15);
+			append(form, div10);
+			append(div10, div8);
+			append(div8, button);
+			append(button, t16);
+			append(div10, t17);
+			append(div10, div9);
+			append(div15, t18);
+			append(div15, div14);
+			mount_component(aside, div14, null);
+			append(section, t19);
+			append(section, div17);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(input0, "input", /*input0_input_handler*/ ctx[12]),
-					listen(input1, "input", /*input1_input_handler*/ ctx[13]),
-					listen(input2, "input", /*input2_input_handler*/ ctx[14]),
-					listen(textarea, "input", /*textarea_input_handler*/ ctx[15]),
+					listen(input0, "input", /*input0_input_handler*/ ctx[13]),
+					listen(input1, "input", /*input1_input_handler*/ ctx[14]),
+					listen(input2, "input", /*input2_input_handler*/ ctx[15]),
+					listen(textarea, "input", /*textarea_input_handler*/ ctx[16]),
 					listen(button, "click", /*contactSend*/ ctx[10])
 				];
 
@@ -399,8 +487,8 @@ function create_fragment(ctx) {
 			}
 		},
 		p(ctx, [dirty]) {
-			if (!current || dirty & /*title*/ 8) set_data(t1, /*title*/ ctx[3]);
-			if (!current || dirty & /*articleBody*/ 16) set_data(t3, /*articleBody*/ ctx[4]);
+			if_block.p(ctx, dirty);
+			if (!current || dirty & /*articleBody*/ 16) set_data(t2, /*articleBody*/ ctx[4]);
 
 			if (dirty & /*nameFrst*/ 64 && input0.value !== /*nameFrst*/ ctx[6]) {
 				set_input_value(input0, /*nameFrst*/ ctx[6]);
@@ -435,6 +523,7 @@ function create_fragment(ctx) {
 		},
 		d(detaching) {
 			if (detaching) detach(section);
+			if_block.d();
 			destroy_component(aside);
 			mounted = false;
 			run_all(dispose);
@@ -487,6 +576,8 @@ function instance($$self, $$props, $$invalidate) {
 		xhr.send(msgData);
 	}
 
+	let tname = title.split(" ");
+
 	function input0_input_handler() {
 		nameFrst = this.value;
 		$$invalidate(6, nameFrst);
@@ -508,7 +599,7 @@ function instance($$self, $$props, $$invalidate) {
 	}
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(11, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
 		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
@@ -528,6 +619,7 @@ function instance($$self, $$props, $$invalidate) {
 		msgBody,
 		socialLinks,
 		contactSend,
+		tname,
 		idxContent,
 		input0_input_handler,
 		input1_input_handler,
@@ -541,7 +633,7 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 11,
+			idxContent: 12,
 			allPosts: 0,
 			tagsList: 1,
 			catgList: 2,

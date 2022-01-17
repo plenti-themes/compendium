@@ -4,20 +4,66 @@ import {
 	append,
 	attr,
 	children,
+	claim_component,
 	claim_element,
 	claim_space,
 	claim_text,
+	create_component,
+	destroy_component,
 	detach,
 	element,
 	init,
 	insert,
-	noop,
+	listen,
+	mount_component,
 	safe_not_equal,
 	set_data,
 	set_style,
 	space,
-	text
+	text,
+	transition_in,
+	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
+
+import Hoverable from '../scripts/hoverable.js';
+
+function create_default_slot(ctx) {
+	let span;
+	let i;
+	let span_class_value;
+
+	return {
+		c() {
+			span = element("span");
+			i = element("i");
+			this.h();
+		},
+		l(nodes) {
+			span = claim_element(nodes, "SPAN", { class: true });
+			var span_nodes = children(span);
+			i = claim_element(span_nodes, "I", { class: true });
+			children(i).forEach(detach);
+			span_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(i, "class", "accent las la-chevron-circle-down text-5xl lg:text-6xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(span, "class", span_class_value = "inline-block " + (/*hovering*/ ctx[5] ? "animate-bounce" : ""));
+		},
+		m(target, anchor) {
+			insert(target, span, anchor);
+			append(span, i);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*hovering*/ 32 && span_class_value !== (span_class_value = "inline-block " + (/*hovering*/ ctx[5] ? "animate-bounce" : ""))) {
+				attr(span, "class", span_class_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(span);
+		}
+	};
+}
 
 function create_fragment(ctx) {
 	let div3;
@@ -44,23 +90,42 @@ function create_fragment(ctx) {
 	let img0_alt_value;
 	let t7;
 	let span1;
-	let raw0_value = /*image*/ ctx[1].citation.replaceAll("<a ", "<a target='blank' rel='noopener noreferrer'") + "";
+	let raw0_value = /*image*/ ctx[1].citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "";
 	let t8;
+	let button;
+	let hoverable;
+	let t9;
 	let div7;
 	let div4;
 	let img1;
 	let img1_src_value;
 	let img1_alt_value;
-	let t9;
+	let t10;
 	let div6;
 	let div5;
 	let h21;
-	let t10;
 	let t11;
-	let p;
 	let t12;
+	let p;
+	let t13;
 	let div8;
-	let raw2_value = /*splash*/ ctx[3].citation.replaceAll("<a ", "<a target='blank' rel='noopener noreferrer'") + "";
+	let raw2_value = /*splash*/ ctx[3].citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "";
+	let current;
+	let mounted;
+	let dispose;
+
+	hoverable = new Hoverable({
+			props: {
+				$$slots: {
+					default: [
+						create_default_slot,
+						({ hovering }) => ({ 5: hovering }),
+						({ hovering }) => hovering ? 32 : 0
+					]
+				},
+				$$scope: { ctx }
+			}
+		});
 
 	return {
 		c() {
@@ -83,24 +148,27 @@ function create_fragment(ctx) {
 			t7 = space();
 			span1 = element("span");
 			t8 = space();
+			button = element("button");
+			create_component(hoverable.$$.fragment);
+			t9 = space();
 			div7 = element("div");
 			div4 = element("div");
 			img1 = element("img");
-			t9 = space();
+			t10 = space();
 			div6 = element("div");
 			div5 = element("div");
 			h21 = element("h2");
-			t10 = text(/*title*/ ctx[0]);
-			t11 = space();
-			p = element("p");
+			t11 = text(/*title*/ ctx[0]);
 			t12 = space();
+			p = element("p");
+			t13 = space();
 			div8 = element("div");
 			this.h();
 		},
 		l(nodes) {
 			div3 = claim_element(nodes, "DIV", { id: true, class: true });
 			var div3_nodes = children(div3);
-			div0 = claim_element(div3_nodes, "DIV", { class: true, style: true });
+			div0 = claim_element(div3_nodes, "DIV", { class: true });
 			var div0_nodes = children(div0);
 			h20 = claim_element(div0_nodes, "H2", { class: true });
 			var h20_nodes = children(h20);
@@ -130,8 +198,13 @@ function create_fragment(ctx) {
 			var span1_nodes = children(span1);
 			span1_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
+			t8 = claim_space(div3_nodes);
+			button = claim_element(div3_nodes, "BUTTON", { type: true, class: true, style: true });
+			var button_nodes = children(button);
+			claim_component(hoverable.$$.fragment, button_nodes);
+			button_nodes.forEach(detach);
 			div3_nodes.forEach(detach);
-			t8 = claim_space(nodes);
+			t9 = claim_space(nodes);
 			div7 = claim_element(nodes, "DIV", { id: true, class: true });
 			var div7_nodes = children(div7);
 			div4 = claim_element(div7_nodes, "DIV", { class: true });
@@ -145,23 +218,23 @@ function create_fragment(ctx) {
 			});
 
 			div4_nodes.forEach(detach);
-			t9 = claim_space(div7_nodes);
+			t10 = claim_space(div7_nodes);
 			div6 = claim_element(div7_nodes, "DIV", { class: true, style: true });
 			var div6_nodes = children(div6);
 			div5 = claim_element(div6_nodes, "DIV", { class: true });
 			var div5_nodes = children(div5);
 			h21 = claim_element(div5_nodes, "H2", { class: true });
 			var h21_nodes = children(h21);
-			t10 = claim_text(h21_nodes, /*title*/ ctx[0]);
+			t11 = claim_text(h21_nodes, /*title*/ ctx[0]);
 			h21_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t11 = claim_space(div6_nodes);
+			t12 = claim_space(div6_nodes);
 			p = claim_element(div6_nodes, "P", { class: true });
 			var p_nodes = children(p);
 			p_nodes.forEach(detach);
 			div6_nodes.forEach(detach);
 			div7_nodes.forEach(detach);
-			t12 = claim_space(nodes);
+			t13 = claim_space(nodes);
 			div8 = claim_element(nodes, "DIV", { class: true });
 			var div8_nodes = children(div8);
 			div8_nodes.forEach(detach);
@@ -170,13 +243,16 @@ function create_fragment(ctx) {
 		h() {
 			attr(span0, "class", "accent-b");
 			attr(h20, "class", "header text-xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl");
-			attr(h3, "class", "tag text-xl sm:text-2xl md:text-4xl");
-			attr(div0, "class", "pl-2 md:pl-6 lg:pl-10 xl:pl-16 w-screen-30 sm:w-screen-40 md:w-screen-60 lg:w-screen-70 xl:w-screen-80 absolute");
-			set_style(div0, "top", "40%");
+			attr(h3, "class", "tag text-base sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl");
+			attr(div0, "class", "pl-2 md:pl-6 lg:pl-10 xl:pl-16 w-screen-30 sm:w-screen-40 md:w-screen-50 lg:w-screen-60 xl:w-screen-80 absolute bottom-10 sm:bottom-1/4");
 			attr(img0, "class", "w-full object-cover object-bottom h-screen-40 sm:h-screen-60 md:h-screen-70 lg:h-screen-80 xl:h-screen-90");
 			if (img0.src !== (img0_src_value = "assets/pages/" + /*image*/ ctx[1].src)) attr(img0, "src", img0_src_value);
 			attr(img0, "alt", img0_alt_value = /*image*/ ctx[1].alt);
 			attr(span1, "class", "text-meta");
+			attr(button, "type", "button");
+			attr(button, "class", "absolute bottom-0 sm:bottom-10 md:bottom-20");
+			set_style(button, "left", "25%");
+			set_style(button, "transform", "translate(-50%)");
 			attr(div3, "id", "hero");
 			attr(div3, "class", "w-full grid grid-cols-2 relative");
 			attr(img1, "class", "w-full object-center object-cover h-screen-80 lg:h-screen-90");
@@ -186,8 +262,8 @@ function create_fragment(ctx) {
 			attr(div4, "class", "w-full pt-16");
 			attr(h21, "class", "accent text-white text-4xl");
 			attr(div5, "class", "w-full text-lg px-6 pt-10");
-			attr(p, "class", "text-white text-md sm:text-lg xl:text-xl px-6 py-6");
-			attr(div6, "class", "absolute ml-2 md:ml-12 xl:mt-6 bg-black bg-opacity-50 w-screen-45 sm:w-screen-70 xl:w-screen-80 h-screen-70");
+			attr(p, "class", "text-white text-md sm:text-lg lg:text-xl xl:text-2xl px-6 py-6");
+			attr(div6, "class", "absolute ml-2 md:ml-12 xl:mt-6 bg-black bg-opacity-50 w-screen-45 sm:w-screen-70 lg:w-screen-80 h-screen-70");
 			set_style(div6, "top", "14%");
 			set_style(div6, "overflow-y", "auto");
 			attr(div7, "id", "about");
@@ -214,60 +290,90 @@ function create_fragment(ctx) {
 			append(div2, t7);
 			append(div2, span1);
 			span1.innerHTML = raw0_value;
-			insert(target, t8, anchor);
+			append(div3, t8);
+			append(div3, button);
+			mount_component(hoverable, button, null);
+			insert(target, t9, anchor);
 			insert(target, div7, anchor);
 			append(div7, div4);
 			append(div4, img1);
-			append(div7, t9);
+			append(div7, t10);
 			append(div7, div6);
 			append(div6, div5);
 			append(div5, h21);
-			append(h21, t10);
-			append(div6, t11);
+			append(h21, t11);
+			append(div6, t12);
 			append(div6, p);
 			p.innerHTML = /*articleBody*/ ctx[4];
-			insert(target, t12, anchor);
+			insert(target, t13, anchor);
 			insert(target, div8, anchor);
 			div8.innerHTML = raw2_value;
+			current = true;
+
+			if (!mounted) {
+				dispose = listen(button, "click", scrollDown);
+				mounted = true;
+			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*hero*/ 4 && t0_value !== (t0_value = /*hero*/ ctx[2].pre + "")) set_data(t0, t0_value);
-			if (dirty & /*hero*/ 4 && t1_value !== (t1_value = /*hero*/ ctx[2].accent + "")) set_data(t1, t1_value);
-			if (dirty & /*hero*/ 4 && t2_value !== (t2_value = /*hero*/ ctx[2].post + "")) set_data(t2, t2_value);
-			if (dirty & /*hero*/ 4 && t4_value !== (t4_value = /*hero*/ ctx[2].tagline + "")) set_data(t4, t4_value);
+			if ((!current || dirty & /*hero*/ 4) && t0_value !== (t0_value = /*hero*/ ctx[2].pre + "")) set_data(t0, t0_value);
+			if ((!current || dirty & /*hero*/ 4) && t1_value !== (t1_value = /*hero*/ ctx[2].accent + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*hero*/ 4) && t2_value !== (t2_value = /*hero*/ ctx[2].post + "")) set_data(t2, t2_value);
+			if ((!current || dirty & /*hero*/ 4) && t4_value !== (t4_value = /*hero*/ ctx[2].tagline + "")) set_data(t4, t4_value);
 
-			if (dirty & /*image*/ 2 && img0.src !== (img0_src_value = "assets/pages/" + /*image*/ ctx[1].src)) {
+			if (!current || dirty & /*image*/ 2 && img0.src !== (img0_src_value = "assets/pages/" + /*image*/ ctx[1].src)) {
 				attr(img0, "src", img0_src_value);
 			}
 
-			if (dirty & /*image*/ 2 && img0_alt_value !== (img0_alt_value = /*image*/ ctx[1].alt)) {
+			if (!current || dirty & /*image*/ 2 && img0_alt_value !== (img0_alt_value = /*image*/ ctx[1].alt)) {
 				attr(img0, "alt", img0_alt_value);
 			}
 
-			if (dirty & /*image*/ 2 && raw0_value !== (raw0_value = /*image*/ ctx[1].citation.replaceAll("<a ", "<a target='blank' rel='noopener noreferrer'") + "")) span1.innerHTML = raw0_value;;
+			if ((!current || dirty & /*image*/ 2) && raw0_value !== (raw0_value = /*image*/ ctx[1].citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "")) span1.innerHTML = raw0_value;;
+			const hoverable_changes = {};
 
-			if (dirty & /*splash*/ 8 && img1.src !== (img1_src_value = "assets/pages/" + /*splash*/ ctx[3].src)) {
+			if (dirty & /*$$scope, hovering*/ 96) {
+				hoverable_changes.$$scope = { dirty, ctx };
+			}
+
+			hoverable.$set(hoverable_changes);
+
+			if (!current || dirty & /*splash*/ 8 && img1.src !== (img1_src_value = "assets/pages/" + /*splash*/ ctx[3].src)) {
 				attr(img1, "src", img1_src_value);
 			}
 
-			if (dirty & /*splash*/ 8 && img1_alt_value !== (img1_alt_value = /*splash*/ ctx[3].alt)) {
+			if (!current || dirty & /*splash*/ 8 && img1_alt_value !== (img1_alt_value = /*splash*/ ctx[3].alt)) {
 				attr(img1, "alt", img1_alt_value);
 			}
 
-			if (dirty & /*title*/ 1) set_data(t10, /*title*/ ctx[0]);
-			if (dirty & /*articleBody*/ 16) p.innerHTML = /*articleBody*/ ctx[4];;
-			if (dirty & /*splash*/ 8 && raw2_value !== (raw2_value = /*splash*/ ctx[3].citation.replaceAll("<a ", "<a target='blank' rel='noopener noreferrer'") + "")) div8.innerHTML = raw2_value;;
+			if (!current || dirty & /*title*/ 1) set_data(t11, /*title*/ ctx[0]);
+			if (!current || dirty & /*articleBody*/ 16) p.innerHTML = /*articleBody*/ ctx[4];;
+			if ((!current || dirty & /*splash*/ 8) && raw2_value !== (raw2_value = /*splash*/ ctx[3].citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "")) div8.innerHTML = raw2_value;;
 		},
-		i: noop,
-		o: noop,
+		i(local) {
+			if (current) return;
+			transition_in(hoverable.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(hoverable.$$.fragment, local);
+			current = false;
+		},
 		d(detaching) {
 			if (detaching) detach(div3);
-			if (detaching) detach(t8);
+			destroy_component(hoverable);
+			if (detaching) detach(t9);
 			if (detaching) detach(div7);
-			if (detaching) detach(t12);
+			if (detaching) detach(t13);
 			if (detaching) detach(div8);
+			mounted = false;
+			dispose();
 		}
 	};
+}
+
+function scrollDown() {
+	window.scrollTo({ top: 900, left: 0, behavior: "smooth" });
 }
 
 function instance($$self, $$props, $$invalidate) {

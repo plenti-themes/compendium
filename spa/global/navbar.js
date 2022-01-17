@@ -53,7 +53,7 @@ function create_else_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "menu");
+			attr(span, "class", "navmenu");
 			set_style(span, "border-bottom", "4px solid transparent");
 		},
 		m(target, anchor) {
@@ -100,7 +100,7 @@ function create_if_block_1(ctx) {
 		h() {
 			attr(span0, "class", "accent");
 			set_style(span0, "opacity", "1");
-			attr(span1, "class", "menu");
+			attr(span1, "class", "navmenu");
 			set_style(span1, "border-bottom", "4px solid transparent");
 		},
 		m(target, anchor) {
@@ -143,7 +143,7 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "menu");
+			attr(span, "class", "navmenu");
 			attr(a, "class", "block md:inline-flex px-2 py-1");
 			attr(a, "href", a_href_value = /*page*/ ctx[8].path);
 		},
@@ -389,7 +389,7 @@ function create_fragment(ctx) {
 			attr(img, "height", "50");
 			if (img.src !== (img_src_value = "assets/logo.svg")) attr(img, "src", img_src_value);
 			attr(img, "alt", "Logo");
-			attr(a0, "class", "ml-2 text-4xl menu");
+			attr(a0, "class", "navmenu ml-2 text-4xl");
 			attr(a0, "href", ".");
 			attr(h1, "class", "font-bold opacity-100 my-0 flex items-center");
 			attr(i0, "class", i0_class_value = "las la-bars" + (/*menuShow*/ ctx[2] ? "hidden" : ""));
@@ -397,15 +397,15 @@ function create_fragment(ctx) {
 			attr(button0, "id", "menu");
 			attr(button0, "type", "button");
 			attr(button0, "class", "focus:outline-none");
-			attr(div1, "class", "menu text-4xl flex md:hidden items-center");
-			attr(span0, "class", "menu");
+			attr(div1, "class", "navmenu text-4xl flex md:hidden items-center");
+			attr(span0, "class", "navmenu");
 			attr(a1, "class", "block md:inline-flex px-2 py-1 md:py-0");
 			attr(a1, "href", ".");
-			attr(span1, "class", "menu");
+			attr(span1, "class", "navmenu");
 			attr(a2, "class", "block md:inline-flex px-2 py-1 md:py-0");
 			attr(a2, "href", "projs/");
 			attr(i2, "class", "las la-adjust text-2xl");
-			attr(span2, "class", "menu");
+			attr(span2, "class", "navmenu");
 			attr(button1, "id", "dark");
 			attr(button1, "type", "button");
 			attr(button1, "class", "inline-block md:inline-flex px-2 py-1 md:py-0");

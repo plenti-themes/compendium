@@ -35,7 +35,7 @@ function get_each_context_1(ctx, list, i) {
 	return child_ctx;
 }
 
-// (20:2) {#if complete}
+// (20:0) {#if complete}
 function create_if_block_4(ctx) {
 	let li;
 	let t0;
@@ -57,7 +57,7 @@ function create_if_block_4(ctx) {
 			this.h();
 		},
 		h() {
-			attr(li, "class", "mr-2 inline-flex");
+			attr(li, "class", "mr-2 my-0 inline-flex");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -71,13 +71,15 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (30:2) {#if complete}
+// (28:0) {#if complete}
 function create_if_block_1(ctx) {
-	let li0;
+	let br;
 	let t0;
+	let li0;
 	let t1;
-	let li1;
 	let t2;
+	let li1;
+	let t3;
 	let each_value_1 = /*catgs*/ ctx[9];
 	let each_blocks_1 = [];
 
@@ -94,16 +96,18 @@ function create_if_block_1(ctx) {
 
 	return {
 		c() {
+			br = element("br");
+			t0 = space();
 			li0 = element("li");
-			t0 = text("Categories:\n      ");
+			t1 = text("Categories:\n    ");
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].c();
 			}
 
-			t1 = space();
+			t2 = space();
 			li1 = element("li");
-			t2 = text("Tags:\n      ");
+			t3 = text("Tags:\n    ");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
@@ -112,19 +116,21 @@ function create_if_block_1(ctx) {
 			this.h();
 		},
 		l(nodes) {
+			br = claim_element(nodes, "BR", {});
+			t0 = claim_space(nodes);
 			li0 = claim_element(nodes, "LI", { class: true });
 			var li0_nodes = children(li0);
-			t0 = claim_text(li0_nodes, "Categories:\n      ");
+			t1 = claim_text(li0_nodes, "Categories:\n    ");
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].l(li0_nodes);
 			}
 
 			li0_nodes.forEach(detach);
-			t1 = claim_space(nodes);
+			t2 = claim_space(nodes);
 			li1 = claim_element(nodes, "LI", { class: true });
 			var li1_nodes = children(li1);
-			t2 = claim_text(li1_nodes, "Tags:\n      ");
+			t3 = claim_text(li1_nodes, "Tags:\n    ");
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].l(li1_nodes);
@@ -134,20 +140,22 @@ function create_if_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(li0, "class", "mr-2 inline-flex");
-			attr(li1, "class", "mr-2 inline-flex");
+			attr(li0, "class", "mr-2 my-0 inline-flex");
+			attr(li1, "class", "mr-2 my-0 inline-flex");
 		},
 		m(target, anchor) {
+			insert(target, br, anchor);
+			insert(target, t0, anchor);
 			insert(target, li0, anchor);
-			append(li0, t0);
+			append(li0, t1);
 
 			for (let i = 0; i < each_blocks_1.length; i += 1) {
 				each_blocks_1[i].m(li0, null);
 			}
 
-			insert(target, t1, anchor);
+			insert(target, t2, anchor);
 			insert(target, li1, anchor);
-			append(li1, t2);
+			append(li1, t3);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].m(li1, null);
@@ -201,16 +209,18 @@ function create_if_block_1(ctx) {
 			}
 		},
 		d(detaching) {
+			if (detaching) detach(br);
+			if (detaching) detach(t0);
 			if (detaching) detach(li0);
 			destroy_each(each_blocks_1, detaching);
-			if (detaching) detach(t1);
+			if (detaching) detach(t2);
 			if (detaching) detach(li1);
 			destroy_each(each_blocks, detaching);
 		}
 	};
 }
 
-// (35:16) {#if i < catgs.length - 1}
+// (34:14) {#if i < catgs.length - 1}
 function create_if_block_3(ctx) {
 	let t;
 
@@ -230,7 +240,7 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (33:6) {#each catgs as catg, i}
+// (32:4) {#each catgs as catg, i}
 function create_each_block_1(ctx) {
 	let a;
 	let t0_value = /*catg*/ ctx[16] + "";
@@ -278,7 +288,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (44:15) {#if i < tags.length - 1}
+// (43:13) {#if i < tags.length - 1}
 function create_if_block_2(ctx) {
 	let t;
 
@@ -298,7 +308,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (42:6) {#each tags as tag, i}
+// (41:4) {#each tags as tag, i}
 function create_each_block(ctx) {
 	let a;
 	let t0_value = /*tag*/ ctx[13] + "";
@@ -346,7 +356,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (50:0) {#if cardBody !== "skip"}
+// (48:0) {#if cardBody !== "skip"}
 function create_if_block(ctx) {
 	let p0;
 	let t0;
@@ -418,20 +428,16 @@ function create_if_block(ctx) {
 }
 
 function create_fragment(ctx) {
-	let ul0;
 	let li0;
-	let i;
-	let t0;
 	let a;
+	let t0;
 	let t1;
 	let t2;
-	let t3;
 	let li1;
+	let t3;
 	let t4;
 	let t5;
 	let t6;
-	let ul1;
-	let t7;
 	let if_block2_anchor;
 	let if_block0 = /*complete*/ ctx[2] && create_if_block_4(ctx);
 	let if_block1 = /*complete*/ ctx[2] && create_if_block_1(ctx);
@@ -439,83 +445,63 @@ function create_fragment(ctx) {
 
 	return {
 		c() {
-			ul0 = element("ul");
 			li0 = element("li");
-			i = element("i");
-			t0 = space();
 			a = element("a");
-			t1 = text(/*author_name*/ ctx[5]);
-			t2 = space();
+			t0 = text(/*author_name*/ ctx[5]);
+			t1 = space();
 			if (if_block0) if_block0.c();
-			t3 = space();
+			t2 = space();
 			li1 = element("li");
-			t4 = text("Updated: ");
-			t5 = text(/*dateModified*/ ctx[7]);
-			t6 = space();
-			ul1 = element("ul");
+			t3 = text("Updated: ");
+			t4 = text(/*dateModified*/ ctx[7]);
+			t5 = space();
 			if (if_block1) if_block1.c();
-			t7 = space();
+			t6 = space();
 			if (if_block2) if_block2.c();
 			if_block2_anchor = empty();
 			this.h();
 		},
 		l(nodes) {
-			ul0 = claim_element(nodes, "UL", { class: true });
-			var ul0_nodes = children(ul0);
-			li0 = claim_element(ul0_nodes, "LI", { class: true });
+			li0 = claim_element(nodes, "LI", { class: true });
 			var li0_nodes = children(li0);
-			i = claim_element(li0_nodes, "I", { class: true });
-			children(i).forEach(detach);
-			t0 = claim_space(li0_nodes);
 			a = claim_element(li0_nodes, "A", { href: true });
 			var a_nodes = children(a);
-			t1 = claim_text(a_nodes, /*author_name*/ ctx[5]);
+			t0 = claim_text(a_nodes, /*author_name*/ ctx[5]);
 			a_nodes.forEach(detach);
 			li0_nodes.forEach(detach);
-			t2 = claim_space(ul0_nodes);
-			if (if_block0) if_block0.l(ul0_nodes);
-			t3 = claim_space(ul0_nodes);
-			li1 = claim_element(ul0_nodes, "LI", { class: true });
+			t1 = claim_space(nodes);
+			if (if_block0) if_block0.l(nodes);
+			t2 = claim_space(nodes);
+			li1 = claim_element(nodes, "LI", { class: true });
 			var li1_nodes = children(li1);
-			t4 = claim_text(li1_nodes, "Updated: ");
-			t5 = claim_text(li1_nodes, /*dateModified*/ ctx[7]);
+			t3 = claim_text(li1_nodes, "Updated: ");
+			t4 = claim_text(li1_nodes, /*dateModified*/ ctx[7]);
 			li1_nodes.forEach(detach);
-			ul0_nodes.forEach(detach);
+			t5 = claim_space(nodes);
+			if (if_block1) if_block1.l(nodes);
 			t6 = claim_space(nodes);
-			ul1 = claim_element(nodes, "UL", { class: true });
-			var ul1_nodes = children(ul1);
-			if (if_block1) if_block1.l(ul1_nodes);
-			ul1_nodes.forEach(detach);
-			t7 = claim_space(nodes);
 			if (if_block2) if_block2.l(nodes);
 			if_block2_anchor = empty();
 			this.h();
 		},
 		h() {
-			attr(i, "class", "las la-user-astronaut text-base");
 			attr(a, "href", /*author_url*/ ctx[4]);
-			attr(li0, "class", "mr-2 inline-flex");
-			attr(li1, "class", "mr-2 inline-flex");
-			attr(ul0, "class", "text-meta flex flex-wrap");
-			attr(ul1, "class", "text-meta flex flex-wrap");
+			attr(li0, "class", "mr-2 my-0 inline-flex");
+			attr(li1, "class", "mr-2 my-0 inline-flex");
 		},
 		m(target, anchor) {
-			insert(target, ul0, anchor);
-			append(ul0, li0);
-			append(li0, i);
-			append(li0, t0);
+			insert(target, li0, anchor);
 			append(li0, a);
-			append(a, t1);
-			append(ul0, t2);
-			if (if_block0) if_block0.m(ul0, null);
-			append(ul0, t3);
-			append(ul0, li1);
+			append(a, t0);
+			insert(target, t1, anchor);
+			if (if_block0) if_block0.m(target, anchor);
+			insert(target, t2, anchor);
+			insert(target, li1, anchor);
+			append(li1, t3);
 			append(li1, t4);
-			append(li1, t5);
+			insert(target, t5, anchor);
+			if (if_block1) if_block1.m(target, anchor);
 			insert(target, t6, anchor);
-			insert(target, ul1, anchor);
-			if (if_block1) if_block1.m(ul1, null);
-			insert(target, t7, anchor);
 			if (if_block2) if_block2.m(target, anchor);
 			insert(target, if_block2_anchor, anchor);
 		},
@@ -526,7 +512,7 @@ function create_fragment(ctx) {
 				} else {
 					if_block0 = create_if_block_4(ctx);
 					if_block0.c();
-					if_block0.m(ul0, t3);
+					if_block0.m(t2.parentNode, t2);
 				}
 			} else if (if_block0) {
 				if_block0.d(1);
@@ -539,7 +525,7 @@ function create_fragment(ctx) {
 				} else {
 					if_block1 = create_if_block_1(ctx);
 					if_block1.c();
-					if_block1.m(ul1, null);
+					if_block1.m(t6.parentNode, t6);
 				}
 			} else if (if_block1) {
 				if_block1.d(1);
@@ -551,12 +537,14 @@ function create_fragment(ctx) {
 		i: noop,
 		o: noop,
 		d(detaching) {
-			if (detaching) detach(ul0);
-			if (if_block0) if_block0.d();
+			if (detaching) detach(li0);
+			if (detaching) detach(t1);
+			if (if_block0) if_block0.d(detaching);
+			if (detaching) detach(t2);
+			if (detaching) detach(li1);
+			if (detaching) detach(t5);
+			if (if_block1) if_block1.d(detaching);
 			if (detaching) detach(t6);
-			if (detaching) detach(ul1);
-			if (if_block1) if_block1.d();
-			if (detaching) detach(t7);
 			if (if_block2) if_block2.d(detaching);
 			if (detaching) detach(if_block2_anchor);
 		}
@@ -580,7 +568,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	let cardBody = skipbody
 	? "skip"
-	: get_description(post.fields.articleBody, 180);
+	: get_description(post.fields.articleBody, 170);
 
 	$$self.$$set = $$props => {
 		if ("post" in $$props) $$invalidate(11, post = $$props.post);

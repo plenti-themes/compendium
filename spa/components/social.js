@@ -61,7 +61,7 @@ function create_each_block(ctx) {
 
 			attr(button, "class", "btn-round mx-0.5");
 			attr(a, "target", "_blank");
-			attr(a, "rel", "noopener noreferrer");
+			attr(a, "rel", "noopener");
 			attr(a, "href", a_href_value = /*src*/ ctx[3]);
 		},
 		m(target, anchor) {

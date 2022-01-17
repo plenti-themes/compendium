@@ -35,187 +35,16 @@ import {
 
 import { fade } from '../web_modules/svelte/transition/index.mjs';
 import Hoverable from '../scripts/hoverable.js';
+import PostMeta from '../components/post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i];
-	child_ctx[10] = i;
+	child_ctx[10] = list[i];
+	child_ctx[12] = i;
 	return child_ctx;
 }
 
-function get_each_context_1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[12] = list[i];
-	child_ctx[10] = i;
-	return child_ctx;
-}
-
-function get_each_context_2(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[14] = list[i];
-	child_ctx[10] = i;
-	return child_ctx;
-}
-
-// (87:25) {#if i < post.fields.categories.length - 1}
-function create_if_block_2(ctx) {
-	let t;
-
-	return {
-		c() {
-			t = text(",\n                  ");
-		},
-		l(nodes) {
-			t = claim_text(nodes, ",\n                  ");
-		},
-		m(target, anchor) {
-			insert(target, t, anchor);
-		},
-		d(detaching) {
-			if (detaching) detach(t);
-		}
-	};
-}
-
-// (85:14) {#each post.fields.categories as catg, i}
-function create_each_block_2(ctx) {
-	let a;
-	let t_value = /*catg*/ ctx[14] + "";
-	let t;
-	let a_href_value;
-	let if_block = /*i*/ ctx[10] < /*post*/ ctx[8].fields.categories.length - 1 && create_if_block_2(ctx);
-
-	return {
-		c() {
-			a = element("a");
-			t = text(t_value);
-			if (if_block) if_block.c();
-			this.h();
-		},
-		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
-			var a_nodes = children(a);
-			t = claim_text(a_nodes, t_value);
-			if (if_block) if_block.l(a_nodes);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "href", a_href_value = "catgs/" + (/*catgList*/ ctx[3].indexOf(/*catg*/ ctx[14]) + 1));
-			attr(a, "class", "ml-0.5 svelte-lpqugq");
-		},
-		m(target, anchor) {
-			insert(target, a, anchor);
-			append(a, t);
-			if (if_block) if_block.m(a, null);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*allFeatures*/ 1 && t_value !== (t_value = /*catg*/ ctx[14] + "")) set_data(t, t_value);
-
-			if (/*i*/ ctx[10] < /*post*/ ctx[8].fields.categories.length - 1) {
-				if (if_block) {
-					
-				} else {
-					if_block = create_if_block_2(ctx);
-					if_block.c();
-					if_block.m(a, null);
-				}
-			} else if (if_block) {
-				if_block.d(1);
-				if_block = null;
-			}
-
-			if (dirty & /*catgList, allFeatures*/ 9 && a_href_value !== (a_href_value = "catgs/" + (/*catgList*/ ctx[3].indexOf(/*catg*/ ctx[14]) + 1))) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(a);
-			if (if_block) if_block.d();
-		}
-	};
-}
-
-// (96:24) {#if i < post.fields.tags.length - 1}
-function create_if_block_1(ctx) {
-	let t;
-
-	return {
-		c() {
-			t = text(", ");
-		},
-		l(nodes) {
-			t = claim_text(nodes, ", ");
-		},
-		m(target, anchor) {
-			insert(target, t, anchor);
-		},
-		d(detaching) {
-			if (detaching) detach(t);
-		}
-	};
-}
-
-// (94:14) {#each post.fields.tags as tag, i}
-function create_each_block_1(ctx) {
-	let a;
-	let t_value = /*tag*/ ctx[12] + "";
-	let t;
-	let a_href_value;
-	let if_block = /*i*/ ctx[10] < /*post*/ ctx[8].fields.tags.length - 1 && create_if_block_1(ctx);
-
-	return {
-		c() {
-			a = element("a");
-			t = text(t_value);
-			if (if_block) if_block.c();
-			this.h();
-		},
-		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
-			var a_nodes = children(a);
-			t = claim_text(a_nodes, t_value);
-			if (if_block) if_block.l(a_nodes);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "href", a_href_value = "tags/" + (/*tagsList*/ ctx[2].indexOf(/*tag*/ ctx[12]) + 1));
-			attr(a, "class", "ml-0.5 svelte-lpqugq");
-		},
-		m(target, anchor) {
-			insert(target, a, anchor);
-			append(a, t);
-			if (if_block) if_block.m(a, null);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*allFeatures*/ 1 && t_value !== (t_value = /*tag*/ ctx[12] + "")) set_data(t, t_value);
-
-			if (/*i*/ ctx[10] < /*post*/ ctx[8].fields.tags.length - 1) {
-				if (if_block) {
-					
-				} else {
-					if_block = create_if_block_1(ctx);
-					if_block.c();
-					if_block.m(a, null);
-				}
-			} else if (if_block) {
-				if_block.d(1);
-				if_block = null;
-			}
-
-			if (dirty & /*tagsList, allFeatures*/ 5 && a_href_value !== (a_href_value = "tags/" + (/*tagsList*/ ctx[2].indexOf(/*tag*/ ctx[12]) + 1))) {
-				attr(a, "href", a_href_value);
-			}
-		},
-		d(detaching) {
-			if (detaching) detach(a);
-			if (if_block) if_block.d();
-		}
-	};
-}
-
-// (123:6) {#if featuredPage == "Bleed"}
+// (121:8) {#if featuredPage == "Bleed"}
 function create_if_block(ctx) {
 	let button;
 	let hoverable;
@@ -228,8 +57,8 @@ function create_if_block(ctx) {
 				$$slots: {
 					default: [
 						create_default_slot,
-						({ hovering }) => ({ 11: hovering }),
-						({ hovering }) => hovering ? 2048 : 0
+						({ hovering }) => ({ 13: hovering }),
+						({ hovering }) => hovering ? 8192 : 0
 					]
 				},
 				$$scope: { ctx }
@@ -269,7 +98,7 @@ function create_if_block(ctx) {
 		p(ctx, dirty) {
 			const hoverable_changes = {};
 
-			if (dirty & /*$$scope, hovering*/ 67584) {
+			if (dirty & /*$$scope, hovering*/ 24576) {
 				hoverable_changes.$$scope = { dirty, ctx };
 			}
 
@@ -293,7 +122,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (130:10) <Hoverable let:hovering>
+// (128:12) <Hoverable let:hovering>
 function create_default_slot(ctx) {
 	let span;
 	let i;
@@ -314,15 +143,15 @@ function create_default_slot(ctx) {
 			this.h();
 		},
 		h() {
-			attr(i, "class", "accent las la-chevron-circle-down text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
-			attr(span, "class", span_class_value = "inline-block " + (/*hovering*/ ctx[11] ? "animate-bounce" : ""));
+			attr(i, "class", "accent las la-chevron-circle-down text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(span, "class", span_class_value = "inline-block " + (/*hovering*/ ctx[13] ? "animate-bounce" : ""));
 		},
 		m(target, anchor) {
 			insert(target, span, anchor);
 			append(span, i);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*hovering*/ 2048 && span_class_value !== (span_class_value = "inline-block " + (/*hovering*/ ctx[11] ? "animate-bounce" : ""))) {
+			if (dirty & /*hovering*/ 8192 && span_class_value !== (span_class_value = "inline-block " + (/*hovering*/ ctx[13] ? "animate-bounce" : ""))) {
 				attr(span, "class", span_class_value);
 			}
 		},
@@ -332,7 +161,7 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (41:2) {#each allFeatures as post, i}
+// (51:4) {#each allFeatures as post, i}
 function create_each_block(ctx) {
 	let div5;
 	let div0;
@@ -346,61 +175,44 @@ function create_each_block(ctx) {
 	let t1;
 	let div2;
 	let h2;
-	let a0;
-	let t2_value = /*post*/ ctx[8].fields.title + "";
+	let a;
+	let t2_value = /*post*/ ctx[10].fields.title + "";
 	let t2;
-	let a0_href_value;
+	let a_href_value;
 	let t3;
 	let ul;
-	let li0;
+	let li;
 	let i0;
 	let t4;
-	let a1;
-	let t5_value = /*post*/ ctx[8].fields.author.name + "";
-	let t5;
-	let a1_href_value;
-	let t6;
-	let li1;
-	let t7;
-	let t8_value = /*post*/ ctx[8].fields.dateModified + "";
-	let t8;
-	let t9;
-	let li2;
-	let t10;
-	let t11;
-	let li3;
-	let t12;
+	let postmeta;
 	let ul_class_value;
-	let t13;
+	let t5;
 	let div3;
-	let t14;
+	let t6;
 	let button0;
 	let i1;
-	let t15;
+	let t7;
 	let i2;
-	let t16;
+	let t8;
 	let button1;
 	let i3;
-	let t17;
-	let t18;
+	let t9;
+	let t10;
 	let div5_id_value;
 	let div5_class_value;
 	let current;
 	let mounted;
 	let dispose;
-	let each_value_2 = /*post*/ ctx[8].fields.categories;
-	let each_blocks_1 = [];
 
-	for (let i = 0; i < each_value_2.length; i += 1) {
-		each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
-	}
-
-	let each_value_1 = /*post*/ ctx[8].fields.tags;
-	let each_blocks = [];
-
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
-	}
+	postmeta = new PostMeta({
+			props: {
+				post: /*post*/ ctx[10],
+				tagsList: /*tagsList*/ ctx[2],
+				catgList: /*catgList*/ ctx[3],
+				complete: /*complete*/ ctx[4],
+				skipbody: /*skipbody*/ ctx[5]
+			}
+		});
 
 	let if_block = /*featuredPage*/ ctx[1] == "Bleed" && create_if_block(ctx);
 
@@ -415,48 +227,27 @@ function create_each_block(ctx) {
 			t1 = space();
 			div2 = element("div");
 			h2 = element("h2");
-			a0 = element("a");
+			a = element("a");
 			t2 = text(t2_value);
 			t3 = space();
 			ul = element("ul");
-			li0 = element("li");
+			li = element("li");
 			i0 = element("i");
 			t4 = space();
-			a1 = element("a");
-			t5 = text(t5_value);
-			t6 = space();
-			li1 = element("li");
-			t7 = text("Updated: ");
-			t8 = text(t8_value);
-			t9 = space();
-			li2 = element("li");
-			t10 = text("Categories:\n              ");
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].c();
-			}
-
-			t11 = space();
-			li3 = element("li");
-			t12 = text("Tags:\n              ");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].c();
-			}
-
-			t13 = space();
+			create_component(postmeta.$$.fragment);
+			t5 = space();
 			div3 = element("div");
-			t14 = space();
+			t6 = space();
 			button0 = element("button");
 			i1 = element("i");
-			t15 = space();
+			t7 = space();
 			i2 = element("i");
-			t16 = space();
+			t8 = space();
 			button1 = element("button");
 			i3 = element("i");
-			t17 = space();
+			t9 = space();
 			if (if_block) if_block.c();
-			t18 = space();
+			t10 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -483,74 +274,45 @@ function create_each_block(ctx) {
 			var div2_nodes = children(div2);
 			h2 = claim_element(div2_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			a0 = claim_element(h2_nodes, "A", { href: true, class: true });
-			var a0_nodes = children(a0);
-			t2 = claim_text(a0_nodes, t2_value);
-			a0_nodes.forEach(detach);
+			a = claim_element(h2_nodes, "A", { href: true, class: true });
+			var a_nodes = children(a);
+			t2 = claim_text(a_nodes, t2_value);
+			a_nodes.forEach(detach);
 			h2_nodes.forEach(detach);
 			t3 = claim_space(div2_nodes);
 			ul = claim_element(div2_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
-			li0 = claim_element(ul_nodes, "LI", { class: true });
-			var li0_nodes = children(li0);
-			i0 = claim_element(li0_nodes, "I", { class: true });
+			li = claim_element(ul_nodes, "LI", { class: true });
+			var li_nodes = children(li);
+			i0 = claim_element(li_nodes, "I", { class: true });
 			children(i0).forEach(detach);
-			t4 = claim_space(li0_nodes);
-			a1 = claim_element(li0_nodes, "A", { href: true, class: true });
-			var a1_nodes = children(a1);
-			t5 = claim_text(a1_nodes, t5_value);
-			a1_nodes.forEach(detach);
-			li0_nodes.forEach(detach);
-			t6 = claim_space(ul_nodes);
-			li1 = claim_element(ul_nodes, "LI", { class: true });
-			var li1_nodes = children(li1);
-			t7 = claim_text(li1_nodes, "Updated: ");
-			t8 = claim_text(li1_nodes, t8_value);
-			li1_nodes.forEach(detach);
-			t9 = claim_space(ul_nodes);
-			li2 = claim_element(ul_nodes, "LI", { class: true });
-			var li2_nodes = children(li2);
-			t10 = claim_text(li2_nodes, "Categories:\n              ");
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].l(li2_nodes);
-			}
-
-			li2_nodes.forEach(detach);
-			t11 = claim_space(ul_nodes);
-			li3 = claim_element(ul_nodes, "LI", { class: true });
-			var li3_nodes = children(li3);
-			t12 = claim_text(li3_nodes, "Tags:\n              ");
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(li3_nodes);
-			}
-
-			li3_nodes.forEach(detach);
+			li_nodes.forEach(detach);
+			t4 = claim_space(ul_nodes);
+			claim_component(postmeta.$$.fragment, ul_nodes);
 			ul_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t13 = claim_space(div4_nodes);
+			t5 = claim_space(div4_nodes);
 			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			children(div3).forEach(detach);
 			div4_nodes.forEach(detach);
-			t14 = claim_space(div5_nodes);
+			t6 = claim_space(div5_nodes);
 			button0 = claim_element(div5_nodes, "BUTTON", { class: true, style: true });
 			var button0_nodes = children(button0);
 			i1 = claim_element(button0_nodes, "I", { class: true });
 			children(i1).forEach(detach);
-			t15 = claim_space(button0_nodes);
+			t7 = claim_space(button0_nodes);
 			i2 = claim_element(button0_nodes, "I", { class: true });
 			children(i2).forEach(detach);
 			button0_nodes.forEach(detach);
-			t16 = claim_space(div5_nodes);
+			t8 = claim_space(div5_nodes);
 			button1 = claim_element(div5_nodes, "BUTTON", { type: true, class: true, style: true });
 			var button1_nodes = children(button1);
 			i3 = claim_element(button1_nodes, "I", { class: true });
 			children(i3).forEach(detach);
 			button1_nodes.forEach(detach);
-			t17 = claim_space(div5_nodes);
+			t9 = claim_space(div5_nodes);
 			if (if_block) if_block.l(div5_nodes);
-			t18 = claim_space(div5_nodes);
+			t10 = claim_space(div5_nodes);
 			div5_nodes.forEach(detach);
 			this.h();
 		},
@@ -560,40 +322,35 @@ function create_each_block(ctx) {
 			: "object-cover h-screen"));
 
 			set_style(img, "filter", "brightness(60%)");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[8].fields.image.src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[8].fields.image.alt);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[10].fields.image.src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[10].fields.image.alt);
 			attr(div0, "id", "featureImage");
 			attr(div0, "class", "w-full");
 			attr(div1, "class", "col-lg-2");
-			attr(a0, "href", a0_href_value = /*post*/ ctx[8].path);
-			attr(a0, "class", " svelte-lpqugq");
+			attr(a, "href", a_href_value = /*post*/ ctx[10].path);
+			attr(a, "class", " svelte-31wosj");
 			attr(h2, "class", "w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl");
-			attr(i0, "class", "las la-user-astronaut text-lg relative");
-			attr(a1, "href", a1_href_value = /*post*/ ctx[8].fields.author.url);
-			attr(a1, "class", "svelte-lpqugq");
-			attr(li0, "class", "px-2");
-			attr(li1, "class", "px-2");
-			attr(li2, "class", "px-2");
-			attr(li3, "class", "px-2");
+			attr(i0, "class", "las la-user-astronaut text-lg md:text-xl lg:text-2xl relative");
+			attr(li, "class", "px-0 mt-0");
 
-			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm " + (/*featuredPage*/ ctx[1] == "Frame"
+			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24"));
+			: "mb-24") + " svelte-31wosj");
 
 			attr(div2, "class", "col-lg-8");
 			attr(div3, "class", "col-lg-2");
 			attr(div4, "id", "featureOverlayText");
-			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-lpqugq");
+			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-31wosj");
 			attr(i1, "class", "");
-			attr(i2, "class", "accent las la-chevron-circle-left text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(i2, "class", "accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button0, "class", "absolute m-2 left-2");
 			set_style(button0, "top", "50%");
-			attr(i3, "class", "accent las la-chevron-circle-right text-5xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(i3, "class", "accent las la-chevron-circle-right text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button1, "type", "button");
 			attr(button1, "class", "absolute m-2 right-2");
 			set_style(button1, "top", "50%");
-			attr(div5, "id", div5_id_value = /*i*/ ctx[10]);
-			attr(div5, "class", div5_class_value = "w-full relative overflow-hidden \n\t\t  " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t  " + (/*i*/ ctx[10] == /*featureIdx*/ ctx[4] ? "" : "hidden"));
+			attr(div5, "id", div5_id_value = /*i*/ ctx[12]);
+			attr(div5, "class", div5_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[12] == /*featureIdx*/ ctx[6] ? "" : "hidden"));
 		},
 		m(target, anchor) {
 			insert(target, div5, anchor);
@@ -605,54 +362,33 @@ function create_each_block(ctx) {
 			append(div4, t1);
 			append(div4, div2);
 			append(div2, h2);
-			append(h2, a0);
-			append(a0, t2);
+			append(h2, a);
+			append(a, t2);
 			append(div2, t3);
 			append(div2, ul);
-			append(ul, li0);
-			append(li0, i0);
-			append(li0, t4);
-			append(li0, a1);
-			append(a1, t5);
-			append(ul, t6);
-			append(ul, li1);
-			append(li1, t7);
-			append(li1, t8);
-			append(ul, t9);
-			append(ul, li2);
-			append(li2, t10);
-
-			for (let i = 0; i < each_blocks_1.length; i += 1) {
-				each_blocks_1[i].m(li2, null);
-			}
-
-			append(ul, t11);
-			append(ul, li3);
-			append(li3, t12);
-
-			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].m(li3, null);
-			}
-
-			append(div4, t13);
+			append(ul, li);
+			append(li, i0);
+			append(ul, t4);
+			mount_component(postmeta, ul, null);
+			append(div4, t5);
 			append(div4, div3);
-			append(div5, t14);
+			append(div5, t6);
 			append(div5, button0);
 			append(button0, i1);
-			append(button0, t15);
+			append(button0, t7);
 			append(button0, i2);
-			append(div5, t16);
+			append(div5, t8);
 			append(div5, button1);
 			append(button1, i3);
-			append(div5, t17);
+			append(div5, t9);
 			if (if_block) if_block.m(div5, null);
-			append(div5, t18);
+			append(div5, t10);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(button0, "click", /*clickPrev*/ ctx[5]),
-					listen(button1, "click", /*clickNext*/ ctx[6])
+					listen(button0, "click", /*clickPrev*/ ctx[7]),
+					listen(button1, "click", /*clickNext*/ ctx[8])
 				];
 
 				mounted = true;
@@ -665,77 +401,31 @@ function create_each_block(ctx) {
 				attr(img, "class", img_class_value);
 			}
 
-			if (!current || dirty & /*allFeatures*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[8].fields.image.src)) {
+			if (!current || dirty & /*allFeatures*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[10].fields.image.src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*allFeatures*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[8].fields.image.alt)) {
+			if (!current || dirty & /*allFeatures*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[10].fields.image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*allFeatures*/ 1) && t2_value !== (t2_value = /*post*/ ctx[8].fields.title + "")) set_data(t2, t2_value);
+			if ((!current || dirty & /*allFeatures*/ 1) && t2_value !== (t2_value = /*post*/ ctx[10].fields.title + "")) set_data(t2, t2_value);
 
-			if (!current || dirty & /*allFeatures*/ 1 && a0_href_value !== (a0_href_value = /*post*/ ctx[8].path)) {
-				attr(a0, "href", a0_href_value);
+			if (!current || dirty & /*allFeatures*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[10].path)) {
+				attr(a, "href", a_href_value);
 			}
 
-			if ((!current || dirty & /*allFeatures*/ 1) && t5_value !== (t5_value = /*post*/ ctx[8].fields.author.name + "")) set_data(t5, t5_value);
+			const postmeta_changes = {};
+			if (dirty & /*allFeatures*/ 1) postmeta_changes.post = /*post*/ ctx[10];
+			if (dirty & /*tagsList*/ 4) postmeta_changes.tagsList = /*tagsList*/ ctx[2];
+			if (dirty & /*catgList*/ 8) postmeta_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*complete*/ 16) postmeta_changes.complete = /*complete*/ ctx[4];
+			if (dirty & /*skipbody*/ 32) postmeta_changes.skipbody = /*skipbody*/ ctx[5];
+			postmeta.$set(postmeta_changes);
 
-			if (!current || dirty & /*allFeatures*/ 1 && a1_href_value !== (a1_href_value = /*post*/ ctx[8].fields.author.url)) {
-				attr(a1, "href", a1_href_value);
-			}
-
-			if ((!current || dirty & /*allFeatures*/ 1) && t8_value !== (t8_value = /*post*/ ctx[8].fields.dateModified + "")) set_data(t8, t8_value);
-
-			if (dirty & /*catgList, allFeatures*/ 9) {
-				each_value_2 = /*post*/ ctx[8].fields.categories;
-				let i;
-
-				for (i = 0; i < each_value_2.length; i += 1) {
-					const child_ctx = get_each_context_2(ctx, each_value_2, i);
-
-					if (each_blocks_1[i]) {
-						each_blocks_1[i].p(child_ctx, dirty);
-					} else {
-						each_blocks_1[i] = create_each_block_2(child_ctx);
-						each_blocks_1[i].c();
-						each_blocks_1[i].m(li2, null);
-					}
-				}
-
-				for (; i < each_blocks_1.length; i += 1) {
-					each_blocks_1[i].d(1);
-				}
-
-				each_blocks_1.length = each_value_2.length;
-			}
-
-			if (dirty & /*tagsList, allFeatures*/ 5) {
-				each_value_1 = /*post*/ ctx[8].fields.tags;
-				let i;
-
-				for (i = 0; i < each_value_1.length; i += 1) {
-					const child_ctx = get_each_context_1(ctx, each_value_1, i);
-
-					if (each_blocks[i]) {
-						each_blocks[i].p(child_ctx, dirty);
-					} else {
-						each_blocks[i] = create_each_block_1(child_ctx);
-						each_blocks[i].c();
-						each_blocks[i].m(li3, null);
-					}
-				}
-
-				for (; i < each_blocks.length; i += 1) {
-					each_blocks[i].d(1);
-				}
-
-				each_blocks.length = each_value_1.length;
-			}
-
-			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm " + (/*featuredPage*/ ctx[1] == "Frame"
+			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24"))) {
+			: "mb-24") + " svelte-31wosj")) {
 				attr(ul, "class", ul_class_value);
 			}
 
@@ -750,7 +440,7 @@ function create_each_block(ctx) {
 					if_block = create_if_block(ctx);
 					if_block.c();
 					transition_in(if_block, 1);
-					if_block.m(div5, t18);
+					if_block.m(div5, t10);
 				}
 			} else if (if_block) {
 				group_outros();
@@ -762,23 +452,24 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*featuredPage, featureIdx*/ 18 && div5_class_value !== (div5_class_value = "w-full relative overflow-hidden \n\t\t  " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t  " + (/*i*/ ctx[10] == /*featureIdx*/ ctx[4] ? "" : "hidden"))) {
+			if (!current || dirty & /*featuredPage, featureIdx*/ 66 && div5_class_value !== (div5_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[12] == /*featureIdx*/ ctx[6] ? "" : "hidden"))) {
 				attr(div5, "class", div5_class_value);
 			}
 		},
 		i(local) {
 			if (current) return;
+			transition_in(postmeta.$$.fragment, local);
 			transition_in(if_block);
 			current = true;
 		},
 		o(local) {
+			transition_out(postmeta.$$.fragment, local);
 			transition_out(if_block);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(div5);
-			destroy_each(each_blocks_1, detaching);
-			destroy_each(each_blocks, detaching);
+			destroy_component(postmeta);
 			if (if_block) if_block.d();
 			mounted = false;
 			run_all(dispose);
@@ -786,7 +477,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (38:0) {#key featureIdx}
+// (49:0) {#key featureIdx}
 function create_key_block(ctx) {
 	let div;
 	let div_transition;
@@ -830,7 +521,7 @@ function create_key_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, allFeatures, tagsList, catgList*/ 2175) {
+			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, allFeatures, tagsList, catgList, complete, skipbody*/ 8703) {
 				each_value = /*allFeatures*/ ctx[0];
 				let i;
 
@@ -891,7 +582,7 @@ function create_key_block(ctx) {
 }
 
 function create_fragment(ctx) {
-	let previous_key = /*featureIdx*/ ctx[4];
+	let previous_key = /*featureIdx*/ ctx[6];
 	let key_block_anchor;
 	let current;
 	let key_block = create_key_block(ctx);
@@ -911,7 +602,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*featureIdx*/ 16 && safe_not_equal(previous_key, previous_key = /*featureIdx*/ ctx[4])) {
+			if (dirty & /*featureIdx*/ 64 && safe_not_equal(previous_key, previous_key = /*featureIdx*/ ctx[6])) {
 				group_outros();
 				transition_out(key_block, 1, 1, noop);
 				check_outros();
@@ -951,25 +642,27 @@ function instance($$self, $$props, $$invalidate) {
 		{ tagsList } = $$props,
 		{ catgList } = $$props;
 
+	let { complete = true } = $$props;
+	let { skipbody = true } = $$props;
 	let featureIdx = 0;
 
 	function clickPrev() {
 		if (featureIdx == 0) {
 			// block of code to be executed if the condition is true
-			$$invalidate(4, featureIdx = maxFeatures - 1);
+			$$invalidate(6, featureIdx = maxFeatures - 1);
 		} else {
 			// block of code to be executed if the condition is false
-			$$invalidate(4, featureIdx = (featureIdx - 1) % maxFeatures);
+			$$invalidate(6, featureIdx = (featureIdx - 1) % maxFeatures);
 		}
 	}
 
 	function clickNext() {
 		if (featureIdx == maxFeatures) {
 			// block of code to be executed if the condition is true
-			$$invalidate(4, featureIdx = 0);
+			$$invalidate(6, featureIdx = 0);
 		} else {
 			// block of code to be executed if the condition is false
-			$$invalidate(4, featureIdx = (featureIdx + 1) % maxFeatures);
+			$$invalidate(6, featureIdx = (featureIdx + 1) % maxFeatures);
 		}
 	}
 
@@ -978,11 +671,20 @@ function instance($$self, $$props, $$invalidate) {
 		if ("featuredPage" in $$props) $$invalidate(1, featuredPage = $$props.featuredPage);
 		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
 		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
+		if ("complete" in $$props) $$invalidate(4, complete = $$props.complete);
+		if ("skipbody" in $$props) $$invalidate(5, skipbody = $$props.skipbody);
 	};
 
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty & /*allFeatures*/ 1) {
 			$: maxFeatures = allFeatures.length;
+		}
+
+		if ($$self.$$.dirty & /*allFeatures*/ 1) {
+			// Sort posts in descending order
+			$: allFeatures.sort(function (a, b) {
+				return new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
+			});
 		}
 	};
 
@@ -991,6 +693,8 @@ function instance($$self, $$props, $$invalidate) {
 		featuredPage,
 		tagsList,
 		catgList,
+		complete,
+		skipbody,
 		featureIdx,
 		clickPrev,
 		clickNext
@@ -1005,7 +709,9 @@ class Component extends SvelteComponent {
 			allFeatures: 0,
 			featuredPage: 1,
 			tagsList: 2,
-			catgList: 3
+			catgList: 3,
+			complete: 4,
+			skipbody: 5
 		});
 	}
 }

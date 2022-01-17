@@ -167,7 +167,7 @@ function instance($$self, $$props, $$invalidate) {
 	let author_site = idxContent.SEO.author_site;
 	let twitterUsername = idxContent.SEO.twitterUsername;
 
-	// Define attributes based on post or not
+	// Generate SEO card based on post attributes
 	if (content.type === "posts") {
 		isArticle = true;
 		page_title = content.fields.title;
@@ -177,8 +177,15 @@ function instance($$self, $$props, $$invalidate) {
 		image_alt = content.fields.image.alt;
 		dateCreated = content.fields.dateCreated;
 		dateModified = content.fields.dateModified;
+	} else if (content.path === "pages/about") {
+		isArticle = true; // Generate SEO card based on About me page attributes
+		page_title = idxContent.name + " | " + content.fields.title;
+		description = content.fields.hero.tagline;
+		url = site_url + content.path + "/";
+		image_url = site_url + "assets/pages/" + content.fields.image.src;
+		image_alt = content.fields.image.alt;
 	} else {
-		isArticle = false;
+		isArticle = false; // Default SEO card to site attributes
 		page_title = idxContent.title;
 		description = idxContent.description;
 		url = site_url;
