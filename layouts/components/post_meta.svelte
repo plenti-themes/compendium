@@ -9,44 +9,42 @@
   let dateModified = post.dateModified ?? post.fields.dateModified;
   let tags = post.tags ?? post.fields.tags;
   let catgs = post.catgs ?? post.fields.categories;
-  let cardBody = skipbody ? "skip" : get_description(post.fields.articleBody, 180);
+  let cardBody = skipbody
+    ? "skip"
+    : get_description(post.fields.articleBody, 170);
 </script>
 
-<ul class="text-meta flex flex-wrap">
-  <li class="mr-2 inline-flex">
-    <i class="las la-user-astronaut text-base" />
-    <a href={author_url}>{author_name}</a>
+<li class="mr-2 my-0 inline-flex">
+  <a href={author_url}>{author_name}</a>
+</li>
+{#if complete}
+  <li class="mr-2 my-0 inline-flex">
+    Created: {dateCreated}
   </li>
-  {#if complete}
-    <li class="mr-2 inline-flex">
-      Created: {dateCreated}
-    </li>
-  {/if}
-  <li class="mr-2 inline-flex">
-    Updated: {dateModified}
+{/if}
+<li class="mr-2 my-0 inline-flex">
+  Updated: {dateModified}
+</li>
+{#if complete}
+  <br />
+  <li class="mr-2 my-0 inline-flex">
+    Categories:
+    {#each catgs as catg, i}
+      <a href="catgs/{catgList.indexOf(catg) + 1}" class="ml-0.5">
+        {catg}{#if i < catgs.length - 1},
+        {/if}
+      </a>
+    {/each}
   </li>
-</ul>
-<ul class="text-meta flex flex-wrap">
-  {#if complete}
-    <li class="mr-2 inline-flex">
-      Categories:
-      {#each catgs as catg, i}
-        <a href="catgs/{catgList.indexOf(catg) + 1}" class="ml-0.5">
-          {catg}{#if i < catgs.length - 1},
-          {/if}
-        </a>
-      {/each}
-    </li>
-    <li class="mr-2 inline-flex">
-      Tags:
-      {#each tags as tag, i}
-        <a href="tags/{tagsList.indexOf(tag) + 1}" class="ml-0.5">
-          {tag}{#if i < tags.length - 1}, {/if}
-        </a>
-      {/each}
-    </li>
-  {/if}
-</ul>
+  <li class="mr-2 my-0 inline-flex">
+    Tags:
+    {#each tags as tag, i}
+      <a href="tags/{tagsList.indexOf(tag) + 1}" class="ml-0.5">
+        {tag}{#if i < tags.length - 1}, {/if}
+      </a>
+    {/each}
+  </li>
+{/if}
 {#if cardBody !== "skip"}
   <p class="text-base mb-8">
     {@html cardBody}
