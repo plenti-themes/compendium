@@ -16,26 +16,26 @@
       />
     </button>
     <!-- </a> -->
-    <div class="footer mt-2">
+    <div class="footnote mt-2">
       © Copyright 2021. All rights reserved.<br />
       Designed and developed by Roberto Rivera.<br />
       Powered by
-      <a target="_blank" rel="noopener noreferrer" href="https://plenti.co/"
+      <a target="_blank" rel="noopener" href="https://plenti.co/"
         >Plenti</a
       >
       of
-      <a target="_blank" rel="noopener noreferrer" href="https://svelte.dev/"
+      <a target="_blank" rel="noopener" href="https://svelte.dev/"
         >Svelte</a
       >,
       <a
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         href="https://icons8.com/line-awesome">Line Awesome</a
       >
       and
       <a
         target="_blank"
-        rel="noopener noreferrer"
+        rel="noopener"
         href="https://tailwindcss.com/">tailwindcss</a
       >.
 	</div>
