@@ -17,7 +17,7 @@
     "tagsPerPage": 12,
     "mathTypesetting": true,
     "codeHighlighting": true,
-    "featuredPage": "Bleed",
+    "featuredPage": "Frame",
     "featuredPageValues": "Bleed, Frame, None",
     "colorScheme": "Earthliness",
     "colorSchemeValues": "Earthliness, Simplicity, Technobeat"
