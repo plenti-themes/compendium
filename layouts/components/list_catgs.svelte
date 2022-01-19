@@ -1,11 +1,11 @@
 <script>
   import PostMeta from "./post_meta.svelte";
-  export let catgsMap, catg, tagsList, catgList;
+  export let catg, catgPosts, tagsPosts;
   export let complete = true;
   export let skipbody = true;
   let Posts;
 
-  $: Posts = catgsMap.get(catg);
+  $: Posts = Object.values(catgPosts.filter((key) => key.name == catg)[0].posts)
 </script>
 
 <div class="rounded-xl overflow-hidden shadow-md bg-secondary mb-6">
@@ -30,7 +30,7 @@
               <li class="mx-0 -mt-1 text-meta inline-flex">
                 <i class="las la-user-astronaut text-lg" />
               </li>
-              <PostMeta {post} {tagsList} {catgList} {complete} {skipbody} />
+              <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
             </ul>
           </div>
         </div>

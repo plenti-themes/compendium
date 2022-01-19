@@ -3,11 +3,11 @@
   import PostList from "../components/list_catgs.svelte";
 
   // Variables passed in from "html.svelte" via "index.svelte"
-  export let idxContent, allPosts, content, catgsMap, tagsList, catgList;
+  export let idxContent, allPosts, content, catgPosts, tagsPosts;
 
   let socialLinks = idxContent.socialLinks;
-  let totalPages = catgList.length;
-  $: catg = catgList[content.pager - 1];
+  let totalPages = Object(catgPosts).length;
+  $: catg = Object(catgPosts)[content.pager - 1].name;
 
   // Setup variable for page link logic used on plenti.json
   let totalCatgsPages = totalPages;
@@ -23,7 +23,7 @@
             <!-- ------------------------------------------------------- -->
             <!-- Setup a Card for each post as necessary                 -->
             <!-- ------------------------------------------------------- -->
-            <PostList {catgsMap} {catg} {tagsList} {catgList} />
+            <PostList {catg} {catgPosts} {tagsPosts} />
           </div>
         </div>
 
@@ -31,7 +31,7 @@
         <!-- Set the aside as the last column in the row             -->
         <!-- ------------------------------------------------------- -->
         <div class="w-full md:w-3/12 mb-lg-0 px-0">
-          <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
+          <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} />
         </div>
       </div>
     </div>
