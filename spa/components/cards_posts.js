@@ -61,8 +61,8 @@ function create_if_block(ctx) {
 	postmeta = new PostMeta({
 			props: {
 				post: /*post*/ ctx[7],
-				tagsList: /*tagsList*/ ctx[3],
-				catgList: /*catgList*/ ctx[4],
+				catgPosts: /*catgPosts*/ ctx[3],
+				tagsPosts: /*tagsPosts*/ ctx[4],
 				complete: /*complete*/ ctx[5],
 				skipbody: /*skipbody*/ ctx[6]
 			}
@@ -162,8 +162,8 @@ function create_if_block(ctx) {
 
 			const postmeta_changes = {};
 			if (dirty & /*allPosts*/ 1) postmeta_changes.post = /*post*/ ctx[7];
-			if (dirty & /*tagsList*/ 8) postmeta_changes.tagsList = /*tagsList*/ ctx[3];
-			if (dirty & /*catgList*/ 16) postmeta_changes.catgList = /*catgList*/ ctx[4];
+			if (dirty & /*catgPosts*/ 8) postmeta_changes.catgPosts = /*catgPosts*/ ctx[3];
+			if (dirty & /*tagsPosts*/ 16) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[4];
 			if (dirty & /*complete*/ 32) postmeta_changes.complete = /*complete*/ ctx[5];
 			if (dirty & /*skipbody*/ 64) postmeta_changes.skipbody = /*skipbody*/ ctx[6];
 			postmeta.$set(postmeta_changes);
@@ -282,7 +282,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*allPosts, tagsList, catgList, complete, skipbody, postRangeLow, postRangeHigh*/ 127) {
+			if (dirty & /*allPosts, catgPosts, tagsPosts, complete, skipbody, postRangeLow, postRangeHigh*/ 127) {
 				each_value = /*allPosts*/ ctx[0];
 				let i;
 
@@ -338,8 +338,8 @@ function instance($$self, $$props, $$invalidate) {
 	let { allPosts } = $$props,
 		{ postRangeHigh } = $$props,
 		{ postRangeLow } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let { complete = true } = $$props;
 	let { skipbody = false } = $$props;
@@ -348,8 +348,8 @@ function instance($$self, $$props, $$invalidate) {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("postRangeHigh" in $$props) $$invalidate(1, postRangeHigh = $$props.postRangeHigh);
 		if ("postRangeLow" in $$props) $$invalidate(2, postRangeLow = $$props.postRangeLow);
-		if ("tagsList" in $$props) $$invalidate(3, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(4, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(3, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(4, tagsPosts = $$props.tagsPosts);
 		if ("complete" in $$props) $$invalidate(5, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(6, skipbody = $$props.skipbody);
 	};
@@ -363,7 +363,15 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	};
 
-	return [allPosts, postRangeHigh, postRangeLow, tagsList, catgList, complete, skipbody];
+	return [
+		allPosts,
+		postRangeHigh,
+		postRangeLow,
+		catgPosts,
+		tagsPosts,
+		complete,
+		skipbody
+	];
 }
 
 class Component extends SvelteComponent {
@@ -374,8 +382,8 @@ class Component extends SvelteComponent {
 			allPosts: 0,
 			postRangeHigh: 1,
 			postRangeLow: 2,
-			tagsList: 3,
-			catgList: 4,
+			catgPosts: 3,
+			tagsPosts: 4,
 			complete: 5,
 			skipbody: 6
 		});

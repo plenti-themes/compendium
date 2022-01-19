@@ -2,14 +2,15 @@
 import { SvelteComponent, init, safe_not_equal } from '../web_modules/svelte/internal/index.mjs';
 
 function catgs_tags(posts) {
-	let tagPost = {};
+	let postObj = {};
 	let tagsObj = {};
 	let catgObj = {};
+	let index = 0;
 
 	// Loop through each post
 	posts.forEach(post => {
 		// Flag the post in question
-		tagPost = {
+		postObj = {
 			path: post.path,
 			img_src: post.fields.image.src,
 			img_alt: post.fields.image.alt,
@@ -22,28 +23,64 @@ function catgs_tags(posts) {
 			catgs: post.fields.categories
 		};
 
-		// Loop through each post tag array
-		post.fields.tags.forEach(element => {
+		// Loop through each post tag
+		post.fields.tags.forEach(tag => {
 			// Push each post into collection of tags
-			if (element in tagsObj) {
-				tagsObj[element].push(tagPost);
+			if (tag in tagsObj) {
+				tagsObj[tag].push(postObj);
 			} else {
-				tagsObj[element] = [tagPost];
+				tagsObj[tag] = [postObj];
 			}
 		});
 
-		// Loop through each post tag array
-		post.fields.categories.forEach(element => {
+		// Loop through each post catg
+		post.fields.categories.forEach(catg => {
 			// Push each post into collection of catgs
-			if (element in catgObj) {
-				catgObj[element].push(tagPost);
+			if (catg in catgObj) {
+				catgObj[catg].push(postObj);
 			} else {
-				catgObj[element] = [tagPost];
+				catgObj[catg] = [postObj];
 			}
 		});
 	});
 
-	return { tagsObj, catgObj };
+	// alphabetically refactor object into array of key/value pairs
+	let tagKeys = Object.keys(tagsObj).sort();
+
+	let tagsList = [];
+
+	for (index = 0; index < tagKeys.length; index++) {
+		let obj = {
+			name: tagKeys[index],
+			posts: Object.values(tagsObj[tagKeys[index]]),
+			page: index + 1,
+			length: Object.keys(tagsObj[tagKeys[index]]).length
+		};
+
+		tagsList.push(obj);
+	}
+
+	// alphabetically refactor object into array of key/value pairs
+	let catKeys = Object.keys(catgObj).sort();
+
+	let catgList = [];
+
+	for (index = 0; index < catKeys.length; index++) {
+		let obj = {
+			name: catKeys[index],
+			posts: Object.values(catgObj[catKeys[index]]),
+			page: index + 1,
+			length: Object.keys(catgObj[catKeys[index]]).length
+		};
+
+		catgList.push(obj);
+	}
+
+	return {
+		tags: tagsList, // array of tag objects
+		catgs: catgList, // array of catg objects
+		
+	};
 }
 
 class Component extends SvelteComponent {

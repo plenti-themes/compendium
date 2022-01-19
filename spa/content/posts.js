@@ -61,8 +61,8 @@ function create_fragment(ctx) {
 	postmeta = new PostMeta({
 			props: {
 				post: /*post*/ ctx[9],
-				tagsList: /*tagsList*/ ctx[1],
-				catgList: /*catgList*/ ctx[2],
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
 				complete: /*complete*/ ctx[6],
 				skipbody: /*skipbody*/ ctx[7]
 			}
@@ -71,9 +71,9 @@ function create_fragment(ctx) {
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[8],
-				tagsList: /*tagsList*/ ctx[1],
-				catgList: /*catgList*/ ctx[2]
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
+				socialLinks: /*socialLinks*/ ctx[8]
 			}
 		});
 
@@ -223,16 +223,16 @@ function create_fragment(ctx) {
 			if ((!current || dirty & /*image*/ 32) && raw0_value !== (raw0_value = /*image*/ ctx[5].citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "")) span.innerHTML = raw0_value;;
 			if (!current || dirty & /*title*/ 16) set_data(t3, /*title*/ ctx[4]);
 			const postmeta_changes = {};
-			if (dirty & /*tagsList*/ 2) postmeta_changes.tagsList = /*tagsList*/ ctx[1];
-			if (dirty & /*catgList*/ 4) postmeta_changes.catgList = /*catgList*/ ctx[2];
+			if (dirty & /*catgPosts*/ 2) postmeta_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			if (dirty & /*complete*/ 64) postmeta_changes.complete = /*complete*/ ctx[6];
 			if (dirty & /*skipbody*/ 128) postmeta_changes.skipbody = /*skipbody*/ ctx[7];
 			postmeta.$set(postmeta_changes);
 			if (!current || dirty & /*articleBody*/ 8) p.innerHTML = /*articleBody*/ ctx[3];;
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
-			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
+			if (dirty & /*catgPosts*/ 2) aside_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) aside_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -257,8 +257,8 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
 		{ allPosts } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let { articleBody } = $$props,
 		{ title } = $$props,
@@ -286,8 +286,8 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 		if ("articleBody" in $$props) $$invalidate(3, articleBody = $$props.articleBody);
 		if ("title" in $$props) $$invalidate(4, title = $$props.title);
 		if ("image" in $$props) $$invalidate(5, image = $$props.image);
@@ -302,8 +302,8 @@ function instance($$self, $$props, $$invalidate) {
 
 	return [
 		allPosts,
-		tagsList,
-		catgList,
+		catgPosts,
+		tagsPosts,
 		articleBody,
 		title,
 		image,
@@ -327,8 +327,8 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 10,
 			allPosts: 0,
-			tagsList: 1,
-			catgList: 2,
+			catgPosts: 1,
+			tagsPosts: 2,
 			articleBody: 3,
 			title: 4,
 			image: 5,

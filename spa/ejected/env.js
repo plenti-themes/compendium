@@ -1,1 +1,1 @@
-export let env = { local: false, baseurl: '/compendium/'};
+export let env = { local: false, baseurl: '/compendium/', cms: { repo: '', redirectUrl: '', appId: '' } };

@@ -20,12 +20,12 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import Aside from './aside.js';
+import Aside from '../components/aside.js';
 
 // Cards component for all posts.
-import Cards from './cards_posts.js';
+import Cards from '../components/cards_posts.js';
 
-import Pagination from './paginate.js';
+import Pagination from '../components/paginate.js';
 
 function create_fragment(ctx) {
 	let section;
@@ -44,16 +44,16 @@ function create_fragment(ctx) {
 	cards = new Cards({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
 				postRangeHigh: /*postRangeHigh*/ ctx[4],
-				postRangeLow: /*postRangeLow*/ ctx[5],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3]
+				postRangeLow: /*postRangeLow*/ ctx[5]
 			}
 		});
 
 	pagination = new Pagination({
 			props: {
-				content: /*content*/ ctx[1],
+				content: /*content*/ ctx[3],
 				currentPage: /*currentPage*/ ctx[6],
 				totalPages: /*totalPages*/ ctx[7]
 			}
@@ -62,9 +62,9 @@ function create_fragment(ctx) {
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[8],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3]
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
+				socialLinks: /*socialLinks*/ ctx[8]
 			}
 		});
 
@@ -134,20 +134,20 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			const cards_changes = {};
 			if (dirty & /*allPosts*/ 1) cards_changes.allPosts = /*allPosts*/ ctx[0];
+			if (dirty & /*catgPosts*/ 2) cards_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) cards_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			if (dirty & /*postRangeHigh*/ 16) cards_changes.postRangeHigh = /*postRangeHigh*/ ctx[4];
 			if (dirty & /*postRangeLow*/ 32) cards_changes.postRangeLow = /*postRangeLow*/ ctx[5];
-			if (dirty & /*tagsList*/ 4) cards_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) cards_changes.catgList = /*catgList*/ ctx[3];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
-			if (dirty & /*content*/ 2) pagination_changes.content = /*content*/ ctx[1];
+			if (dirty & /*content*/ 8) pagination_changes.content = /*content*/ ctx[3];
 			if (dirty & /*currentPage*/ 64) pagination_changes.currentPage = /*currentPage*/ ctx[6];
 			if (dirty & /*totalPages*/ 128) pagination_changes.totalPages = /*totalPages*/ ctx[7];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*tagsList*/ 4) aside_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) aside_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*catgPosts*/ 2) aside_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) aside_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -174,9 +174,9 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { allPosts } = $$props,
-		{ content } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props,
+		{ content } = $$props;
 
 	let { postRangeHigh } = $$props,
 		{ postRangeLow } = $$props,
@@ -187,9 +187,9 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(1, content = $$props.content);
-		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
+		if ("content" in $$props) $$invalidate(3, content = $$props.content);
 		if ("postRangeHigh" in $$props) $$invalidate(4, postRangeHigh = $$props.postRangeHigh);
 		if ("postRangeLow" in $$props) $$invalidate(5, postRangeLow = $$props.postRangeLow);
 		if ("currentPage" in $$props) $$invalidate(6, currentPage = $$props.currentPage);
@@ -198,9 +198,9 @@ function instance($$self, $$props, $$invalidate) {
 
 	return [
 		allPosts,
+		catgPosts,
+		tagsPosts,
 		content,
-		tagsList,
-		catgList,
 		postRangeHigh,
 		postRangeLow,
 		currentPage,
@@ -215,9 +215,9 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			allPosts: 0,
-			content: 1,
-			tagsList: 2,
-			catgList: 3,
+			catgPosts: 1,
+			tagsPosts: 2,
+			content: 3,
 			postRangeHigh: 4,
 			postRangeLow: 5,
 			currentPage: 6,

@@ -207,8 +207,8 @@ function create_each_block(ctx) {
 	postmeta = new PostMeta({
 			props: {
 				post: /*post*/ ctx[10],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3],
+				catgPosts: /*catgPosts*/ ctx[2],
+				tagsPosts: /*tagsPosts*/ ctx[3],
 				complete: /*complete*/ ctx[4],
 				skipbody: /*skipbody*/ ctx[5]
 			}
@@ -417,8 +417,8 @@ function create_each_block(ctx) {
 
 			const postmeta_changes = {};
 			if (dirty & /*allFeatures*/ 1) postmeta_changes.post = /*post*/ ctx[10];
-			if (dirty & /*tagsList*/ 4) postmeta_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) postmeta_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*catgPosts*/ 4) postmeta_changes.catgPosts = /*catgPosts*/ ctx[2];
+			if (dirty & /*tagsPosts*/ 8) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			if (dirty & /*complete*/ 16) postmeta_changes.complete = /*complete*/ ctx[4];
 			if (dirty & /*skipbody*/ 32) postmeta_changes.skipbody = /*skipbody*/ ctx[5];
 			postmeta.$set(postmeta_changes);
@@ -521,7 +521,7 @@ function create_key_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, allFeatures, tagsList, catgList, complete, skipbody*/ 8703) {
+			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, allFeatures, catgPosts, tagsPosts, complete, skipbody*/ 8703) {
 				each_value = /*allFeatures*/ ctx[0];
 				let i;
 
@@ -639,8 +639,8 @@ function instance($$self, $$props, $$invalidate) {
 
 	let { allFeatures } = $$props,
 		{ featuredPage } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let { complete = true } = $$props;
 	let { skipbody = true } = $$props;
@@ -669,8 +669,8 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ("allFeatures" in $$props) $$invalidate(0, allFeatures = $$props.allFeatures);
 		if ("featuredPage" in $$props) $$invalidate(1, featuredPage = $$props.featuredPage);
-		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(3, tagsPosts = $$props.tagsPosts);
 		if ("complete" in $$props) $$invalidate(4, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(5, skipbody = $$props.skipbody);
 	};
@@ -691,8 +691,8 @@ function instance($$self, $$props, $$invalidate) {
 	return [
 		allFeatures,
 		featuredPage,
-		tagsList,
-		catgList,
+		catgPosts,
+		tagsPosts,
 		complete,
 		skipbody,
 		featureIdx,
@@ -708,8 +708,8 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			allFeatures: 0,
 			featuredPage: 1,
-			tagsList: 2,
-			catgList: 3,
+			catgPosts: 2,
+			tagsPosts: 3,
 			complete: 4,
 			skipbody: 5
 		});

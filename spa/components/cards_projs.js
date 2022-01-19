@@ -110,7 +110,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allProjs, tagsList, catgList, complete, skipbody, uniqProjs, projArry*/ 487) {
+			if (dirty & /*allProjs, catgPosts, tagsPosts, complete, skipbody, uniqProjs, projArry*/ 487) {
 				each_value_1 = /*allProjs*/ ctx[2];
 				let i;
 
@@ -195,8 +195,8 @@ function create_if_block_1(ctx) {
 	postmeta = new PostMeta({
 			props: {
 				post: /*post*/ ctx[13],
-				tagsList: /*tagsList*/ ctx[5],
-				catgList: /*catgList*/ ctx[6],
+				catgPosts: /*catgPosts*/ ctx[5],
+				tagsPosts: /*tagsPosts*/ ctx[6],
 				complete: /*complete*/ ctx[7],
 				skipbody: /*skipbody*/ ctx[8]
 			}
@@ -318,8 +318,8 @@ function create_if_block_1(ctx) {
 
 			const postmeta_changes = {};
 			if (dirty & /*allProjs*/ 4) postmeta_changes.post = /*post*/ ctx[13];
-			if (dirty & /*tagsList*/ 32) postmeta_changes.tagsList = /*tagsList*/ ctx[5];
-			if (dirty & /*catgList*/ 64) postmeta_changes.catgList = /*catgList*/ ctx[6];
+			if (dirty & /*catgPosts*/ 32) postmeta_changes.catgPosts = /*catgPosts*/ ctx[5];
+			if (dirty & /*tagsPosts*/ 64) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[6];
 			if (dirty & /*complete*/ 128) postmeta_changes.complete = /*complete*/ ctx[7];
 			if (dirty & /*skipbody*/ 256) postmeta_changes.skipbody = /*skipbody*/ ctx[8];
 			postmeta.$set(postmeta_changes);
@@ -569,7 +569,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*allProjs, tagsList, catgList, complete, skipbody, uniqProjs, projArry, projRangeLow, projRangeHigh*/ 511) {
+			if (dirty & /*allProjs, catgPosts, tagsPosts, complete, skipbody, uniqProjs, projArry, projRangeLow, projRangeHigh*/ 511) {
 				each_value = /*uniqProjs*/ ctx[1];
 				let i;
 
@@ -627,8 +627,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ allProjs } = $$props,
 		{ projRangeHigh } = $$props,
 		{ projRangeLow } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let { complete = true } = $$props;
 	let { skipbody = true } = $$props;
@@ -640,8 +640,8 @@ function instance($$self, $$props, $$invalidate) {
 		if ("allProjs" in $$props) $$invalidate(2, allProjs = $$props.allProjs);
 		if ("projRangeHigh" in $$props) $$invalidate(3, projRangeHigh = $$props.projRangeHigh);
 		if ("projRangeLow" in $$props) $$invalidate(4, projRangeLow = $$props.projRangeLow);
-		if ("tagsList" in $$props) $$invalidate(5, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(6, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(5, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(6, tagsPosts = $$props.tagsPosts);
 		if ("complete" in $$props) $$invalidate(7, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(8, skipbody = $$props.skipbody);
 	};
@@ -652,8 +652,8 @@ function instance($$self, $$props, $$invalidate) {
 		allProjs,
 		projRangeHigh,
 		projRangeLow,
-		tagsList,
-		catgList,
+		catgPosts,
+		tagsPosts,
 		complete,
 		skipbody,
 		func
@@ -670,8 +670,8 @@ class Component extends SvelteComponent {
 			allProjs: 2,
 			projRangeHigh: 3,
 			projRangeLow: 4,
-			tagsList: 5,
-			catgList: 6,
+			catgPosts: 5,
+			tagsPosts: 6,
 			complete: 7,
 			skipbody: 8
 		});

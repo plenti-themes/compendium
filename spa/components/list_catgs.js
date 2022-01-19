@@ -30,7 +30,7 @@ import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
+	child_ctx[6] = list[i];
 	return child_ctx;
 }
 
@@ -44,7 +44,7 @@ function create_each_block(ctx) {
 	let div0;
 	let h3;
 	let a;
-	let t1_value = /*post*/ ctx[7].title + "";
+	let t1_value = /*post*/ ctx[6].title + "";
 	let t1;
 	let a_href_value;
 	let t2;
@@ -58,9 +58,9 @@ function create_each_block(ctx) {
 
 	postmeta = new PostMeta({
 			props: {
-				post: /*post*/ ctx[7],
-				tagsList: /*tagsList*/ ctx[1],
-				catgList: /*catgList*/ ctx[2],
+				post: /*post*/ ctx[6],
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
 				complete: /*complete*/ ctx[3],
 				skipbody: /*skipbody*/ ctx[4]
 			}
@@ -116,9 +116,9 @@ function create_each_block(ctx) {
 		},
 		h() {
 			attr(img, "class", "inline-block object-cover rounded-md w-28 h-28");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[7].img_src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[7].img_alt);
-			attr(a, "href", a_href_value = /*post*/ ctx[7].path);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[6].img_src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[6].img_alt);
+			attr(a, "href", a_href_value = /*post*/ ctx[6].path);
 			attr(h3, "class", "header my-0 text-xl md:text-2xl");
 			attr(i, "class", "las la-user-astronaut text-lg");
 			attr(li, "class", "mx-0 -mt-1 text-meta inline-flex");
@@ -144,24 +144,24 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*Posts*/ 32 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[7].img_src)) {
+			if (!current || dirty & /*Posts*/ 32 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[6].img_src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*Posts*/ 32 && img_alt_value !== (img_alt_value = /*post*/ ctx[7].img_alt)) {
+			if (!current || dirty & /*Posts*/ 32 && img_alt_value !== (img_alt_value = /*post*/ ctx[6].img_alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*Posts*/ 32) && t1_value !== (t1_value = /*post*/ ctx[7].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*Posts*/ 32) && t1_value !== (t1_value = /*post*/ ctx[6].title + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*Posts*/ 32 && a_href_value !== (a_href_value = /*post*/ ctx[7].path)) {
+			if (!current || dirty & /*Posts*/ 32 && a_href_value !== (a_href_value = /*post*/ ctx[6].path)) {
 				attr(a, "href", a_href_value);
 			}
 
 			const postmeta_changes = {};
-			if (dirty & /*Posts*/ 32) postmeta_changes.post = /*post*/ ctx[7];
-			if (dirty & /*tagsList*/ 2) postmeta_changes.tagsList = /*tagsList*/ ctx[1];
-			if (dirty & /*catgList*/ 4) postmeta_changes.catgList = /*catgList*/ ctx[2];
+			if (dirty & /*Posts*/ 32) postmeta_changes.post = /*post*/ ctx[6];
+			if (dirty & /*catgPosts*/ 2) postmeta_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			if (dirty & /*complete*/ 8) postmeta_changes.complete = /*complete*/ ctx[3];
 			if (dirty & /*skipbody*/ 16) postmeta_changes.skipbody = /*skipbody*/ ctx[4];
 			postmeta.$set(postmeta_changes);
@@ -276,7 +276,7 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			if (!current || dirty & /*catg*/ 1) set_data(t2, /*catg*/ ctx[0]);
 
-			if (dirty & /*Posts, tagsList, catgList, complete, skipbody*/ 62) {
+			if (dirty & /*Posts, catgPosts, tagsPosts, complete, skipbody*/ 62) {
 				each_value = /*Posts*/ ctx[5];
 				let i;
 
@@ -329,31 +329,26 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { catgsMap } = $$props,
-		{ catg } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
-
+	let { catg } = $$props, { catgPosts } = $$props, { tagsPosts } = $$props;
 	let { complete = true } = $$props;
 	let { skipbody = true } = $$props;
 	let Posts;
 
 	$$self.$$set = $$props => {
-		if ("catgsMap" in $$props) $$invalidate(6, catgsMap = $$props.catgsMap);
 		if ("catg" in $$props) $$invalidate(0, catg = $$props.catg);
-		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 		if ("complete" in $$props) $$invalidate(3, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(4, skipbody = $$props.skipbody);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*catgsMap, catg*/ 65) {
-			$: $$invalidate(5, Posts = catgsMap.get(catg));
+		if ($$self.$$.dirty & /*catgPosts, catg*/ 3) {
+			$: $$invalidate(5, Posts = Object.values(catgPosts.filter(key => key.name == catg)[0].posts));
 		}
 	};
 
-	return [catg, tagsList, catgList, complete, skipbody, Posts, catgsMap];
+	return [catg, catgPosts, tagsPosts, complete, skipbody, Posts];
 }
 
 class Component extends SvelteComponent {
@@ -361,10 +356,9 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			catgsMap: 6,
 			catg: 0,
-			tagsList: 1,
-			catgList: 2,
+			catgPosts: 1,
+			tagsPosts: 2,
 			complete: 3,
 			skipbody: 4
 		});

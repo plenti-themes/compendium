@@ -15,6 +15,7 @@ import {
 	insert,
 	noop,
 	safe_not_equal,
+	set_data,
 	space,
 	text
 } from '../web_modules/svelte/internal/index.mjs';
@@ -30,13 +31,27 @@ function get_each_context(ctx, list, i) {
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[16] = list[i];
+	child_ctx[16] = list[i].page;
+	child_ctx[17] = list[i].name;
+	return child_ctx;
+}
+
+function get_each_context_2(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[20] = list[i];
 	child_ctx[15] = i;
 	return child_ctx;
 }
 
+function get_each_context_3(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[16] = list[i].page;
+	child_ctx[17] = list[i].name;
+	return child_ctx;
+}
+
 // (20:0) {#if complete}
-function create_if_block_4(ctx) {
+function create_if_block_6(ctx) {
 	let li;
 	let t0;
 	let t1;
@@ -80,11 +95,11 @@ function create_if_block_1(ctx) {
 	let t2;
 	let li1;
 	let t3;
-	let each_value_1 = /*catgs*/ ctx[9];
+	let each_value_2 = /*catgs*/ ctx[9];
 	let each_blocks_1 = [];
 
-	for (let i = 0; i < each_value_1.length; i += 1) {
-		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	for (let i = 0; i < each_value_2.length; i += 1) {
+		each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
 	}
 
 	let each_value = /*tags*/ ctx[8];
@@ -162,17 +177,17 @@ function create_if_block_1(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*catgList, catgs*/ 514) {
-				each_value_1 = /*catgs*/ ctx[9];
+			if (dirty & /*Object, catgPosts, catgs*/ 513) {
+				each_value_2 = /*catgs*/ ctx[9];
 				let i;
 
-				for (i = 0; i < each_value_1.length; i += 1) {
-					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+				for (i = 0; i < each_value_2.length; i += 1) {
+					const child_ctx = get_each_context_2(ctx, each_value_2, i);
 
 					if (each_blocks_1[i]) {
 						each_blocks_1[i].p(child_ctx, dirty);
 					} else {
-						each_blocks_1[i] = create_each_block_1(child_ctx);
+						each_blocks_1[i] = create_each_block_2(child_ctx);
 						each_blocks_1[i].c();
 						each_blocks_1[i].m(li0, null);
 					}
@@ -182,10 +197,10 @@ function create_if_block_1(ctx) {
 					each_blocks_1[i].d(1);
 				}
 
-				each_blocks_1.length = each_value_1.length;
+				each_blocks_1.length = each_value_2.length;
 			}
 
-			if (dirty & /*tagsList, tags*/ 257) {
+			if (dirty & /*Object, tagsPosts, tags*/ 258) {
 				each_value = /*tags*/ ctx[8];
 				let i;
 
@@ -220,7 +235,229 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (34:14) {#if i < catgs.length - 1}
+// (34:8) {#if catg == name}
+function create_if_block_4(ctx) {
+	let a;
+	let t0_value = /*name*/ ctx[17] + "";
+	let t0;
+	let t1;
+	let a_href_value;
+	let if_block = /*i*/ ctx[15] < /*catgs*/ ctx[9].length - 1 && create_if_block_5(ctx);
+
+	return {
+		c() {
+			a = element("a");
+			t0 = text(t0_value);
+			if (if_block) if_block.c();
+			t1 = space();
+			this.h();
+		},
+		l(nodes) {
+			a = claim_element(nodes, "A", { href: true, class: true });
+			var a_nodes = children(a);
+			t0 = claim_text(a_nodes, t0_value);
+			if (if_block) if_block.l(a_nodes);
+			t1 = claim_space(a_nodes);
+			a_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(a, "href", a_href_value = "catgs/" + /*page*/ ctx[16]);
+			attr(a, "class", "ml-0.5");
+		},
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, t0);
+			if (if_block) if_block.m(a, null);
+			append(a, t1);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*catgPosts*/ 1 && t0_value !== (t0_value = /*name*/ ctx[17] + "")) set_data(t0, t0_value);
+
+			if (dirty & /*catgPosts*/ 1 && a_href_value !== (a_href_value = "catgs/" + /*page*/ ctx[16])) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(a);
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (36:18) {#if i < catgs.length - 1}
+function create_if_block_5(ctx) {
+	let t;
+
+	return {
+		c() {
+			t = text(",");
+		},
+		l(nodes) {
+			t = claim_text(nodes, ",");
+		},
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+		d(detaching) {
+			if (detaching) detach(t);
+		}
+	};
+}
+
+// (33:6) {#each Object(catgPosts) as { page, name }}
+function create_each_block_3(ctx) {
+	let if_block_anchor;
+	let if_block = /*catg*/ ctx[20] == /*name*/ ctx[17] && create_if_block_4(ctx);
+
+	return {
+		c() {
+			if (if_block) if_block.c();
+			if_block_anchor = empty();
+		},
+		l(nodes) {
+			if (if_block) if_block.l(nodes);
+			if_block_anchor = empty();
+		},
+		m(target, anchor) {
+			if (if_block) if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+		p(ctx, dirty) {
+			if (/*catg*/ ctx[20] == /*name*/ ctx[17]) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+				} else {
+					if_block = create_if_block_4(ctx);
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+		d(detaching) {
+			if (if_block) if_block.d(detaching);
+			if (detaching) detach(if_block_anchor);
+		}
+	};
+}
+
+// (32:4) {#each catgs as catg, i}
+function create_each_block_2(ctx) {
+	let each_1_anchor;
+	let each_value_3 = Object(/*catgPosts*/ ctx[0]);
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_3.length; i += 1) {
+		each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
+	}
+
+	return {
+		c() {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			each_1_anchor = empty();
+		},
+		l(nodes) {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(nodes);
+			}
+
+			each_1_anchor = empty();
+		},
+		m(target, anchor) {
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			insert(target, each_1_anchor, anchor);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*Object, catgPosts, catgs*/ 513) {
+				each_value_3 = Object(/*catgPosts*/ ctx[0]);
+				let i;
+
+				for (i = 0; i < each_value_3.length; i += 1) {
+					const child_ctx = get_each_context_3(ctx, each_value_3, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block_3(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value_3.length;
+			}
+		},
+		d(detaching) {
+			destroy_each(each_blocks, detaching);
+			if (detaching) detach(each_1_anchor);
+		}
+	};
+}
+
+// (46:8) {#if tag == name}
+function create_if_block_2(ctx) {
+	let a;
+	let t0_value = /*name*/ ctx[17] + "";
+	let t0;
+	let t1;
+	let a_href_value;
+	let if_block = /*i*/ ctx[15] < /*tags*/ ctx[8].length - 1 && create_if_block_3(ctx);
+
+	return {
+		c() {
+			a = element("a");
+			t0 = text(t0_value);
+			if (if_block) if_block.c();
+			t1 = space();
+			this.h();
+		},
+		l(nodes) {
+			a = claim_element(nodes, "A", { href: true, class: true });
+			var a_nodes = children(a);
+			t0 = claim_text(a_nodes, t0_value);
+			if (if_block) if_block.l(a_nodes);
+			t1 = claim_space(a_nodes);
+			a_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(a, "href", a_href_value = "tags/" + /*page*/ ctx[16]);
+			attr(a, "class", "ml-0.5");
+		},
+		m(target, anchor) {
+			insert(target, a, anchor);
+			append(a, t0);
+			if (if_block) if_block.m(a, null);
+			append(a, t1);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*tagsPosts*/ 2 && t0_value !== (t0_value = /*name*/ ctx[17] + "")) set_data(t0, t0_value);
+
+			if (dirty & /*tagsPosts*/ 2 && a_href_value !== (a_href_value = "tags/" + /*page*/ ctx[16])) {
+				attr(a, "href", a_href_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(a);
+			if (if_block) if_block.d();
+		}
+	};
+}
+
+// (48:18) {#if i < tags.length - 1}
 function create_if_block_3(ctx) {
 	let t;
 
@@ -240,123 +477,109 @@ function create_if_block_3(ctx) {
 	};
 }
 
-// (32:4) {#each catgs as catg, i}
+// (45:6) {#each Object(tagsPosts) as { page, name }}
 function create_each_block_1(ctx) {
-	let a;
-	let t0_value = /*catg*/ ctx[16] + "";
-	let t0;
-	let t1;
-	let a_href_value;
-	let if_block = /*i*/ ctx[15] < /*catgs*/ ctx[9].length - 1 && create_if_block_3(ctx);
+	let if_block_anchor;
+	let if_block = /*tag*/ ctx[13] == /*name*/ ctx[17] && create_if_block_2(ctx);
 
 	return {
 		c() {
-			a = element("a");
-			t0 = text(t0_value);
 			if (if_block) if_block.c();
-			t1 = space();
-			this.h();
+			if_block_anchor = empty();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
-			var a_nodes = children(a);
-			t0 = claim_text(a_nodes, t0_value);
-			if (if_block) if_block.l(a_nodes);
-			t1 = claim_space(a_nodes);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "href", a_href_value = "catgs/" + (/*catgList*/ ctx[1].indexOf(/*catg*/ ctx[16]) + 1));
-			attr(a, "class", "ml-0.5");
+			if (if_block) if_block.l(nodes);
+			if_block_anchor = empty();
 		},
 		m(target, anchor) {
-			insert(target, a, anchor);
-			append(a, t0);
-			if (if_block) if_block.m(a, null);
-			append(a, t1);
+			if (if_block) if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*catgList*/ 2 && a_href_value !== (a_href_value = "catgs/" + (/*catgList*/ ctx[1].indexOf(/*catg*/ ctx[16]) + 1))) {
-				attr(a, "href", a_href_value);
+			if (/*tag*/ ctx[13] == /*name*/ ctx[17]) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+				} else {
+					if_block = create_if_block_2(ctx);
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
 			}
 		},
 		d(detaching) {
-			if (detaching) detach(a);
-			if (if_block) if_block.d();
+			if (if_block) if_block.d(detaching);
+			if (detaching) detach(if_block_anchor);
 		}
 	};
 }
 
-// (43:13) {#if i < tags.length - 1}
-function create_if_block_2(ctx) {
-	let t;
-
-	return {
-		c() {
-			t = text(",");
-		},
-		l(nodes) {
-			t = claim_text(nodes, ",");
-		},
-		m(target, anchor) {
-			insert(target, t, anchor);
-		},
-		d(detaching) {
-			if (detaching) detach(t);
-		}
-	};
-}
-
-// (41:4) {#each tags as tag, i}
+// (44:4) {#each tags as tag, i}
 function create_each_block(ctx) {
-	let a;
-	let t0_value = /*tag*/ ctx[13] + "";
-	let t0;
-	let t1;
-	let a_href_value;
-	let if_block = /*i*/ ctx[15] < /*tags*/ ctx[8].length - 1 && create_if_block_2(ctx);
+	let each_1_anchor;
+	let each_value_1 = Object(/*tagsPosts*/ ctx[1]);
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value_1.length; i += 1) {
+		each_blocks[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+	}
 
 	return {
 		c() {
-			a = element("a");
-			t0 = text(t0_value);
-			if (if_block) if_block.c();
-			t1 = space();
-			this.h();
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			each_1_anchor = empty();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { href: true, class: true });
-			var a_nodes = children(a);
-			t0 = claim_text(a_nodes, t0_value);
-			if (if_block) if_block.l(a_nodes);
-			t1 = claim_space(a_nodes);
-			a_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(a, "href", a_href_value = "tags/" + (/*tagsList*/ ctx[0].indexOf(/*tag*/ ctx[13]) + 1));
-			attr(a, "class", "ml-0.5");
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].l(nodes);
+			}
+
+			each_1_anchor = empty();
 		},
 		m(target, anchor) {
-			insert(target, a, anchor);
-			append(a, t0);
-			if (if_block) if_block.m(a, null);
-			append(a, t1);
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(target, anchor);
+			}
+
+			insert(target, each_1_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tagsList*/ 1 && a_href_value !== (a_href_value = "tags/" + (/*tagsList*/ ctx[0].indexOf(/*tag*/ ctx[13]) + 1))) {
-				attr(a, "href", a_href_value);
+			if (dirty & /*Object, tagsPosts, tags*/ 258) {
+				each_value_1 = Object(/*tagsPosts*/ ctx[1]);
+				let i;
+
+				for (i = 0; i < each_value_1.length; i += 1) {
+					const child_ctx = get_each_context_1(ctx, each_value_1, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block_1(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value_1.length;
 			}
 		},
 		d(detaching) {
-			if (detaching) detach(a);
-			if (if_block) if_block.d();
+			destroy_each(each_blocks, detaching);
+			if (detaching) detach(each_1_anchor);
 		}
 	};
 }
 
-// (48:0) {#if cardBody !== "skip"}
+// (55:0) {#if cardBody !== "skip"}
 function create_if_block(ctx) {
 	let p0;
 	let t0;
@@ -439,7 +662,7 @@ function create_fragment(ctx) {
 	let t5;
 	let t6;
 	let if_block2_anchor;
-	let if_block0 = /*complete*/ ctx[2] && create_if_block_4(ctx);
+	let if_block0 = /*complete*/ ctx[2] && create_if_block_6(ctx);
 	let if_block1 = /*complete*/ ctx[2] && create_if_block_1(ctx);
 	let if_block2 = /*cardBody*/ ctx[10] !== "skip" && create_if_block(ctx);
 
@@ -510,7 +733,7 @@ function create_fragment(ctx) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 				} else {
-					if_block0 = create_if_block_4(ctx);
+					if_block0 = create_if_block_6(ctx);
 					if_block0.c();
 					if_block0.m(t2.parentNode, t2);
 				}
@@ -553,8 +776,8 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { post } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props,
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props,
 		{ complete } = $$props,
 		{ skipbody } = $$props;
 
@@ -572,15 +795,15 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("post" in $$props) $$invalidate(11, post = $$props.post);
-		if ("tagsList" in $$props) $$invalidate(0, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(1, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(0, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(1, tagsPosts = $$props.tagsPosts);
 		if ("complete" in $$props) $$invalidate(2, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(12, skipbody = $$props.skipbody);
 	};
 
 	return [
-		tagsList,
-		catgList,
+		catgPosts,
+		tagsPosts,
 		complete,
 		path,
 		author_url,
@@ -601,8 +824,8 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			post: 11,
-			tagsList: 0,
-			catgList: 1,
+			catgPosts: 0,
+			tagsPosts: 1,
 			complete: 2,
 			skipbody: 12
 		});

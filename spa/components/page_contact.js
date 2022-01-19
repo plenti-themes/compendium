@@ -170,9 +170,9 @@ function create_fragment(ctx) {
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[9],
-				tagsList: /*tagsList*/ ctx[1],
-				catgList: /*catgList*/ ctx[2]
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
+				socialLinks: /*socialLinks*/ ctx[9]
 			}
 		});
 
@@ -508,8 +508,8 @@ function create_fragment(ctx) {
 
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*tagsList*/ 2) aside_changes.tagsList = /*tagsList*/ ctx[1];
-			if (dirty & /*catgList*/ 4) aside_changes.catgList = /*catgList*/ ctx[2];
+			if (dirty & /*catgPosts*/ 2) aside_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) aside_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -534,8 +534,8 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
 		{ allPosts } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let { title } = $$props, { articleBody } = $$props;
 	let socialLinks = idxContent.socialLinks;
@@ -555,8 +555,7 @@ function instance($$self, $$props, $$invalidate) {
 			body: msgBody
 		});
 
-		console.log(msgData);
-
+		// console.log(msgData);
 		// Setup XML connection request
 		const API_URL = "https://";
 
@@ -601,16 +600,16 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("tagsList" in $$props) $$invalidate(1, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(2, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 		if ("title" in $$props) $$invalidate(3, title = $$props.title);
 		if ("articleBody" in $$props) $$invalidate(4, articleBody = $$props.articleBody);
 	};
 
 	return [
 		allPosts,
-		tagsList,
-		catgList,
+		catgPosts,
+		tagsPosts,
 		title,
 		articleBody,
 		addrFrom,
@@ -635,8 +634,8 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 12,
 			allPosts: 0,
-			tagsList: 1,
-			catgList: 2,
+			catgPosts: 1,
+			tagsPosts: 2,
 			title: 3,
 			articleBody: 4
 		});

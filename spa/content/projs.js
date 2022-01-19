@@ -51,8 +51,8 @@ function create_fragment(ctx) {
 				allProjs: /*allProjs*/ ctx[7],
 				projRangeHigh: /*projRangeHigh*/ ctx[5],
 				projRangeLow: /*projRangeLow*/ ctx[6],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3]
+				catgPosts: /*catgPosts*/ ctx[2],
+				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
 		});
 
@@ -68,8 +68,8 @@ function create_fragment(ctx) {
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
 				socialLinks: /*socialLinks*/ ctx[8],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3]
+				catgPosts: /*catgPosts*/ ctx[2],
+				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
 		});
 
@@ -168,8 +168,8 @@ function create_fragment(ctx) {
 			const cards_changes = {};
 			if (dirty & /*projRangeHigh*/ 32) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[5];
 			if (dirty & /*projRangeLow*/ 64) cards_changes.projRangeLow = /*projRangeLow*/ ctx[6];
-			if (dirty & /*tagsList*/ 4) cards_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) cards_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*catgPosts*/ 4) cards_changes.catgPosts = /*catgPosts*/ ctx[2];
+			if (dirty & /*tagsPosts*/ 8) cards_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
 			if (dirty & /*content*/ 2) pagination_changes.content = /*content*/ ctx[1];
@@ -177,8 +177,8 @@ function create_fragment(ctx) {
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*tagsList*/ 4) aside_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) aside_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*catgPosts*/ 4) aside_changes.catgPosts = /*catgPosts*/ ctx[2];
+			if (dirty & /*tagsPosts*/ 8) aside_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -211,8 +211,8 @@ function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
 		{ allPosts } = $$props,
 		{ content } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let allProjs = allPosts.filter(content => content.fields?.project != "");
 	let socialLinks = idxContent.socialLinks;
@@ -251,8 +251,8 @@ function instance($$self, $$props, $$invalidate) {
 		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
-		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(3, tagsPosts = $$props.tagsPosts);
 	};
 
 	$$self.$$.update = () => {
@@ -272,8 +272,8 @@ function instance($$self, $$props, $$invalidate) {
 	return [
 		allPosts,
 		content,
-		tagsList,
-		catgList,
+		catgPosts,
+		tagsPosts,
 		currentPage,
 		projRangeHigh,
 		projRangeLow,
@@ -294,8 +294,8 @@ class Component extends SvelteComponent {
 			idxContent: 12,
 			allPosts: 0,
 			content: 1,
-			tagsList: 2,
-			catgList: 3
+			catgPosts: 2,
+			tagsPosts: 3
 		});
 	}
 }

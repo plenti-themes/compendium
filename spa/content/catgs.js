@@ -42,19 +42,18 @@ function create_fragment(ctx) {
 
 	postlist = new PostList({
 			props: {
-				catgsMap: /*catgsMap*/ ctx[1],
-				catg: /*catg*/ ctx[4],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3]
+				catg: /*catg*/ ctx[3],
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[5],
-				tagsList: /*tagsList*/ ctx[2],
-				catgList: /*catgList*/ ctx[3]
+				catgPosts: /*catgPosts*/ ctx[1],
+				tagsPosts: /*tagsPosts*/ ctx[2],
+				socialLinks: /*socialLinks*/ ctx[4]
 			}
 		});
 
@@ -139,15 +138,14 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			const postlist_changes = {};
-			if (dirty & /*catgsMap*/ 2) postlist_changes.catgsMap = /*catgsMap*/ ctx[1];
-			if (dirty & /*catg*/ 16) postlist_changes.catg = /*catg*/ ctx[4];
-			if (dirty & /*tagsList*/ 4) postlist_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) postlist_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*catg*/ 8) postlist_changes.catg = /*catg*/ ctx[3];
+			if (dirty & /*catgPosts*/ 2) postlist_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) postlist_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			postlist.$set(postlist_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
-			if (dirty & /*tagsList*/ 4) aside_changes.tagsList = /*tagsList*/ ctx[2];
-			if (dirty & /*catgList*/ 8) aside_changes.catgList = /*catgList*/ ctx[3];
+			if (dirty & /*catgPosts*/ 2) aside_changes.catgPosts = /*catgPosts*/ ctx[1];
+			if (dirty & /*tagsPosts*/ 4) aside_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			aside.$set(aside_changes);
 		},
 		i(local) {
@@ -175,32 +173,30 @@ function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
 		{ allPosts } = $$props,
 		{ content } = $$props,
-		{ catgsMap } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	let socialLinks = idxContent.socialLinks;
-	let totalPages = catgList.length;
+	let totalPages = Object(catgPosts).length;
 
 	// Setup variable for page link logic used on plenti.json
 	let totalCatgsPages = totalPages;
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(6, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(5, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("content" in $$props) $$invalidate(7, content = $$props.content);
-		if ("catgsMap" in $$props) $$invalidate(1, catgsMap = $$props.catgsMap);
-		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
+		if ("content" in $$props) $$invalidate(6, content = $$props.content);
+		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*catgList, content*/ 136) {
-			$: $$invalidate(4, catg = catgList[content.pager - 1]);
+		if ($$self.$$.dirty & /*catgPosts, content*/ 66) {
+			$: $$invalidate(3, catg = Object(catgPosts)[content.pager - 1].name);
 		}
 	};
 
-	return [allPosts, catgsMap, tagsList, catgList, catg, socialLinks, idxContent, content];
+	return [allPosts, catgPosts, tagsPosts, catg, socialLinks, idxContent, content];
 }
 
 class Component extends SvelteComponent {
@@ -208,12 +204,11 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 6,
+			idxContent: 5,
 			allPosts: 0,
-			content: 7,
-			catgsMap: 1,
-			tagsList: 2,
-			catgList: 3
+			content: 6,
+			catgPosts: 1,
+			tagsPosts: 2
 		});
 	}
 }

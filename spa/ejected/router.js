@@ -15,6 +15,18 @@ import Navaid from '../web_modules/navaid/dist/navaid.mjs';
 import Html from '../global/html.js';
 import { getContent } from './main.js';
 
+// Git-CMS
+import {
+	requestAuthCode,
+	requestAccessToken,
+	requestRefreshToken
+} from './cms/auth.js';
+
+import { session } from './cms/session.js';
+import { storage } from './cms/storage.js';
+import { onMount } from '../web_modules/svelte/index.mjs';
+import AdminMenu from './cms/admin_menu.js';
+
 function create_fragment(ctx) {
 	let html;
 	let current;
@@ -27,7 +39,10 @@ function create_fragment(ctx) {
 				layout: /*layout*/ ctx[3],
 				allContent: /*allContent*/ ctx[4],
 				allLayouts: /*allLayouts*/ ctx[5],
-				env: /*env*/ ctx[6]
+				env: /*env*/ ctx[6],
+				user: /*user*/ ctx[7],
+				login: requestAuthCode,
+				AdminMenu
 			}
 		});
 
@@ -51,6 +66,7 @@ function create_fragment(ctx) {
 			if (dirty & /*allContent*/ 16) html_changes.allContent = /*allContent*/ ctx[4];
 			if (dirty & /*allLayouts*/ 32) html_changes.allLayouts = /*allLayouts*/ ctx[5];
 			if (dirty & /*env*/ 64) html_changes.env = /*env*/ ctx[6];
+			if (dirty & /*user*/ 128) html_changes.user = /*user*/ ctx[7];
 			html.$set(html_changes);
 		},
 		i(local) {
@@ -125,6 +141,19 @@ function instance($$self, $$props, $$invalidate) {
 	});
 
 	router.listen();
+	let user;
+
+	onMount(async () => {
+		$$invalidate(7, user = storage.get("gitlab_tokens"));
+	});
+
+	if (params && params.get("state") !== null && params.get("state") === session.get("gitlab_state")) {
+		requestAccessToken(params.get("code"));
+	}
+
+	if (user && Date.now() > (user.created_at + user.expires_in) * 1000) {
+		requestRefreshToken();
+	}
 
 	$$self.$$set = $$props => {
 		if ("path" in $$props) $$invalidate(0, path = $$props.path);
@@ -136,7 +165,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ("env" in $$props) $$invalidate(6, env = $$props.env);
 	};
 
-	return [path, params, content, layout, allContent, allLayouts, env];
+	return [path, params, content, layout, allContent, allLayouts, env, user];
 }
 
 class Component extends SvelteComponent {

@@ -24,39 +24,47 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
-import { onMount } from '../web_modules/svelte/index.mjs';
 import Search from '../components/search.js';
 import Social from '../components/social.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[4] = list[i];
-	child_ctx[6] = i;
+	child_ctx[4] = list[i].page;
+	child_ctx[5] = list[i].name;
+	child_ctx[6] = list[i].length;
 	return child_ctx;
 }
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
-	child_ctx[6] = i;
+	child_ctx[4] = list[i].page;
+	child_ctx[5] = list[i].name;
+	child_ctx[6] = list[i].length;
 	return child_ctx;
 }
 
-// (21:8) {#each catgList as catg, i}
+// (20:8) {#each Object(catgPosts) as {page, name, length}}
 function create_each_block_1(ctx) {
 	let li;
 	let a;
-	let t0_value = /*catg*/ ctx[7] + "";
+	let t0_value = /*name*/ ctx[5] + "";
 	let t0;
-	let a_href_value;
 	let t1;
+	let t2_value = /*length*/ ctx[6] + "";
+	let t2;
+	let t3;
+	let a_href_value;
+	let t4;
 
 	return {
 		c() {
 			li = element("li");
 			a = element("a");
 			t0 = text(t0_value);
-			t1 = space();
+			t1 = text(" (");
+			t2 = text(t2_value);
+			t3 = text(")");
+			t4 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -65,23 +73,34 @@ function create_each_block_1(ctx) {
 			a = claim_element(li_nodes, "A", { href: true });
 			var a_nodes = children(a);
 			t0 = claim_text(a_nodes, t0_value);
+			t1 = claim_text(a_nodes, " (");
+			t2 = claim_text(a_nodes, t2_value);
+			t3 = claim_text(a_nodes, ")");
 			a_nodes.forEach(detach);
-			t1 = claim_space(li_nodes);
+			t4 = claim_space(li_nodes);
 			li_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "catgs/" + (/*i*/ ctx[6] + 1));
+			attr(a, "href", a_href_value = "catgs/" + /*page*/ ctx[4]);
 			attr(li, "class", "flex");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
 			append(li, a);
 			append(a, t0);
-			append(li, t1);
+			append(a, t1);
+			append(a, t2);
+			append(a, t3);
+			append(li, t4);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*catgList*/ 8 && t0_value !== (t0_value = /*catg*/ ctx[7] + "")) set_data(t0, t0_value);
+			if (dirty & /*catgPosts*/ 4 && t0_value !== (t0_value = /*name*/ ctx[5] + "")) set_data(t0, t0_value);
+			if (dirty & /*catgPosts*/ 4 && t2_value !== (t2_value = /*length*/ ctx[6] + "")) set_data(t2, t2_value);
+
+			if (dirty & /*catgPosts*/ 4 && a_href_value !== (a_href_value = "catgs/" + /*page*/ ctx[4])) {
+				attr(a, "href", a_href_value);
+			}
 		},
 		d(detaching) {
 			if (detaching) detach(li);
@@ -89,21 +108,28 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (33:8) {#each tagsList as tag, i}
+// (32:8) {#each Object(tagsPosts) as {page, name, length}}
 function create_each_block(ctx) {
 	let li;
 	let a;
-	let t0_value = /*tag*/ ctx[4] + "";
+	let t0_value = /*name*/ ctx[5] + "";
 	let t0;
-	let a_href_value;
 	let t1;
+	let t2_value = /*length*/ ctx[6] + "";
+	let t2;
+	let t3;
+	let a_href_value;
+	let t4;
 
 	return {
 		c() {
 			li = element("li");
 			a = element("a");
 			t0 = text(t0_value);
-			t1 = space();
+			t1 = text(" (");
+			t2 = text(t2_value);
+			t3 = text(")");
+			t4 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -112,23 +138,34 @@ function create_each_block(ctx) {
 			a = claim_element(li_nodes, "A", { href: true });
 			var a_nodes = children(a);
 			t0 = claim_text(a_nodes, t0_value);
+			t1 = claim_text(a_nodes, " (");
+			t2 = claim_text(a_nodes, t2_value);
+			t3 = claim_text(a_nodes, ")");
 			a_nodes.forEach(detach);
-			t1 = claim_space(li_nodes);
+			t4 = claim_space(li_nodes);
 			li_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "tags/" + (/*i*/ ctx[6] + 1));
+			attr(a, "href", a_href_value = "tags/" + /*page*/ ctx[4]);
 			attr(li, "class", "flex");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
 			append(li, a);
 			append(a, t0);
-			append(li, t1);
+			append(a, t1);
+			append(a, t2);
+			append(a, t3);
+			append(li, t4);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tagsList*/ 4 && t0_value !== (t0_value = /*tag*/ ctx[4] + "")) set_data(t0, t0_value);
+			if (dirty & /*tagsPosts*/ 8 && t0_value !== (t0_value = /*name*/ ctx[5] + "")) set_data(t0, t0_value);
+			if (dirty & /*tagsPosts*/ 8 && t2_value !== (t2_value = /*length*/ ctx[6] + "")) set_data(t2, t2_value);
+
+			if (dirty & /*tagsPosts*/ 8 && a_href_value !== (a_href_value = "tags/" + /*page*/ ctx[4])) {
+				attr(a, "href", a_href_value);
+			}
 		},
 		d(detaching) {
 			if (detaching) detach(li);
@@ -162,14 +199,14 @@ function create_fragment(ctx) {
 			props: { socialLinks: /*socialLinks*/ ctx[1] }
 		});
 
-	let each_value_1 = /*catgList*/ ctx[3];
+	let each_value_1 = Object(/*catgPosts*/ ctx[2]);
 	let each_blocks_1 = [];
 
 	for (let i = 0; i < each_value_1.length; i += 1) {
 		each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
 	}
 
-	let each_value = /*tagsList*/ ctx[2];
+	let each_value = Object(/*tagsPosts*/ ctx[3]);
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -306,8 +343,8 @@ function create_fragment(ctx) {
 			if (dirty & /*socialLinks*/ 2) social_changes.socialLinks = /*socialLinks*/ ctx[1];
 			social.$set(social_changes);
 
-			if (dirty & /*catgList*/ 8) {
-				each_value_1 = /*catgList*/ ctx[3];
+			if (dirty & /*Object, catgPosts*/ 4) {
+				each_value_1 = Object(/*catgPosts*/ ctx[2]);
 				let i;
 
 				for (i = 0; i < each_value_1.length; i += 1) {
@@ -329,8 +366,8 @@ function create_fragment(ctx) {
 				each_blocks_1.length = each_value_1.length;
 			}
 
-			if (dirty & /*tagsList*/ 4) {
-				each_value = /*tagsList*/ ctx[2];
+			if (dirty & /*Object, tagsPosts*/ 8) {
+				each_value = Object(/*tagsPosts*/ ctx[3]);
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -376,17 +413,17 @@ function create_fragment(ctx) {
 function instance($$self, $$props, $$invalidate) {
 	let { allPosts } = $$props,
 		{ socialLinks } = $$props,
-		{ tagsList } = $$props,
-		{ catgList } = $$props;
+		{ catgPosts } = $$props,
+		{ tagsPosts } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("socialLinks" in $$props) $$invalidate(1, socialLinks = $$props.socialLinks);
-		if ("tagsList" in $$props) $$invalidate(2, tagsList = $$props.tagsList);
-		if ("catgList" in $$props) $$invalidate(3, catgList = $$props.catgList);
+		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(3, tagsPosts = $$props.tagsPosts);
 	};
 
-	return [allPosts, socialLinks, tagsList, catgList];
+	return [allPosts, socialLinks, catgPosts, tagsPosts];
 }
 
 class Component extends SvelteComponent {
@@ -396,8 +433,8 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			allPosts: 0,
 			socialLinks: 1,
-			tagsList: 2,
-			catgList: 3
+			catgPosts: 2,
+			tagsPosts: 3
 		});
 	}
 }
