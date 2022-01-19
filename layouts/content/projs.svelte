@@ -4,7 +4,7 @@
   import Pagination from "../components/paginate.svelte";
 
   // Variables passed in from "html.svelte" via "index.svelte"
-  export let idxContent, allPosts, content, tagsList, catgList;
+  export let idxContent, allPosts, content, catgPosts, tagsPosts;
 
   $: currentPage = content.pager;
   let allProjs = allPosts.filter((content) => content.fields?.project != "");
@@ -15,10 +15,10 @@
   let projList = [];
 
   // Sort project posts in ascending order
-  allProjs.sort(function(a, b) {
+  allProjs.sort(function (a, b) {
     // var s = new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
-    var p = a.fields.project.localeCompare(b.fields.project)
-    return p == 0? a.path.localeCompare(b.path) : p;
+    var p = a.fields.project.localeCompare(b.fields.project);
+    return p == 0 ? a.path.localeCompare(b.path) : p;
   });
 
   // create array of projects
@@ -58,8 +58,8 @@
               {allProjs}
               {projRangeHigh}
               {projRangeLow}
-              {tagsList}
-              {catgList}
+              {catgPosts}
+              {tagsPosts}
             />
           </div>
 
@@ -75,7 +75,7 @@
         <!-- Set the aside as the last column in the row             -->
         <!-- ------------------------------------------------------- -->
         <div class="w-full md:w-3/12 mb-lg-0 px-0">
-          <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
+          <Aside {allPosts} {socialLinks} {catgPosts} {tagsPosts} />
         </div>
       </div>
     </div>

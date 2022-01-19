@@ -2,7 +2,7 @@
   export let content, currentPage, totalPages;
   export let pagePath;
 
-  pagePath = (content.path.replace(/[0-9]/g, '') + "/").replace('//','/');
+  pagePath = (content.path.replace(/[0-9]/g, "") + "/").replace("//", "/");
 </script>
 
 <div class="flex pagination text-center justify-center">

@@ -1,6 +1,6 @@
 <script>
   import { get_description } from "../scripts/get_description.svelte";
-  export let post, tagsList, catgList, complete, skipbody;
+  export let post, catgPosts, tagsPosts, complete, skipbody;
 
   let path = post.path;
   let author_url = post.author_url ?? post.fields.author.url;
@@ -30,18 +30,25 @@
   <li class="mr-2 my-0 inline-flex">
     Categories:
     {#each catgs as catg, i}
-      <a href="catgs/{catgList.indexOf(catg) + 1}" class="ml-0.5">
-        {catg}{#if i < catgs.length - 1},
+      {#each Object(catgPosts) as { page, name }}
+        {#if catg == name}
+          <a href="catgs/{page}" class="ml-0.5">
+            {name}{#if i < catgs.length - 1},{/if}
+          </a>
         {/if}
-      </a>
+      {/each}
     {/each}
   </li>
   <li class="mr-2 my-0 inline-flex">
     Tags:
     {#each tags as tag, i}
-      <a href="tags/{tagsList.indexOf(tag) + 1}" class="ml-0.5">
-        {tag}{#if i < tags.length - 1}, {/if}
-      </a>
+      {#each Object(tagsPosts) as { page, name }}
+        {#if tag == name}
+          <a href="tags/{page}" class="ml-0.5">
+            {name}{#if i < tags.length - 1},{/if}
+          </a>
+        {/if}
+      {/each}
     {/each}
   </li>
 {/if}

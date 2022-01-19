@@ -5,8 +5,8 @@
     allProjs,
     projRangeHigh,
     projRangeLow,
-    tagsList,
-    catgList;
+    catgPosts,
+    tagsPosts;
   export let complete = true;
   export let skipbody = true;
 </script>
@@ -25,10 +25,9 @@
                 </h2>
                 <p class="text-base mb-5">
                   {post.fields.articleBody.substring(
-                    post.fields.articleBody.indexOf("<p>")+3,
+                    post.fields.articleBody.indexOf("<p>") + 3,
                     post.fields.articleBody.indexOf("<h2")
-                    )
-                  }
+                  )}
                 </p>
               {/if}
               <div class="flex items-center mb-3">
@@ -45,13 +44,7 @@
                     <li class="mx-0 -mt-1 text-meta inline-flex">
                       <i class="las la-user-astronaut text-lg" />
                     </li>
-                    <PostMeta
-                      {post}
-                      {tagsList}
-                      {catgList}
-                      {complete}
-                      {skipbody}
-                    />
+                    <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
                   </ul>
                 </div>
               </div>

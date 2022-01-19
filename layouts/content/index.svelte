@@ -6,7 +6,7 @@
   // * content: values for keys in "index.json"
   // * allPosts: values for keys in all posts
   // * theme: values passed in from layout content {...content.fields}
-  export let allPosts, content, theme, tagsMap, catgsMap, tagsList, catgList;
+  export let allPosts, content, theme, catgPosts, tagsPosts;
 
   $: currentPage = content.pager;
   let featuredPage = theme.featuredPage;
@@ -23,7 +23,7 @@
   <!-- ------------------------------------------------------- -->
   {#if featuredPage == "Bleed" && currentPage <= 1}
     <div class="w-full row -mt-16">
-      <Featured {allFeatures} {featuredPage} {tagsList} {catgList} />
+      <Featured {allFeatures} {featuredPage} {catgPosts} {tagsPosts} />
     </div>
   {/if}
 
@@ -31,7 +31,7 @@
   <div class="w-full md:w-10/12 xl:w-8/12 px-2 md:px-0">
     {#if featuredPage == "Frame" && currentPage <= 1}
       <div class="w-full row mt-6 sm:mt-16">
-        <Featured {allFeatures} {featuredPage} {tagsList} {catgList} />
+        <Featured {allFeatures} {featuredPage} {catgPosts} {tagsPosts} />
       </div>
     {/if}
 
@@ -41,15 +41,13 @@
     <div class="w-full">
       <MainSection
         {allPosts}
+        {catgPosts}
+        {tagsPosts}
         {content}
         {postRangeHigh}
         {postRangeLow}
         {currentPage}
         {totalPages}
-        {tagsMap}
-        {catgsMap}
-        {tagsList}
-        {catgList}
       />
     </div>
   </div>

@@ -4,7 +4,7 @@
   // import { onMount } from "svelte";
 
   // Variables passed in from "html.svelte"
-  export let idxContent, allPosts, tagsList, catgList;
+  export let idxContent, allPosts, catgPosts, tagsPosts;
   // Variables passed in from "index.svelte"
   export let title, articleBody;
 
@@ -25,7 +25,7 @@
       body: msgBody,
     });
 
-    console.log(msgData);
+    // console.log(msgData);
 
     // Setup XML connection request
     const API_URL = "https://";
@@ -153,7 +153,7 @@
       <!-- Set the aside as the last column in the row             -->
       <!-- ------------------------------------------------------- -->
       <div class="w-full md:w-3/12 mb-lg-0 px-0">
-        <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
+        <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} />
       </div>
     </div>
   </div>

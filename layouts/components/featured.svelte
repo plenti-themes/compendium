@@ -3,7 +3,7 @@
   import Hoverable from "../scripts/hoverable.svelte";
   import PostMeta from "../components/post_meta.svelte";
 
-  export let allFeatures, featuredPage, tagsList, catgList;
+  export let allFeatures, featuredPage, catgPosts, tagsPosts;
   export let complete = true;
   export let skipbody = true;
 
@@ -90,7 +90,7 @@
                   class="las la-user-astronaut text-lg md:text-xl lg:text-2xl relative"
                 />
               </li>
-              <PostMeta {post} {tagsList} {catgList} {complete} {skipbody} />
+              <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
             </ul>
           </div>
           <div class="col-lg-2" />

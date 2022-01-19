@@ -1,14 +1,14 @@
 <script>
   // Variables passed in from "html.svelte"
-  export let allPosts, content, tagsList, catgList;
+  export let allPosts, catgPosts, tagsPosts, content;
   // Variables passed in from "index.svelte"
   export let postRangeHigh, postRangeLow, currentPage, totalPages;
 
   // Aside component for search, categories, and tags
-  import Aside from "./aside.svelte";
+  import Aside from "../components/aside.svelte";
   // Cards component for all posts.
-  import Cards from "./cards_posts.svelte";
-  import Pagination from "./paginate.svelte";
+  import Cards from "../components/cards_posts.svelte";
+  import Pagination from "../components/paginate.svelte";
 
   let socialLinks = content.fields.socialLinks;
 </script>
@@ -22,10 +22,10 @@
         <!-- ------------------------------------------------------- -->
         <Cards
           {allPosts}
+          {catgPosts}
+          {tagsPosts}
           {postRangeHigh}
           {postRangeLow}
-          {tagsList}
-          {catgList}
         />
       </div>
 
@@ -41,7 +41,7 @@
     <!-- Set the aside as the last column in the row             -->
     <!-- ------------------------------------------------------- -->
     <div class="w-full md:w-3/12 mb-lg-0 px-0">
-      <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
+      <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} />
     </div>
   </div>
 </section>

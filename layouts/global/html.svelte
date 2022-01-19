@@ -23,14 +23,10 @@
   export let allPages = allContent.filter((key) => key.type == "pages");
   export let allPosts = allContent.filter((key) => key.type == "posts");
 
-  // Assign the two maps
-  let metaVals = catgs_tags(allPosts);
-  export let tagsMap = new Map(Object.entries(metaVals.tagsObj));
-  export let catgsMap = new Map(Object.entries(metaVals.catgObj));
-
-  // Create the sort arrays for the Aside links
-  export let tagsList = Array.from(tagsMap.keys()).sort();
-  export let catgList = Array.from(catgsMap.keys()).sort();
+  // Create the list of posts by tags and categories
+  let ctObj = catgs_tags(allPosts);
+  export let catgPosts = Object(ctObj["catgs"]);
+  export let tagsPosts = Object(ctObj["tags"]);
 </script>
 
 <html lang="en">
@@ -54,13 +50,11 @@
         {idxContent}
         {allLayouts}
         {allPosts}
+        {catgPosts}
+        {tagsPosts}
         {content}
         {isDark}
         {env}
-        {tagsMap}
-        {catgsMap}
-        {tagsList}
-        {catgList}
       />
     </main>
   </body>

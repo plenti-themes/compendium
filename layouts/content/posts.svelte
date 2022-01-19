@@ -4,7 +4,7 @@
   import PostMeta from "../components/post_meta.svelte";
 
   // Values passed in from "html.svelte"
-  export let idxContent, allPosts, tagsList, catgList;
+  export let idxContent, allPosts, catgPosts, tagsPosts;
 
   // Content field Values passed in via layout content {...content.fields}
   export let articleBody, title, image, author;
@@ -48,7 +48,7 @@
           <li class="mx-0 -mt-1 text-meta inline-flex">
             <i class="las la-user-astronaut text-lg" />
           </li>
-          <PostMeta {post} {tagsList} {catgList} {complete} {skipbody} />
+          <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
         </ul>
         <p class="mt-6">
           {@html articleBody}
@@ -57,7 +57,7 @@
 
       <!-- Aside  -->
       <div class="w-full md:w-3/12 mb-5 mb-lg-0 px-0">
-        <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
+        <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} />
       </div>
     </div>
   </div>

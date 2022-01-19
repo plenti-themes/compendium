@@ -1,7 +1,7 @@
 <script>
   import PostMeta from "./post_meta.svelte";
 
-  export let allPosts, postRangeHigh, postRangeLow, tagsList, catgList;
+  export let allPosts, postRangeHigh, postRangeLow, catgPosts, tagsPosts;
   export let complete = true;
   export let skipbody = false;
 
@@ -30,7 +30,7 @@
           <li class="mx-0 -mt-1 text-meta inline-flex">
             <i class="las la-user-astronaut text-lg" />
           </li>
-          <PostMeta {post} {tagsList} {catgList} {complete} {skipbody} />
+          <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
         </ul>
       </div>
     </div>

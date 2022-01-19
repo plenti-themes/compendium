@@ -10,10 +10,8 @@
     hero,
     splash,
     articleBody,
-    tagsMap,
-    catgsMap,
-    tagsList,
-    catgList;
+    catgPosts,
+    tagsPosts;
 
   const getComponent = function () {
     try {
@@ -38,10 +36,8 @@
       {hero}
       {splash}
       {articleBody}
-      {tagsMap}
-      {catgsMap}
-      {tagsList}
-      {catgList}
+      {catgPosts}
+      {tagsPosts}
     />
   </div>
 {/if}
