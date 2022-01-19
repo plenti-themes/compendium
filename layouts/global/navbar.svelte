@@ -3,7 +3,7 @@
   import { writable } from "svelte/store";
 
   export let allPages;
-  export let isDark, theme, idxContent;
+  export let isDark, theme, idxContent, content;
 
   let site_name = idxContent.name.split(" ");
   let menuShow = false;
@@ -98,15 +98,22 @@
       >
         <div class="text-xl">
           <a class="block md:inline-flex px-2 py-1 md:py-0" href="."
-            ><span class="navmenu">Home</span></a
+            ><span class="navmenu{content.path == '/' ? ' active' : ''}"
+              >Home</span
+            ></a
           >
           <a class="block md:inline-flex px-2 py-1 md:py-0" href="projs/"
-            ><span class="navmenu">Projects</span></a
+            ><span class="navmenu{content.path == 'projs' ? ' active' : ''}"
+              >Projects</span
+            ></a
           >
           {#each allPages as page, i}
             {#if page.fields.enabled && page.fields.menu}
               <a class="block md:inline-flex px-2 py-1" href={page.path}
-                ><span class="navmenu">{page.fields.pageType}</span></a
+                ><span
+                  class="navmenu{content.path == page.path ? ' active' : ''}"
+                  >{page.fields.pageType}</span
+                ></a
               >
             {/if}
           {/each}
