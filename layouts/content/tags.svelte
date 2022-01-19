@@ -3,12 +3,11 @@
   import PostList from "../components/list_tags.svelte";
 
   // Variables passed in from "html.svelte" via "index.svelte"
-  export let idxContent, allPosts, content, tagsMap, tagsList, catgList;
+  export let idxContent, allPosts, content, catgPosts, tagsPosts;
 
   let socialLinks = idxContent.socialLinks;
-  let tagList = Array.from(tagsMap.keys()).sort();
-  let totalPages = tagList.length;
-  $: tag = tagList[content.pager - 1];
+  let totalPages = Object(tagsPosts).length;
+  $: tag = Object(tagsPosts)[content.pager - 1].name;
 
   // Setup variable for page link logic used on plenti.json
   let totalTagsPages = totalPages;
@@ -24,7 +23,7 @@
             <!-- ------------------------------------------------------- -->
             <!-- Setup a Card for each post as necessary                 -->
             <!-- ------------------------------------------------------- -->
-            <PostList {tagsMap} {tag} {tagsList} {catgList} />
+            <PostList {tag} {catgPosts} {tagsPosts} />
           </div>
         </div>
 
@@ -32,7 +31,7 @@
         <!-- Set the aside as the last column in the row             -->
         <!-- ------------------------------------------------------- -->
         <div class="w-full md:w-3/12 mb-lg-0 px-0">
-          <Aside {allPosts} {socialLinks} {tagsList} {catgList} />
+          <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} />
         </div>
       </div>
     </div>
