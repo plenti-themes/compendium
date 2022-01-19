@@ -36,8 +36,6 @@
 
   // Setting variable for pagination logic.
   let totalProjPages = totalPages;
-  console.log(totalProjPages);
-
   $: projRangeHigh = currentPage * projsPerPage;
   $: projRangeLow = projRangeHigh - projsPerPage;
 </script>
