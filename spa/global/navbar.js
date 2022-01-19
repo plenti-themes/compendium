@@ -28,8 +28,8 @@ import { writable } from '../web_modules/svelte/store/index.mjs';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[8] = list[i];
-	child_ctx[10] = i;
+	child_ctx[9] = list[i];
+	child_ctx[11] = i;
 	return child_ctx;
 }
 
@@ -72,10 +72,10 @@ function create_else_block(ctx) {
 // (66:10) {#if site_name.length > 1}
 function create_if_block_1(ctx) {
 	let span0;
-	let t0_value = /*site_name*/ ctx[3][0].toUpperCase() + "";
+	let t0_value = /*site_name*/ ctx[4][0].toUpperCase() + "";
 	let t0;
 	let span1;
-	let t1_value = /*site_name*/ ctx[3][1].toUpperCase() + "";
+	let t1_value = /*site_name*/ ctx[4][1].toUpperCase() + "";
 	let t1;
 
 	return {
@@ -117,12 +117,13 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (107:12) {#if page.fields.enabled && page.fields.menu}
+// (111:12) {#if page.fields.enabled && page.fields.menu}
 function create_if_block(ctx) {
 	let a;
 	let span;
-	let t_value = /*page*/ ctx[8].fields.pageType + "";
+	let t_value = /*page*/ ctx[9].fields.pageType + "";
 	let t;
+	let span_class_value;
 	let a_href_value;
 
 	return {
@@ -143,9 +144,12 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(span, "class", "navmenu");
+			attr(span, "class", span_class_value = "navmenu" + (/*content*/ ctx[2].path == /*page*/ ctx[9].path
+			? " active"
+			: ""));
+
 			attr(a, "class", "block md:inline-flex px-2 py-1");
-			attr(a, "href", a_href_value = /*page*/ ctx[8].path);
+			attr(a, "href", a_href_value = /*page*/ ctx[9].path);
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
@@ -153,9 +157,15 @@ function create_if_block(ctx) {
 			append(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPages*/ 1 && t_value !== (t_value = /*page*/ ctx[8].fields.pageType + "")) set_data(t, t_value);
+			if (dirty & /*allPages*/ 1 && t_value !== (t_value = /*page*/ ctx[9].fields.pageType + "")) set_data(t, t_value);
 
-			if (dirty & /*allPages*/ 1 && a_href_value !== (a_href_value = /*page*/ ctx[8].path)) {
+			if (dirty & /*content, allPages*/ 5 && span_class_value !== (span_class_value = "navmenu" + (/*content*/ ctx[2].path == /*page*/ ctx[9].path
+			? " active"
+			: ""))) {
+				attr(span, "class", span_class_value);
+			}
+
+			if (dirty & /*allPages*/ 1 && a_href_value !== (a_href_value = /*page*/ ctx[9].path)) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -165,10 +175,10 @@ function create_if_block(ctx) {
 	};
 }
 
-// (106:10) {#each allPages as page, i}
+// (110:10) {#each allPages as page, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
-	let if_block = /*page*/ ctx[8].fields.enabled && /*page*/ ctx[8].fields.menu && create_if_block(ctx);
+	let if_block = /*page*/ ctx[9].fields.enabled && /*page*/ ctx[9].fields.menu && create_if_block(ctx);
 
 	return {
 		c() {
@@ -184,7 +194,7 @@ function create_each_block(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (/*page*/ ctx[8].fields.enabled && /*page*/ ctx[8].fields.menu) {
+			if (/*page*/ ctx[9].fields.enabled && /*page*/ ctx[9].fields.menu) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -229,10 +239,12 @@ function create_fragment(ctx) {
 	let a1;
 	let span0;
 	let t5;
+	let span0_class_value;
 	let t6;
 	let a2;
 	let span1;
 	let t7;
+	let span1_class_value;
 	let t8;
 	let t9;
 	let button1;
@@ -245,7 +257,7 @@ function create_fragment(ctx) {
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*site_name*/ ctx[3].length > 1) return create_if_block_1;
+		if (/*site_name*/ ctx[4].length > 1) return create_if_block_1;
 		return create_else_block;
 	}
 
@@ -392,16 +404,16 @@ function create_fragment(ctx) {
 			attr(a0, "class", "navmenu ml-2 text-4xl");
 			attr(a0, "href", ".");
 			attr(h1, "class", "font-bold opacity-100 my-0 flex items-center");
-			attr(i0, "class", i0_class_value = "las la-bars" + (/*menuShow*/ ctx[2] ? "hidden" : ""));
-			attr(i1, "class", i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[2] ? "" : "hidden"));
+			attr(i0, "class", i0_class_value = "las la-bars" + (/*menuShow*/ ctx[3] ? "hidden" : ""));
+			attr(i1, "class", i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[3] ? "" : "hidden"));
 			attr(button0, "id", "menu");
 			attr(button0, "type", "button");
 			attr(button0, "class", "focus:outline-none");
 			attr(div1, "class", "navmenu text-4xl flex md:hidden items-center");
-			attr(span0, "class", "navmenu");
+			attr(span0, "class", span0_class_value = "navmenu" + (/*content*/ ctx[2].path == "/" ? " active" : ""));
 			attr(a1, "class", "block md:inline-flex px-2 py-1 md:py-0");
 			attr(a1, "href", ".");
-			attr(span1, "class", "navmenu");
+			attr(span1, "class", span1_class_value = "navmenu" + (/*content*/ ctx[2].path == "projs" ? " active" : ""));
 			attr(a2, "class", "block md:inline-flex px-2 py-1 md:py-0");
 			attr(a2, "href", "projs/");
 			attr(i2, "class", "las la-adjust text-2xl");
@@ -411,7 +423,7 @@ function create_fragment(ctx) {
 			attr(button1, "class", "inline-block md:inline-flex px-2 py-1 md:py-0");
 			attr(div2, "class", "text-xl");
 
-			attr(div3, "class", div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[2]
+			attr(div3, "class", div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[3]
 			? "bg-primary bg-opacity-70"
 			: "hidden"));
 
@@ -462,8 +474,8 @@ function create_fragment(ctx) {
 
 			if (!mounted) {
 				dispose = [
-					listen(button0, "click", /*toggleNavbar*/ ctx[5]),
-					listen(button1, "click", /*toggleDark*/ ctx[4])
+					listen(button0, "click", /*toggleNavbar*/ ctx[6]),
+					listen(button1, "click", /*toggleDark*/ ctx[5])
 				];
 
 				mounted = true;
@@ -472,15 +484,23 @@ function create_fragment(ctx) {
 		p(ctx, [dirty]) {
 			if_block.p(ctx, dirty);
 
-			if (dirty & /*menuShow*/ 4 && i0_class_value !== (i0_class_value = "las la-bars" + (/*menuShow*/ ctx[2] ? "hidden" : ""))) {
+			if (dirty & /*menuShow*/ 8 && i0_class_value !== (i0_class_value = "las la-bars" + (/*menuShow*/ ctx[3] ? "hidden" : ""))) {
 				attr(i0, "class", i0_class_value);
 			}
 
-			if (dirty & /*menuShow*/ 4 && i1_class_value !== (i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[2] ? "" : "hidden"))) {
+			if (dirty & /*menuShow*/ 8 && i1_class_value !== (i1_class_value = "las la-window-close" + (/*menuShow*/ ctx[3] ? "" : "hidden"))) {
 				attr(i1, "class", i1_class_value);
 			}
 
-			if (dirty & /*allPages*/ 1) {
+			if (dirty & /*content*/ 4 && span0_class_value !== (span0_class_value = "navmenu" + (/*content*/ ctx[2].path == "/" ? " active" : ""))) {
+				attr(span0, "class", span0_class_value);
+			}
+
+			if (dirty & /*content*/ 4 && span1_class_value !== (span1_class_value = "navmenu" + (/*content*/ ctx[2].path == "projs" ? " active" : ""))) {
+				attr(span1, "class", span1_class_value);
+			}
+
+			if (dirty & /*allPages, content*/ 5) {
 				each_value = /*allPages*/ ctx[0];
 				let i;
 
@@ -503,7 +523,7 @@ function create_fragment(ctx) {
 				each_blocks.length = each_value.length;
 			}
 
-			if (dirty & /*menuShow*/ 4 && div3_class_value !== (div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[2]
+			if (dirty & /*menuShow*/ 8 && div3_class_value !== (div3_class_value = "md:flex w-full md:w-auto text-right mt-5 md:mt-0 " + (/*menuShow*/ ctx[3]
 			? "bg-primary bg-opacity-70"
 			: "hidden"))) {
 				attr(div3, "class", div3_class_value);
@@ -523,25 +543,30 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { allPages } = $$props;
-	let { isDark } = $$props, { theme } = $$props, { idxContent } = $$props;
+
+	let { isDark } = $$props,
+		{ theme } = $$props,
+		{ idxContent } = $$props,
+		{ content } = $$props;
+
 	let site_name = idxContent.name.split(" ");
 	let menuShow = false;
 
 	function toggleDark() {
 		// Set the boolean
-		$$invalidate(6, isDark = !isDark);
+		$$invalidate(7, isDark = !isDark);
 
 		// Store the change as local storage value
 		theme.set(isDark ? "dark" : "light");
 	}
 
 	function toggleNavbar() {
-		$$invalidate(2, menuShow = !menuShow);
+		$$invalidate(3, menuShow = !menuShow);
 	}
 
 	onMount(() => {
 		// Get the value out of storage on-load or set a sane default.
-		$$invalidate(7, theme = writable(localStorage.getItem("theme")));
+		$$invalidate(8, theme = writable(localStorage.getItem("theme")));
 
 		// Anytime the store changes, update the local storage value.
 		theme.subscribe(value => {
@@ -549,17 +574,17 @@ function instance($$self, $$props, $$invalidate) {
 		});
 
 		// Set the starting boolean
-		$$invalidate(6, isDark = localStorage.theme === "dark" ? true : false);
+		$$invalidate(7, isDark = localStorage.theme === "dark" ? true : false);
 
 		const handleOutsideClick = event => {
 			if (menuShow && !menu.contains(event.target)) {
-				$$invalidate(2, menuShow = false);
+				$$invalidate(3, menuShow = false);
 			}
 		};
 
 		const handleEscape = event => {
 			if (menuShow && event.key === "Escape") {
-				$$invalidate(2, menuShow = false);
+				$$invalidate(3, menuShow = false);
 			}
 		};
 
@@ -577,14 +602,16 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("allPages" in $$props) $$invalidate(0, allPages = $$props.allPages);
-		if ("isDark" in $$props) $$invalidate(6, isDark = $$props.isDark);
-		if ("theme" in $$props) $$invalidate(7, theme = $$props.theme);
+		if ("isDark" in $$props) $$invalidate(7, isDark = $$props.isDark);
+		if ("theme" in $$props) $$invalidate(8, theme = $$props.theme);
 		if ("idxContent" in $$props) $$invalidate(1, idxContent = $$props.idxContent);
+		if ("content" in $$props) $$invalidate(2, content = $$props.content);
 	};
 
 	return [
 		allPages,
 		idxContent,
+		content,
 		menuShow,
 		site_name,
 		toggleDark,
@@ -600,9 +627,10 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			allPages: 0,
-			isDark: 6,
-			theme: 7,
-			idxContent: 1
+			isDark: 7,
+			theme: 8,
+			idxContent: 1,
+			content: 2
 		});
 	}
 }

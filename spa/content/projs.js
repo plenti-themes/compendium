@@ -245,8 +245,6 @@ function instance($$self, $$props, $$invalidate) {
 	// Setting variable for pagination logic.
 	let totalProjPages = totalPages;
 
-	console.log(totalProjPages);
-
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);

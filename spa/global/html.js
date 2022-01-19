@@ -68,7 +68,8 @@ function create_fragment(ctx) {
 
 	let navbar_props = {
 		allPages: /*allPages*/ ctx[6],
-		idxContent: /*idxContent*/ ctx[5]
+		idxContent: /*idxContent*/ ctx[5],
+		content: /*content*/ ctx[2]
 	};
 
 	if (/*isDark*/ ctx[0] !== void 0) {
@@ -185,6 +186,7 @@ function create_fragment(ctx) {
 			const navbar_changes = {};
 			if (dirty & /*allPages*/ 64) navbar_changes.allPages = /*allPages*/ ctx[6];
 			if (dirty & /*idxContent*/ 32) navbar_changes.idxContent = /*idxContent*/ ctx[5];
+			if (dirty & /*content*/ 4) navbar_changes.content = /*content*/ ctx[2];
 
 			if (!updating_isDark && dirty & /*isDark*/ 1) {
 				updating_isDark = true;
