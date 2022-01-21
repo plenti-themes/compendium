@@ -1,5 +1,6 @@
 <script>
   import { fade } from "svelte/transition";
+  import { sortByDate } from "../scripts/sort_by_date.svelte";
   import Hoverable from "../scripts/hoverable.svelte";
   import PostMeta from "../components/post_meta.svelte";
 
@@ -7,24 +8,9 @@
   export let complete = true;
   export let skipbody = true;
 
-  function scrollDown() {
-    window.scrollTo({
-      top: 800,
-      left: 0,
-      behavior: "smooth",
-    });
-  }
-
   let featureIdx = 0;
 
   $: maxFeatures = allFeatures.length;
-  // Sort posts in descending order
-  $: allFeatures.sort(function (a, b) {
-    return (
-      new Date(b.fields.dateModified).getTime() -
-      new Date(a.fields.dateModified).getTime()
-    );
-  });
 
   function clickPrev() {
     if (featureIdx == 0) {
@@ -35,6 +21,7 @@
       featureIdx = (featureIdx - 1) % maxFeatures;
     }
   }
+
   function clickNext() {
     if (featureIdx == maxFeatures) {
       // block of code to be executed if the condition is true
@@ -44,11 +31,19 @@
       featureIdx = (featureIdx + 1) % maxFeatures;
     }
   }
+
+  function scrollDown() {
+    window.scrollTo({
+      top: 800,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
 </script>
 
 {#key featureIdx}
   <div transition:fade>
-    {#each allFeatures as post, i}
+    {#each sortByDate(allFeatures, "created") as post, i}
       <!-- Carousel Image -->
       <div
         id={i}

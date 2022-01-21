@@ -1,20 +1,13 @@
 <script>
+  import { sortByDate } from '../scripts/sort_by_date.svelte';
   import PostMeta from "./post_meta.svelte";
 
   export let allPosts, postRangeHigh, postRangeLow, catgPosts, tagsPosts;
   export let complete = true;
   export let skipbody = false;
-
-  // Sort posts in descending order
-  $: allPosts.sort(function (a, b) {
-    return (
-      new Date(b.fields.dateModified).getTime() -
-      new Date(a.fields.dateModified).getTime()
-    );
-  });
 </script>
 
-{#each allPosts as post, i}
+{#each sortByDate(allPosts, "modified") as post, i}
   {#if i >= postRangeLow && i < postRangeHigh}
     <div class="rounded-lg overflow-hidden shadow-md bg-secondary">
       <img
