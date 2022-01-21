@@ -24,21 +24,15 @@
       // Loop through each post tag
       post.fields.tags.forEach((tag) => {
         // Push each post into collection of tags
-        if (tag in tagsObj) {
-          tagsObj[tag].push(postObj);
-        } else {
-          tagsObj[tag] = [postObj];
-        }
+        tagsObj[tag] = tagsObj[tag] || [];
+        tagsObj[tag].push(postObj);
       });
 
       // Loop through each post catg
       post.fields.categories.forEach((catg) => {
         // Push each post into collection of catgs
-        if (catg in catgObj) {
-          catgObj[catg].push(postObj);
-        } else {
-          catgObj[catg] = [postObj];
-        }
+        catgObj[catg] = catgObj[catg] || [];
+        catgObj[catg].push(postObj);
       });
     });
 
