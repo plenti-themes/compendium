@@ -27,6 +27,7 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
+import { sortByDate } from '../scripts/sort_by_date.js';
 import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
@@ -36,7 +37,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (18:2) {#if i >= postRangeLow && i < postRangeHigh}
+// (11:2) {#if i >= postRangeLow && i < postRangeHigh}
 function create_if_block(ctx) {
 	let div1;
 	let img;
@@ -184,7 +185,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (17:0) {#each allPosts as post, i}
+// (10:0) {#each sortByDate(allPosts, "modified") as post, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let current;
@@ -247,7 +248,7 @@ function create_each_block(ctx) {
 function create_fragment(ctx) {
 	let each_1_anchor;
 	let current;
-	let each_value = /*allPosts*/ ctx[0];
+	let each_value = sortByDate(/*allPosts*/ ctx[0], "modified");
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -282,8 +283,8 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*allPosts, catgPosts, tagsPosts, complete, skipbody, postRangeLow, postRangeHigh*/ 127) {
-				each_value = /*allPosts*/ ctx[0];
+			if (dirty & /*sortByDate, allPosts, catgPosts, tagsPosts, complete, skipbody, postRangeLow, postRangeHigh*/ 127) {
+				each_value = sortByDate(/*allPosts*/ ctx[0], "modified");
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -352,15 +353,6 @@ function instance($$self, $$props, $$invalidate) {
 		if ("tagsPosts" in $$props) $$invalidate(4, tagsPosts = $$props.tagsPosts);
 		if ("complete" in $$props) $$invalidate(5, complete = $$props.complete);
 		if ("skipbody" in $$props) $$invalidate(6, skipbody = $$props.skipbody);
-	};
-
-	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*allPosts*/ 1) {
-			// Sort posts in descending order
-			$: allPosts.sort(function (a, b) {
-				return new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
-			});
-		}
 	};
 
 	return [

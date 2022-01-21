@@ -34,6 +34,7 @@ import {
 } from '../web_modules/svelte/internal/index.mjs';
 
 import { fade } from '../web_modules/svelte/transition/index.mjs';
+import { sortByDate } from '../scripts/sort_by_date.js';
 import Hoverable from '../scripts/hoverable.js';
 import PostMeta from '../components/post_meta.js';
 
@@ -44,7 +45,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (121:8) {#if featuredPage == "Bleed"}
+// (116:8) {#if featuredPage == "Bleed"}
 function create_if_block(ctx) {
 	let button;
 	let hoverable;
@@ -122,7 +123,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (128:12) <Hoverable let:hovering>
+// (123:12) <Hoverable let:hovering>
 function create_default_slot(ctx) {
 	let span;
 	let i;
@@ -161,7 +162,7 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (51:4) {#each allFeatures as post, i}
+// (46:4) {#each sortByDate(allFeatures, "created") as post, i}
 function create_each_block(ctx) {
 	let div5;
 	let div0;
@@ -477,12 +478,12 @@ function create_each_block(ctx) {
 	};
 }
 
-// (49:0) {#key featureIdx}
+// (44:0) {#key featureIdx}
 function create_key_block(ctx) {
 	let div;
 	let div_transition;
 	let current;
-	let each_value = /*allFeatures*/ ctx[0];
+	let each_value = sortByDate(/*allFeatures*/ ctx[0], "created");
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -521,8 +522,8 @@ function create_key_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, allFeatures, catgPosts, tagsPosts, complete, skipbody*/ 8703) {
-				each_value = /*allFeatures*/ ctx[0];
+			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, sortByDate, allFeatures, catgPosts, tagsPosts, complete, skipbody*/ 8703) {
+				each_value = sortByDate(/*allFeatures*/ ctx[0], "created");
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -678,13 +679,6 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty & /*allFeatures*/ 1) {
 			$: maxFeatures = allFeatures.length;
-		}
-
-		if ($$self.$$.dirty & /*allFeatures*/ 1) {
-			// Sort posts in descending order
-			$: allFeatures.sort(function (a, b) {
-				return new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
-			});
 		}
 	};
 

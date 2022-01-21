@@ -27,5 +27,6 @@ export {default as layouts_scripts_catgs_tags_svelte} from '../scripts/catgs_tag
 export {default as layouts_scripts_get_description_svelte} from '../scripts/get_description.js';
 export {default as layouts_scripts_hoverable_svelte} from '../scripts/hoverable.js';
 export {default as layouts_scripts_openGraph_svelte} from '../scripts/openGraph.js';
+export {default as layouts_scripts_sort_by_date_svelte} from '../scripts/sort_by_date.js';
 export {default as layouts_scripts_twitter_svelte} from '../scripts/twitter.js';
 export {default as layouts_style_global_svelte} from '../style/global.js';

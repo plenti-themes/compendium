@@ -46,9 +46,7 @@ function create_fragment(ctx) {
 
 	cards = new Cards({
 			props: {
-				projArry: /*projArry*/ ctx[9],
-				uniqProjs: /*uniqProjs*/ ctx[10],
-				allProjs: /*allProjs*/ ctx[7],
+				projList: /*projList*/ ctx[8],
 				projRangeHigh: /*projRangeHigh*/ ctx[5],
 				projRangeLow: /*projRangeLow*/ ctx[6],
 				catgPosts: /*catgPosts*/ ctx[2],
@@ -60,14 +58,14 @@ function create_fragment(ctx) {
 			props: {
 				content: /*content*/ ctx[1],
 				currentPage: /*currentPage*/ ctx[4],
-				totalPages: /*totalPages*/ ctx[11]
+				totalPages: /*totalPages*/ ctx[9]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[8],
+				socialLinks: /*socialLinks*/ ctx[7],
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
@@ -217,28 +215,55 @@ function instance($$self, $$props, $$invalidate) {
 	let allProjs = allPosts.filter(content => content.fields?.project != "");
 	let socialLinks = idxContent.socialLinks;
 	let projsPerPage = idxContent.theme.projsPerPage;
-	let projArry = [];
+	let projsSort = idxContent.theme.projsSort;
+	let uniqProjs = [...new Set(allProjs.map(key => key.fields.project))];
 	let projList = [];
 
-	// Sort project posts in ascending order
-	allProjs.sort(function (a, b) {
-		// var s = new Date(b.fields.dateModified).getTime() - new Date(a.fields.dateModified).getTime();
-		var p = a.fields.project.localeCompare(b.fields.project);
+	// Create a grouped object array (projList) of projects
+	uniqProjs.forEach(proj => {
+		let group = allProjs.filter(key => key.fields.project == proj);
 
-		return p == 0 ? a.path.localeCompare(b.path) : p;
-	});
+		// What: sort the posts within the projects
+		if (projsSort == "Date") {
+			// Sort projects posts alphabetically by name
+			group.sort((a, b) => {
+				return a.path.localeCompare(b.path);
+			});
+		} else {
+			// Sort projects posts by newest first
+			group.sort((a, b) => {
+				return new Date(b.modified) - new Date(a.modified);
+			});
+		}
 
-	// create array of projects
-	allProjs.forEach(element => {
-		projArry.push({
-			proj: element.fields.project,
-			title: element.fields.title
+		// What: Identify the most recent post date in a project
+		// Why:  Enable ability to list the most-recent projects first
+		let maxDate = [...new Set(group.map(key => key.fields.dateModified))].reduce(function (a, b) {
+			return a > b ? a : b;
 		});
 
-		projList.push(element.fields.project);
+		let obj = {
+			name: proj,
+			modified: maxDate,
+			posts: group
+		};
+
+		projList.push(obj);
 	});
 
-	let uniqProjs = [...new Set(projList)];
+	// What: Sort the projccts
+	if (projsSort == "Date") {
+		// Sort projects by newest first
+		projList.sort((a, b) => {
+			return new Date(b.modified) - new Date(a.modified);
+		});
+	} else {
+		// Sort projects alphabetically by name
+		projList.sort((a, b) => {
+			return a.name.localeCompare(b.name);
+		});
+	}
+
 	let totalProjs = uniqProjs.length;
 	let totalPages = Math.ceil(totalProjs / projsPerPage);
 
@@ -246,7 +271,7 @@ function instance($$self, $$props, $$invalidate) {
 	let totalProjPages = totalPages;
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
 		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
@@ -275,10 +300,8 @@ function instance($$self, $$props, $$invalidate) {
 		currentPage,
 		projRangeHigh,
 		projRangeLow,
-		allProjs,
 		socialLinks,
-		projArry,
-		uniqProjs,
+		projList,
 		totalPages,
 		idxContent
 	];
@@ -289,7 +312,7 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 12,
+			idxContent: 10,
 			allPosts: 0,
 			content: 1,
 			catgPosts: 2,
