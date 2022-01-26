@@ -121,7 +121,7 @@ function create_if_block_1(ctx) {
 function create_if_block(ctx) {
 	let a;
 	let span;
-	let t_value = /*page*/ ctx[9].fields.pageType + "";
+	let t_value = /*page*/ ctx[9].fields.title.split(" ")[0] + "";
 	let t;
 	let span_class_value;
 	let a_href_value;
@@ -157,7 +157,7 @@ function create_if_block(ctx) {
 			append(span, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPages*/ 1 && t_value !== (t_value = /*page*/ ctx[9].fields.pageType + "")) set_data(t, t_value);
+			if (dirty & /*allPages*/ 1 && t_value !== (t_value = /*page*/ ctx[9].fields.title.split(" ")[0] + "")) set_data(t, t_value);
 
 			if (dirty & /*content, allPages*/ 5 && span_class_value !== (span_class_value = "navmenu" + (/*content*/ ctx[2].path == /*page*/ ctx[9].path
 			? " active"

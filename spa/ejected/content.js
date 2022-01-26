@@ -102,7 +102,6 @@ const allContent = [{
 "filename": "about.json",
 "fields": {
   "title": "About Me",
-  "pageType": "About",
   "enabled": true,
   "menu": true,
   "author": {
@@ -137,7 +136,6 @@ const allContent = [{
 "filename": "contact.json",
 "fields": {
 	"title": "Contact Us",
-	"pageType": "Contact",
 	"enabled": true,
 	"menu": true,
 	"articleBody": "Swing by for a cup of coffee, or leave us a message:"
@@ -405,8 +403,7 @@ const allContent = [{
 "type": "projs",
 "filename": "projs.json",
 "fields": {
-	"title": "Projects Page",
-	"pageType": "Projects",
+	"title": "Projects",
 	"enabled": true,
 	"menu": true
 }
@@ -439,13 +436,13 @@ const allContent = [{
 "path": "projs/1",
 "type": "projs",
 "filename": "projs.json",
-"fields": { "title": "Projects Page", "pageType": "Projects", "enabled": true, "menu": true }
+"fields": { "title": "Projects", "enabled": true, "menu": true }
 },{
 "pager": 2,
 "path": "projs/2",
 "type": "projs",
 "filename": "projs.json",
-"fields": { "title": "Projects Page", "pageType": "Projects", "enabled": true, "menu": true }
+"fields": { "title": "Projects", "enabled": true, "menu": true }
 },{
 "pager": 1,
 "path": "tags/1",

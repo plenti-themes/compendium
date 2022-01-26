@@ -12,11 +12,14 @@ import {
 	destroy_component,
 	detach,
 	element,
+	empty,
+	handle_promise,
 	init,
 	insert,
 	listen,
 	mount_component,
 	noop,
+	prevent_default,
 	run_all,
 	safe_not_equal,
 	set_data,
@@ -28,6 +31,9 @@ import {
 	transition_out
 } from '../web_modules/svelte/internal/index.mjs';
 
+import { createEventDispatcher } from '../web_modules/svelte/index.mjs';
+
+// Aside component for search, categories, and tags
 import Aside from './aside.js';
 
 function create_else_block(ctx) {
@@ -52,14 +58,14 @@ function create_else_block(ctx) {
 	};
 }
 
-// (58:14) {#if tname.length > 1}
-function create_if_block(ctx) {
+// (86:14) {#if tname.length > 1}
+function create_if_block_1(ctx) {
 	let span0;
-	let t0_value = /*tname*/ ctx[11][0].toUpperCase() + "";
+	let t0_value = /*tname*/ ctx[7][0].toUpperCase() + "";
 	let t0;
 	let t1;
 	let span1;
-	let t2_value = /*tname*/ ctx[11][1].toUpperCase() + "";
+	let t2_value = /*tname*/ ctx[7][1].toUpperCase() + "";
 	let t2;
 
 	return {
@@ -102,15 +108,98 @@ function create_if_block(ctx) {
 	};
 }
 
+// (175:18) {#if submit}
+function create_if_block(ctx) {
+	let await_block_anchor;
+	let promise;
+
+	let info = {
+		ctx,
+		current: null,
+		token: null,
+		hasCatch: false,
+		pending: create_pending_block,
+		then: create_then_block,
+		catch: create_catch_block,
+		value: 17
+	};
+
+	handle_promise(promise = /*submit*/ ctx[5], info);
+
+	return {
+		c() {
+			await_block_anchor = empty();
+			info.block.c();
+		},
+		l(nodes) {
+			await_block_anchor = empty();
+			info.block.l(nodes);
+		},
+		m(target, anchor) {
+			insert(target, await_block_anchor, anchor);
+			info.block.m(target, info.anchor = anchor);
+			info.mount = () => await_block_anchor.parentNode;
+			info.anchor = await_block_anchor;
+		},
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
+			info.ctx = ctx;
+			dirty & /*submit*/ 32 && promise !== (promise = /*submit*/ ctx[5]) && handle_promise(promise, info);
+		},
+		d(detaching) {
+			if (detaching) detach(await_block_anchor);
+			info.block.d(detaching);
+			info.token = null;
+			info = null;
+		}
+	};
+}
+
+// (1:0) <script>   import { createEventDispatcher }
+function create_catch_block(ctx) {
+	return { c: noop, l: noop, m: noop, d: noop };
+}
+
+// (178:20) {:then resp}
+function create_then_block(ctx) {
+	return { c: noop, l: noop, m: noop, d: noop };
+}
+
+// (176:35)                        <p>Sending...</p>                     {:then resp}
+function create_pending_block(ctx) {
+	let p;
+	let t;
+
+	return {
+		c() {
+			p = element("p");
+			t = text("Sending...");
+		},
+		l(nodes) {
+			p = claim_element(nodes, "P", {});
+			var p_nodes = children(p);
+			t = claim_text(p_nodes, "Sending...");
+			p_nodes.forEach(detach);
+		},
+		m(target, anchor) {
+			insert(target, p, anchor);
+			append(p, t);
+		},
+		d(detaching) {
+			if (detaching) detach(p);
+		}
+	};
+}
+
 function create_fragment(ctx) {
 	let section;
 	let div0;
 	let t0;
+	let div17;
 	let div16;
-	let div15;
+	let div14;
 	let div13;
 	let div12;
-	let div11;
 	let h2;
 	let t1;
 	let p;
@@ -144,35 +233,38 @@ function create_fragment(ctx) {
 	let t14;
 	let textarea;
 	let t15;
-	let div10;
+	let div11;
 	let div8;
 	let button;
 	let t16;
 	let t17;
 	let div9;
 	let t18;
-	let div14;
-	let aside;
+	let div10;
 	let t19;
-	let div17;
+	let div15;
+	let aside;
+	let t20;
+	let div18;
 	let current;
 	let mounted;
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*tname*/ ctx[11].length > 1) return create_if_block;
+		if (/*tname*/ ctx[7].length > 1) return create_if_block_1;
 		return create_else_block;
 	}
 
 	let current_block_type = select_block_type(ctx, -1);
-	let if_block = current_block_type(ctx);
+	let if_block0 = current_block_type(ctx);
+	let if_block1 = /*submit*/ ctx[5] && create_if_block(ctx);
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				socialLinks: /*socialLinks*/ ctx[9]
+				socialLinks: /*socialLinks*/ ctx[8]
 			}
 		});
 
@@ -181,13 +273,13 @@ function create_fragment(ctx) {
 			section = element("section");
 			div0 = element("div");
 			t0 = space();
+			div17 = element("div");
 			div16 = element("div");
-			div15 = element("div");
+			div14 = element("div");
 			div13 = element("div");
 			div12 = element("div");
-			div11 = element("div");
 			h2 = element("h2");
-			if_block.c();
+			if_block0.c();
 			t1 = space();
 			p = element("p");
 			t2 = text(/*articleBody*/ ctx[4]);
@@ -220,17 +312,20 @@ function create_fragment(ctx) {
 			t14 = space();
 			textarea = element("textarea");
 			t15 = space();
-			div10 = element("div");
+			div11 = element("div");
 			div8 = element("div");
 			button = element("button");
 			t16 = text("Send");
 			t17 = space();
 			div9 = element("div");
+			if (if_block1) if_block1.c();
 			t18 = space();
-			div14 = element("div");
-			create_component(aside.$$.fragment);
+			div10 = element("div");
 			t19 = space();
-			div17 = element("div");
+			div15 = element("div");
+			create_component(aside.$$.fragment);
+			t20 = space();
+			div18 = element("div");
 			this.h();
 		},
 		l(nodes) {
@@ -239,27 +334,34 @@ function create_fragment(ctx) {
 			div0 = claim_element(section_nodes, "DIV", { class: true });
 			children(div0).forEach(detach);
 			t0 = claim_space(section_nodes);
-			div16 = claim_element(section_nodes, "DIV", { class: true });
+			div17 = claim_element(section_nodes, "DIV", { class: true });
+			var div17_nodes = children(div17);
+			div16 = claim_element(div17_nodes, "DIV", { class: true });
 			var div16_nodes = children(div16);
-			div15 = claim_element(div16_nodes, "DIV", { class: true });
-			var div15_nodes = children(div15);
-			div13 = claim_element(div15_nodes, "DIV", { class: true });
+			div14 = claim_element(div16_nodes, "DIV", { class: true });
+			var div14_nodes = children(div14);
+			div13 = claim_element(div14_nodes, "DIV", { class: true });
 			var div13_nodes = children(div13);
 			div12 = claim_element(div13_nodes, "DIV", { class: true });
 			var div12_nodes = children(div12);
-			div11 = claim_element(div12_nodes, "DIV", { class: true });
-			var div11_nodes = children(div11);
-			h2 = claim_element(div11_nodes, "H2", { class: true });
+			h2 = claim_element(div12_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
-			if_block.l(h2_nodes);
+			if_block0.l(h2_nodes);
 			h2_nodes.forEach(detach);
-			t1 = claim_space(div11_nodes);
-			p = claim_element(div11_nodes, "P", { class: true });
+			t1 = claim_space(div12_nodes);
+			p = claim_element(div12_nodes, "P", { class: true });
 			var p_nodes = children(p);
 			t2 = claim_text(p_nodes, /*articleBody*/ ctx[4]);
 			p_nodes.forEach(detach);
-			t3 = claim_space(div11_nodes);
-			form = claim_element(div11_nodes, "FORM", { id: true, class: true });
+			t3 = claim_space(div12_nodes);
+
+			form = claim_element(div12_nodes, "FORM", {
+				id: true,
+				method: true,
+				action: true,
+				class: true
+			});
+
 			var form_nodes = children(form);
 			div3 = claim_element(form_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
@@ -273,7 +375,7 @@ function create_fragment(ctx) {
 
 			input0 = claim_element(div1_nodes, "INPUT", {
 				class: true,
-				id: true,
+				name: true,
 				type: true,
 				placeholder: true
 			});
@@ -290,7 +392,7 @@ function create_fragment(ctx) {
 
 			input1 = claim_element(div2_nodes, "INPUT", {
 				class: true,
-				id: true,
+				name: true,
 				type: true,
 				placeholder: true
 			});
@@ -310,7 +412,7 @@ function create_fragment(ctx) {
 
 			input2 = claim_element(div4_nodes, "INPUT", {
 				class: true,
-				id: true,
+				name: true,
 				type: true,
 				placeholder: true
 			});
@@ -327,38 +429,49 @@ function create_fragment(ctx) {
 			t13 = claim_text(label3_nodes, "Message");
 			label3_nodes.forEach(detach);
 			t14 = claim_space(div6_nodes);
-			textarea = claim_element(div6_nodes, "TEXTAREA", { class: true, id: true, placeholder: true });
+
+			textarea = claim_element(div6_nodes, "TEXTAREA", {
+				class: true,
+				name: true,
+				placeholder: true
+			});
+
 			children(textarea).forEach(detach);
 			div6_nodes.forEach(detach);
 			div7_nodes.forEach(detach);
 			t15 = claim_space(form_nodes);
-			div10 = claim_element(form_nodes, "DIV", { class: true });
-			var div10_nodes = children(div10);
-			div8 = claim_element(div10_nodes, "DIV", { class: true });
+			div11 = claim_element(form_nodes, "DIV", { class: true });
+			var div11_nodes = children(div11);
+			div8 = claim_element(div11_nodes, "DIV", { class: true });
 			var div8_nodes = children(div8);
-			button = claim_element(div8_nodes, "BUTTON", { class: true, id: true, type: true });
+			button = claim_element(div8_nodes, "BUTTON", { class: true, type: true });
 			var button_nodes = children(button);
 			t16 = claim_text(button_nodes, "Send");
 			button_nodes.forEach(detach);
 			div8_nodes.forEach(detach);
-			t17 = claim_space(div10_nodes);
-			div9 = claim_element(div10_nodes, "DIV", { class: true });
-			children(div9).forEach(detach);
-			div10_nodes.forEach(detach);
-			form_nodes.forEach(detach);
+			t17 = claim_space(div11_nodes);
+			div9 = claim_element(div11_nodes, "DIV", { class: true });
+			var div9_nodes = children(div9);
+			if (if_block1) if_block1.l(div9_nodes);
+			div9_nodes.forEach(detach);
+			t18 = claim_space(div11_nodes);
+			div10 = claim_element(div11_nodes, "DIV", { class: true });
+			children(div10).forEach(detach);
 			div11_nodes.forEach(detach);
+			form_nodes.forEach(detach);
 			div12_nodes.forEach(detach);
 			div13_nodes.forEach(detach);
-			t18 = claim_space(div15_nodes);
-			div14 = claim_element(div15_nodes, "DIV", { class: true });
-			var div14_nodes = children(div14);
-			claim_component(aside.$$.fragment, div14_nodes);
 			div14_nodes.forEach(detach);
+			t19 = claim_space(div16_nodes);
+			div15 = claim_element(div16_nodes, "DIV", { class: true });
+			var div15_nodes = children(div15);
+			claim_component(aside.$$.fragment, div15_nodes);
 			div15_nodes.forEach(detach);
 			div16_nodes.forEach(detach);
-			t19 = claim_space(section_nodes);
-			div17 = claim_element(section_nodes, "DIV", { class: true });
-			children(div17).forEach(detach);
+			div17_nodes.forEach(detach);
+			t20 = claim_space(section_nodes);
+			div18 = claim_element(section_nodes, "DIV", { class: true });
+			children(div18).forEach(detach);
 			section_nodes.forEach(detach);
 			this.h();
 		},
@@ -367,83 +480,85 @@ function create_fragment(ctx) {
 			attr(h2, "class", "header text-xl md:text-2xl lg:text-3xl my-6");
 			attr(p, "class", "mb-10");
 			attr(label0, "class", "block uppercase tracking-wide header mb-2");
-			attr(label0, "for", "grid-first-name");
+			attr(label0, "for", "firstName");
 			attr(input0, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
-			attr(input0, "id", "grid-first-name");
+			attr(input0, "name", "firstName");
 			attr(input0, "type", "text");
 			attr(input0, "placeholder", "Jane");
 			attr(div1, "class", "w-full md:w-1/2 px-3 mb-6 md:mb-0");
 			attr(label1, "class", "block uppercase tracking-wide header mb-2");
-			attr(label1, "for", "grid-last-name");
+			attr(label1, "for", "lastName");
 			attr(input1, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
-			attr(input1, "id", "grid-last-name");
+			attr(input1, "name", "lastName");
 			attr(input1, "type", "text");
 			attr(input1, "placeholder", "Doe");
 			attr(div2, "class", "w-full md:w-1/2 px-3");
 			attr(div3, "class", "flex flex-wrap -mx-3 mb-6");
 			attr(label2, "class", "block uppercase tracking-wide header mb-2");
-			attr(label2, "for", "grid-password");
+			attr(label2, "for", "email");
 			attr(input2, "class", "appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
-			attr(input2, "id", "email");
+			attr(input2, "name", "email");
 			attr(input2, "type", "email");
 			attr(input2, "placeholder", "Jane.Doe@example.net");
 			input2.required = true;
 			attr(div4, "class", "w-full px-3");
 			attr(div5, "class", "flex flex-wrap -mx-3 mb-6");
 			attr(label3, "class", "block uppercase tracking-wide header mb-2");
-			attr(label3, "for", "grid-password");
+			attr(label3, "for", "messageBody");
 			attr(textarea, "class", " no-resize appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white h-48 resize-none");
-			attr(textarea, "id", "message");
+			attr(textarea, "name", "message");
 			attr(textarea, "placeholder", "Write something here...");
 			attr(div6, "class", "w-full px-3");
 			attr(div7, "class", "flex flex-wrap -mx-3 mb-6");
 			attr(button, "class", "btn-outline mb-6 px-4 rounded");
-			attr(button, "id", "submit");
 			attr(button, "type", "submit");
 			attr(div8, "class", "md:w-1/3");
-			attr(div9, "class", "md:w-2/3");
-			attr(div10, "class", "md:flex md:items-center");
+			attr(div9, "class", "block tracking-wide header mb-6 px-4");
+			attr(div10, "class", "md:w-2/3");
+			attr(div11, "class", "md:flex md:items-center");
 			attr(form, "id", "contactform");
+			attr(form, "method", "post");
+			attr(form, "action", reqUrl);
 			attr(form, "class", "w-full max-w-lg");
-			attr(div11, "class", "mx-2 md:mx-6 mb-2 md:mb-3 my-1");
-			attr(div12, "class", "rounded-xl overflow-hidden shadow-md bg-secondary");
-			attr(div13, "class", "w-full md:w-9/12 mb-lg-0 px-0 sm:pr-10");
-			attr(div14, "class", "w-full md:w-3/12 mb-lg-0 px-0");
-			attr(div15, "class", "row md:flex md:flex-wrap");
-			attr(div16, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
-			attr(div17, "class", "w-0 md:w-1/12 xl:w-2/12");
+			attr(div12, "class", "mx-2 md:mx-6 mb-2 md:mb-3 my-1");
+			attr(div13, "class", "rounded-xl overflow-hidden shadow-md bg-secondary");
+			attr(div14, "class", "w-full md:w-9/12 mb-lg-0 px-0 sm:pr-10");
+			attr(div15, "class", "w-full md:w-3/12 mb-lg-0 px-0");
+			attr(div16, "class", "row md:flex md:flex-wrap");
+			attr(div17, "class", "w-full md:w-10/12 xl:w-8/12 px-2 md:px-0");
+			attr(div18, "class", "w-0 md:w-1/12 xl:w-2/12");
 			attr(section, "class", "section flex flex-wrap items-center justify-between");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
 			append(section, div0);
 			append(section, t0);
-			append(section, div16);
-			append(div16, div15);
-			append(div15, div13);
+			append(section, div17);
+			append(div17, div16);
+			append(div16, div14);
+			append(div14, div13);
 			append(div13, div12);
-			append(div12, div11);
-			append(div11, h2);
-			if_block.m(h2, null);
-			append(div11, t1);
-			append(div11, p);
+			append(div12, h2);
+			if_block0.m(h2, null);
+			append(div12, t1);
+			append(div12, p);
 			append(p, t2);
-			append(div11, t3);
-			append(div11, form);
+			append(div12, t3);
+			append(div12, form);
 			append(form, div3);
 			append(div3, div1);
 			append(div1, label0);
 			append(label0, t4);
 			append(div1, t5);
 			append(div1, input0);
-			set_input_value(input0, /*nameFrst*/ ctx[6]);
+			set_input_value(input0, /*formData*/ ctx[6].firstname);
 			append(div3, t6);
 			append(div3, div2);
 			append(div2, label1);
 			append(label1, t7);
 			append(div2, t8);
 			append(div2, input1);
-			set_input_value(input1, /*nameLast*/ ctx[7]);
+			set_input_value(input1, /*formData*/ ctx[6].lastname);
 			append(form, t9);
 			append(form, div5);
 			append(div5, div4);
@@ -451,7 +566,7 @@ function create_fragment(ctx) {
 			append(label2, t10);
 			append(div4, t11);
 			append(div4, input2);
-			set_input_value(input2, /*addrFrom*/ ctx[5]);
+			set_input_value(input2, /*formData*/ ctx[6].email);
 			append(form, t12);
 			append(form, div7);
 			append(div7, div6);
@@ -459,51 +574,67 @@ function create_fragment(ctx) {
 			append(label3, t13);
 			append(div6, t14);
 			append(div6, textarea);
-			set_input_value(textarea, /*msgBody*/ ctx[8]);
+			set_input_value(textarea, /*formData*/ ctx[6].message);
 			append(form, t15);
-			append(form, div10);
-			append(div10, div8);
+			append(form, div11);
+			append(div11, div8);
 			append(div8, button);
 			append(button, t16);
-			append(div10, t17);
-			append(div10, div9);
-			append(div15, t18);
-			append(div15, div14);
-			mount_component(aside, div14, null);
-			append(section, t19);
-			append(section, div17);
+			append(div11, t17);
+			append(div11, div9);
+			if (if_block1) if_block1.m(div9, null);
+			append(div11, t18);
+			append(div11, div10);
+			append(div16, t19);
+			append(div16, div15);
+			mount_component(aside, div15, null);
+			append(section, t20);
+			append(section, div18);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(input0, "input", /*input0_input_handler*/ ctx[13]),
-					listen(input1, "input", /*input1_input_handler*/ ctx[14]),
-					listen(input2, "input", /*input2_input_handler*/ ctx[15]),
-					listen(textarea, "input", /*textarea_input_handler*/ ctx[16]),
-					listen(button, "click", /*contactSend*/ ctx[10])
+					listen(input0, "input", /*input0_input_handler*/ ctx[11]),
+					listen(input1, "input", /*input1_input_handler*/ ctx[12]),
+					listen(input2, "input", /*input2_input_handler*/ ctx[13]),
+					listen(textarea, "input", /*textarea_input_handler*/ ctx[14]),
+					listen(form, "submit", prevent_default(/*handleOnSubmit*/ ctx[9]))
 				];
 
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
-			if_block.p(ctx, dirty);
+			if_block0.p(ctx, dirty);
 			if (!current || dirty & /*articleBody*/ 16) set_data(t2, /*articleBody*/ ctx[4]);
 
-			if (dirty & /*nameFrst*/ 64 && input0.value !== /*nameFrst*/ ctx[6]) {
-				set_input_value(input0, /*nameFrst*/ ctx[6]);
+			if (dirty & /*formData*/ 64 && input0.value !== /*formData*/ ctx[6].firstname) {
+				set_input_value(input0, /*formData*/ ctx[6].firstname);
 			}
 
-			if (dirty & /*nameLast*/ 128 && input1.value !== /*nameLast*/ ctx[7]) {
-				set_input_value(input1, /*nameLast*/ ctx[7]);
+			if (dirty & /*formData*/ 64 && input1.value !== /*formData*/ ctx[6].lastname) {
+				set_input_value(input1, /*formData*/ ctx[6].lastname);
 			}
 
-			if (dirty & /*addrFrom*/ 32 && input2.value !== /*addrFrom*/ ctx[5]) {
-				set_input_value(input2, /*addrFrom*/ ctx[5]);
+			if (dirty & /*formData*/ 64 && input2.value !== /*formData*/ ctx[6].email) {
+				set_input_value(input2, /*formData*/ ctx[6].email);
 			}
 
-			if (dirty & /*msgBody*/ 256) {
-				set_input_value(textarea, /*msgBody*/ ctx[8]);
+			if (dirty & /*formData*/ 64) {
+				set_input_value(textarea, /*formData*/ ctx[6].message);
+			}
+
+			if (/*submit*/ ctx[5]) {
+				if (if_block1) {
+					if_block1.p(ctx, dirty);
+				} else {
+					if_block1 = create_if_block(ctx);
+					if_block1.c();
+					if_block1.m(div9, null);
+				}
+			} else if (if_block1) {
+				if_block1.d(1);
+				if_block1 = null;
 			}
 
 			const aside_changes = {};
@@ -523,13 +654,16 @@ function create_fragment(ctx) {
 		},
 		d(detaching) {
 			if (detaching) detach(section);
-			if_block.d();
+			if_block0.d();
+			if (if_block1) if_block1.d();
 			destroy_component(aside);
 			mounted = false;
 			run_all(dispose);
 		}
 	};
 }
+
+let reqUrl = "/api/mail";
 
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
@@ -538,67 +672,88 @@ function instance($$self, $$props, $$invalidate) {
 		{ tagsPosts } = $$props;
 
 	let { title } = $$props, { articleBody } = $$props;
+	let dispatch = createEventDispatcher();
+	let tname = title.split(" ");
 	let socialLinks = idxContent.socialLinks;
-	let addrFrom = "";
-	let nameFrst = "";
-	let nameLast = "";
-	let subject = idxContent.name;
-	let msgBody = "";
+	let subject = idxContent.name + ": Contact Form";
+	let submit;
 
-	// TODO: complete serverless function for sending contact request
-	function contactSend(addrFrom, nameFrst, nameLast, msgBody) {
-		const msgData = JSON.stringify({
-			addr: addrFrom,
-			frst: nameFrst,
-			last: nameLast,
-			subj: subject,
-			body: msgBody
-		});
+	// What: Setup the default form data object
+	// Why:  Define JSON payload for sending emails
+	// How:  Initiate attributes with empty strings and then bind values
+	//       from form submission to keys using svelte
+	let formData = {
+		email: "",
+		firstname: "",
+		lastname: "",
+		subject: "",
+		ip: "",
+		message: ""
+	};
 
-		// console.log(msgData);
-		// Setup XML connection request
-		const API_URL = "https://";
+	// What: Posts the form submissions to our api
+	// Why:  Deploy emails using WebWorkers instead of a server
+	// TODO:
+	//  * develop API route for email sends
+	//  * setup Cloudflare worker to fetch from API route
+	//  * complete serverless function for sending contact request
+	//  * develop Sendgrid API for deploying emails from Webworker
+	async function handleOnSubmit() {
+		// dispatch("eventPostMail", { text: "Pass mail body to API" });
+		$$invalidate(6, formData.subject = subject, formData);
 
-		const xhr = new XMLHttpRequest();
-		xhr.withCredentials = true;
+		// Use fetch method to GET ip data for request options
+		// await fetch("https://jsonip.com", { mode: "cors" })
+		//   .then((resp) => resp.json())
+		//   .then((data) => {
+		//     formData.ip = data.ip;
+		//   });
+		// Structure the request options
+		const reqOptions = {
+			method: "POST",
+			headers: { "Content-type": "application/json" },
+			body: JSON.stringify(formData)
+		};
 
-		xhr.addEventListener("readystatechange", function () {
-			if (this.readyState === this.DONE) {
-				console.log(this.responseText);
+		// Use fetch method to PUT the form data on our API route
+		$$invalidate(5, submit = await fetch(reqUrl, reqOptions).then(resp => {
+			// Parse Response instance data into a useable
+			// format using ".json()"
+			// resp.json();
+			console.log("resp: ", resp);
+		}).then(data => {
+			// Log the parsed version of the JSON returned
+			// from the endpoint.
+			if (data) {
+				console.log("Success: ", data); // { "userId": 1, "id": 1, "title": "...", "body": "..." }
 			}
-		});
-
-		// Send message
-		xhr.open("POST", API_URL + "mail/send");
-
-		xhr.setRequestHeader("content-type", "application/json");
-		xhr.send(msgData);
+		}).catch(error => {
+			console.error("Error:", error);
+		}));
 	}
 
-	let tname = title.split(" ");
-
 	function input0_input_handler() {
-		nameFrst = this.value;
-		$$invalidate(6, nameFrst);
+		formData.firstname = this.value;
+		$$invalidate(6, formData);
 	}
 
 	function input1_input_handler() {
-		nameLast = this.value;
-		$$invalidate(7, nameLast);
+		formData.lastname = this.value;
+		$$invalidate(6, formData);
 	}
 
 	function input2_input_handler() {
-		addrFrom = this.value;
-		$$invalidate(5, addrFrom);
+		formData.email = this.value;
+		$$invalidate(6, formData);
 	}
 
 	function textarea_input_handler() {
-		msgBody = this.value;
-		$$invalidate(8, msgBody);
+		formData.message = this.value;
+		$$invalidate(6, formData);
 	}
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(12, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
@@ -612,13 +767,11 @@ function instance($$self, $$props, $$invalidate) {
 		tagsPosts,
 		title,
 		articleBody,
-		addrFrom,
-		nameFrst,
-		nameLast,
-		msgBody,
-		socialLinks,
-		contactSend,
+		submit,
+		formData,
 		tname,
+		socialLinks,
+		handleOnSubmit,
 		idxContent,
 		input0_input_handler,
 		input1_input_handler,
@@ -632,7 +785,7 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 12,
+			idxContent: 10,
 			allPosts: 0,
 			catgPosts: 1,
 			tagsPosts: 2,

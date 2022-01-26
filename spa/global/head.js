@@ -70,12 +70,12 @@ function create_key_block(ctx) {
 	};
 }
 
-// (34:2) {#if enableContact}
+// (33:2) {#if enableContact}
 function create_if_block_2(ctx) {
 	return { c: noop, l: noop, m: noop, d: noop };
 }
 
-// (38:2) {#if idxContent.theme.codeHighlighting}
+// (37:2) {#if idxContent.theme.codeHighlighting}
 function create_if_block_1(ctx) {
 	let link;
 
@@ -101,7 +101,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (42:2) {#if idxContent.theme.mathTypesetting}
+// (41:2) {#if idxContent.theme.mathTypesetting}
 function create_if_block(ctx) {
 	let link;
 
@@ -317,7 +317,7 @@ function instance($$self, $$props, $$invalidate) {
 	let isPost;
 
 	// Set flag to enable contact serverless function
-	let enableContact = allPages.filter(key => key.fields.pageType === "Contact")[0].fields.enabled;
+	let enableContact = allPages.filter(key => key.path === "pages/contact")[0].fields.enabled;
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);

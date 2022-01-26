@@ -24,7 +24,7 @@ function create_if_block(ctx) {
 	let div;
 	let switch_instance;
 	let current;
-	var switch_value = /*getComponent*/ ctx[11]();
+	var switch_value = /*getComponent*/ ctx[12]();
 
 	function switch_props(ctx) {
 		return {
@@ -38,7 +38,8 @@ function create_if_block(ctx) {
 				splash: /*splash*/ ctx[7],
 				articleBody: /*articleBody*/ ctx[8],
 				catgPosts: /*catgPosts*/ ctx[9],
-				tagsPosts: /*tagsPosts*/ ctx[10]
+				tagsPosts: /*tagsPosts*/ ctx[10],
+				env: /*env*/ ctx[11]
 			}
 		};
 	}
@@ -84,8 +85,9 @@ function create_if_block(ctx) {
 			if (dirty & /*articleBody*/ 256) switch_instance_changes.articleBody = /*articleBody*/ ctx[8];
 			if (dirty & /*catgPosts*/ 512) switch_instance_changes.catgPosts = /*catgPosts*/ ctx[9];
 			if (dirty & /*tagsPosts*/ 1024) switch_instance_changes.tagsPosts = /*tagsPosts*/ ctx[10];
+			if (dirty & /*env*/ 2048) switch_instance_changes.env = /*env*/ ctx[11];
 
-			if (switch_value !== (switch_value = /*getComponent*/ ctx[11]())) {
+			if (switch_value !== (switch_value = /*getComponent*/ ctx[12]())) {
 				if (switch_instance) {
 					group_outros();
 					const old_component = switch_instance;
@@ -189,7 +191,6 @@ function instance($$self, $$props, $$invalidate) {
 		{ allLayouts } = $$props,
 		{ allPosts } = $$props,
 		{ content } = $$props,
-		{ pageType } = $$props,
 		{ enabled } = $$props,
 		{ title } = $$props,
 		{ image } = $$props,
@@ -197,11 +198,12 @@ function instance($$self, $$props, $$invalidate) {
 		{ splash } = $$props,
 		{ articleBody } = $$props,
 		{ catgPosts } = $$props,
-		{ tagsPosts } = $$props;
+		{ tagsPosts } = $$props,
+		{ env } = $$props;
 
 	const getComponent = function () {
 		try {
-			return allLayouts["layouts_components_page_" + pageType.toLowerCase() + "_svelte"];
+			return allLayouts["layouts_components_page_" + content.path.split("/")[1] + "_svelte"];
 		} catch(e) {
 			return false;
 		}
@@ -209,10 +211,9 @@ function instance($$self, $$props, $$invalidate) {
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);
-		if ("allLayouts" in $$props) $$invalidate(12, allLayouts = $$props.allLayouts);
+		if ("allLayouts" in $$props) $$invalidate(13, allLayouts = $$props.allLayouts);
 		if ("allPosts" in $$props) $$invalidate(1, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(2, content = $$props.content);
-		if ("pageType" in $$props) $$invalidate(13, pageType = $$props.pageType);
 		if ("enabled" in $$props) $$invalidate(3, enabled = $$props.enabled);
 		if ("title" in $$props) $$invalidate(4, title = $$props.title);
 		if ("image" in $$props) $$invalidate(5, image = $$props.image);
@@ -221,6 +222,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ("articleBody" in $$props) $$invalidate(8, articleBody = $$props.articleBody);
 		if ("catgPosts" in $$props) $$invalidate(9, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(10, tagsPosts = $$props.tagsPosts);
+		if ("env" in $$props) $$invalidate(11, env = $$props.env);
 	};
 
 	return [
@@ -235,9 +237,9 @@ function instance($$self, $$props, $$invalidate) {
 		articleBody,
 		catgPosts,
 		tagsPosts,
+		env,
 		getComponent,
-		allLayouts,
-		pageType
+		allLayouts
 	];
 }
 
@@ -247,10 +249,9 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 0,
-			allLayouts: 12,
+			allLayouts: 13,
 			allPosts: 1,
 			content: 2,
-			pageType: 13,
 			enabled: 3,
 			title: 4,
 			image: 5,
@@ -258,7 +259,8 @@ class Component extends SvelteComponent {
 			splash: 7,
 			articleBody: 8,
 			catgPosts: 9,
-			tagsPosts: 10
+			tagsPosts: 10,
+			env: 11
 		});
 	}
 }
