@@ -1,5 +1,9 @@
 <script context="module">
-  export function get_description(articleBody, desc_length) {
+    // What: Summary of post set as description
+    // Why:  Description to show on cards, and SEO sits that describe
+    //       what the post is about
+    // How:  Select the first paragraph in a post up to specified length
+    export function get_description(articleBody, desc_length) {
     let desc_start = articleBody.indexOf("<p>");
     let desc_end = desc_start + desc_length;
     let desc =
