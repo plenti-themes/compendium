@@ -1,6 +1,5 @@
 {
-	"title": "Projects Page",
-	"pageType": "Projects",
+	"title": "Projects",
 	"enabled": true,
 	"menu": true
 }

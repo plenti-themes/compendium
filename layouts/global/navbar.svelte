@@ -112,7 +112,7 @@
               <a class="block md:inline-flex px-2 py-1" href={page.path}
                 ><span
                   class="navmenu{content.path == page.path ? ' active' : ''}"
-                  >{page.fields.pageType}</span
+                  >{page.fields.title.split(" ")[0]}</span
                 ></a
               >
             {/if}

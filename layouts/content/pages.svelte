@@ -3,7 +3,6 @@
     allLayouts,
     allPosts,
     content,
-    pageType,
     enabled,
     title,
     image,
@@ -11,12 +10,13 @@
     splash,
     articleBody,
     catgPosts,
-    tagsPosts;
+    tagsPosts,
+    env;
 
   const getComponent = function () {
     try {
       return allLayouts[
-        "layouts_components_page_" + pageType.toLowerCase() + "_svelte"
+        "layouts_components_page_" + content.path.split("/")[1] + "_svelte"
       ];
     } catch (e) {
       return false;
@@ -38,6 +38,7 @@
       {articleBody}
       {catgPosts}
       {tagsPosts}
+      {env}
     />
   </div>
 {/if}

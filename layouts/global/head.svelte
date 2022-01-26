@@ -10,9 +10,8 @@
   $: isPost = content.type === "posts" ? true : false;
 
   // Set flag to enable contact serverless function
-  let enableContact = allPages.filter(
-    (key) => key.fields.pageType === "Contact"
-  )[0].fields.enabled;
+  let enableContact = allPages.filter((key) => key.path === "pages/contact")[0]
+    .fields.enabled;
 </script>
 
 <head>
