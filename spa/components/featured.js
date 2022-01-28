@@ -329,19 +329,19 @@ function create_each_block(ctx) {
 			attr(div0, "class", "w-full");
 			attr(div1, "class", "col-lg-2");
 			attr(a, "href", a_href_value = /*post*/ ctx[10].path);
-			attr(a, "class", " svelte-31wosj");
+			attr(a, "class", " svelte-1i1wq87");
 			attr(h2, "class", "w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl");
 			attr(i0, "class", "las la-user-astronaut text-lg md:text-xl lg:text-2xl relative");
 			attr(li, "class", "px-0 mt-0");
 
 			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24") + " svelte-31wosj");
+			: "mb-24") + " svelte-1i1wq87");
 
 			attr(div2, "class", "col-lg-8");
 			attr(div3, "class", "col-lg-2");
 			attr(div4, "id", "featureOverlayText");
-			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-31wosj");
+			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-1i1wq87");
 			attr(i1, "class", "");
 			attr(i2, "class", "accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button0, "class", "absolute m-2 left-2");
@@ -426,7 +426,7 @@ function create_each_block(ctx) {
 
 			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24") + " svelte-31wosj")) {
+			: "mb-24") + " svelte-1i1wq87")) {
 				attr(ul, "class", ul_class_value);
 			}
 

@@ -147,7 +147,7 @@ const allContent = [{
 "filename": "post-01.json",
 "fields": {
   "title": "Lorem ipsum dolor sit amet",
-  "project": "Lorem One",
+  "postsGroup": "Lorem One",
   "image": {
     "src": "nick-morrison-FHnnjk1Yj7Y-unsplash.jpg",
     "alt": "Post Image",
@@ -170,7 +170,7 @@ const allContent = [{
 "filename": "post-02.json",
 "fields": {
   "title": "Nunc non diam et nisi blandit",
-  "project": "Lorem One",
+  "postsGroup": "Lorem One",
   "image": {
     "src": "scott-graham-OQMZwNd3ThU-unsplash.jpg",
     "alt": "Post Image",
@@ -196,7 +196,7 @@ const allContent = [{
 "filename": "post-03.json",
 "fields": {
   "title": "Curabitur erat velit, vehicula ac arcu",
-  "project": "",
+  "postsGroup": "",
   "image": {
     "src": "todd-diemer-p2yQQP-c72k-unsplash.jpg",
     "alt": "Post Image",
@@ -222,7 +222,7 @@ const allContent = [{
 "filename": "post-04.json",
 "fields": {
   "title": "Nam ullamcorper, mi in mattis accumsan",
-  "project": "",
+  "postsGroup": "",
   "image": {
     "src": "camille-couvez-GnnVuPzQnxQ-unsplash.jpg",
     "alt": "Post Image",
@@ -248,7 +248,7 @@ const allContent = [{
 "filename": "post-05.json",
 "fields": {
   "title": "Curabitur vestibulum laoreet velit eget",
-  "project": "Lorem Two",
+  "postsGroup": "Lorem Two",
   "image": {
     "src": "anastasiya-yilmaz-oBO_UCnkyXA-unsplash.jpg",
     "alt": "Post Image",
@@ -274,7 +274,7 @@ const allContent = [{
 "filename": "post-06.json",
 "fields": {
   "title": "Curabitur nec ipsum pretium aliquam",
-  "project": "Lorem Two",
+  "postsGroup": "Lorem Two",
   "image": {
     "src": "john-schnobrich-2FPjlAyMQTA-unsplash.jpg",
     "alt": "Post Image",
@@ -300,7 +300,7 @@ const allContent = [{
 "filename": "post-07.json",
 "fields": {
   "title": "Donec odio risus, mattis a ligula",
-  "project": "Lorem Two",
+  "postsGroup": "Lorem Two",
   "image": {
     "src": "antonio-rull-tMH2UgXW3c0-unsplash.jpg",
     "alt": "Post Image",
@@ -326,7 +326,7 @@ const allContent = [{
 "filename": "post-08.json",
 "fields": {
   "title": "Curabitur vestibulum laoreet velit eget",
-  "project": "Lorem Three",
+  "postsGroup": "Lorem Three",
   "image": {
     "src": "anastasiya-yilmaz-oBO_UCnkyXA-unsplash.jpg",
     "alt": "Post Image",
@@ -352,7 +352,7 @@ const allContent = [{
 "filename": "post-09.json",
 "fields": {
   "title": "Curabitur nec ipsum pretium aliquam",
-  "project": "Lorem Three",
+  "postsGroup": "Lorem Three",
   "image": {
     "src": "john-schnobrich-2FPjlAyMQTA-unsplash.jpg",
     "alt": "Post Image",
@@ -378,7 +378,7 @@ const allContent = [{
 "filename": "post-10.json",
 "fields": {
   "title": "Donec odio risus, mattis a ligula",
-  "project": "Lorem Four",
+  "postsGroup": "Lorem Four",
   "image": {
     "src": "antonio-rull-tMH2UgXW3c0-unsplash.jpg",
     "alt": "Post Image",

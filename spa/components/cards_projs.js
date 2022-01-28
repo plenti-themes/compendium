@@ -573,7 +573,7 @@ function create_fragment(ctx) {
 	};
 }
 
-let projTLDR = true;
+let projTLDR = false;
 
 function instance($$self, $$props, $$invalidate) {
 	let { projList } = $$props,
