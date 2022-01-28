@@ -3,7 +3,7 @@
   export let projList, projRangeHigh, projRangeLow, catgPosts, tagsPosts;
   export let complete = true;
   export let skipbody = true;
-  let projTLDR = true;
+  let projTLDR = false;
 </script>
 
 {#each projList as proj, i}

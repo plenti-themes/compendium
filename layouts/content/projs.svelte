@@ -7,16 +7,16 @@
   export let idxContent, allPosts, content, catgPosts, tagsPosts;
 
   $: currentPage = content.pager;
-  let allProjs = allPosts.filter((content) => content.fields?.project != "");
   let socialLinks = idxContent.socialLinks;
   let projsPerPage = idxContent.theme.projsPerPage;
   let projsSort = idxContent.theme.projsSort;
-  let uniqProjs = [...new Set(allProjs.map((key) => key.fields.project))];
+  let allProjs = allPosts.filter((key) => key.fields?.postsGroup != "");
+  let uniqProjs = [...new Set(allProjs.map((key) => key.fields?.postsGroup))];
   let projList = [];
 
   // Create a grouped object array (projList) of projects
   uniqProjs.forEach((proj) => {
-    let group = allProjs.filter((key) => key.fields.project == proj);
+    let group = allProjs.filter((key) => key.fields.postsGroup == proj);
 
     // What: sort the posts within the projects
     if (projsSort == "Date") {
