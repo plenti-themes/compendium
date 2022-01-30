@@ -1,7 +1,14 @@
 <script>
-  import { createEventDispatcher } from "svelte";
   // Aside component for search, categories, and tags
   import Aside from "./aside.svelte";
+
+  // Logic to return geolocation data for context
+  import { geo } from "../scripts/geoCode.svelte";
+
+  // Senggrid function and url, which is used by the form
+  // and the function.
+  import { sendEmail } from "../scripts/sendGrid.svelte";
+  const reqUrl = "https://api.sendgrid.com/v3/mail/send";
 
   // Variables passed in from "html.svelte"
   export let idxContent, allPosts, catgPosts, tagsPosts;
@@ -9,11 +16,8 @@
   // Variables passed in from "index.svelte"
   export let title, articleBody;
 
-  let dispatch = createEventDispatcher();
-  let tname = title.split(" ");
-  let socialLinks = idxContent.socialLinks;
-  let subject = idxContent.name + ": Contact Form";
-  let reqUrl = "/api/mail";
+  const tname = title.split(" ");
+  const socialLinks = idxContent.socialLinks;
   let submit;
 
   // What: Setup the default form data object
@@ -29,49 +33,14 @@
     message: "",
   };
 
-  // What: Posts the form submissions to our api
-  // Why:  Deploy emails using WebWorkers instead of a server
-  // TODO:
-  //  * develop API route for email sends
-  //  * setup Cloudflare worker to fetch from API route
-  //  * complete serverless function for sending contact request
-  //  * develop Sendgrid API for deploying emails from Webworker
   async function handleOnSubmit() {
-    // dispatch("eventPostMail", { text: "Pass mail body to API" });
-    formData.subject = subject;
+    formData.subject = "Contact Form: " + idxContent.name;
+    formData.ip = await geo();
 
-    // Use fetch method to GET ip data for request options
-    // await fetch("https://jsonip.com", { mode: "cors" })
-    //   .then((resp) => resp.json())
-    //   .then((data) => {
-    //     formData.ip = data.ip;
-    //   });
-
-    // Structure the request options
-    const reqOptions = {
-      method: "POST",
-      headers: { "Content-type": "application/json" },
-      body: JSON.stringify(formData),
-    };
-
-    // Use fetch method to PUT the form data on our API route
-    submit = await fetch(reqUrl, reqOptions)
-      .then((resp) => {
-        // Parse Response instance data into a useable
-        // format using ".json()"
-        // resp.json();
-        console.log("resp: ", resp);
-      })
-      .then((data) => {
-        // Log the parsed version of the JSON returned
-        // from the endpoint.
-        if (data) {
-          console.log("Success: ", data); // { "userId": 1, "id": 1, "title": "...", "body": "..." }
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+    // console.log(formData);
+    submit = sendEmail(reqUrl, formData);
+    // console.log(submit);
+    return submit;
   }
 </script>
 
@@ -176,7 +145,7 @@
                     {#await submit}
                       <p>Sending...</p>
                     {:then resp}
-                      <!-- <pre>🎉 Done! Response: WIP}</pre> -->
+                      <pre class="footnote">🎉 Done - Response: {resp}</pre>
                     {/await}
                   {/if}
                 </div>
