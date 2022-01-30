@@ -28,13 +28,18 @@ import {
 	space,
 	text,
 	transition_in,
-	transition_out
+	transition_out,
+	update_await_block_branch
 } from '../web_modules/svelte/internal/index.mjs';
 
-import { createEventDispatcher } from '../web_modules/svelte/index.mjs';
-
-// Aside component for search, categories, and tags
 import Aside from './aside.js';
+
+// Logic to return geolocation data for context
+import { geo } from '../scripts/geoCode.js';
+
+// Senggrid function and url, which is used by the form
+// and the function.
+import { sendEmail } from '../scripts/sendGrid.js';
 
 function create_else_block(ctx) {
 	let t;
@@ -58,7 +63,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (86:14) {#if tname.length > 1}
+// (55:14) {#if tname.length > 1}
 function create_if_block_1(ctx) {
 	let span0;
 	let t0_value = /*tname*/ ctx[7][0].toUpperCase() + "";
@@ -108,7 +113,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (175:18) {#if submit}
+// (144:18) {#if submit}
 function create_if_block(ctx) {
 	let await_block_anchor;
 	let promise;
@@ -121,7 +126,7 @@ function create_if_block(ctx) {
 		pending: create_pending_block,
 		then: create_then_block,
 		catch: create_catch_block,
-		value: 17
+		value: 15
 	};
 
 	handle_promise(promise = /*submit*/ ctx[5], info);
@@ -144,7 +149,12 @@ function create_if_block(ctx) {
 		p(new_ctx, dirty) {
 			ctx = new_ctx;
 			info.ctx = ctx;
-			dirty & /*submit*/ 32 && promise !== (promise = /*submit*/ ctx[5]) && handle_promise(promise, info);
+
+			if (dirty & /*submit*/ 32 && promise !== (promise = /*submit*/ ctx[5]) && handle_promise(promise, info)) {
+				
+			} else {
+				update_await_block_branch(info, ctx, dirty);
+			}
 		},
 		d(detaching) {
 			if (detaching) detach(await_block_anchor);
@@ -155,17 +165,57 @@ function create_if_block(ctx) {
 	};
 }
 
-// (1:0) <script>   import { createEventDispatcher }
+// (1:0) <script>   // Aside component for search, categories, and tags   import Aside from './aside.js';    // Logic to return geolocation data for context   import { geo }
 function create_catch_block(ctx) {
-	return { c: noop, l: noop, m: noop, d: noop };
+	return {
+		c: noop,
+		l: noop,
+		m: noop,
+		p: noop,
+		d: noop
+	};
 }
 
-// (178:20) {:then resp}
+// (147:20) {:then resp}
 function create_then_block(ctx) {
-	return { c: noop, l: noop, m: noop, d: noop };
+	let pre;
+	let t0;
+	let t1_value = /*resp*/ ctx[15] + "";
+	let t1;
+
+	return {
+		c() {
+			pre = element("pre");
+			t0 = text("🎉 Done - Response: ");
+			t1 = text(t1_value);
+			this.h();
+		},
+		l(nodes) {
+			pre = claim_element(nodes, "PRE", { class: true });
+			var pre_nodes = children(pre);
+			t0 = claim_text(pre_nodes, "🎉 Done - Response: ");
+			t1 = claim_text(pre_nodes, t1_value);
+			pre_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(pre, "class", "footnote");
+		},
+		m(target, anchor) {
+			insert(target, pre, anchor);
+			append(pre, t0);
+			append(pre, t1);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*submit*/ 32 && t1_value !== (t1_value = /*resp*/ ctx[15] + "")) set_data(t1, t1_value);
+		},
+		d(detaching) {
+			if (detaching) detach(pre);
+		}
+	};
 }
 
-// (176:35)                        <p>Sending...</p>                     {:then resp}
+// (145:35)                        <p>Sending...</p>                     {:then resp}
 function create_pending_block(ctx) {
 	let p;
 	let t;
@@ -185,6 +235,7 @@ function create_pending_block(ctx) {
 			insert(target, p, anchor);
 			append(p, t);
 		},
+		p: noop,
 		d(detaching) {
 			if (detaching) detach(p);
 		}
@@ -663,7 +714,7 @@ function create_fragment(ctx) {
 	};
 }
 
-let reqUrl = "/api/mail";
+const reqUrl = "https://api.sendgrid.com/v3/mail/send";
 
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
@@ -672,10 +723,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ tagsPosts } = $$props;
 
 	let { title } = $$props, { articleBody } = $$props;
-	let dispatch = createEventDispatcher();
-	let tname = title.split(" ");
-	let socialLinks = idxContent.socialLinks;
-	let subject = idxContent.name + ": Contact Form";
+	const tname = title.split(" ");
+	const socialLinks = idxContent.socialLinks;
 	let submit;
 
 	// What: Setup the default form data object
@@ -691,45 +740,15 @@ function instance($$self, $$props, $$invalidate) {
 		message: ""
 	};
 
-	// What: Posts the form submissions to our api
-	// Why:  Deploy emails using WebWorkers instead of a server
-	// TODO:
-	//  * develop API route for email sends
-	//  * setup Cloudflare worker to fetch from API route
-	//  * complete serverless function for sending contact request
-	//  * develop Sendgrid API for deploying emails from Webworker
 	async function handleOnSubmit() {
-		// dispatch("eventPostMail", { text: "Pass mail body to API" });
-		$$invalidate(6, formData.subject = subject, formData);
+		$$invalidate(6, formData.subject = "Contact Form: " + idxContent.name, formData);
+		$$invalidate(6, formData.ip = await geo(), formData);
 
-		// Use fetch method to GET ip data for request options
-		// await fetch("https://jsonip.com", { mode: "cors" })
-		//   .then((resp) => resp.json())
-		//   .then((data) => {
-		//     formData.ip = data.ip;
-		//   });
-		// Structure the request options
-		const reqOptions = {
-			method: "POST",
-			headers: { "Content-type": "application/json" },
-			body: JSON.stringify(formData)
-		};
+		// console.log(formData);
+		$$invalidate(5, submit = sendEmail(reqUrl, formData));
 
-		// Use fetch method to PUT the form data on our API route
-		$$invalidate(5, submit = await fetch(reqUrl, reqOptions).then(resp => {
-			// Parse Response instance data into a useable
-			// format using ".json()"
-			// resp.json();
-			console.log("resp: ", resp);
-		}).then(data => {
-			// Log the parsed version of the JSON returned
-			// from the endpoint.
-			if (data) {
-				console.log("Success: ", data); // { "userId": 1, "id": 1, "title": "...", "body": "..." }
-			}
-		}).catch(error => {
-			console.error("Error:", error);
-		}));
+		// console.log(submit);
+		return submit;
 	}
 
 	function input0_input_handler() {
