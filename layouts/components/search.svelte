@@ -22,8 +22,11 @@
       <!-- {#each allPosts as post} -->
       {#each allPosts as post, i}
         {#if post.fields.articleBody
-          .toLowerCase()
-          .includes(value.toLowerCase())}
+              .toLowerCase()
+              .includes(value.toLowerCase()) || 
+             post.fields.title
+              .toLowerCase()
+              .includes(value.toLowerCase())}
           <div class="flex items-center mb-5">
             <img
               class="inline-block object-cover rounded-full w-16 h-16"
