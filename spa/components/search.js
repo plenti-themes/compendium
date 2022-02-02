@@ -129,7 +129,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (24:8) {#if post.fields.articleBody           .toLowerCase()           .includes(value.toLowerCase())}
+// (24:8) {#if post.fields.articleBody               .toLowerCase()               .includes(value.toLowerCase()) ||               post.fields.title               .toLowerCase()               .includes(value.toLowerCase())}
 function create_if_block_1(ctx) {
 	let div1;
 	let img;
@@ -275,7 +275,7 @@ function create_if_block_1(ctx) {
 
 // (23:6) {#each allPosts as post, i}
 function create_each_block(ctx) {
-	let show_if = /*post*/ ctx[5].fields.articleBody.toLowerCase().includes(/*value*/ ctx[3].toLowerCase());
+	let show_if = /*post*/ ctx[5].fields.articleBody.toLowerCase().includes(/*value*/ ctx[3].toLowerCase()) || /*post*/ ctx[5].fields.title.toLowerCase().includes(/*value*/ ctx[3].toLowerCase());
 	let if_block_anchor;
 	let current;
 	let if_block = show_if && create_if_block_1(ctx);
@@ -295,7 +295,7 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPosts, value*/ 9) show_if = /*post*/ ctx[5].fields.articleBody.toLowerCase().includes(/*value*/ ctx[3].toLowerCase());
+			if (dirty & /*allPosts, value*/ 9) show_if = /*post*/ ctx[5].fields.articleBody.toLowerCase().includes(/*value*/ ctx[3].toLowerCase()) || /*post*/ ctx[5].fields.title.toLowerCase().includes(/*value*/ ctx[3].toLowerCase());
 
 			if (show_if) {
 				if (if_block) {

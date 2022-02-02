@@ -14,10 +14,12 @@ import {
 	destroy_each,
 	detach,
 	element,
+	empty,
 	group_outros,
 	init,
 	insert,
 	mount_component,
+	noop,
 	safe_not_equal,
 	set_data,
 	space,
@@ -34,7 +36,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (18:6) {#each Posts as post}
+// (19:8) {#each Posts as post}
 function create_each_block(ctx) {
 	let div1;
 	let img;
@@ -182,7 +184,8 @@ function create_each_block(ctx) {
 	};
 }
 
-function create_fragment(ctx) {
+// (11:0) {#key tag}
+function create_key_block(ctx) {
 	let div2;
 	let div1;
 	let div0;
@@ -273,7 +276,7 @@ function create_fragment(ctx) {
 
 			current = true;
 		},
-		p(ctx, [dirty]) {
+		p(ctx, dirty) {
 			if (!current || dirty & /*tag*/ 1) set_data(t2, /*tag*/ ctx[0]);
 
 			if (dirty & /*Posts, catgPosts, tagsPosts, complete, skipbody*/ 62) {
@@ -324,6 +327,55 @@ function create_fragment(ctx) {
 		d(detaching) {
 			if (detaching) detach(div2);
 			destroy_each(each_blocks, detaching);
+		}
+	};
+}
+
+function create_fragment(ctx) {
+	let previous_key = /*tag*/ ctx[0];
+	let key_block_anchor;
+	let current;
+	let key_block = create_key_block(ctx);
+
+	return {
+		c() {
+			key_block.c();
+			key_block_anchor = empty();
+		},
+		l(nodes) {
+			key_block.l(nodes);
+			key_block_anchor = empty();
+		},
+		m(target, anchor) {
+			key_block.m(target, anchor);
+			insert(target, key_block_anchor, anchor);
+			current = true;
+		},
+		p(ctx, [dirty]) {
+			if (dirty & /*tag*/ 1 && safe_not_equal(previous_key, previous_key = /*tag*/ ctx[0])) {
+				group_outros();
+				transition_out(key_block, 1, 1, noop);
+				check_outros();
+				key_block = create_key_block(ctx);
+				key_block.c();
+				transition_in(key_block);
+				key_block.m(key_block_anchor.parentNode, key_block_anchor);
+			} else {
+				key_block.p(ctx, dirty);
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(key_block);
+			current = true;
+		},
+		o(local) {
+			transition_out(key_block);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(key_block_anchor);
+			key_block.d(detaching);
 		}
 	};
 }
