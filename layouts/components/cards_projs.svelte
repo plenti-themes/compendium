@@ -12,7 +12,7 @@
     continue: false,
   };
 
-  let projTLDR = true;
+  let projTLDR = false;
 </script>
 
 {#each projList as proj, i}
