@@ -87,7 +87,7 @@ function create_if_block_9(ctx) {
 			this.h();
 		},
 		h() {
-			attr(i, "class", i_class_value = "las la-user-astronaut" + (/*pm*/ ctx[2].feature ? " feature" : " standard") + " svelte-117td8b");
+			attr(i, "class", i_class_value = "las la-user-astronaut" + (/*pm*/ ctx[2].feature ? " feature" : " standard") + " svelte-dtisx6");
 			attr(li0, "class", "mx-0 -mt-1 text-meta inline-flex");
 			attr(a, "href", /*author_url*/ ctx[4]);
 			attr(li1, "class", "mr-2 my-0 inline-flex");
@@ -101,7 +101,7 @@ function create_if_block_9(ctx) {
 			append(a, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*pm*/ 4 && i_class_value !== (i_class_value = "las la-user-astronaut" + (/*pm*/ ctx[2].feature ? " feature" : " standard") + " svelte-117td8b")) {
+			if (dirty & /*pm*/ 4 && i_class_value !== (i_class_value = "las la-user-astronaut" + (/*pm*/ ctx[2].feature ? " feature" : " standard") + " svelte-dtisx6")) {
 				attr(i, "class", i_class_value);
 			}
 		},
