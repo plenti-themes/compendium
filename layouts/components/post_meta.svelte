@@ -82,13 +82,6 @@
     color: rgba(255, 255, 255, 0.9);
     margin-top: 3px;
   }
-  .feature a {
-    font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
-  }
-  .feature a:hover {
-    color: var(--accent);
-  }
   @media (max-width: 767px) {
     .feature {
       font-size: 1.125rem;
