@@ -9,6 +9,7 @@
     date_created: false,
     description: false,
     catg_tags: false,
+    continue: false,
   };
 
   let value = "";

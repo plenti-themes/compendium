@@ -17,6 +17,7 @@
     date_created: true,
     description: false,
     catg_tags: true,
+    continue: false,
   };
 
   let socialLinks = idxContent.socialLinks;

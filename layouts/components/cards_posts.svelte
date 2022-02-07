@@ -9,6 +9,7 @@
     date_created: true,
     description: true,
     catg_tags: true,
+    continue: true,
   };
 
   export let allPosts, postRangeHigh, postRangeLow, catgPosts, tagsPosts;

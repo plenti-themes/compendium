@@ -11,7 +11,7 @@
   let catgs = post.catgs ?? post.fields.categories;
   let cardBody = pm.description
     ? get_description(post.fields.articleBody, 170)
-    : "skip";
+    : "";
 </script>
 
 {#if pm.author}
@@ -59,13 +59,14 @@
     {/each}
   </li>
 {/if}
-{#if cardBody !== "skip"}
+{#if pm.description}
   <p class="text-base mb-8">
     {@html cardBody}
   </p>
+{/if}
+{#if pm.continue}
   <article class="border-0">
     <div class="mb-4">
-      <p class="mb-6" />
       <a href={path} class="btn-outline hover:white">Continue Reading</a>
     </div>
   </article>
