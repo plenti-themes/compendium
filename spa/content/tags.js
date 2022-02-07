@@ -53,7 +53,8 @@ function create_fragment(ctx) {
 				allPosts: /*allPosts*/ ctx[0],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				socialLinks: /*socialLinks*/ ctx[4]
+				socialLinks: /*socialLinks*/ ctx[4],
+				tag: /*tag*/ ctx[3]
 			}
 		});
 
@@ -146,6 +147,7 @@ function create_fragment(ctx) {
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
 			if (dirty & /*catgPosts*/ 2) aside_changes.catgPosts = /*catgPosts*/ ctx[1];
 			if (dirty & /*tagsPosts*/ 4) aside_changes.tagsPosts = /*tagsPosts*/ ctx[2];
+			if (dirty & /*tag*/ 8) aside_changes.tag = /*tag*/ ctx[3];
 			aside.$set(aside_changes);
 		},
 		i(local) {
