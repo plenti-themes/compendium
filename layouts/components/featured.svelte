@@ -94,8 +94,8 @@
           </div>
           <div class="col-lg-2" />
         </div>
-        <div class="citation absolute">
-          <span class="text-meta"
+        <div class="citation text-meta absolute">
+          <span
             >{@html post.fields.image.citation.replaceAll(
               "<a ",
               "<a target='blank' rel='noopener'"
@@ -161,6 +161,7 @@
     bottom: 15%;
   }
   .citation {
+    color: rgba(255, 255, 255, 0.9);
     bottom: 3%;
     left: 5%;
   }

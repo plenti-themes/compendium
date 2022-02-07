@@ -78,25 +78,33 @@
     line-height: 1.5rem;
     margin-top: 3px;
   }
+  .feature {
+    color: rgba(255, 255, 255, 0.9);
+    margin-top: 3px;
+  }
+  .feature a {
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.9);
+  }
+  .feature a:hover {
+    color: var(--accent);
+  }
   @media (max-width: 767px) {
     .feature {
       font-size: 1.125rem;
       line-height: 1.75rem;
-      margin-top: 3px;
     }
   }
   @media (min-width: 768px) {
     .feature {
       font-size: 1.25rem;
       line-height: 1.75rem;
-      margin-top: 3px;
     }
   }
   @media (min-width: 1024px) {
     .feature {
       font-size: 1.5rem;
       line-height: 2rem;
-      margin-top: 3px;
     }
   }
 </style>
