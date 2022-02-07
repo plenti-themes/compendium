@@ -31,7 +31,7 @@
         <!-- Set the aside as the last column in the row             -->
         <!-- ------------------------------------------------------- -->
         <div class="w-full md:w-3/12 mb-lg-0 px-0">
-          <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} />
+          <Aside {allPosts} {catgPosts} {tagsPosts} {socialLinks} {catg} />
         </div>
       </div>
     </div>
