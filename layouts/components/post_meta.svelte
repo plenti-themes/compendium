@@ -1,6 +1,6 @@
 <script>
   import { get_description } from "../scripts/get_description.svelte";
-  export let post, catgPosts, tagsPosts, complete, skipbody;
+  export let post, catgPosts, tagsPosts, pm;
 
   let path = post.path;
   let author_url = post.author_url ?? post.fields.author.url;
@@ -9,23 +9,30 @@
   let dateModified = post.dateModified ?? post.fields.dateModified;
   let tags = post.tags ?? post.fields.tags;
   let catgs = post.catgs ?? post.fields.categories;
-  let cardBody = skipbody
-    ? "skip"
-    : get_description(post.fields.articleBody, 170);
+  let cardBody = pm.description
+    ? get_description(post.fields.articleBody, 170)
+    : "skip";
 </script>
 
-<li class="mr-2 my-0 inline-flex">
-  <a href={author_url}>{author_name}</a>
-</li>
-{#if complete}
+{#if pm.author}
+  <li class="mx-0 -mt-1 text-meta inline-flex">
+    <i class="las la-user-astronaut{pm.feature ? ' feature' : ' standard'}" />
+  </li>
+  <li class="mr-2 my-0 inline-flex">
+    <a href={author_url}>{author_name}</a>
+  </li>
+{/if}
+{#if pm.date_created}
   <li class="mr-2 my-0 inline-flex">
     Created: {dateCreated}
   </li>
 {/if}
-<li class="mr-2 my-0 inline-flex">
-  Updated: {dateModified}
-</li>
-{#if complete}
+{#if pm.date_modified}
+  <li class="mr-2 my-0 inline-flex">
+    Updated: {dateModified}
+  </li>
+{/if}
+{#if pm.catg_tags}
   <br />
   <li class="mr-2 my-0 inline-flex">
     Categories:
@@ -63,3 +70,32 @@
     </div>
   </article>
 {/if}
+
+<style>
+  .standard {
+    font-size: 1rem;
+    line-height: 1.5rem;
+    margin-top: 3px;
+  }
+  @media (max-width: 767px) {
+    .feature {
+      font-size: 1.125rem;
+      line-height: 1.75rem;
+      margin-top: 3px;
+    }
+  }
+  @media (min-width: 768px) {
+    .feature {
+      font-size: 1.25rem;
+      line-height: 1.75rem;
+      margin-top: 3px;
+    }
+  }
+  @media (min-width: 1024px) {
+    .feature {
+      font-size: 1.5rem;
+      line-height: 2rem;
+      margin-top: 3px;
+    }
+  }
+</style>

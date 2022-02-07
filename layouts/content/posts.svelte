@@ -9,8 +9,15 @@
   // Content field Values passed in via layout content {...content.fields}
   export let articleBody, title, image, author;
   export let dateCreated, dateModified, categories, tags;
-  export let complete = true;
-  export let skipbody = true;
+
+  // Post Meta configuration values
+  const pm = {
+    author: true,
+    date_modified: true,
+    date_created: true,
+    description: false,
+    catg_tags: true,
+  };
 
   let socialLinks = idxContent.socialLinks;
   let post = {
@@ -45,10 +52,7 @@
       <div class="w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10">
         <h1 class="header mb-2">{title}</h1>
         <ul class="text-meta flex flex-wrap">
-          <li class="mx-0 -mt-1 text-meta inline-flex">
-            <i class="las la-user-astronaut text-lg" />
-          </li>
-          <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
+          <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
         </ul>
         <p class="mt-6">
           {@html articleBody}

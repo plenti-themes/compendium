@@ -1,8 +1,16 @@
 <script>
   import PostMeta from "./post_meta.svelte";
   export let catg, catgPosts, tagsPosts;
-  export let complete = true;
-  export let skipbody = true;
+
+  // Post Meta configuration values
+  const pm = {
+    author: false,
+    date_modified: true,
+    date_created: true,
+    description: false,
+    catg_tags: true,
+  };
+
   let Posts;
 
   $: Posts = Object.values(
@@ -10,10 +18,10 @@
   );
 </script>
 
-{#key catg}
-  <div class="rounded-xl overflow-hidden shadow-md bg-secondary mb-6">
-    <div class="flex-none lg:flex">
-      <div class="mx-2 md:mx-6 my-1">
+<div class="rounded-xl overflow-hidden shadow-md bg-secondary mb-6">
+  <div class="flex-none lg:flex">
+    <div class="mx-2 md:mx-6 my-1">
+      {#key catg}
         <h2 class="header text-xl md:text-2xl lg:text-3xl my-5">
           <span class="accent">Category:</span>
           {catg}
@@ -30,21 +38,12 @@
                 <a href={post.path}>{post.title}</a>
               </h3>
               <ul class="text-meta flex flex-wrap">
-                <li class="mx-0 -mt-1 text-meta inline-flex">
-                  <i class="las la-user-astronaut text-lg" />
-                </li>
-                <PostMeta
-                  {post}
-                  {catgPosts}
-                  {tagsPosts}
-                  {complete}
-                  {skipbody}
-                />
+                <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
               </ul>
             </div>
           </div>
         {/each}
-      </div>
+      {/key}
     </div>
   </div>
-{/key}
+</div>

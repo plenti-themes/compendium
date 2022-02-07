@@ -1,10 +1,17 @@
 <script>
-  import { sortByDate } from '../scripts/sort_by_date.svelte';
+  import { sortByDate } from "../scripts/sort_by_date.svelte";
   import PostMeta from "./post_meta.svelte";
 
+  // Post Meta configuration values
+  const pm = {
+    author: false,
+    date_modified: true,
+    date_created: true,
+    description: true,
+    catg_tags: true,
+  };
+
   export let allPosts, postRangeHigh, postRangeLow, catgPosts, tagsPosts;
-  export let complete = true;
-  export let skipbody = false;
 </script>
 
 {#each sortByDate(allPosts, "modified") as post, i}
@@ -20,10 +27,7 @@
           <a href={post.path}>{post.fields.title}</a>
         </h3>
         <ul class="text-meta flex flex-wrap">
-          <li class="mx-0 -mt-1 text-meta inline-flex">
-            <i class="las la-user-astronaut text-lg" />
-          </li>
-          <PostMeta {post} {catgPosts} {tagsPosts} {complete} {skipbody} />
+          <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
         </ul>
       </div>
     </div>

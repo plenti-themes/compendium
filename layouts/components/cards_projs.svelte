@@ -1,9 +1,17 @@
 <script>
   import PostMeta from "./post_meta.svelte";
   export let projList, projRangeHigh, projRangeLow, catgPosts, tagsPosts;
-  export let complete = true;
-  export let skipbody = true;
-  let projTLDR = false;
+
+  // Post Meta configuration values
+  const pm = {
+    author: false,
+    date_modified: true,
+    date_created: true,
+    description: false,
+    catg_tags: true,
+  };
+
+  let projTLDR = true;
 </script>
 
 {#each projList as proj, i}
@@ -40,16 +48,7 @@
                   <a href={post.path}>{post.fields.title}</a>
                 </h3>
                 <ul class="text-meta flex flex-wrap">
-                  <li class="mx-0 -mt-1 text-meta inline-flex">
-                    <i class="las la-user-astronaut text-lg" />
-                  </li>
-                  <PostMeta
-                    {post}
-                    {catgPosts}
-                    {tagsPosts}
-                    {complete}
-                    {skipbody}
-                  />
+                  <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
                 </ul>
               </div>
             </div>

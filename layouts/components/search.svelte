@@ -1,8 +1,15 @@
 <script>
   import PostMeta from "./post_meta.svelte";
   export let allPosts;
-  export let complete = false;
-  export let skipbody = true;
+
+  // Post Meta configuration values
+  const pm = {
+    author: false,
+    date_modified: true,
+    date_created: false,
+    description: false,
+    catg_tags: false,
+  };
 
   let value = "";
 </script>
@@ -22,11 +29,10 @@
       <!-- {#each allPosts as post} -->
       {#each allPosts as post, i}
         {#if post.fields.articleBody
-              .toLowerCase()
-              .includes(value.toLowerCase()) || 
-             post.fields.title
-              .toLowerCase()
-              .includes(value.toLowerCase())}
+          .toLowerCase()
+          .includes(value.toLowerCase()) || post.fields.title
+            .toLowerCase()
+            .includes(value.toLowerCase())}
           <div class="flex items-center mb-5">
             <img
               class="inline-block object-cover rounded-full w-16 h-16"
@@ -38,10 +44,7 @@
                 <a href={post.path}>{post.fields.title}</a>
               </h5>
               <ul class="text-meta flex flex-wrap">
-                <li class="mx-0 -mt-1 text-meta inline-flex">
-                  <i class="las la-user-astronaut text-lg" />
-                </li>
-                <PostMeta {post} {complete} {skipbody} />
+                <PostMeta {post} {pm} />
               </ul>
             </div>
           </div>
