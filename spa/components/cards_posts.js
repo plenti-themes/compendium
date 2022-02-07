@@ -32,12 +32,12 @@ import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[7] = list[i];
-	child_ctx[9] = i;
+	child_ctx[6] = list[i];
+	child_ctx[8] = i;
 	return child_ctx;
 }
 
-// (11:2) {#if i >= postRangeLow && i < postRangeHigh}
+// (19:2) {#if i >= postRangeLow && i < postRangeHigh}
 function create_if_block(ctx) {
 	let div1;
 	let img;
@@ -47,25 +47,21 @@ function create_if_block(ctx) {
 	let div0;
 	let h3;
 	let a;
-	let t1_value = /*post*/ ctx[7].fields.title + "";
+	let t1_value = /*post*/ ctx[6].fields.title + "";
 	let t1;
 	let a_href_value;
 	let t2;
 	let ul;
-	let li;
-	let i;
-	let t3;
 	let postmeta;
-	let t4;
+	let t3;
 	let current;
 
 	postmeta = new PostMeta({
 			props: {
-				post: /*post*/ ctx[7],
+				post: /*post*/ ctx[6],
 				catgPosts: /*catgPosts*/ ctx[3],
 				tagsPosts: /*tagsPosts*/ ctx[4],
-				complete: /*complete*/ ctx[5],
-				skipbody: /*skipbody*/ ctx[6]
+				pm: /*pm*/ ctx[5]
 			}
 		});
 
@@ -80,11 +76,8 @@ function create_if_block(ctx) {
 			t1 = text(t1_value);
 			t2 = space();
 			ul = element("ul");
-			li = element("li");
-			i = element("i");
-			t3 = space();
 			create_component(postmeta.$$.fragment);
-			t4 = space();
+			t3 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -104,27 +97,19 @@ function create_if_block(ctx) {
 			t2 = claim_space(div0_nodes);
 			ul = claim_element(div0_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
-			li = claim_element(ul_nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			i = claim_element(li_nodes, "I", { class: true });
-			children(i).forEach(detach);
-			li_nodes.forEach(detach);
-			t3 = claim_space(ul_nodes);
 			claim_component(postmeta.$$.fragment, ul_nodes);
 			ul_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
-			t4 = claim_space(div1_nodes);
+			t3 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(img, "class", "w-full md:h-52 lg:h-60 object-cover");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[7].fields.image.src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[7].fields.image.alt);
-			attr(a, "href", a_href_value = /*post*/ ctx[7].path);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[6].fields.image.src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[6].fields.image.alt);
+			attr(a, "href", a_href_value = /*post*/ ctx[6].path);
 			attr(h3, "class", "header mt-0 mb-1 text-xl md:text-2xl");
-			attr(i, "class", "las la-user-astronaut text-lg");
-			attr(li, "class", "mx-0 -mt-1 text-meta inline-flex");
 			attr(ul, "class", "text-meta flex flex-wrap");
 			attr(div0, "class", "px-5 py-4");
 			attr(div1, "class", "rounded-lg overflow-hidden shadow-md bg-secondary");
@@ -139,34 +124,29 @@ function create_if_block(ctx) {
 			append(a, t1);
 			append(div0, t2);
 			append(div0, ul);
-			append(ul, li);
-			append(li, i);
-			append(ul, t3);
 			mount_component(postmeta, ul, null);
-			append(div1, t4);
+			append(div1, t3);
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*allPosts*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[7].fields.image.src)) {
+			if (!current || dirty & /*allPosts*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[6].fields.image.src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*allPosts*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[7].fields.image.alt)) {
+			if (!current || dirty & /*allPosts*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[6].fields.image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*allPosts*/ 1) && t1_value !== (t1_value = /*post*/ ctx[7].fields.title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*allPosts*/ 1) && t1_value !== (t1_value = /*post*/ ctx[6].fields.title + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*allPosts*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[7].path)) {
+			if (!current || dirty & /*allPosts*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[6].path)) {
 				attr(a, "href", a_href_value);
 			}
 
 			const postmeta_changes = {};
-			if (dirty & /*allPosts*/ 1) postmeta_changes.post = /*post*/ ctx[7];
+			if (dirty & /*allPosts*/ 1) postmeta_changes.post = /*post*/ ctx[6];
 			if (dirty & /*catgPosts*/ 8) postmeta_changes.catgPosts = /*catgPosts*/ ctx[3];
 			if (dirty & /*tagsPosts*/ 16) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[4];
-			if (dirty & /*complete*/ 32) postmeta_changes.complete = /*complete*/ ctx[5];
-			if (dirty & /*skipbody*/ 64) postmeta_changes.skipbody = /*skipbody*/ ctx[6];
 			postmeta.$set(postmeta_changes);
 		},
 		i(local) {
@@ -185,11 +165,11 @@ function create_if_block(ctx) {
 	};
 }
 
-// (10:0) {#each sortByDate(allPosts, "modified") as post, i}
+// (18:0) {#each sortByDate(allPosts, "modified") as post, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 	let current;
-	let if_block = /*i*/ ctx[9] >= /*postRangeLow*/ ctx[2] && /*i*/ ctx[9] < /*postRangeHigh*/ ctx[1] && create_if_block(ctx);
+	let if_block = /*i*/ ctx[8] >= /*postRangeLow*/ ctx[2] && /*i*/ ctx[8] < /*postRangeHigh*/ ctx[1] && create_if_block(ctx);
 
 	return {
 		c() {
@@ -206,7 +186,7 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (/*i*/ ctx[9] >= /*postRangeLow*/ ctx[2] && /*i*/ ctx[9] < /*postRangeHigh*/ ctx[1]) {
+			if (/*i*/ ctx[8] >= /*postRangeLow*/ ctx[2] && /*i*/ ctx[8] < /*postRangeHigh*/ ctx[1]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
@@ -283,7 +263,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*sortByDate, allPosts, catgPosts, tagsPosts, complete, skipbody, postRangeLow, postRangeHigh*/ 127) {
+			if (dirty & /*sortByDate, allPosts, catgPosts, tagsPosts, pm, postRangeLow, postRangeHigh*/ 63) {
 				each_value = sortByDate(/*allPosts*/ ctx[0], "modified");
 				let i;
 
@@ -336,14 +316,20 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
+	const pm = {
+		author: false,
+		date_modified: true,
+		date_created: true,
+		description: true,
+		catg_tags: true,
+		continue: true
+	};
+
 	let { allPosts } = $$props,
 		{ postRangeHigh } = $$props,
 		{ postRangeLow } = $$props,
 		{ catgPosts } = $$props,
 		{ tagsPosts } = $$props;
-
-	let { complete = true } = $$props;
-	let { skipbody = false } = $$props;
 
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
@@ -351,19 +337,9 @@ function instance($$self, $$props, $$invalidate) {
 		if ("postRangeLow" in $$props) $$invalidate(2, postRangeLow = $$props.postRangeLow);
 		if ("catgPosts" in $$props) $$invalidate(3, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(4, tagsPosts = $$props.tagsPosts);
-		if ("complete" in $$props) $$invalidate(5, complete = $$props.complete);
-		if ("skipbody" in $$props) $$invalidate(6, skipbody = $$props.skipbody);
 	};
 
-	return [
-		allPosts,
-		postRangeHigh,
-		postRangeLow,
-		catgPosts,
-		tagsPosts,
-		complete,
-		skipbody
-	];
+	return [allPosts, postRangeHigh, postRangeLow, catgPosts, tagsPosts, pm];
 }
 
 class Component extends SvelteComponent {
@@ -375,9 +351,7 @@ class Component extends SvelteComponent {
 			postRangeHigh: 1,
 			postRangeLow: 2,
 			catgPosts: 3,
-			tagsPosts: 4,
-			complete: 5,
-			skipbody: 6
+			tagsPosts: 4
 		});
 	}
 }

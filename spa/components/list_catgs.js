@@ -32,11 +32,11 @@ import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[6] = list[i];
+	child_ctx[5] = list[i];
 	return child_ctx;
 }
 
-// (21:8) {#each Posts as post}
+// (30:8) {#each Posts as post}
 function create_each_block(ctx) {
 	let div1;
 	let img;
@@ -46,25 +46,21 @@ function create_each_block(ctx) {
 	let div0;
 	let h3;
 	let a;
-	let t1_value = /*post*/ ctx[6].title + "";
+	let t1_value = /*post*/ ctx[5].title + "";
 	let t1;
 	let a_href_value;
 	let t2;
 	let ul;
-	let li;
-	let i;
-	let t3;
 	let postmeta;
-	let t4;
+	let t3;
 	let current;
 
 	postmeta = new PostMeta({
 			props: {
-				post: /*post*/ ctx[6],
+				post: /*post*/ ctx[5],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				complete: /*complete*/ ctx[3],
-				skipbody: /*skipbody*/ ctx[4]
+				pm: /*pm*/ ctx[4]
 			}
 		});
 
@@ -79,11 +75,8 @@ function create_each_block(ctx) {
 			t1 = text(t1_value);
 			t2 = space();
 			ul = element("ul");
-			li = element("li");
-			i = element("i");
-			t3 = space();
 			create_component(postmeta.$$.fragment);
-			t4 = space();
+			t3 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -103,27 +96,19 @@ function create_each_block(ctx) {
 			t2 = claim_space(div0_nodes);
 			ul = claim_element(div0_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
-			li = claim_element(ul_nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			i = claim_element(li_nodes, "I", { class: true });
-			children(i).forEach(detach);
-			li_nodes.forEach(detach);
-			t3 = claim_space(ul_nodes);
 			claim_component(postmeta.$$.fragment, ul_nodes);
 			ul_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
-			t4 = claim_space(div1_nodes);
+			t3 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(img, "class", "inline-block object-cover rounded-md w-28 h-28");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[6].img_src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[6].img_alt);
-			attr(a, "href", a_href_value = /*post*/ ctx[6].path);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[5].img_src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[5].img_alt);
+			attr(a, "href", a_href_value = /*post*/ ctx[5].path);
 			attr(h3, "class", "header my-0 text-xl md:text-2xl");
-			attr(i, "class", "las la-user-astronaut text-lg");
-			attr(li, "class", "mx-0 -mt-1 text-meta inline-flex");
 			attr(ul, "class", "text-meta flex flex-wrap");
 			attr(div0, "class", "inline-block ml-2");
 			attr(div1, "class", "flex items-center my-4");
@@ -138,34 +123,29 @@ function create_each_block(ctx) {
 			append(a, t1);
 			append(div0, t2);
 			append(div0, ul);
-			append(ul, li);
-			append(li, i);
-			append(ul, t3);
 			mount_component(postmeta, ul, null);
-			append(div1, t4);
+			append(div1, t3);
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*Posts*/ 32 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[6].img_src)) {
+			if (!current || dirty & /*Posts*/ 8 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[5].img_src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*Posts*/ 32 && img_alt_value !== (img_alt_value = /*post*/ ctx[6].img_alt)) {
+			if (!current || dirty & /*Posts*/ 8 && img_alt_value !== (img_alt_value = /*post*/ ctx[5].img_alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*Posts*/ 32) && t1_value !== (t1_value = /*post*/ ctx[6].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*Posts*/ 8) && t1_value !== (t1_value = /*post*/ ctx[5].title + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*Posts*/ 32 && a_href_value !== (a_href_value = /*post*/ ctx[6].path)) {
+			if (!current || dirty & /*Posts*/ 8 && a_href_value !== (a_href_value = /*post*/ ctx[5].path)) {
 				attr(a, "href", a_href_value);
 			}
 
 			const postmeta_changes = {};
-			if (dirty & /*Posts*/ 32) postmeta_changes.post = /*post*/ ctx[6];
+			if (dirty & /*Posts*/ 8) postmeta_changes.post = /*post*/ ctx[5];
 			if (dirty & /*catgPosts*/ 2) postmeta_changes.catgPosts = /*catgPosts*/ ctx[1];
 			if (dirty & /*tagsPosts*/ 4) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[2];
-			if (dirty & /*complete*/ 8) postmeta_changes.complete = /*complete*/ ctx[3];
-			if (dirty & /*skipbody*/ 16) postmeta_changes.skipbody = /*skipbody*/ ctx[4];
 			postmeta.$set(postmeta_changes);
 		},
 		i(local) {
@@ -184,19 +164,17 @@ function create_each_block(ctx) {
 	};
 }
 
-// (13:0) {#key catg}
+// (25:6) {#key catg}
 function create_key_block(ctx) {
-	let div2;
-	let div1;
-	let div0;
 	let h2;
 	let span;
 	let t0;
 	let t1;
 	let t2;
 	let t3;
+	let each_1_anchor;
 	let current;
-	let each_value = /*Posts*/ ctx[5];
+	let each_value = /*Posts*/ ctx[3];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -209,9 +187,6 @@ function create_key_block(ctx) {
 
 	return {
 		c() {
-			div2 = element("div");
-			div1 = element("div");
-			div0 = element("div");
 			h2 = element("h2");
 			span = element("span");
 			t0 = text("Category:");
@@ -223,16 +198,11 @@ function create_key_block(ctx) {
 				each_blocks[i].c();
 			}
 
+			each_1_anchor = empty();
 			this.h();
 		},
 		l(nodes) {
-			div2 = claim_element(nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			div1 = claim_element(div2_nodes, "DIV", { class: true });
-			var div1_nodes = children(div1);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			h2 = claim_element(div0_nodes, "H2", { class: true });
+			h2 = claim_element(nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
 			span = claim_element(h2_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
@@ -241,46 +211,39 @@ function create_key_block(ctx) {
 			t1 = claim_space(h2_nodes);
 			t2 = claim_text(h2_nodes, /*catg*/ ctx[0]);
 			h2_nodes.forEach(detach);
-			t3 = claim_space(div0_nodes);
+			t3 = claim_space(nodes);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].l(div0_nodes);
+				each_blocks[i].l(nodes);
 			}
 
-			div0_nodes.forEach(detach);
-			div1_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
+			each_1_anchor = empty();
 			this.h();
 		},
 		h() {
 			attr(span, "class", "accent");
 			attr(h2, "class", "header text-xl md:text-2xl lg:text-3xl my-5");
-			attr(div0, "class", "mx-2 md:mx-6 my-1");
-			attr(div1, "class", "flex-none lg:flex");
-			attr(div2, "class", "rounded-xl overflow-hidden shadow-md bg-secondary mb-6");
 		},
 		m(target, anchor) {
-			insert(target, div2, anchor);
-			append(div2, div1);
-			append(div1, div0);
-			append(div0, h2);
+			insert(target, h2, anchor);
 			append(h2, span);
 			append(span, t0);
 			append(h2, t1);
 			append(h2, t2);
-			append(div0, t3);
+			insert(target, t3, anchor);
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].m(div0, null);
+				each_blocks[i].m(target, anchor);
 			}
 
+			insert(target, each_1_anchor, anchor);
 			current = true;
 		},
 		p(ctx, dirty) {
 			if (!current || dirty & /*catg*/ 1) set_data(t2, /*catg*/ ctx[0]);
 
-			if (dirty & /*Posts, catgPosts, tagsPosts, complete, skipbody*/ 62) {
-				each_value = /*Posts*/ ctx[5];
+			if (dirty & /*Posts, catgPosts, tagsPosts, pm*/ 30) {
+				each_value = /*Posts*/ ctx[3];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -293,7 +256,7 @@ function create_key_block(ctx) {
 						each_blocks[i] = create_each_block(child_ctx);
 						each_blocks[i].c();
 						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(div0, null);
+						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
 					}
 				}
 
@@ -325,30 +288,53 @@ function create_key_block(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div2);
+			if (detaching) detach(h2);
+			if (detaching) detach(t3);
 			destroy_each(each_blocks, detaching);
+			if (detaching) detach(each_1_anchor);
 		}
 	};
 }
 
 function create_fragment(ctx) {
+	let div2;
+	let div1;
+	let div0;
 	let previous_key = /*catg*/ ctx[0];
-	let key_block_anchor;
 	let current;
 	let key_block = create_key_block(ctx);
 
 	return {
 		c() {
+			div2 = element("div");
+			div1 = element("div");
+			div0 = element("div");
 			key_block.c();
-			key_block_anchor = empty();
+			this.h();
 		},
 		l(nodes) {
-			key_block.l(nodes);
-			key_block_anchor = empty();
+			div2 = claim_element(nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
+			var div1_nodes = children(div1);
+			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			var div0_nodes = children(div0);
+			key_block.l(div0_nodes);
+			div0_nodes.forEach(detach);
+			div1_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(div0, "class", "mx-2 md:mx-6 my-1");
+			attr(div1, "class", "flex-none lg:flex");
+			attr(div2, "class", "rounded-xl overflow-hidden shadow-md bg-secondary mb-6");
 		},
 		m(target, anchor) {
-			key_block.m(target, anchor);
-			insert(target, key_block_anchor, anchor);
+			insert(target, div2, anchor);
+			append(div2, div1);
+			append(div1, div0);
+			key_block.m(div0, null);
 			current = true;
 		},
 		p(ctx, [dirty]) {
@@ -359,7 +345,7 @@ function create_fragment(ctx) {
 				key_block = create_key_block(ctx);
 				key_block.c();
 				transition_in(key_block);
-				key_block.m(key_block_anchor.parentNode, key_block_anchor);
+				key_block.m(div0, null);
 			} else {
 				key_block.p(ctx, dirty);
 			}
@@ -374,7 +360,7 @@ function create_fragment(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(key_block_anchor);
+			if (detaching) detach(div2);
 			key_block.d(detaching);
 		}
 	};
@@ -382,38 +368,38 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { catg } = $$props, { catgPosts } = $$props, { tagsPosts } = $$props;
-	let { complete = true } = $$props;
-	let { skipbody = true } = $$props;
+
+	// Post Meta configuration values
+	const pm = {
+		author: false,
+		date_modified: true,
+		date_created: true,
+		description: false,
+		catg_tags: true,
+		continue: false
+	};
+
 	let Posts;
 
 	$$self.$$set = $$props => {
 		if ("catg" in $$props) $$invalidate(0, catg = $$props.catg);
 		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
-		if ("complete" in $$props) $$invalidate(3, complete = $$props.complete);
-		if ("skipbody" in $$props) $$invalidate(4, skipbody = $$props.skipbody);
 	};
 
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty & /*catgPosts, catg*/ 3) {
-			$: $$invalidate(5, Posts = Object.values(catgPosts.filter(key => key.name == catg)[0].posts));
+			$: $$invalidate(3, Posts = Object.values(catgPosts.filter(key => key.name == catg)[0].posts));
 		}
 	};
 
-	return [catg, catgPosts, tagsPosts, complete, skipbody, Posts];
+	return [catg, catgPosts, tagsPosts, Posts, pm];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-
-		init(this, options, instance, create_fragment, safe_not_equal, {
-			catg: 0,
-			catgPosts: 1,
-			tagsPosts: 2,
-			complete: 3,
-			skipbody: 4
-		});
+		init(this, options, instance, create_fragment, safe_not_equal, { catg: 0, catgPosts: 1, tagsPosts: 2 });
 	}
 }
 

@@ -40,12 +40,12 @@ import PostMeta from '../components/post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[10] = list[i];
-	child_ctx[12] = i;
+	child_ctx[9] = list[i];
+	child_ctx[11] = i;
 	return child_ctx;
 }
 
-// (116:8) {#if featuredPage == "Bleed"}
+// (128:8) {#if featuredPage == "Bleed"}
 function create_if_block(ctx) {
 	let button;
 	let hoverable;
@@ -58,8 +58,8 @@ function create_if_block(ctx) {
 				$$slots: {
 					default: [
 						create_default_slot,
-						({ hovering }) => ({ 13: hovering }),
-						({ hovering }) => hovering ? 8192 : 0
+						({ hovering }) => ({ 12: hovering }),
+						({ hovering }) => hovering ? 4096 : 0
 					]
 				},
 				$$scope: { ctx }
@@ -81,7 +81,7 @@ function create_if_block(ctx) {
 		},
 		h() {
 			attr(button, "type", "button");
-			attr(button, "class", "absolute");
+			attr(button, "class", "absolute svelte-4h1fis");
 			set_style(button, "bottom", "5%");
 			set_style(button, "left", "50%");
 			set_style(button, "transform", "translate(-50%)");
@@ -99,7 +99,7 @@ function create_if_block(ctx) {
 		p(ctx, dirty) {
 			const hoverable_changes = {};
 
-			if (dirty & /*$$scope, hovering*/ 24576) {
+			if (dirty & /*$$scope, hovering*/ 12288) {
 				hoverable_changes.$$scope = { dirty, ctx };
 			}
 
@@ -123,7 +123,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (123:12) <Hoverable let:hovering>
+// (135:12) <Hoverable let:hovering>
 function create_default_slot(ctx) {
 	let span;
 	let i;
@@ -145,14 +145,14 @@ function create_default_slot(ctx) {
 		},
 		h() {
 			attr(i, "class", "accent las la-chevron-circle-down text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
-			attr(span, "class", span_class_value = "inline-block " + (/*hovering*/ ctx[13] ? "animate-bounce" : ""));
+			attr(span, "class", span_class_value = "inline-block " + (/*hovering*/ ctx[12] ? "animate-bounce" : ""));
 		},
 		m(target, anchor) {
 			insert(target, span, anchor);
 			append(span, i);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*hovering*/ 8192 && span_class_value !== (span_class_value = "inline-block " + (/*hovering*/ ctx[13] ? "animate-bounce" : ""))) {
+			if (dirty & /*hovering*/ 4096 && span_class_value !== (span_class_value = "inline-block " + (/*hovering*/ ctx[12] ? "animate-bounce" : ""))) {
 				attr(span, "class", span_class_value);
 			}
 		},
@@ -162,9 +162,9 @@ function create_default_slot(ctx) {
 	};
 }
 
-// (46:4) {#each sortByDate(allFeatures, "created") as post, i}
+// (55:4) {#each sortByDate(allFeatures, "created") as post, i}
 function create_each_block(ctx) {
-	let div5;
+	let div6;
 	let div0;
 	let img;
 	let img_class_value;
@@ -177,41 +177,41 @@ function create_each_block(ctx) {
 	let div2;
 	let h2;
 	let a;
-	let t2_value = /*post*/ ctx[10].fields.title + "";
+	let t2_value = /*post*/ ctx[9].fields.title + "";
 	let t2;
 	let a_href_value;
 	let t3;
 	let ul;
-	let li;
-	let i0;
-	let t4;
 	let postmeta;
 	let ul_class_value;
-	let t5;
+	let t4;
 	let div3;
+	let t5;
+	let div5;
+	let span;
+	let raw_value = /*post*/ ctx[9].fields.image.citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "";
 	let t6;
 	let button0;
-	let i1;
+	let i0;
 	let t7;
-	let i2;
+	let i1;
 	let t8;
 	let button1;
-	let i3;
+	let i2;
 	let t9;
 	let t10;
-	let div5_id_value;
-	let div5_class_value;
+	let div6_id_value;
+	let div6_class_value;
 	let current;
 	let mounted;
 	let dispose;
 
 	postmeta = new PostMeta({
 			props: {
-				post: /*post*/ ctx[10],
+				post: /*post*/ ctx[9],
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3],
-				complete: /*complete*/ ctx[4],
-				skipbody: /*skipbody*/ ctx[5]
+				pm: /*pm*/ ctx[5]
 			}
 		});
 
@@ -219,7 +219,7 @@ function create_each_block(ctx) {
 
 	return {
 		c() {
-			div5 = element("div");
+			div6 = element("div");
 			div0 = element("div");
 			img = element("img");
 			t0 = space();
@@ -232,29 +232,29 @@ function create_each_block(ctx) {
 			t2 = text(t2_value);
 			t3 = space();
 			ul = element("ul");
-			li = element("li");
-			i0 = element("i");
-			t4 = space();
 			create_component(postmeta.$$.fragment);
-			t5 = space();
+			t4 = space();
 			div3 = element("div");
+			t5 = space();
+			div5 = element("div");
+			span = element("span");
 			t6 = space();
 			button0 = element("button");
-			i1 = element("i");
+			i0 = element("i");
 			t7 = space();
-			i2 = element("i");
+			i1 = element("i");
 			t8 = space();
 			button1 = element("button");
-			i3 = element("i");
+			i2 = element("i");
 			t9 = space();
 			if (if_block) if_block.c();
 			t10 = space();
 			this.h();
 		},
 		l(nodes) {
-			div5 = claim_element(nodes, "DIV", { id: true, class: true });
-			var div5_nodes = children(div5);
-			div0 = claim_element(div5_nodes, "DIV", { id: true, class: true });
+			div6 = claim_element(nodes, "DIV", { id: true, class: true });
+			var div6_nodes = children(div6);
+			div0 = claim_element(div6_nodes, "DIV", { id: true, class: true });
 			var div0_nodes = children(div0);
 
 			img = claim_element(div0_nodes, "IMG", {
@@ -265,8 +265,8 @@ function create_each_block(ctx) {
 			});
 
 			div0_nodes.forEach(detach);
-			t0 = claim_space(div5_nodes);
-			div4 = claim_element(div5_nodes, "DIV", { id: true, class: true });
+			t0 = claim_space(div6_nodes);
+			div4 = claim_element(div6_nodes, "DIV", { id: true, class: true });
 			var div4_nodes = children(div4);
 			div1 = claim_element(div4_nodes, "DIV", { class: true });
 			children(div1).forEach(detach);
@@ -283,38 +283,39 @@ function create_each_block(ctx) {
 			t3 = claim_space(div2_nodes);
 			ul = claim_element(div2_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
-			li = claim_element(ul_nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			i0 = claim_element(li_nodes, "I", { class: true });
-			children(i0).forEach(detach);
-			li_nodes.forEach(detach);
-			t4 = claim_space(ul_nodes);
 			claim_component(postmeta.$$.fragment, ul_nodes);
 			ul_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t5 = claim_space(div4_nodes);
+			t4 = claim_space(div4_nodes);
 			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			children(div3).forEach(detach);
 			div4_nodes.forEach(detach);
-			t6 = claim_space(div5_nodes);
-			button0 = claim_element(div5_nodes, "BUTTON", { class: true, style: true });
+			t5 = claim_space(div6_nodes);
+			div5 = claim_element(div6_nodes, "DIV", { class: true });
+			var div5_nodes = children(div5);
+			span = claim_element(div5_nodes, "SPAN", {});
+			var span_nodes = children(span);
+			span_nodes.forEach(detach);
+			div5_nodes.forEach(detach);
+			t6 = claim_space(div6_nodes);
+			button0 = claim_element(div6_nodes, "BUTTON", { class: true, style: true });
 			var button0_nodes = children(button0);
+			i0 = claim_element(button0_nodes, "I", { class: true });
+			children(i0).forEach(detach);
+			t7 = claim_space(button0_nodes);
 			i1 = claim_element(button0_nodes, "I", { class: true });
 			children(i1).forEach(detach);
-			t7 = claim_space(button0_nodes);
-			i2 = claim_element(button0_nodes, "I", { class: true });
-			children(i2).forEach(detach);
 			button0_nodes.forEach(detach);
-			t8 = claim_space(div5_nodes);
-			button1 = claim_element(div5_nodes, "BUTTON", { type: true, class: true, style: true });
+			t8 = claim_space(div6_nodes);
+			button1 = claim_element(div6_nodes, "BUTTON", { type: true, class: true, style: true });
 			var button1_nodes = children(button1);
-			i3 = claim_element(button1_nodes, "I", { class: true });
-			children(i3).forEach(detach);
+			i2 = claim_element(button1_nodes, "I", { class: true });
+			children(i2).forEach(detach);
 			button1_nodes.forEach(detach);
-			t9 = claim_space(div5_nodes);
-			if (if_block) if_block.l(div5_nodes);
-			t10 = claim_space(div5_nodes);
-			div5_nodes.forEach(detach);
+			t9 = claim_space(div6_nodes);
+			if (if_block) if_block.l(div6_nodes);
+			t10 = claim_space(div6_nodes);
+			div6_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
@@ -323,42 +324,41 @@ function create_each_block(ctx) {
 			: "object-cover h-screen"));
 
 			set_style(img, "filter", "brightness(60%)");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[10].fields.image.src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[10].fields.image.alt);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[9].fields.image.src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[9].fields.image.alt);
 			attr(div0, "id", "featureImage");
 			attr(div0, "class", "w-full");
 			attr(div1, "class", "col-lg-2");
-			attr(a, "href", a_href_value = /*post*/ ctx[10].path);
-			attr(a, "class", " svelte-1i1wq87");
+			attr(a, "href", a_href_value = /*post*/ ctx[9].path);
+			attr(a, "class", " svelte-4h1fis");
 			attr(h2, "class", "w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl");
-			attr(i0, "class", "las la-user-astronaut text-lg md:text-xl lg:text-2xl relative");
-			attr(li, "class", "px-0 mt-0");
 
 			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24") + " svelte-1i1wq87");
+			: "mb-15") + " svelte-4h1fis");
 
 			attr(div2, "class", "col-lg-8");
 			attr(div3, "class", "col-lg-2");
 			attr(div4, "id", "featureOverlayText");
-			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-1i1wq87");
-			attr(i1, "class", "");
-			attr(i2, "class", "accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
-			attr(button0, "class", "absolute m-2 left-2");
+			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-4h1fis");
+			attr(div5, "class", "citation text-meta absolute svelte-4h1fis");
+			attr(i0, "class", "");
+			attr(i1, "class", "accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(button0, "class", "absolute m-2 left-2 svelte-4h1fis");
 			set_style(button0, "top", "50%");
-			attr(i3, "class", "accent las la-chevron-circle-right text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(i2, "class", "accent las la-chevron-circle-right text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button1, "type", "button");
-			attr(button1, "class", "absolute m-2 right-2");
+			attr(button1, "class", "absolute m-2 right-2 svelte-4h1fis");
 			set_style(button1, "top", "50%");
-			attr(div5, "id", div5_id_value = /*i*/ ctx[12]);
-			attr(div5, "class", div5_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[12] == /*featureIdx*/ ctx[6] ? "" : "hidden"));
+			attr(div6, "id", div6_id_value = /*i*/ ctx[11]);
+			attr(div6, "class", div6_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[11] == /*featureIdx*/ ctx[4] ? "" : "hidden"));
 		},
 		m(target, anchor) {
-			insert(target, div5, anchor);
-			append(div5, div0);
+			insert(target, div6, anchor);
+			append(div6, div0);
 			append(div0, img);
-			append(div5, t0);
-			append(div5, div4);
+			append(div6, t0);
+			append(div6, div4);
 			append(div4, div1);
 			append(div4, t1);
 			append(div4, div2);
@@ -367,29 +367,30 @@ function create_each_block(ctx) {
 			append(a, t2);
 			append(div2, t3);
 			append(div2, ul);
-			append(ul, li);
-			append(li, i0);
-			append(ul, t4);
 			mount_component(postmeta, ul, null);
-			append(div4, t5);
+			append(div4, t4);
 			append(div4, div3);
-			append(div5, t6);
-			append(div5, button0);
-			append(button0, i1);
+			append(div6, t5);
+			append(div6, div5);
+			append(div5, span);
+			span.innerHTML = raw_value;
+			append(div6, t6);
+			append(div6, button0);
+			append(button0, i0);
 			append(button0, t7);
-			append(button0, i2);
-			append(div5, t8);
-			append(div5, button1);
-			append(button1, i3);
-			append(div5, t9);
-			if (if_block) if_block.m(div5, null);
-			append(div5, t10);
+			append(button0, i1);
+			append(div6, t8);
+			append(div6, button1);
+			append(button1, i2);
+			append(div6, t9);
+			if (if_block) if_block.m(div6, null);
+			append(div6, t10);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(button0, "click", /*clickPrev*/ ctx[7]),
-					listen(button1, "click", /*clickNext*/ ctx[8])
+					listen(button0, "click", /*clickPrev*/ ctx[6]),
+					listen(button1, "click", /*clickNext*/ ctx[7])
 				];
 
 				mounted = true;
@@ -402,33 +403,33 @@ function create_each_block(ctx) {
 				attr(img, "class", img_class_value);
 			}
 
-			if (!current || dirty & /*allFeatures*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[10].fields.image.src)) {
+			if (!current || dirty & /*allFeatures*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[9].fields.image.src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*allFeatures*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[10].fields.image.alt)) {
+			if (!current || dirty & /*allFeatures*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[9].fields.image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*allFeatures*/ 1) && t2_value !== (t2_value = /*post*/ ctx[10].fields.title + "")) set_data(t2, t2_value);
+			if ((!current || dirty & /*allFeatures*/ 1) && t2_value !== (t2_value = /*post*/ ctx[9].fields.title + "")) set_data(t2, t2_value);
 
-			if (!current || dirty & /*allFeatures*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[10].path)) {
+			if (!current || dirty & /*allFeatures*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[9].path)) {
 				attr(a, "href", a_href_value);
 			}
 
 			const postmeta_changes = {};
-			if (dirty & /*allFeatures*/ 1) postmeta_changes.post = /*post*/ ctx[10];
+			if (dirty & /*allFeatures*/ 1) postmeta_changes.post = /*post*/ ctx[9];
 			if (dirty & /*catgPosts*/ 4) postmeta_changes.catgPosts = /*catgPosts*/ ctx[2];
 			if (dirty & /*tagsPosts*/ 8) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[3];
-			if (dirty & /*complete*/ 16) postmeta_changes.complete = /*complete*/ ctx[4];
-			if (dirty & /*skipbody*/ 32) postmeta_changes.skipbody = /*skipbody*/ ctx[5];
 			postmeta.$set(postmeta_changes);
 
 			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-24") + " svelte-1i1wq87")) {
+			: "mb-15") + " svelte-4h1fis")) {
 				attr(ul, "class", ul_class_value);
 			}
+
+			if ((!current || dirty & /*allFeatures*/ 1) && raw_value !== (raw_value = /*post*/ ctx[9].fields.image.citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "")) span.innerHTML = raw_value;;
 
 			if (/*featuredPage*/ ctx[1] == "Bleed") {
 				if (if_block) {
@@ -441,7 +442,7 @@ function create_each_block(ctx) {
 					if_block = create_if_block(ctx);
 					if_block.c();
 					transition_in(if_block, 1);
-					if_block.m(div5, t10);
+					if_block.m(div6, t10);
 				}
 			} else if (if_block) {
 				group_outros();
@@ -453,8 +454,8 @@ function create_each_block(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*featuredPage, featureIdx*/ 66 && div5_class_value !== (div5_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[12] == /*featureIdx*/ ctx[6] ? "" : "hidden"))) {
-				attr(div5, "class", div5_class_value);
+			if (!current || dirty & /*featuredPage, featureIdx*/ 18 && div6_class_value !== (div6_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[11] == /*featureIdx*/ ctx[4] ? "" : "hidden"))) {
+				attr(div6, "class", div6_class_value);
 			}
 		},
 		i(local) {
@@ -469,7 +470,7 @@ function create_each_block(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div5);
+			if (detaching) detach(div6);
 			destroy_component(postmeta);
 			if (if_block) if_block.d();
 			mounted = false;
@@ -478,7 +479,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (44:0) {#key featureIdx}
+// (53:0) {#key featureIdx}
 function create_key_block(ctx) {
 	let div;
 	let div_transition;
@@ -522,7 +523,7 @@ function create_key_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, sortByDate, allFeatures, catgPosts, tagsPosts, complete, skipbody*/ 8703) {
+			if (dirty & /*featuredPage, featureIdx, scrollDown, hovering, clickNext, clickPrev, sortByDate, allFeatures, catgPosts, tagsPosts, pm*/ 4351) {
 				each_value = sortByDate(/*allFeatures*/ ctx[0], "created");
 				let i;
 
@@ -583,7 +584,7 @@ function create_key_block(ctx) {
 }
 
 function create_fragment(ctx) {
-	let previous_key = /*featureIdx*/ ctx[6];
+	let previous_key = /*featureIdx*/ ctx[4];
 	let key_block_anchor;
 	let current;
 	let key_block = create_key_block(ctx);
@@ -603,7 +604,7 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*featureIdx*/ 64 && safe_not_equal(previous_key, previous_key = /*featureIdx*/ ctx[6])) {
+			if (dirty & /*featureIdx*/ 16 && safe_not_equal(previous_key, previous_key = /*featureIdx*/ ctx[4])) {
 				group_outros();
 				transition_out(key_block, 1, 1, noop);
 				check_outros();
@@ -643,27 +644,36 @@ function instance($$self, $$props, $$invalidate) {
 		{ catgPosts } = $$props,
 		{ tagsPosts } = $$props;
 
-	let { complete = true } = $$props;
-	let { skipbody = true } = $$props;
+	// Post Meta configuration values
+	const pm = {
+		author: true,
+		date_modified: true,
+		date_created: true,
+		description: false,
+		catg_tags: true,
+		continue: false,
+		feature: true
+	};
+
 	let featureIdx = 0;
 
 	function clickPrev() {
 		if (featureIdx == 0) {
 			// block of code to be executed if the condition is true
-			$$invalidate(6, featureIdx = maxFeatures - 1);
+			$$invalidate(4, featureIdx = maxFeatures - 1);
 		} else {
 			// block of code to be executed if the condition is false
-			$$invalidate(6, featureIdx = (featureIdx - 1) % maxFeatures);
+			$$invalidate(4, featureIdx = (featureIdx - 1) % maxFeatures);
 		}
 	}
 
 	function clickNext() {
 		if (featureIdx == maxFeatures) {
 			// block of code to be executed if the condition is true
-			$$invalidate(6, featureIdx = 0);
+			$$invalidate(4, featureIdx = 0);
 		} else {
 			// block of code to be executed if the condition is false
-			$$invalidate(6, featureIdx = (featureIdx + 1) % maxFeatures);
+			$$invalidate(4, featureIdx = (featureIdx + 1) % maxFeatures);
 		}
 	}
 
@@ -672,8 +682,6 @@ function instance($$self, $$props, $$invalidate) {
 		if ("featuredPage" in $$props) $$invalidate(1, featuredPage = $$props.featuredPage);
 		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(3, tagsPosts = $$props.tagsPosts);
-		if ("complete" in $$props) $$invalidate(4, complete = $$props.complete);
-		if ("skipbody" in $$props) $$invalidate(5, skipbody = $$props.skipbody);
 	};
 
 	$$self.$$.update = () => {
@@ -687,9 +695,8 @@ function instance($$self, $$props, $$invalidate) {
 		featuredPage,
 		catgPosts,
 		tagsPosts,
-		complete,
-		skipbody,
 		featureIdx,
+		pm,
 		clickPrev,
 		clickNext
 	];
@@ -703,9 +710,7 @@ class Component extends SvelteComponent {
 			allFeatures: 0,
 			featuredPage: 1,
 			catgPosts: 2,
-			tagsPosts: 3,
-			complete: 4,
-			skipbody: 5
+			tagsPosts: 3
 		});
 	}
 }

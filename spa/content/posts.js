@@ -45,26 +45,22 @@ function create_fragment(ctx) {
 	let t3;
 	let t4;
 	let ul;
-	let li;
-	let i;
-	let t5;
 	let postmeta;
-	let t6;
+	let t5;
 	let p;
-	let t7;
+	let t6;
 	let div3;
 	let aside;
-	let t8;
+	let t7;
 	let div6;
 	let current;
 
 	postmeta = new PostMeta({
 			props: {
-				post: /*post*/ ctx[9],
+				post: /*post*/ ctx[8],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				complete: /*complete*/ ctx[6],
-				skipbody: /*skipbody*/ ctx[7]
+				pm: /*pm*/ ctx[6]
 			}
 		});
 
@@ -73,7 +69,7 @@ function create_fragment(ctx) {
 				allPosts: /*allPosts*/ ctx[0],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				socialLinks: /*socialLinks*/ ctx[8]
+				socialLinks: /*socialLinks*/ ctx[7]
 			}
 		});
 
@@ -94,16 +90,13 @@ function create_fragment(ctx) {
 			t3 = text(/*title*/ ctx[4]);
 			t4 = space();
 			ul = element("ul");
-			li = element("li");
-			i = element("i");
-			t5 = space();
 			create_component(postmeta.$$.fragment);
-			t6 = space();
+			t5 = space();
 			p = element("p");
-			t7 = space();
+			t6 = space();
 			div3 = element("div");
 			create_component(aside.$$.fragment);
-			t8 = space();
+			t7 = space();
 			div6 = element("div");
 			this.h();
 		},
@@ -135,27 +128,21 @@ function create_fragment(ctx) {
 			t4 = claim_space(div2_nodes);
 			ul = claim_element(div2_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
-			li = claim_element(ul_nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			i = claim_element(li_nodes, "I", { class: true });
-			children(i).forEach(detach);
-			li_nodes.forEach(detach);
-			t5 = claim_space(ul_nodes);
 			claim_component(postmeta.$$.fragment, ul_nodes);
 			ul_nodes.forEach(detach);
-			t6 = claim_space(div2_nodes);
+			t5 = claim_space(div2_nodes);
 			p = claim_element(div2_nodes, "P", { class: true });
 			var p_nodes = children(p);
 			p_nodes.forEach(detach);
 			div2_nodes.forEach(detach);
-			t7 = claim_space(div4_nodes);
+			t6 = claim_space(div4_nodes);
 			div3 = claim_element(div4_nodes, "DIV", { class: true });
 			var div3_nodes = children(div3);
 			claim_component(aside.$$.fragment, div3_nodes);
 			div3_nodes.forEach(detach);
 			div4_nodes.forEach(detach);
 			div5_nodes.forEach(detach);
-			t8 = claim_space(section_nodes);
+			t7 = claim_space(section_nodes);
 			div6 = claim_element(section_nodes, "DIV", { class: true });
 			children(div6).forEach(detach);
 			section_nodes.forEach(detach);
@@ -169,8 +156,6 @@ function create_fragment(ctx) {
 			attr(span, "class", "text-meta");
 			attr(div1, "class", "relative mb-8 w-full");
 			attr(h1, "class", "header mb-2");
-			attr(i, "class", "las la-user-astronaut text-lg");
-			attr(li, "class", "mx-0 -mt-1 text-meta inline-flex");
 			attr(ul, "class", "text-meta flex flex-wrap");
 			attr(p, "class", "mt-6");
 			attr(div2, "class", "w-full md:w-9/12 mb-5 sm:mb-0 px-0 md:pr-10");
@@ -197,17 +182,14 @@ function create_fragment(ctx) {
 			append(h1, t3);
 			append(div2, t4);
 			append(div2, ul);
-			append(ul, li);
-			append(li, i);
-			append(ul, t5);
 			mount_component(postmeta, ul, null);
-			append(div2, t6);
+			append(div2, t5);
 			append(div2, p);
 			p.innerHTML = /*articleBody*/ ctx[3];
-			append(div4, t7);
+			append(div4, t6);
 			append(div4, div3);
 			mount_component(aside, div3, null);
-			append(section, t8);
+			append(section, t7);
 			append(section, div6);
 			current = true;
 		},
@@ -225,8 +207,6 @@ function create_fragment(ctx) {
 			const postmeta_changes = {};
 			if (dirty & /*catgPosts*/ 2) postmeta_changes.catgPosts = /*catgPosts*/ ctx[1];
 			if (dirty & /*tagsPosts*/ 4) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[2];
-			if (dirty & /*complete*/ 64) postmeta_changes.complete = /*complete*/ ctx[6];
-			if (dirty & /*skipbody*/ 128) postmeta_changes.skipbody = /*skipbody*/ ctx[7];
 			postmeta.$set(postmeta_changes);
 			if (!current || dirty & /*articleBody*/ 8) p.innerHTML = /*articleBody*/ ctx[3];;
 			const aside_changes = {};
@@ -270,8 +250,16 @@ function instance($$self, $$props, $$invalidate) {
 		{ categories } = $$props,
 		{ tags } = $$props;
 
-	let { complete = true } = $$props;
-	let { skipbody = true } = $$props;
+	// Post Meta configuration values
+	const pm = {
+		author: true,
+		date_modified: true,
+		date_created: true,
+		description: false,
+		catg_tags: true,
+		continue: false
+	};
+
 	let socialLinks = idxContent.socialLinks;
 
 	let post = {
@@ -284,20 +272,18 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(9, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 		if ("articleBody" in $$props) $$invalidate(3, articleBody = $$props.articleBody);
 		if ("title" in $$props) $$invalidate(4, title = $$props.title);
 		if ("image" in $$props) $$invalidate(5, image = $$props.image);
-		if ("author" in $$props) $$invalidate(11, author = $$props.author);
-		if ("dateCreated" in $$props) $$invalidate(12, dateCreated = $$props.dateCreated);
-		if ("dateModified" in $$props) $$invalidate(13, dateModified = $$props.dateModified);
-		if ("categories" in $$props) $$invalidate(14, categories = $$props.categories);
-		if ("tags" in $$props) $$invalidate(15, tags = $$props.tags);
-		if ("complete" in $$props) $$invalidate(6, complete = $$props.complete);
-		if ("skipbody" in $$props) $$invalidate(7, skipbody = $$props.skipbody);
+		if ("author" in $$props) $$invalidate(10, author = $$props.author);
+		if ("dateCreated" in $$props) $$invalidate(11, dateCreated = $$props.dateCreated);
+		if ("dateModified" in $$props) $$invalidate(12, dateModified = $$props.dateModified);
+		if ("categories" in $$props) $$invalidate(13, categories = $$props.categories);
+		if ("tags" in $$props) $$invalidate(14, tags = $$props.tags);
 	};
 
 	return [
@@ -307,8 +293,7 @@ function instance($$self, $$props, $$invalidate) {
 		articleBody,
 		title,
 		image,
-		complete,
-		skipbody,
+		pm,
 		socialLinks,
 		post,
 		idxContent,
@@ -325,20 +310,18 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 10,
+			idxContent: 9,
 			allPosts: 0,
 			catgPosts: 1,
 			tagsPosts: 2,
 			articleBody: 3,
 			title: 4,
 			image: 5,
-			author: 11,
-			dateCreated: 12,
-			dateModified: 13,
-			categories: 14,
-			tags: 15,
-			complete: 6,
-			skipbody: 7
+			author: 10,
+			dateCreated: 11,
+			dateModified: 12,
+			categories: 13,
+			tags: 14
 		});
 	}
 }

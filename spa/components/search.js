@@ -33,12 +33,12 @@ import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[5] = list[i];
-	child_ctx[7] = i;
+	child_ctx[4] = list[i];
+	child_ctx[6] = i;
 	return child_ctx;
 }
 
-// (21:4) {#if value.length >= 3}
+// (29:4) {#if value.length >= 3}
 function create_if_block(ctx) {
 	let each_1_anchor;
 	let current;
@@ -77,7 +77,7 @@ function create_if_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPosts, complete, skipbody, value*/ 15) {
+			if (dirty & /*allPosts, pm, value*/ 7) {
 				each_value = /*allPosts*/ ctx[0];
 				let i;
 
@@ -129,7 +129,7 @@ function create_if_block(ctx) {
 	};
 }
 
-// (24:8) {#if post.fields.articleBody               .toLowerCase()               .includes(value.toLowerCase()) ||               post.fields.title               .toLowerCase()               .includes(value.toLowerCase())}
+// (32:8) {#if post.fields.articleBody           .toLowerCase()           .includes(value.toLowerCase()) || post.fields.title             .toLowerCase()             .includes(value.toLowerCase())}
 function create_if_block_1(ctx) {
 	let div1;
 	let img;
@@ -139,24 +139,17 @@ function create_if_block_1(ctx) {
 	let div0;
 	let h5;
 	let a;
-	let t1_value = /*post*/ ctx[5].fields.title + "";
+	let t1_value = /*post*/ ctx[4].fields.title + "";
 	let t1;
 	let a_href_value;
 	let t2;
 	let ul;
-	let li;
-	let i;
-	let t3;
 	let postmeta;
-	let t4;
+	let t3;
 	let current;
 
 	postmeta = new PostMeta({
-			props: {
-				post: /*post*/ ctx[5],
-				complete: /*complete*/ ctx[1],
-				skipbody: /*skipbody*/ ctx[2]
-			}
+			props: { post: /*post*/ ctx[4], pm: /*pm*/ ctx[2] }
 		});
 
 	return {
@@ -170,11 +163,8 @@ function create_if_block_1(ctx) {
 			t1 = text(t1_value);
 			t2 = space();
 			ul = element("ul");
-			li = element("li");
-			i = element("i");
-			t3 = space();
 			create_component(postmeta.$$.fragment);
-			t4 = space();
+			t3 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -194,27 +184,19 @@ function create_if_block_1(ctx) {
 			t2 = claim_space(div0_nodes);
 			ul = claim_element(div0_nodes, "UL", { class: true });
 			var ul_nodes = children(ul);
-			li = claim_element(ul_nodes, "LI", { class: true });
-			var li_nodes = children(li);
-			i = claim_element(li_nodes, "I", { class: true });
-			children(i).forEach(detach);
-			li_nodes.forEach(detach);
-			t3 = claim_space(ul_nodes);
 			claim_component(postmeta.$$.fragment, ul_nodes);
 			ul_nodes.forEach(detach);
 			div0_nodes.forEach(detach);
-			t4 = claim_space(div1_nodes);
+			t3 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(img, "class", "inline-block object-cover rounded-full w-16 h-16");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[5].fields.image.src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[5].fields.image.alt);
-			attr(a, "href", a_href_value = /*post*/ ctx[5].path);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[4].fields.image.src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[4].fields.image.alt);
+			attr(a, "href", a_href_value = /*post*/ ctx[4].path);
 			attr(h5, "class", "header mt-0 mb-1");
-			attr(i, "class", "las la-user-astronaut text-lg");
-			attr(li, "class", "mx-0 -mt-1 text-meta inline-flex");
 			attr(ul, "class", "text-meta flex flex-wrap");
 			attr(div0, "class", "inline-block ml-2");
 			attr(div1, "class", "flex items-center mb-5");
@@ -229,32 +211,27 @@ function create_if_block_1(ctx) {
 			append(a, t1);
 			append(div0, t2);
 			append(div0, ul);
-			append(ul, li);
-			append(li, i);
-			append(ul, t3);
 			mount_component(postmeta, ul, null);
-			append(div1, t4);
+			append(div1, t3);
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*allPosts*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[5].fields.image.src)) {
+			if (!current || dirty & /*allPosts*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[4].fields.image.src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*allPosts*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[5].fields.image.alt)) {
+			if (!current || dirty & /*allPosts*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[4].fields.image.alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*allPosts*/ 1) && t1_value !== (t1_value = /*post*/ ctx[5].fields.title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*allPosts*/ 1) && t1_value !== (t1_value = /*post*/ ctx[4].fields.title + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*allPosts*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[5].path)) {
+			if (!current || dirty & /*allPosts*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[4].path)) {
 				attr(a, "href", a_href_value);
 			}
 
 			const postmeta_changes = {};
-			if (dirty & /*allPosts*/ 1) postmeta_changes.post = /*post*/ ctx[5];
-			if (dirty & /*complete*/ 2) postmeta_changes.complete = /*complete*/ ctx[1];
-			if (dirty & /*skipbody*/ 4) postmeta_changes.skipbody = /*skipbody*/ ctx[2];
+			if (dirty & /*allPosts*/ 1) postmeta_changes.post = /*post*/ ctx[4];
 			postmeta.$set(postmeta_changes);
 		},
 		i(local) {
@@ -273,9 +250,9 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (23:6) {#each allPosts as post, i}
+// (31:6) {#each allPosts as post, i}
 function create_each_block(ctx) {
-	let show_if = /*post*/ ctx[5].fields.articleBody.toLowerCase().includes(/*value*/ ctx[3].toLowerCase()) || /*post*/ ctx[5].fields.title.toLowerCase().includes(/*value*/ ctx[3].toLowerCase());
+	let show_if = /*post*/ ctx[4].fields.articleBody.toLowerCase().includes(/*value*/ ctx[1].toLowerCase()) || /*post*/ ctx[4].fields.title.toLowerCase().includes(/*value*/ ctx[1].toLowerCase());
 	let if_block_anchor;
 	let current;
 	let if_block = show_if && create_if_block_1(ctx);
@@ -295,13 +272,13 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*allPosts, value*/ 9) show_if = /*post*/ ctx[5].fields.articleBody.toLowerCase().includes(/*value*/ ctx[3].toLowerCase()) || /*post*/ ctx[5].fields.title.toLowerCase().includes(/*value*/ ctx[3].toLowerCase());
+			if (dirty & /*allPosts, value*/ 3) show_if = /*post*/ ctx[4].fields.articleBody.toLowerCase().includes(/*value*/ ctx[1].toLowerCase()) || /*post*/ ctx[4].fields.title.toLowerCase().includes(/*value*/ ctx[1].toLowerCase());
 
 			if (show_if) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*allPosts, value*/ 9) {
+					if (dirty & /*allPosts, value*/ 3) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -349,7 +326,7 @@ function create_fragment(ctx) {
 	let current;
 	let mounted;
 	let dispose;
-	let if_block = /*value*/ ctx[3].length >= 3 && create_if_block(ctx);
+	let if_block = /*value*/ ctx[1].length >= 3 && create_if_block(ctx);
 
 	return {
 		c() {
@@ -405,27 +382,27 @@ function create_fragment(ctx) {
 			append(div1, t1);
 			append(div1, span1);
 			append(span1, input);
-			set_input_value(input, /*value*/ ctx[3]);
+			set_input_value(input, /*value*/ ctx[1]);
 			append(div1, t2);
 			append(div1, div0);
 			if (if_block) if_block.m(div0, null);
 			current = true;
 
 			if (!mounted) {
-				dispose = listen(input, "input", /*input_input_handler*/ ctx[4]);
+				dispose = listen(input, "input", /*input_input_handler*/ ctx[3]);
 				mounted = true;
 			}
 		},
 		p(ctx, [dirty]) {
-			if (dirty & /*value*/ 8 && input.value !== /*value*/ ctx[3]) {
-				set_input_value(input, /*value*/ ctx[3]);
+			if (dirty & /*value*/ 2 && input.value !== /*value*/ ctx[1]) {
+				set_input_value(input, /*value*/ ctx[1]);
 			}
 
-			if (/*value*/ ctx[3].length >= 3) {
+			if (/*value*/ ctx[1].length >= 3) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 
-					if (dirty & /*value*/ 8) {
+					if (dirty & /*value*/ 2) {
 						transition_in(if_block, 1);
 					}
 				} else {
@@ -464,28 +441,35 @@ function create_fragment(ctx) {
 
 function instance($$self, $$props, $$invalidate) {
 	let { allPosts } = $$props;
-	let { complete = false } = $$props;
-	let { skipbody = true } = $$props;
+
+	// Post Meta configuration values
+	const pm = {
+		author: false,
+		date_modified: true,
+		date_created: false,
+		description: false,
+		catg_tags: false,
+		continue: false
+	};
+
 	let value = "";
 
 	function input_input_handler() {
 		value = this.value;
-		$$invalidate(3, value);
+		$$invalidate(1, value);
 	}
 
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
-		if ("complete" in $$props) $$invalidate(1, complete = $$props.complete);
-		if ("skipbody" in $$props) $$invalidate(2, skipbody = $$props.skipbody);
 	};
 
-	return [allPosts, complete, skipbody, value, input_input_handler];
+	return [allPosts, value, pm, input_input_handler];
 }
 
 class Component extends SvelteComponent {
 	constructor(options) {
 		super();
-		init(this, options, instance, create_fragment, safe_not_equal, { allPosts: 0, complete: 1, skipbody: 2 });
+		init(this, options, instance, create_fragment, safe_not_equal, { allPosts: 0 });
 	}
 }
 
