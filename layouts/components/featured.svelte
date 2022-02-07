@@ -162,11 +162,16 @@
   }
   .citation {
     color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(1, 1, 1, 0.3);
     bottom: 3%;
     left: 5%;
   }
   ul {
     font-family: Anton, sans-serif;
     font-weight: 300;
+  }
+  button {
+    border-radius: 50%;
+    background-color: rgba(1, 1, 1, 0.15);
   }
 </style>
