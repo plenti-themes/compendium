@@ -30,27 +30,27 @@
       src="assets/pages/{image.src}"
       alt={image.alt}
     />
-    <span class="text-meta"
+    <cite class="text-meta"
       >{@html image.citation.replaceAll(
         "<a ",
-        "<a target='blank' rel='noopener'"
-      )}</span
+        "<a target='blank' rel='noopener' "
+      )}</cite
     >
   </div>
-  <button
-    type="button"
-    on:click={scrollDown}
-    class="absolute bottom-0 sm:bottom-10 md:bottom-20"
-    style="left: 25%; transform: translate(-50%);"
-  >
-    <Hoverable let:hovering>
+  <Hoverable let:hovering>
+    <button
+      type="button"
+      on:click={scrollDown}
+      class="absolute bottom-0 sm:bottom-10 md:bottom-20"
+      style="left: 25%; transform: translate(-50%);"
+    >
       <span class="inline-block {hovering ? 'animate-bounce' : ''}">
         <i
           class="accent las la-chevron-circle-down text-5xl lg:text-6xl rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
         />
       </span>
-    </Hoverable>
-  </button>
+    </button>
+  </Hoverable>
 </div>
 
 <!-- About section -->
@@ -70,11 +70,11 @@
     <div class="w-full text-lg px-6 pt-10">
       <h2 class="accent text-white text-4xl">{title}</h2>
     </div>
-    <p class="text-white text-md sm:text-lg lg:text-xl xl:text-2xl px-6 py-6">
+    <p class="text-white text-md sm:text-lg lg:text-xl 2xl:text-2xl px-6 py-6">
       {@html articleBody}
     </p>
   </div>
 </div>
-<div class="text-meta relative block">
-  {@html splash.citation.replaceAll("<a ", "<a target='blank' rel='noopener'")}
-</div>
+<cite class="text-meta relative block">
+  {@html splash.citation.replaceAll("<a ", "<a target='blank' rel='noopener' ")}
+</cite>

@@ -17,10 +17,11 @@
 
 <div class="row">
   <h4 class="header mt-0"><span>Search</span></h4>
-  <span class="flex flex-wrap items-center">
+  <span class="flex flex-wrap items-center" role="search">
     <input
       class="appearance-none block w-full bg-gray-100 border text-gray-700 border-gray-400 mb-5 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white"
       id="search"
+      role="searchbox"
       placeholder="Search articles..."
       bind:value
     />
@@ -44,9 +45,9 @@
               <h5 class="header mt-0 mb-1">
                 <a href={post.path}>{post.fields.title}</a>
               </h5>
-              <ul class="text-meta flex flex-wrap">
+              <div class="text-meta flex flex-wrap" role="complementary">
                 <PostMeta {post} {pm} />
-              </ul>
+              </div>
             </div>
           </div>
         {/if}

@@ -16,8 +16,8 @@
       />
     </button>
     <!-- </a> -->
-    <div class="footnote mt-2">
-      © Copyright 2021. All rights reserved.<br />
+    <div class="footnote mt-2" role="contentinfo">
+      © Copyright 2022. All rights reserved.<br />
       Designed and developed by Roberto Rivera.<br />
       Powered by
       <a target="_blank" rel="noopener" href="https://plenti.co/"

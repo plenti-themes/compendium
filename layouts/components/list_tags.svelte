@@ -36,9 +36,9 @@
               <h3 class="header my-0 text-xl md:text-2xl">
                 <a href={post.path}>{post.title}</a>
               </h3>
-              <ul class="text-meta flex flex-wrap">
+              <div class="text-meta flex flex-wrap" role="complementary">
                 <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
-              </ul>
+              </div>
             </div>
           </div>
         {/each}

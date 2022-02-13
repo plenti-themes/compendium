@@ -5,7 +5,7 @@
   pagePath = (content.path.replace(/[0-9]/g, "") + "/").replace("//", "/");
 </script>
 
-<div class="flex pagination text-center justify-center">
+<div class="flex pagination text-center justify-center" role="navigation">
   <!-- -------------------- -->
   <!-- Previous Buttons     -->
   <!-- -------------------- -->

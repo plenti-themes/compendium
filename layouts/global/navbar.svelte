@@ -55,7 +55,7 @@
   });
 </script>
 
-<div class="flex flex-wrap py-2 px-2	">
+<div class="flex flex-wrap py-2 px-2" role="banner">
   <div class="w-0 md:w-1/12 xl:w-2/12" />
   <div class="w-full md:w-10/12 xl:w-8/12">
     <nav class="flex flex-wrap items-center justify-between">
@@ -92,24 +92,34 @@
 
       <!-- links -->
       <div
+        role={menuShow ? "menu" : "menubar"}
         class="md:flex w-full md:w-auto text-right mt-5 md:mt-0 {menuShow
           ? 'bg-primary bg-opacity-70'
           : 'hidden'}"
       >
         <div class="text-xl">
-          <a class="block md:inline-flex px-2 py-1 md:py-0" href="."
+          <a
+            role="menuitem"
+            class="block md:inline-flex px-2 py-1 md:py-0"
+            href="."
             ><span class="navmenu{content.path == '/' ? ' active' : ''}"
               >Home</span
             ></a
           >
-          <a class="block md:inline-flex px-2 py-1 md:py-0" href="projs/"
+          <a
+            role="menuitem"
+            class="block md:inline-flex px-2 py-1 md:py-0"
+            href="projs/"
             ><span class="navmenu{content.path == 'projs' ? ' active' : ''}"
               >Projects</span
             ></a
           >
           {#each allPages as page, i}
             {#if page.fields.enabled && page.fields.menu}
-              <a class="block md:inline-flex px-2 py-1" href={page.path}
+              <a
+                role="menuitem"
+                class="block md:inline-flex px-2 py-1"
+                href={page.path}
                 ><span
                   class="navmenu{content.path == page.path ? ' active' : ''}"
                   >{page.fields.title.split(" ")[0]}</span
@@ -118,8 +128,9 @@
             {/if}
           {/each}
           <button
-            id="dark"
+            id="is-dark"
             type="button"
+            aria-checked={isDark}
             class="inline-block md:inline-flex px-2 py-1 md:py-0"
             on:click={toggleDark}
             ><span class="navmenu"><i class="las la-adjust text-2xl" /></span

@@ -30,7 +30,7 @@
         </div>
       </div>
       {#if citation}
-        <span class="text-meta">{@html image.citation}</span>
+        <cite class="text-meta">{@html image.citation}</cite>
       {/if}
     </div>
   </div>

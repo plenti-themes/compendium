@@ -48,9 +48,9 @@
                 <h3 class="header mt-0 mb-1 text-xl md:text-2xl">
                   <a href={post.path}>{post.fields.title}</a>
                 </h3>
-                <ul class="text-meta flex flex-wrap">
+                <div class="text-meta flex flex-wrap" role="complementary">
                   <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
-                </ul>
+                </div>
               </div>
             </div>
           {/each}
