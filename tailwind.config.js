@@ -43,7 +43,9 @@ const defaultOpts = {
     },
   },
   variants: {},
-  plugins: [],
+  plugins: [
+    require('daisyui'),
+  ],
 };
 
 module.exports = defaultOpts;
