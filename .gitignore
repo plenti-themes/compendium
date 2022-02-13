@@ -1,6 +1,10 @@
-articulatePost
-node_modules
+articulatePost/
+deploy/
+dist/
+node_modules/
 package-lock.json
-public
-static
-themes
+temp_build/
+themes/
+workers-site/
+wrangler.toml
+.env
