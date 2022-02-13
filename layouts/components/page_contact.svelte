@@ -2,13 +2,9 @@
   // Aside component for search, categories, and tags
   import Aside from "./aside.svelte";
 
-  // Logic to return geolocation data for context
-  import { geo } from "../scripts/geoCode.svelte";
-
-  // Senggrid function and url, which is used by the form
-  // and the function.
-  import { sendEmail } from "../scripts/sendGrid.svelte";
-  const reqUrl = "https://api.sendgrid.com/v3/mail/send";
+  // function and API endpoint for sending the contact request
+  import { send_contact } from "../scripts/send_contact.svelte";
+  const reqUrl = "/api/submit";
 
   // Variables passed in from "html.svelte"
   export let idxContent, allPosts, catgPosts, tagsPosts;
@@ -18,29 +14,21 @@
 
   const tname = title.split(" ");
   const socialLinks = idxContent.socialLinks;
-  let submit;
+  let contact;
 
   // What: Setup the default form data object
   // Why:  Define JSON payload for sending emails
   // How:  Initiate attributes with empty strings and then bind values
-  //       from form submission to keys using svelte
-  let formData = {
-    email: "",
-    firstname: "",
-    lastname: "",
-    subject: "",
-    ip: "",
-    message: "",
-  };
+  //       from form submission to keys using svelte value binding
+  let frmObj = {};
 
   async function handleOnSubmit() {
-    formData.subject = "Contact Form: " + idxContent.name;
-    formData.ip = await geo();
-
-    // console.log(formData);
-    submit = sendEmail(reqUrl, formData);
-    // console.log(submit);
-    return submit;
+    frmObj.subject = "Contact Form: " + idxContent.name;
+    contact = new Response("Send", { "status" : 200 , "statusText" : "Processing" });
+    contact = await send_contact(reqUrl, frmObj);
+    if (contact.statusText === "Accepted") {
+      frmObj = {};
+    }
   }
 </script>
 
@@ -81,7 +69,7 @@
                     name="firstName"
                     type="text"
                     placeholder="Jane"
-                    bind:value={formData.firstname}
+                    bind:value={frmObj.firstname}
                   />
                 </div>
                 <div class="w-full md:w-1/2 px-3">
@@ -96,7 +84,7 @@
                     name="lastName"
                     type="text"
                     placeholder="Doe"
-                    bind:value={formData.lastname}
+                    bind:value={frmObj.lastname}
                   />
                 </div>
               </div>
@@ -114,7 +102,7 @@
                     type="email"
                     placeholder="Jane.Doe@example.net"
                     required
-                    bind:value={formData.email}
+                    bind:value={frmObj.email}
                   />
                 </div>
               </div>
@@ -130,7 +118,7 @@
                     class=" no-resize appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-400 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white h-48 resize-none"
                     name="message"
                     placeholder="Write something here..."
-                    bind:value={formData.message}
+                    bind:value={frmObj.message}
                   />
                 </div>
               </div>
@@ -141,11 +129,19 @@
                   </button>
                 </div>
                 <div class="block tracking-wide header mb-6 px-4">
-                  {#if submit}
-                    {#await submit}
+                  {#if contact}
+                    {#await contact}
                       <p>Sending...</p>
                     {:then resp}
-                      <pre class="footnote">🎉 Done - Response: {resp}</pre>
+                      {#if resp.statusText === "Accepted"}
+                        <pre class="footnote">🎉 Done: message sent</pre>
+                      {:else if resp.statusText === "form incomplete"}
+                        <pre class="footnote">⛔ Response: form incomplete!</pre>
+                      {:else}
+                        <pre class="footnote">Response: {resp.statusText || "sent"}</pre>
+                      {/if}
+                    {:catch error}
+                      <pre class="footnote">⛔ Response: {error.message || "failed"}</pre>
                     {/await}
                   {/if}
                 </div>
