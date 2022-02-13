@@ -60,7 +60,7 @@
 		    {featuredPage == 'Frame' ? ' rounded-lg' : ''} 
 		    {i == featureIdx ? '' : 'hidden'}"
       >
-        <div id="featureImage" class="w-full">
+        <div id="featureImage-{i}" class="w-full">
           <img
             class="w-full {featuredPage == 'Frame'
               ? 'rounded-lg object-cover h-screen-70'
@@ -73,7 +73,7 @@
 
         <!-- Carousel Overlay Text -->
         <div
-          id="featureOverlayText"
+          id="featureOverlayText-{i}"
           class="feature w-full absolute row m-0 px-16"
         >
           <div class="col-lg-2" />
@@ -83,25 +83,24 @@
             >
               <a href={post.path} class="">{post.fields.title}</a>
             </h2>
-            <ul
-              class="flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg {featuredPage ==
+            <div
+              role="complementary"
+              class="meta flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg {featuredPage ==
               'Frame'
                 ? 'md:mb-10 sm:mb-5'
                 : 'mb-15'}"
             >
               <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
-            </ul>
+            </div>
           </div>
           <div class="col-lg-2" />
         </div>
-        <div class="citation text-meta absolute">
-          <span
-            >{@html post.fields.image.citation.replaceAll(
+        <cite class="citation text-meta absolute">
+          {@html post.fields.image.citation.replaceAll(
               "<a ",
-              "<a target='blank' rel='noopener'"
-            )}</span
-          >
-        </div>
+              "<a target='blank' rel='noopener' "
+            )}
+        </cite>
 
         <!-- Carousel Overlay Text -->
         <button
@@ -109,7 +108,6 @@
           class="absolute m-2 left-2"
           style="top: 50%"
         >
-          <i class="" />
           <i
             class="accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
           />
@@ -126,20 +124,20 @@
         </button>
 
         {#if featuredPage == "Bleed"}
-          <button
-            type="button"
-            on:click={scrollDown}
-            class="absolute"
-            style="bottom: 5%; left: 50%; transform: translate(-50%);"
-          >
-            <Hoverable let:hovering>
+          <Hoverable let:hovering>
+            <button
+              type="button"
+              on:click={scrollDown}
+              class="absolute"
+              style="bottom: 5%; left: 50%; transform: translate(-50%);"
+            >
               <span class="inline-block {hovering ? 'animate-bounce' : ''}">
                 <i
                   class="accent las la-chevron-circle-down text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100"
                 />
               </span>
-            </Hoverable>
-          </button>
+            </button>
+          </Hoverable>
         {/if}
       </div>
     {/each}
@@ -153,6 +151,7 @@
   .feature a {
     font-weight: 400;
     color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(1, 1, 1, 0.15);
   }
   .feature a:hover {
     color: var(--accent);
@@ -161,14 +160,16 @@
     bottom: 15%;
   }
   .citation {
+    background-color: rgba(1, 1, 1, 0.15);
     color: rgba(255, 255, 255, 0.9);
-    background-color: rgba(1, 1, 1, 0.3);
     bottom: 3%;
     left: 5%;
   }
-  ul {
+  .meta {
+    background-color: rgba(1, 1, 1, 0.15);
+    color: rgba(255, 255, 255, 0.8);
     font-family: Anton, sans-serif;
-    font-weight: 300;
+    font-weight: 200;
   }
   button {
     border-radius: 50%;
