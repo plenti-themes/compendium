@@ -1,33 +1,30 @@
 {
-  "name": "compendium-theme",
-  "version": "0.7.0",
+  "name": "quantified-leap",
+  "version": "0.9.0",
   "scripts": {
-    "update:scheme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
-    "predevlop": "npm run update:scheme",
-    "develop": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
-    "build:prod": "NODE_ENV=production npm run develop",
-    "prebuild": "npm run build:prod",
-    "build": "plenti build",
-    "postbuild": "npm run static",
-    "preperms": "find ./{assets,content,layouts,styles,public,static} -type d -exec chmod 755 {} +",
-    "perms": "find ./{assets,content,layouts,styles,public,static} -type f -exec chmod 644 {} +",
-    "postperms": "$(cd static && rm -rf * && cp -r ../public/* .)",
-    "prestatic": "npm run perms",
-    "static": "$(cd static && git add -A)",
-    "poststatic": "$(cd static && git commit -q -m 'Update static site') &>/dev/null",
-    "publish": "$(cd static && git push -q -u origin main)"
+    "style": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
+    "theme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
+    "posttheme": "npm run style",
+    "prebuild": "NODE_ENV=production npm run style",
+    "build": "$(cd deploy && rm -rf functions/api && cp -r ../functions/api/ functions/)",
+    "postbuild": "plenti build",
+    "prepublish": "$(cd deploy && git add -A && git commit -q -m \"Publish static site\") &>/dev/null",
+    "publish": "$(cd deploy && git push -q -u origin main)",
+    "preview": "npx wrangler pages dev deploy/public --binding $(cat ./.env)"
   },
   "private": true,
   "dependencies": {
     "navaid": "^1.2.0",
     "regexparam": "^1.3.0",
-    "svelte": "~3.38.3"
+    "svelte": "~3.38.3",
+    "wrangler": "^0.0.15"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
     "cssnano": "^5.0.6",
     "postcss": "^8.3.5",
     "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.2.2"
+    "tailwindcss": "^2.2.2",
+    "daisyui": "^1.22.2"
   }
 }
