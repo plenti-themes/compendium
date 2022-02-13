@@ -29,21 +29,23 @@
   export let tagsPosts = Object(ctObj["tags"]);
 </script>
 
-<html lang="en">
-  <!-- Setup meta, styles, scripts, and SEO -->
+<html lang="en" class="bg-primary {isDark ? 'dk-theme' : 'lt-theme'}">
+  <!-- Setup the template meta, styles, scripts, and SEO -->
   <Head {idxContent} {allPages} {content} {env} />
 
-  <!-- Setup sticky nav menu at the top -->
-  <header
-    class="{isDark ? 'dk-theme' : 'lt-theme'} bg-primary sticky top-0 z-50"
-    style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
-  >
-    <!-- reference the Navbar class from import above -->
-    <Navbar bind:isDark {allPages} {idxContent} {content} />
-  </header>
+  <!-- Setup the template content -->
+  <body>
+    <!-- Setup sticky nav menu at the top -->
+    <header
+      class="bg-primary sticky top-0 z-50"
+      style="box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20);"
+    >
+      <!-- reference the Navbar class from import above -->
+      <Navbar bind:isDark {allPages} {idxContent} {content} />
+    </header>
 
-  <body class="{isDark ? 'dk-theme' : 'lt-theme'} bg-main">
-    <main>
+    <!-- Setup the template main content -->
+    <main class="bg-main">
       <svelte:component
         this={layout}
         {...content.fields}
@@ -57,10 +59,11 @@
         {env}
       />
     </main>
-  </body>
 
-  <footer class="{isDark ? 'dk-theme' : 'lt-theme border-t-2'} bg-primary">
-    <!-- reference the Footer class from import above -->
-    <Footer />
-  </footer>
+    <!-- Setup the template footer content -->
+    <footer class="bg-primary{isDark ? '' : ' border-t-2'}">
+      <!-- reference the Footer class from import above -->
+      <Footer />
+    </footer>
+  </body>
 </html>
