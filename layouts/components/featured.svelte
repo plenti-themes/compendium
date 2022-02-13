@@ -85,21 +85,23 @@
             </h2>
             <div
               role="complementary"
-              class="meta flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg {featuredPage ==
+              class="flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg {featuredPage ==
               'Frame'
                 ? 'md:mb-10 sm:mb-5'
                 : 'mb-15'}"
             >
-              <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
+              <span class="meta">
+                <PostMeta {post} {catgPosts} {tagsPosts} {pm} />
+              </span>
             </div>
           </div>
           <div class="col-lg-2" />
         </div>
         <cite class="citation text-meta absolute">
           {@html post.fields.image.citation.replaceAll(
-              "<a ",
-              "<a target='blank' rel='noopener' "
-            )}
+            "<a ",
+            "<a target='blank' rel='noopener' "
+          )}
         </cite>
 
         <!-- Carousel Overlay Text -->
