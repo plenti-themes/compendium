@@ -70,12 +70,7 @@ function create_key_block(ctx) {
 	};
 }
 
-// (33:2) {#if enableContact}
-function create_if_block_2(ctx) {
-	return { c: noop, l: noop, m: noop, d: noop };
-}
-
-// (37:2) {#if idxContent.theme.codeHighlighting}
+// (29:2) {#if idxContent.theme.codeHighlighting}
 function create_if_block_1(ctx) {
 	let link;
 
@@ -101,7 +96,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (41:2) {#if idxContent.theme.mathTypesetting}
+// (33:2) {#if idxContent.theme.mathTypesetting}
 function create_if_block(ctx) {
 	let link;
 
@@ -146,13 +141,11 @@ function create_fragment(ctx) {
 	let t6;
 	let t7;
 	let t8;
-	let t9;
 	let link2;
 	let current;
 	let key_block = create_key_block(ctx);
-	let if_block0 = /*enableContact*/ ctx[5] && create_if_block_2(ctx);
-	let if_block1 = /*idxContent*/ ctx[0].theme.codeHighlighting && create_if_block_1(ctx);
-	let if_block2 = /*idxContent*/ ctx[0].theme.mathTypesetting && create_if_block(ctx);
+	let if_block0 = /*idxContent*/ ctx[0].theme.codeHighlighting && create_if_block_1(ctx);
+	let if_block1 = /*idxContent*/ ctx[0].theme.mathTypesetting && create_if_block(ctx);
 
 	return {
 		c() {
@@ -175,8 +168,6 @@ function create_fragment(ctx) {
 			t7 = space();
 			if (if_block1) if_block1.c();
 			t8 = space();
-			if (if_block2) if_block2.c();
-			t9 = space();
 			link2 = element("link");
 			this.h();
 		},
@@ -203,8 +194,6 @@ function create_fragment(ctx) {
 			t7 = claim_space(head_nodes);
 			if (if_block1) if_block1.l(head_nodes);
 			t8 = claim_space(head_nodes);
-			if (if_block2) if_block2.l(head_nodes);
-			t9 = claim_space(head_nodes);
 			link2 = claim_element(head_nodes, "LINK", { rel: true, href: true });
 			head_nodes.forEach(detach);
 			this.h();
@@ -244,8 +233,6 @@ function create_fragment(ctx) {
 			append(head, t7);
 			if (if_block1) if_block1.m(head, null);
 			append(head, t8);
-			if (if_block2) if_block2.m(head, null);
-			append(head, t9);
 			append(head, link2);
 			current = true;
 		},
@@ -263,29 +250,29 @@ function create_fragment(ctx) {
 			}
 
 			if (/*idxContent*/ ctx[0].theme.codeHighlighting) {
+				if (if_block0) {
+					
+				} else {
+					if_block0 = create_if_block_1(ctx);
+					if_block0.c();
+					if_block0.m(head, t7);
+				}
+			} else if (if_block0) {
+				if_block0.d(1);
+				if_block0 = null;
+			}
+
+			if (/*idxContent*/ ctx[0].theme.mathTypesetting) {
 				if (if_block1) {
 					
 				} else {
-					if_block1 = create_if_block_1(ctx);
+					if_block1 = create_if_block(ctx);
 					if_block1.c();
 					if_block1.m(head, t8);
 				}
 			} else if (if_block1) {
 				if_block1.d(1);
 				if_block1 = null;
-			}
-
-			if (/*idxContent*/ ctx[0].theme.mathTypesetting) {
-				if (if_block2) {
-					
-				} else {
-					if_block2 = create_if_block(ctx);
-					if_block2.c();
-					if_block2.m(head, t9);
-				}
-			} else if (if_block2) {
-				if_block2.d(1);
-				if_block2 = null;
 			}
 		},
 		i(local) {
@@ -302,7 +289,6 @@ function create_fragment(ctx) {
 			key_block.d(detaching);
 			if (if_block0) if_block0.d();
 			if (if_block1) if_block1.d();
-			if (if_block2) if_block2.d();
 		}
 	};
 }
@@ -316,12 +302,9 @@ function instance($$self, $$props, $$invalidate) {
 	let base = env.local ? "/" : env.baseurl;
 	let isPost;
 
-	// Set flag to enable contact serverless function
-	let enableContact = allPages.filter(key => key.path === "pages/contact")[0].fields.enabled;
-
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(0, idxContent = $$props.idxContent);
-		if ("allPages" in $$props) $$invalidate(6, allPages = $$props.allPages);
+		if ("allPages" in $$props) $$invalidate(5, allPages = $$props.allPages);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
 		if ("env" in $$props) $$invalidate(2, env = $$props.env);
 	};
@@ -333,7 +316,7 @@ function instance($$self, $$props, $$invalidate) {
 		}
 	};
 
-	return [idxContent, content, env, isPost, base, enableContact, allPages];
+	return [idxContent, content, env, isPost, base, allPages];
 }
 
 class Component extends SvelteComponent {
@@ -342,7 +325,7 @@ class Component extends SvelteComponent {
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 0,
-			allPages: 6,
+			allPages: 5,
 			content: 1,
 			env: 2
 		});

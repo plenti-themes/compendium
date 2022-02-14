@@ -266,19 +266,19 @@ function create_if_block_2(ctx) {
 // (23:10) {#each proj.posts as post, p}
 function create_each_block_1(ctx) {
 	let t0;
-	let div1;
+	let div2;
 	let img;
 	let img_src_value;
 	let img_alt_value;
 	let t1;
-	let div0;
+	let div1;
 	let h3;
 	let a;
 	let t2_value = /*post*/ ctx[9].fields.title + "";
 	let t2;
 	let a_href_value;
 	let t3;
-	let ul;
+	let div0;
 	let postmeta;
 	let t4;
 	let current;
@@ -297,15 +297,15 @@ function create_each_block_1(ctx) {
 		c() {
 			if (if_block) if_block.c();
 			t0 = space();
-			div1 = element("div");
+			div2 = element("div");
 			img = element("img");
 			t1 = space();
-			div0 = element("div");
+			div1 = element("div");
 			h3 = element("h3");
 			a = element("a");
 			t2 = text(t2_value);
 			t3 = space();
-			ul = element("ul");
+			div0 = element("div");
 			create_component(postmeta.$$.fragment);
 			t4 = space();
 			this.h();
@@ -313,27 +313,27 @@ function create_each_block_1(ctx) {
 		l(nodes) {
 			if (if_block) if_block.l(nodes);
 			t0 = claim_space(nodes);
-			div1 = claim_element(nodes, "DIV", { class: true });
+			div2 = claim_element(nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			img = claim_element(div2_nodes, "IMG", { class: true, src: true, alt: true });
+			t1 = claim_space(div2_nodes);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			img = claim_element(div1_nodes, "IMG", { class: true, src: true, alt: true });
-			t1 = claim_space(div1_nodes);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			h3 = claim_element(div0_nodes, "H3", { class: true });
+			h3 = claim_element(div1_nodes, "H3", { class: true });
 			var h3_nodes = children(h3);
 			a = claim_element(h3_nodes, "A", { href: true });
 			var a_nodes = children(a);
 			t2 = claim_text(a_nodes, t2_value);
 			a_nodes.forEach(detach);
 			h3_nodes.forEach(detach);
-			t3 = claim_space(div0_nodes);
-			ul = claim_element(div0_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-			claim_component(postmeta.$$.fragment, ul_nodes);
-			ul_nodes.forEach(detach);
+			t3 = claim_space(div1_nodes);
+			div0 = claim_element(div1_nodes, "DIV", { class: true, role: true });
+			var div0_nodes = children(div0);
+			claim_component(postmeta.$$.fragment, div0_nodes);
 			div0_nodes.forEach(detach);
-			t4 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
+			t4 = claim_space(div2_nodes);
+			div2_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
@@ -342,24 +342,25 @@ function create_each_block_1(ctx) {
 			attr(img, "alt", img_alt_value = /*post*/ ctx[9].fields.image.alt);
 			attr(a, "href", a_href_value = /*post*/ ctx[9].path);
 			attr(h3, "class", "header mt-0 mb-1 text-xl md:text-2xl");
-			attr(ul, "class", "text-meta flex flex-wrap");
-			attr(div0, "class", "inline-block ml-2");
-			attr(div1, "class", "flex items-center mb-3");
+			attr(div0, "class", "text-meta flex flex-wrap");
+			attr(div0, "role", "complementary");
+			attr(div1, "class", "inline-block ml-2");
+			attr(div2, "class", "flex items-center mb-3");
 		},
 		m(target, anchor) {
 			if (if_block) if_block.m(target, anchor);
 			insert(target, t0, anchor);
-			insert(target, div1, anchor);
-			append(div1, img);
-			append(div1, t1);
-			append(div1, div0);
-			append(div0, h3);
+			insert(target, div2, anchor);
+			append(div2, img);
+			append(div2, t1);
+			append(div2, div1);
+			append(div1, h3);
 			append(h3, a);
 			append(a, t2);
-			append(div0, t3);
-			append(div0, ul);
-			mount_component(postmeta, ul, null);
-			append(div1, t4);
+			append(div1, t3);
+			append(div1, div0);
+			mount_component(postmeta, div0, null);
+			append(div2, t4);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -397,7 +398,7 @@ function create_each_block_1(ctx) {
 		d(detaching) {
 			if (if_block) if_block.d(detaching);
 			if (detaching) detach(t0);
-			if (detaching) detach(div1);
+			if (detaching) detach(div2);
 			destroy_component(postmeta);
 		}
 	};

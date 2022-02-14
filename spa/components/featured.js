@@ -47,11 +47,8 @@ function get_each_context(ctx, list, i) {
 
 // (128:8) {#if featuredPage == "Bleed"}
 function create_if_block(ctx) {
-	let button;
 	let hoverable;
 	let current;
-	let mounted;
-	let dispose;
 
 	hoverable = new Hoverable({
 			props: {
@@ -68,33 +65,14 @@ function create_if_block(ctx) {
 
 	return {
 		c() {
-			button = element("button");
 			create_component(hoverable.$$.fragment);
-			this.h();
 		},
 		l(nodes) {
-			button = claim_element(nodes, "BUTTON", { type: true, class: true, style: true });
-			var button_nodes = children(button);
-			claim_component(hoverable.$$.fragment, button_nodes);
-			button_nodes.forEach(detach);
-			this.h();
-		},
-		h() {
-			attr(button, "type", "button");
-			attr(button, "class", "absolute svelte-4h1fis");
-			set_style(button, "bottom", "5%");
-			set_style(button, "left", "50%");
-			set_style(button, "transform", "translate(-50%)");
+			claim_component(hoverable.$$.fragment, nodes);
 		},
 		m(target, anchor) {
-			insert(target, button, anchor);
-			mount_component(hoverable, button, null);
+			mount_component(hoverable, target, anchor);
 			current = true;
-
-			if (!mounted) {
-				dispose = listen(button, "click", scrollDown);
-				mounted = true;
-			}
 		},
 		p(ctx, dirty) {
 			const hoverable_changes = {};
@@ -115,41 +93,56 @@ function create_if_block(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(button);
-			destroy_component(hoverable);
-			mounted = false;
-			dispose();
+			destroy_component(hoverable, detaching);
 		}
 	};
 }
 
-// (135:12) <Hoverable let:hovering>
+// (129:10) <Hoverable let:hovering>
 function create_default_slot(ctx) {
+	let button;
 	let span;
 	let i;
 	let span_class_value;
+	let mounted;
+	let dispose;
 
 	return {
 		c() {
+			button = element("button");
 			span = element("span");
 			i = element("i");
 			this.h();
 		},
 		l(nodes) {
-			span = claim_element(nodes, "SPAN", { class: true });
+			button = claim_element(nodes, "BUTTON", { type: true, class: true, style: true });
+			var button_nodes = children(button);
+			span = claim_element(button_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
 			i = claim_element(span_nodes, "I", { class: true });
 			children(i).forEach(detach);
 			span_nodes.forEach(detach);
+			button_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
 			attr(i, "class", "accent las la-chevron-circle-down text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(span, "class", span_class_value = "inline-block " + (/*hovering*/ ctx[12] ? "animate-bounce" : ""));
+			attr(button, "type", "button");
+			attr(button, "class", "absolute svelte-r1cl0p");
+			set_style(button, "bottom", "5%");
+			set_style(button, "left", "50%");
+			set_style(button, "transform", "translate(-50%)");
 		},
 		m(target, anchor) {
-			insert(target, span, anchor);
+			insert(target, button, anchor);
+			append(button, span);
 			append(span, i);
+
+			if (!mounted) {
+				dispose = listen(button, "click", scrollDown);
+				mounted = true;
+			}
 		},
 		p(ctx, dirty) {
 			if (dirty & /*hovering*/ 4096 && span_class_value !== (span_class_value = "inline-block " + (/*hovering*/ ctx[12] ? "animate-bounce" : ""))) {
@@ -157,7 +150,9 @@ function create_default_slot(ctx) {
 			}
 		},
 		d(detaching) {
-			if (detaching) detach(span);
+			if (detaching) detach(button);
+			mounted = false;
+			dispose();
 		}
 	};
 }
@@ -170,36 +165,36 @@ function create_each_block(ctx) {
 	let img_class_value;
 	let img_src_value;
 	let img_alt_value;
+	let div0_id_value;
 	let t0;
-	let div4;
+	let div5;
 	let div1;
 	let t1;
-	let div2;
+	let div3;
 	let h2;
 	let a;
 	let t2_value = /*post*/ ctx[9].fields.title + "";
 	let t2;
 	let a_href_value;
 	let t3;
-	let ul;
-	let postmeta;
-	let ul_class_value;
-	let t4;
-	let div3;
-	let t5;
-	let div5;
+	let div2;
 	let span;
-	let raw_value = /*post*/ ctx[9].fields.image.citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "";
+	let postmeta;
+	let div2_class_value;
+	let t4;
+	let div4;
+	let div5_id_value;
+	let t5;
+	let cite;
+	let raw_value = /*post*/ ctx[9].fields.image.citation.replaceAll("<a ", "<a target='blank' rel='noopener' ") + "";
 	let t6;
 	let button0;
 	let i0;
 	let t7;
+	let button1;
 	let i1;
 	let t8;
-	let button1;
-	let i2;
 	let t9;
-	let t10;
 	let div6_id_value;
 	let div6_class_value;
 	let current;
@@ -223,32 +218,30 @@ function create_each_block(ctx) {
 			div0 = element("div");
 			img = element("img");
 			t0 = space();
-			div4 = element("div");
+			div5 = element("div");
 			div1 = element("div");
 			t1 = space();
-			div2 = element("div");
+			div3 = element("div");
 			h2 = element("h2");
 			a = element("a");
 			t2 = text(t2_value);
 			t3 = space();
-			ul = element("ul");
+			div2 = element("div");
+			span = element("span");
 			create_component(postmeta.$$.fragment);
 			t4 = space();
-			div3 = element("div");
+			div4 = element("div");
 			t5 = space();
-			div5 = element("div");
-			span = element("span");
+			cite = element("cite");
 			t6 = space();
 			button0 = element("button");
 			i0 = element("i");
 			t7 = space();
+			button1 = element("button");
 			i1 = element("i");
 			t8 = space();
-			button1 = element("button");
-			i2 = element("i");
-			t9 = space();
 			if (if_block) if_block.c();
-			t10 = space();
+			t9 = space();
 			this.h();
 		},
 		l(nodes) {
@@ -266,55 +259,52 @@ function create_each_block(ctx) {
 
 			div0_nodes.forEach(detach);
 			t0 = claim_space(div6_nodes);
-			div4 = claim_element(div6_nodes, "DIV", { id: true, class: true });
-			var div4_nodes = children(div4);
-			div1 = claim_element(div4_nodes, "DIV", { class: true });
+			div5 = claim_element(div6_nodes, "DIV", { id: true, class: true });
+			var div5_nodes = children(div5);
+			div1 = claim_element(div5_nodes, "DIV", { class: true });
 			children(div1).forEach(detach);
-			t1 = claim_space(div4_nodes);
-			div2 = claim_element(div4_nodes, "DIV", { class: true });
-			var div2_nodes = children(div2);
-			h2 = claim_element(div2_nodes, "H2", { class: true });
+			t1 = claim_space(div5_nodes);
+			div3 = claim_element(div5_nodes, "DIV", { class: true });
+			var div3_nodes = children(div3);
+			h2 = claim_element(div3_nodes, "H2", { class: true });
 			var h2_nodes = children(h2);
 			a = claim_element(h2_nodes, "A", { href: true, class: true });
 			var a_nodes = children(a);
 			t2 = claim_text(a_nodes, t2_value);
 			a_nodes.forEach(detach);
 			h2_nodes.forEach(detach);
-			t3 = claim_space(div2_nodes);
-			ul = claim_element(div2_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-			claim_component(postmeta.$$.fragment, ul_nodes);
-			ul_nodes.forEach(detach);
-			div2_nodes.forEach(detach);
-			t4 = claim_space(div4_nodes);
-			div3 = claim_element(div4_nodes, "DIV", { class: true });
-			children(div3).forEach(detach);
-			div4_nodes.forEach(detach);
-			t5 = claim_space(div6_nodes);
-			div5 = claim_element(div6_nodes, "DIV", { class: true });
-			var div5_nodes = children(div5);
-			span = claim_element(div5_nodes, "SPAN", {});
+			t3 = claim_space(div3_nodes);
+			div2 = claim_element(div3_nodes, "DIV", { role: true, class: true });
+			var div2_nodes = children(div2);
+			span = claim_element(div2_nodes, "SPAN", { class: true });
 			var span_nodes = children(span);
+			claim_component(postmeta.$$.fragment, span_nodes);
 			span_nodes.forEach(detach);
+			div2_nodes.forEach(detach);
+			div3_nodes.forEach(detach);
+			t4 = claim_space(div5_nodes);
+			div4 = claim_element(div5_nodes, "DIV", { class: true });
+			children(div4).forEach(detach);
 			div5_nodes.forEach(detach);
+			t5 = claim_space(div6_nodes);
+			cite = claim_element(div6_nodes, "CITE", { class: true });
+			var cite_nodes = children(cite);
+			cite_nodes.forEach(detach);
 			t6 = claim_space(div6_nodes);
 			button0 = claim_element(div6_nodes, "BUTTON", { class: true, style: true });
 			var button0_nodes = children(button0);
 			i0 = claim_element(button0_nodes, "I", { class: true });
 			children(i0).forEach(detach);
-			t7 = claim_space(button0_nodes);
-			i1 = claim_element(button0_nodes, "I", { class: true });
-			children(i1).forEach(detach);
 			button0_nodes.forEach(detach);
-			t8 = claim_space(div6_nodes);
+			t7 = claim_space(div6_nodes);
 			button1 = claim_element(div6_nodes, "BUTTON", { type: true, class: true, style: true });
 			var button1_nodes = children(button1);
-			i2 = claim_element(button1_nodes, "I", { class: true });
-			children(i2).forEach(detach);
+			i1 = claim_element(button1_nodes, "I", { class: true });
+			children(i1).forEach(detach);
 			button1_nodes.forEach(detach);
-			t9 = claim_space(div6_nodes);
+			t8 = claim_space(div6_nodes);
 			if (if_block) if_block.l(div6_nodes);
-			t10 = claim_space(div6_nodes);
+			t9 = claim_space(div6_nodes);
 			div6_nodes.forEach(detach);
 			this.h();
 		},
@@ -326,29 +316,30 @@ function create_each_block(ctx) {
 			set_style(img, "filter", "brightness(60%)");
 			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[9].fields.image.src)) attr(img, "src", img_src_value);
 			attr(img, "alt", img_alt_value = /*post*/ ctx[9].fields.image.alt);
-			attr(div0, "id", "featureImage");
+			attr(div0, "id", div0_id_value = "featureImage-" + /*i*/ ctx[11]);
 			attr(div0, "class", "w-full");
 			attr(div1, "class", "col-lg-2");
 			attr(a, "href", a_href_value = /*post*/ ctx[9].path);
-			attr(a, "class", " svelte-4h1fis");
+			attr(a, "class", " svelte-r1cl0p");
 			attr(h2, "class", "w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl");
+			attr(span, "class", "meta svelte-r1cl0p");
+			attr(div2, "role", "complementary");
 
-			attr(ul, "class", ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
+			attr(div2, "class", div2_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-15") + " svelte-4h1fis");
+			: "mb-15"));
 
-			attr(div2, "class", "col-lg-8");
-			attr(div3, "class", "col-lg-2");
-			attr(div4, "id", "featureOverlayText");
-			attr(div4, "class", "feature w-full absolute row m-0 px-16 svelte-4h1fis");
-			attr(div5, "class", "citation text-meta absolute svelte-4h1fis");
-			attr(i0, "class", "");
-			attr(i1, "class", "accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
-			attr(button0, "class", "absolute m-2 left-2 svelte-4h1fis");
+			attr(div3, "class", "col-lg-8");
+			attr(div4, "class", "col-lg-2");
+			attr(div5, "id", div5_id_value = "featureOverlayText-" + /*i*/ ctx[11]);
+			attr(div5, "class", "feature w-full absolute row m-0 px-16 svelte-r1cl0p");
+			attr(cite, "class", "citation text-meta absolute svelte-r1cl0p");
+			attr(i0, "class", "accent las la-chevron-circle-left text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(button0, "class", "absolute m-2 left-2 svelte-r1cl0p");
 			set_style(button0, "top", "50%");
-			attr(i2, "class", "accent las la-chevron-circle-right text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
+			attr(i1, "class", "accent las la-chevron-circle-right text-5xl lg:text-6xl  rounded-full overflow-hidden bg-clip-content opacity-80 hover:opacity-100");
 			attr(button1, "type", "button");
-			attr(button1, "class", "absolute m-2 right-2 svelte-4h1fis");
+			attr(button1, "class", "absolute m-2 right-2 svelte-r1cl0p");
 			set_style(button1, "top", "50%");
 			attr(div6, "id", div6_id_value = /*i*/ ctx[11]);
 			attr(div6, "class", div6_class_value = "w-full relative overflow-hidden \n\t\t    " + (/*featuredPage*/ ctx[1] == "Frame" ? " rounded-lg" : "") + " \n\t\t    " + (/*i*/ ctx[11] == /*featureIdx*/ ctx[4] ? "" : "hidden"));
@@ -358,33 +349,31 @@ function create_each_block(ctx) {
 			append(div6, div0);
 			append(div0, img);
 			append(div6, t0);
-			append(div6, div4);
-			append(div4, div1);
-			append(div4, t1);
-			append(div4, div2);
-			append(div2, h2);
+			append(div6, div5);
+			append(div5, div1);
+			append(div5, t1);
+			append(div5, div3);
+			append(div3, h2);
 			append(h2, a);
 			append(a, t2);
-			append(div2, t3);
-			append(div2, ul);
-			mount_component(postmeta, ul, null);
-			append(div4, t4);
-			append(div4, div3);
+			append(div3, t3);
+			append(div3, div2);
+			append(div2, span);
+			mount_component(postmeta, span, null);
+			append(div5, t4);
+			append(div5, div4);
 			append(div6, t5);
-			append(div6, div5);
-			append(div5, span);
-			span.innerHTML = raw_value;
+			append(div6, cite);
+			cite.innerHTML = raw_value;
 			append(div6, t6);
 			append(div6, button0);
 			append(button0, i0);
-			append(button0, t7);
-			append(button0, i1);
-			append(div6, t8);
+			append(div6, t7);
 			append(div6, button1);
-			append(button1, i2);
-			append(div6, t9);
+			append(button1, i1);
+			append(div6, t8);
 			if (if_block) if_block.m(div6, null);
-			append(div6, t10);
+			append(div6, t9);
 			current = true;
 
 			if (!mounted) {
@@ -423,13 +412,13 @@ function create_each_block(ctx) {
 			if (dirty & /*tagsPosts*/ 8) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			postmeta.$set(postmeta_changes);
 
-			if (!current || dirty & /*featuredPage*/ 2 && ul_class_value !== (ul_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
+			if (!current || dirty & /*featuredPage*/ 2 && div2_class_value !== (div2_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
-			: "mb-15") + " svelte-4h1fis")) {
-				attr(ul, "class", ul_class_value);
+			: "mb-15"))) {
+				attr(div2, "class", div2_class_value);
 			}
 
-			if ((!current || dirty & /*allFeatures*/ 1) && raw_value !== (raw_value = /*post*/ ctx[9].fields.image.citation.replaceAll("<a ", "<a target='blank' rel='noopener'") + "")) span.innerHTML = raw_value;;
+			if ((!current || dirty & /*allFeatures*/ 1) && raw_value !== (raw_value = /*post*/ ctx[9].fields.image.citation.replaceAll("<a ", "<a target='blank' rel='noopener' ") + "")) cite.innerHTML = raw_value;;
 
 			if (/*featuredPage*/ ctx[1] == "Bleed") {
 				if (if_block) {
@@ -442,7 +431,7 @@ function create_each_block(ctx) {
 					if_block = create_if_block(ctx);
 					if_block.c();
 					transition_in(if_block, 1);
-					if_block.m(div6, t10);
+					if_block.m(div6, t9);
 				}
 			} else if (if_block) {
 				group_outros();

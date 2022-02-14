@@ -38,19 +38,18 @@ function create_fragment(ctx) {
 	let html;
 	let head;
 	let t0;
+	let body;
 	let header;
 	let navbar;
 	let updating_isDark;
-	let header_class_value;
 	let t1;
-	let body;
 	let main;
 	let switch_instance;
-	let body_class_value;
 	let t2;
 	let footer1;
 	let footer0;
 	let footer1_class_value;
+	let html_class_value;
 	let current;
 
 	head = new Head({
@@ -114,10 +113,10 @@ function create_fragment(ctx) {
 			html = element("html");
 			create_component(head.$$.fragment);
 			t0 = space();
+			body = element("body");
 			header = element("header");
 			create_component(navbar.$$.fragment);
 			t1 = space();
-			body = element("body");
 			main = element("main");
 			if (switch_instance) create_component(switch_instance.$$.fragment);
 			t2 = space();
@@ -126,53 +125,54 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			html = claim_element(nodes, "HTML", { lang: true });
+			html = claim_element(nodes, "HTML", { lang: true, class: true });
 			var html_nodes = children(html);
 			claim_component(head.$$.fragment, html_nodes);
 			t0 = claim_space(html_nodes);
-			header = claim_element(html_nodes, "HEADER", { class: true, style: true });
+			body = claim_element(html_nodes, "BODY", {});
+			var body_nodes = children(body);
+			header = claim_element(body_nodes, "HEADER", { class: true, style: true });
 			var header_nodes = children(header);
 			claim_component(navbar.$$.fragment, header_nodes);
 			header_nodes.forEach(detach);
-			t1 = claim_space(html_nodes);
-			body = claim_element(html_nodes, "BODY", { class: true });
-			var body_nodes = children(body);
-			main = claim_element(body_nodes, "MAIN", {});
+			t1 = claim_space(body_nodes);
+			main = claim_element(body_nodes, "MAIN", { class: true });
 			var main_nodes = children(main);
 			if (switch_instance) claim_component(switch_instance.$$.fragment, main_nodes);
 			main_nodes.forEach(detach);
-			body_nodes.forEach(detach);
-			t2 = claim_space(html_nodes);
-			footer1 = claim_element(html_nodes, "FOOTER", { class: true });
+			t2 = claim_space(body_nodes);
+			footer1 = claim_element(body_nodes, "FOOTER", { class: true });
 			var footer1_nodes = children(footer1);
 			claim_component(footer0.$$.fragment, footer1_nodes);
 			footer1_nodes.forEach(detach);
+			body_nodes.forEach(detach);
 			html_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(header, "class", header_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-primary sticky top-0 z-50"));
+			attr(header, "class", "bg-primary sticky top-0 z-50");
 			set_style(header, "box-shadow", "0 0 10px 0 rgba(0, 0, 0, 0.10), 0 2px 4px 0 rgba(0, 0, 0, 0.20)");
-			attr(body, "class", body_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-main"));
-			attr(footer1, "class", footer1_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme border-t-2") + " bg-primary"));
+			attr(main, "class", "bg-main");
+			attr(footer1, "class", footer1_class_value = "bg-primary" + (/*isDark*/ ctx[0] ? "" : " border-t-2"));
 			attr(html, "lang", "en");
+			attr(html, "class", html_class_value = "bg-primary " + (/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme"));
 		},
 		m(target, anchor) {
 			insert(target, html, anchor);
 			mount_component(head, html, null);
 			append(html, t0);
-			append(html, header);
-			mount_component(navbar, header, null);
-			append(html, t1);
 			append(html, body);
+			append(body, header);
+			mount_component(navbar, header, null);
+			append(body, t1);
 			append(body, main);
 
 			if (switch_instance) {
 				mount_component(switch_instance, main, null);
 			}
 
-			append(html, t2);
-			append(html, footer1);
+			append(body, t2);
+			append(body, footer1);
 			mount_component(footer0, footer1, null);
 			current = true;
 		},
@@ -195,10 +195,6 @@ function create_fragment(ctx) {
 			}
 
 			navbar.$set(navbar_changes);
-
-			if (!current || dirty & /*isDark*/ 1 && header_class_value !== (header_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-primary sticky top-0 z-50"))) {
-				attr(header, "class", header_class_value);
-			}
 
 			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, catgPosts, tagsPosts, isDark, env*/ 951)
 			? get_spread_update(switch_instance_spread_levels, [
@@ -238,12 +234,12 @@ function create_fragment(ctx) {
 				switch_instance.$set(switch_instance_changes);
 			}
 
-			if (!current || dirty & /*isDark*/ 1 && body_class_value !== (body_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme") + " bg-main"))) {
-				attr(body, "class", body_class_value);
+			if (!current || dirty & /*isDark*/ 1 && footer1_class_value !== (footer1_class_value = "bg-primary" + (/*isDark*/ ctx[0] ? "" : " border-t-2"))) {
+				attr(footer1, "class", footer1_class_value);
 			}
 
-			if (!current || dirty & /*isDark*/ 1 && footer1_class_value !== (footer1_class_value = "" + ((/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme border-t-2") + " bg-primary"))) {
-				attr(footer1, "class", footer1_class_value);
+			if (!current || dirty & /*isDark*/ 1 && html_class_value !== (html_class_value = "bg-primary " + (/*isDark*/ ctx[0] ? "dk-theme" : "lt-theme"))) {
+				attr(html, "class", html_class_value);
 			}
 		},
 		i(local) {

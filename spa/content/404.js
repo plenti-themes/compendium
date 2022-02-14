@@ -20,32 +20,32 @@ import {
 } from '../web_modules/svelte/internal/index.mjs';
 
 function create_if_block(ctx) {
-	let span;
+	let cite;
 	let raw_value = /*image*/ ctx[2].citation + "";
 
 	return {
 		c() {
-			span = element("span");
+			cite = element("cite");
 			this.h();
 		},
 		l(nodes) {
-			span = claim_element(nodes, "SPAN", { class: true });
-			var span_nodes = children(span);
-			span_nodes.forEach(detach);
+			cite = claim_element(nodes, "CITE", { class: true });
+			var cite_nodes = children(cite);
+			cite_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
-			attr(span, "class", "text-meta");
+			attr(cite, "class", "text-meta");
 		},
 		m(target, anchor) {
-			insert(target, span, anchor);
-			span.innerHTML = raw_value;
+			insert(target, cite, anchor);
+			cite.innerHTML = raw_value;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*image*/ 4 && raw_value !== (raw_value = /*image*/ ctx[2].citation + "")) span.innerHTML = raw_value;;
+			if (dirty & /*image*/ 4 && raw_value !== (raw_value = /*image*/ ctx[2].citation + "")) cite.innerHTML = raw_value;;
 		},
 		d(detaching) {
-			if (detaching) detach(span);
+			if (detaching) detach(cite);
 		}
 	};
 }

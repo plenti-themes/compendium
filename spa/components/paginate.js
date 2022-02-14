@@ -451,7 +451,7 @@ function create_fragment(ctx) {
 			this.h();
 		},
 		l(nodes) {
-			div = claim_element(nodes, "DIV", { class: true });
+			div = claim_element(nodes, "DIV", { class: true, role: true });
 			var div_nodes = children(div);
 			if_block0.l(div_nodes);
 			t0 = claim_space(div_nodes);
@@ -467,6 +467,7 @@ function create_fragment(ctx) {
 		},
 		h() {
 			attr(div, "class", "flex pagination text-center justify-center");
+			attr(div, "role", "navigation");
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);

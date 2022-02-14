@@ -53,7 +53,7 @@ function create_fragment(ctx) {
 			i = element("i");
 			t0 = space();
 			div0 = element("div");
-			t1 = text("© Copyright 2021. All rights reserved.");
+			t1 = text("© Copyright 2022. All rights reserved.");
 			br0 = element("br");
 			t2 = text("\n      Designed and developed by Roberto Rivera.");
 			br1 = element("br");
@@ -83,9 +83,9 @@ function create_fragment(ctx) {
 			children(i).forEach(detach);
 			button_nodes.forEach(detach);
 			t0 = claim_space(div1_nodes);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
+			div0 = claim_element(div1_nodes, "DIV", { class: true, role: true });
 			var div0_nodes = children(div0);
-			t1 = claim_text(div0_nodes, "© Copyright 2021. All rights reserved.");
+			t1 = claim_text(div0_nodes, "© Copyright 2022. All rights reserved.");
 			br0 = claim_element(div0_nodes, "BR", {});
 			t2 = claim_text(div0_nodes, "\n      Designed and developed by Roberto Rivera.");
 			br1 = claim_element(div0_nodes, "BR", {});
@@ -130,6 +130,7 @@ function create_fragment(ctx) {
 			attr(a3, "rel", "noopener");
 			attr(a3, "href", "https://tailwindcss.com/");
 			attr(div0, "class", "footnote mt-2");
+			attr(div0, "role", "contentinfo");
 			attr(div1, "class", "w-full text-center");
 			attr(div2, "class", "flex flex-wrap items-center justify-between pb-4 pt-2");
 		},

@@ -38,7 +38,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (29:4) {#if value.length >= 3}
+// (30:4) {#if value.length >= 3}
 function create_if_block(ctx) {
 	let each_1_anchor;
 	let current;
@@ -129,21 +129,21 @@ function create_if_block(ctx) {
 	};
 }
 
-// (32:8) {#if post.fields.articleBody           .toLowerCase()           .includes(value.toLowerCase()) || post.fields.title             .toLowerCase()             .includes(value.toLowerCase())}
+// (33:8) {#if post.fields.articleBody           .toLowerCase()           .includes(value.toLowerCase()) || post.fields.title             .toLowerCase()             .includes(value.toLowerCase())}
 function create_if_block_1(ctx) {
-	let div1;
+	let div2;
 	let img;
 	let img_src_value;
 	let img_alt_value;
 	let t0;
-	let div0;
+	let div1;
 	let h5;
 	let a;
 	let t1_value = /*post*/ ctx[4].fields.title + "";
 	let t1;
 	let a_href_value;
 	let t2;
-	let ul;
+	let div0;
 	let postmeta;
 	let t3;
 	let current;
@@ -154,41 +154,41 @@ function create_if_block_1(ctx) {
 
 	return {
 		c() {
-			div1 = element("div");
+			div2 = element("div");
 			img = element("img");
 			t0 = space();
-			div0 = element("div");
+			div1 = element("div");
 			h5 = element("h5");
 			a = element("a");
 			t1 = text(t1_value);
 			t2 = space();
-			ul = element("ul");
+			div0 = element("div");
 			create_component(postmeta.$$.fragment);
 			t3 = space();
 			this.h();
 		},
 		l(nodes) {
-			div1 = claim_element(nodes, "DIV", { class: true });
+			div2 = claim_element(nodes, "DIV", { class: true });
+			var div2_nodes = children(div2);
+			img = claim_element(div2_nodes, "IMG", { class: true, src: true, alt: true });
+			t0 = claim_space(div2_nodes);
+			div1 = claim_element(div2_nodes, "DIV", { class: true });
 			var div1_nodes = children(div1);
-			img = claim_element(div1_nodes, "IMG", { class: true, src: true, alt: true });
-			t0 = claim_space(div1_nodes);
-			div0 = claim_element(div1_nodes, "DIV", { class: true });
-			var div0_nodes = children(div0);
-			h5 = claim_element(div0_nodes, "H5", { class: true });
+			h5 = claim_element(div1_nodes, "H5", { class: true });
 			var h5_nodes = children(h5);
 			a = claim_element(h5_nodes, "A", { href: true });
 			var a_nodes = children(a);
 			t1 = claim_text(a_nodes, t1_value);
 			a_nodes.forEach(detach);
 			h5_nodes.forEach(detach);
-			t2 = claim_space(div0_nodes);
-			ul = claim_element(div0_nodes, "UL", { class: true });
-			var ul_nodes = children(ul);
-			claim_component(postmeta.$$.fragment, ul_nodes);
-			ul_nodes.forEach(detach);
+			t2 = claim_space(div1_nodes);
+			div0 = claim_element(div1_nodes, "DIV", { class: true, role: true });
+			var div0_nodes = children(div0);
+			claim_component(postmeta.$$.fragment, div0_nodes);
 			div0_nodes.forEach(detach);
-			t3 = claim_space(div1_nodes);
 			div1_nodes.forEach(detach);
+			t3 = claim_space(div2_nodes);
+			div2_nodes.forEach(detach);
 			this.h();
 		},
 		h() {
@@ -197,22 +197,23 @@ function create_if_block_1(ctx) {
 			attr(img, "alt", img_alt_value = /*post*/ ctx[4].fields.image.alt);
 			attr(a, "href", a_href_value = /*post*/ ctx[4].path);
 			attr(h5, "class", "header mt-0 mb-1");
-			attr(ul, "class", "text-meta flex flex-wrap");
-			attr(div0, "class", "inline-block ml-2");
-			attr(div1, "class", "flex items-center mb-5");
+			attr(div0, "class", "text-meta flex flex-wrap");
+			attr(div0, "role", "complementary");
+			attr(div1, "class", "inline-block ml-2");
+			attr(div2, "class", "flex items-center mb-5");
 		},
 		m(target, anchor) {
-			insert(target, div1, anchor);
-			append(div1, img);
-			append(div1, t0);
-			append(div1, div0);
-			append(div0, h5);
+			insert(target, div2, anchor);
+			append(div2, img);
+			append(div2, t0);
+			append(div2, div1);
+			append(div1, h5);
 			append(h5, a);
 			append(a, t1);
-			append(div0, t2);
-			append(div0, ul);
-			mount_component(postmeta, ul, null);
-			append(div1, t3);
+			append(div1, t2);
+			append(div1, div0);
+			mount_component(postmeta, div0, null);
+			append(div2, t3);
 			current = true;
 		},
 		p(ctx, dirty) {
@@ -244,13 +245,13 @@ function create_if_block_1(ctx) {
 			current = false;
 		},
 		d(detaching) {
-			if (detaching) detach(div1);
+			if (detaching) detach(div2);
 			destroy_component(postmeta);
 		}
 	};
 }
 
-// (31:6) {#each allPosts as post, i}
+// (32:6) {#each allPosts as post, i}
 function create_each_block(ctx) {
 	let show_if = /*post*/ ctx[4].fields.articleBody.toLowerCase().includes(/*value*/ ctx[1].toLowerCase()) || /*post*/ ctx[4].fields.title.toLowerCase().includes(/*value*/ ctx[1].toLowerCase());
 	let if_block_anchor;
@@ -353,9 +354,16 @@ function create_fragment(ctx) {
 			span0_nodes.forEach(detach);
 			h4_nodes.forEach(detach);
 			t1 = claim_space(div1_nodes);
-			span1 = claim_element(div1_nodes, "SPAN", { class: true });
+			span1 = claim_element(div1_nodes, "SPAN", { class: true, role: true });
 			var span1_nodes = children(span1);
-			input = claim_element(span1_nodes, "INPUT", { class: true, id: true, placeholder: true });
+
+			input = claim_element(span1_nodes, "INPUT", {
+				class: true,
+				id: true,
+				role: true,
+				placeholder: true
+			});
+
 			span1_nodes.forEach(detach);
 			t2 = claim_space(div1_nodes);
 			div0 = claim_element(div1_nodes, "DIV", { class: true });
@@ -369,8 +377,10 @@ function create_fragment(ctx) {
 			attr(h4, "class", "header mt-0");
 			attr(input, "class", "appearance-none block w-full bg-gray-100 border text-gray-700 border-gray-400 mb-5 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white");
 			attr(input, "id", "search");
+			attr(input, "role", "searchbox");
 			attr(input, "placeholder", "Search articles...");
 			attr(span1, "class", "flex flex-wrap items-center");
+			attr(span1, "role", "search");
 			attr(div0, "class", "row");
 			attr(div1, "class", "row");
 		},

@@ -25,7 +25,7 @@ import {
 
 import Ogp from './openGraph.js';
 import Twitter from './twitter.js';
-import { get_description } from '../scripts/get_description.js';
+import { get_excerpt } from './get_excerpt.js';
 
 function create_fragment(ctx) {
 	let title;
@@ -171,7 +171,7 @@ function instance($$self, $$props, $$invalidate) {
 	if (content.type === "posts") {
 		isArticle = true;
 		page_title = content.fields.title;
-		description = get_description(content.fields.articleBody, 160);
+		description = get_excerpt(content.fields.articleBody, 160);
 		url = site_url + content.path + "/";
 		image_url = site_url + "assets/posts/" + content.fields.image.src;
 		image_alt = content.fields.image.alt;

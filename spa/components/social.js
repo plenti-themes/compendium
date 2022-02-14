@@ -28,7 +28,6 @@ function get_each_context(ctx, list, i) {
 // (22:4) {#each arrSocial as { src, ico }}
 function create_each_block(ctx) {
 	let a;
-	let button;
 	let i;
 	let i_class_value;
 	let t;
@@ -37,19 +36,22 @@ function create_each_block(ctx) {
 	return {
 		c() {
 			a = element("a");
-			button = element("button");
 			i = element("i");
 			t = space();
 			this.h();
 		},
 		l(nodes) {
-			a = claim_element(nodes, "A", { target: true, rel: true, href: true });
+			a = claim_element(nodes, "A", {
+				href: true,
+				role: true,
+				target: true,
+				rel: true,
+				class: true
+			});
+
 			var a_nodes = children(a);
-			button = claim_element(a_nodes, "BUTTON", { class: true });
-			var button_nodes = children(button);
-			i = claim_element(button_nodes, "I", { class: true });
+			i = claim_element(a_nodes, "I", { class: true });
 			children(i).forEach(detach);
-			button_nodes.forEach(detach);
 			t = claim_space(a_nodes);
 			a_nodes.forEach(detach);
 			this.h();
@@ -59,15 +61,15 @@ function create_each_block(ctx) {
 			? "text-3xl pb-0.5"
 			: "text-2xl pt-0.5")));
 
-			attr(button, "class", "btn-round mx-0.5");
+			attr(a, "href", a_href_value = /*src*/ ctx[3]);
+			attr(a, "role", "button");
 			attr(a, "target", "_blank");
 			attr(a, "rel", "noopener");
-			attr(a, "href", a_href_value = /*src*/ ctx[3]);
+			attr(a, "class", "btn-round mx-0.5");
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
-			append(a, button);
-			append(button, i);
+			append(a, i);
 			append(a, t);
 		},
 		p: noop,

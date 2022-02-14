@@ -34,14 +34,10 @@ import {
 
 import Aside from './aside.js';
 
-// Logic to return geolocation data for context
-import { geo } from '../scripts/geoCode.js';
+// function and API endpoint for sending the contact request
+import { send_contact } from '../scripts/send_contact.js';
 
-// Senggrid function and url, which is used by the form
-// and the function.
-import { sendEmail } from '../scripts/sendGrid.js';
-
-function create_else_block(ctx) {
+function create_else_block_1(ctx) {
 	let t;
 
 	return {
@@ -63,8 +59,8 @@ function create_else_block(ctx) {
 	};
 }
 
-// (55:14) {#if tname.length > 1}
-function create_if_block_1(ctx) {
+// (43:14) {#if tname.length > 1}
+function create_if_block_3(ctx) {
 	let span0;
 	let t0_value = /*tname*/ ctx[7][0].toUpperCase() + "";
 	let t0;
@@ -113,7 +109,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (144:18) {#if submit}
+// (132:18) {#if contact}
 function create_if_block(ctx) {
 	let await_block_anchor;
 	let promise;
@@ -122,14 +118,15 @@ function create_if_block(ctx) {
 		ctx,
 		current: null,
 		token: null,
-		hasCatch: false,
+		hasCatch: true,
 		pending: create_pending_block,
 		then: create_then_block,
 		catch: create_catch_block,
-		value: 15
+		value: 15,
+		error: 16
 	};
 
-	handle_promise(promise = /*submit*/ ctx[5], info);
+	handle_promise(promise = /*contact*/ ctx[5], info);
 
 	return {
 		c() {
@@ -150,7 +147,7 @@ function create_if_block(ctx) {
 			ctx = new_ctx;
 			info.ctx = ctx;
 
-			if (dirty & /*submit*/ 32 && promise !== (promise = /*submit*/ ctx[5]) && handle_promise(promise, info)) {
+			if (dirty & /*contact*/ 32 && promise !== (promise = /*contact*/ ctx[5]) && handle_promise(promise, info)) {
 				
 			} else {
 				update_await_block_branch(info, ctx, dirty);
@@ -165,35 +162,24 @@ function create_if_block(ctx) {
 	};
 }
 
-// (1:0) <script>   // Aside component for search, categories, and tags   import Aside from './aside.js';    // Logic to return geolocation data for context   import { geo }
+// (143:20) {:catch error}
 function create_catch_block(ctx) {
-	return {
-		c: noop,
-		l: noop,
-		m: noop,
-		p: noop,
-		d: noop
-	};
-}
-
-// (147:20) {:then resp}
-function create_then_block(ctx) {
 	let pre;
 	let t0;
-	let t1_value = /*resp*/ ctx[15] + "";
+	let t1_value = (/*error*/ ctx[16].message || "failed") + "";
 	let t1;
 
 	return {
 		c() {
 			pre = element("pre");
-			t0 = text("🎉 Done - Response: ");
+			t0 = text("⛔ Response: ");
 			t1 = text(t1_value);
 			this.h();
 		},
 		l(nodes) {
 			pre = claim_element(nodes, "PRE", { class: true });
 			var pre_nodes = children(pre);
-			t0 = claim_text(pre_nodes, "🎉 Done - Response: ");
+			t0 = claim_text(pre_nodes, "⛔ Response: ");
 			t1 = claim_text(pre_nodes, t1_value);
 			pre_nodes.forEach(detach);
 			this.h();
@@ -207,7 +193,7 @@ function create_then_block(ctx) {
 			append(pre, t1);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*submit*/ 32 && t1_value !== (t1_value = /*resp*/ ctx[15] + "")) set_data(t1, t1_value);
+			if (dirty & /*contact*/ 32 && t1_value !== (t1_value = (/*error*/ ctx[16].message || "failed") + "")) set_data(t1, t1_value);
 		},
 		d(detaching) {
 			if (detaching) detach(pre);
@@ -215,7 +201,156 @@ function create_then_block(ctx) {
 	};
 }
 
-// (145:35)                        <p>Sending...</p>                     {:then resp}
+// (135:20) {:then resp}
+function create_then_block(ctx) {
+	let if_block_anchor;
+
+	function select_block_type_1(ctx, dirty) {
+		if (/*resp*/ ctx[15].statusText === "Accepted") return create_if_block_1;
+		if (/*resp*/ ctx[15].statusText === "form incomplete") return create_if_block_2;
+		return create_else_block;
+	}
+
+	let current_block_type = select_block_type_1(ctx, -1);
+	let if_block = current_block_type(ctx);
+
+	return {
+		c() {
+			if_block.c();
+			if_block_anchor = empty();
+		},
+		l(nodes) {
+			if_block.l(nodes);
+			if_block_anchor = empty();
+		},
+		m(target, anchor) {
+			if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+		p(ctx, dirty) {
+			if (current_block_type === (current_block_type = select_block_type_1(ctx, dirty)) && if_block) {
+				if_block.p(ctx, dirty);
+			} else {
+				if_block.d(1);
+				if_block = current_block_type(ctx);
+
+				if (if_block) {
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			}
+		},
+		d(detaching) {
+			if_block.d(detaching);
+			if (detaching) detach(if_block_anchor);
+		}
+	};
+}
+
+// (140:22) {:else}
+function create_else_block(ctx) {
+	let pre;
+	let t0;
+	let t1_value = (/*resp*/ ctx[15].statusText || "sent") + "";
+	let t1;
+
+	return {
+		c() {
+			pre = element("pre");
+			t0 = text("Response: ");
+			t1 = text(t1_value);
+			this.h();
+		},
+		l(nodes) {
+			pre = claim_element(nodes, "PRE", { class: true });
+			var pre_nodes = children(pre);
+			t0 = claim_text(pre_nodes, "Response: ");
+			t1 = claim_text(pre_nodes, t1_value);
+			pre_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(pre, "class", "footnote");
+		},
+		m(target, anchor) {
+			insert(target, pre, anchor);
+			append(pre, t0);
+			append(pre, t1);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*contact*/ 32 && t1_value !== (t1_value = (/*resp*/ ctx[15].statusText || "sent") + "")) set_data(t1, t1_value);
+		},
+		d(detaching) {
+			if (detaching) detach(pre);
+		}
+	};
+}
+
+// (138:70) 
+function create_if_block_2(ctx) {
+	let pre;
+	let t;
+
+	return {
+		c() {
+			pre = element("pre");
+			t = text("⛔ Response: form incomplete!");
+			this.h();
+		},
+		l(nodes) {
+			pre = claim_element(nodes, "PRE", { class: true });
+			var pre_nodes = children(pre);
+			t = claim_text(pre_nodes, "⛔ Response: form incomplete!");
+			pre_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(pre, "class", "footnote");
+		},
+		m(target, anchor) {
+			insert(target, pre, anchor);
+			append(pre, t);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(pre);
+		}
+	};
+}
+
+// (136:22) {#if resp.statusText === "Accepted"}
+function create_if_block_1(ctx) {
+	let pre;
+	let t;
+
+	return {
+		c() {
+			pre = element("pre");
+			t = text("🎉 Done: message sent");
+			this.h();
+		},
+		l(nodes) {
+			pre = claim_element(nodes, "PRE", { class: true });
+			var pre_nodes = children(pre);
+			t = claim_text(pre_nodes, "🎉 Done: message sent");
+			pre_nodes.forEach(detach);
+			this.h();
+		},
+		h() {
+			attr(pre, "class", "footnote");
+		},
+		m(target, anchor) {
+			insert(target, pre, anchor);
+			append(pre, t);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(pre);
+		}
+	};
+}
+
+// (133:36)                        <p>Sending...</p>                     {:then resp}
 function create_pending_block(ctx) {
 	let p;
 	let t;
@@ -302,13 +437,13 @@ function create_fragment(ctx) {
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*tname*/ ctx[7].length > 1) return create_if_block_1;
-		return create_else_block;
+		if (/*tname*/ ctx[7].length > 1) return create_if_block_3;
+		return create_else_block_1;
 	}
 
 	let current_block_type = select_block_type(ctx, -1);
 	let if_block0 = current_block_type(ctx);
-	let if_block1 = /*submit*/ ctx[5] && create_if_block(ctx);
+	let if_block1 = /*contact*/ ctx[5] && create_if_block(ctx);
 
 	aside = new Aside({
 			props: {
@@ -602,14 +737,14 @@ function create_fragment(ctx) {
 			append(label0, t4);
 			append(div1, t5);
 			append(div1, input0);
-			set_input_value(input0, /*formData*/ ctx[6].firstname);
+			set_input_value(input0, /*frmObj*/ ctx[6].firstname);
 			append(div3, t6);
 			append(div3, div2);
 			append(div2, label1);
 			append(label1, t7);
 			append(div2, t8);
 			append(div2, input1);
-			set_input_value(input1, /*formData*/ ctx[6].lastname);
+			set_input_value(input1, /*frmObj*/ ctx[6].lastname);
 			append(form, t9);
 			append(form, div5);
 			append(div5, div4);
@@ -617,7 +752,7 @@ function create_fragment(ctx) {
 			append(label2, t10);
 			append(div4, t11);
 			append(div4, input2);
-			set_input_value(input2, /*formData*/ ctx[6].email);
+			set_input_value(input2, /*frmObj*/ ctx[6].email);
 			append(form, t12);
 			append(form, div7);
 			append(div7, div6);
@@ -625,7 +760,7 @@ function create_fragment(ctx) {
 			append(label3, t13);
 			append(div6, t14);
 			append(div6, textarea);
-			set_input_value(textarea, /*formData*/ ctx[6].message);
+			set_input_value(textarea, /*frmObj*/ ctx[6].message);
 			append(form, t15);
 			append(form, div11);
 			append(div11, div8);
@@ -659,23 +794,23 @@ function create_fragment(ctx) {
 			if_block0.p(ctx, dirty);
 			if (!current || dirty & /*articleBody*/ 16) set_data(t2, /*articleBody*/ ctx[4]);
 
-			if (dirty & /*formData*/ 64 && input0.value !== /*formData*/ ctx[6].firstname) {
-				set_input_value(input0, /*formData*/ ctx[6].firstname);
+			if (dirty & /*frmObj*/ 64 && input0.value !== /*frmObj*/ ctx[6].firstname) {
+				set_input_value(input0, /*frmObj*/ ctx[6].firstname);
 			}
 
-			if (dirty & /*formData*/ 64 && input1.value !== /*formData*/ ctx[6].lastname) {
-				set_input_value(input1, /*formData*/ ctx[6].lastname);
+			if (dirty & /*frmObj*/ 64 && input1.value !== /*frmObj*/ ctx[6].lastname) {
+				set_input_value(input1, /*frmObj*/ ctx[6].lastname);
 			}
 
-			if (dirty & /*formData*/ 64 && input2.value !== /*formData*/ ctx[6].email) {
-				set_input_value(input2, /*formData*/ ctx[6].email);
+			if (dirty & /*frmObj*/ 64 && input2.value !== /*frmObj*/ ctx[6].email) {
+				set_input_value(input2, /*frmObj*/ ctx[6].email);
 			}
 
-			if (dirty & /*formData*/ 64) {
-				set_input_value(textarea, /*formData*/ ctx[6].message);
+			if (dirty & /*frmObj*/ 64) {
+				set_input_value(textarea, /*frmObj*/ ctx[6].message);
 			}
 
-			if (/*submit*/ ctx[5]) {
+			if (/*contact*/ ctx[5]) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 				} else {
@@ -714,7 +849,7 @@ function create_fragment(ctx) {
 	};
 }
 
-const reqUrl = "https://api.sendgrid.com/v3/mail/send";
+const reqUrl = "/api/submit";
 
 function instance($$self, $$props, $$invalidate) {
 	let { idxContent } = $$props,
@@ -725,50 +860,48 @@ function instance($$self, $$props, $$invalidate) {
 	let { title } = $$props, { articleBody } = $$props;
 	const tname = title.split(" ");
 	const socialLinks = idxContent.socialLinks;
-	let submit;
+	let contact;
 
 	// What: Setup the default form data object
 	// Why:  Define JSON payload for sending emails
 	// How:  Initiate attributes with empty strings and then bind values
-	//       from form submission to keys using svelte
-	let formData = {
-		email: "",
-		firstname: "",
-		lastname: "",
-		subject: "",
-		ip: "",
-		message: ""
-	};
+	//       from form submission to keys using svelte value binding
+	let frmObj = {};
 
 	async function handleOnSubmit() {
-		$$invalidate(6, formData.subject = "Contact Form: " + idxContent.name, formData);
-		$$invalidate(6, formData.ip = await geo(), formData);
+		$$invalidate(6, frmObj.subject = "Contact Form: " + idxContent.name, frmObj);
 
-		// console.log(formData);
-		$$invalidate(5, submit = sendEmail(reqUrl, formData));
+		$$invalidate(5, contact = new Response("Send",
+		{
+				"status": 200,
+				"statusText": "Processing"
+			}));
 
-		// console.log(submit);
-		return submit;
+		$$invalidate(5, contact = await send_contact(reqUrl, frmObj));
+
+		if (contact.statusText === "Accepted") {
+			$$invalidate(6, frmObj = {});
+		}
 	}
 
 	function input0_input_handler() {
-		formData.firstname = this.value;
-		$$invalidate(6, formData);
+		frmObj.firstname = this.value;
+		$$invalidate(6, frmObj);
 	}
 
 	function input1_input_handler() {
-		formData.lastname = this.value;
-		$$invalidate(6, formData);
+		frmObj.lastname = this.value;
+		$$invalidate(6, frmObj);
 	}
 
 	function input2_input_handler() {
-		formData.email = this.value;
-		$$invalidate(6, formData);
+		frmObj.email = this.value;
+		$$invalidate(6, frmObj);
 	}
 
 	function textarea_input_handler() {
-		formData.message = this.value;
-		$$invalidate(6, formData);
+		frmObj.message = this.value;
+		$$invalidate(6, frmObj);
 	}
 
 	$$self.$$set = $$props => {
@@ -786,8 +919,8 @@ function instance($$self, $$props, $$invalidate) {
 		tagsPosts,
 		title,
 		articleBody,
-		submit,
-		formData,
+		contact,
+		frmObj,
 		tname,
 		socialLinks,
 		handleOnSubmit,
