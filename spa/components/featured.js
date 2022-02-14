@@ -325,7 +325,7 @@ function create_each_block(ctx) {
 			attr(span, "class", "meta svelte-r1cl0p");
 			attr(div2, "role", "complementary");
 
-			attr(div2, "class", div2_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
+			attr(div2, "class", div2_class_value = "flex flex-wrap items-center justify-center text-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
 			: "mb-15"));
 
@@ -412,7 +412,7 @@ function create_each_block(ctx) {
 			if (dirty & /*tagsPosts*/ 8) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			postmeta.$set(postmeta_changes);
 
-			if (!current || dirty & /*featuredPage*/ 2 && div2_class_value !== (div2_class_value = "flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
+			if (!current || dirty & /*featuredPage*/ 2 && div2_class_value !== (div2_class_value = "flex flex-wrap items-center justify-center text-center text-sm md:text-md lg:text-lg " + (/*featuredPage*/ ctx[1] == "Frame"
 			? "md:mb-10 sm:mb-5"
 			: "mb-15"))) {
 				attr(div2, "class", div2_class_value);
