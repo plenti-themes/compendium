@@ -2,7 +2,7 @@
   "name": "Compendium",
   "site": "www.example.net",
   "logo": "logo.svg",
-  "title": "Compendium | Personal Blog Template",
+  "title": "Compendium | Blog Template",
   "description": "A personal blog template for creating JAMStack sites with Plenti of Svelte",
   "SEO": {
     "locale": "en_US",
