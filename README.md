@@ -5,7 +5,7 @@ Compendium is a [Plenti](https://plenti.co/themes) theme template for freelance 
 ***Advanced***: Optionally included is a "contact page" for delivering client message requests to your specified email address. The form triggers a serverless function, which submits the contact request via the Twilio [Sendgrid API](https://sendgrid.com/). The API endpoint function was designed to work on [Cloudflare Pages](https://pages.cloudflare.com/) (see below for details).
 
 **TODO**:
-* enhance and simplify the themplate theme with [dailyui](https://daisyui.com/)
+* enhance and simplify the themplate theme with [daisyui](https://daisyui.com/)
 * refactor color scheme implementation
 
 ## Usage
@@ -24,6 +24,7 @@ plenti theme enable compendium
 ```
 
 After adding theme, manually copy any route overrides and delete conflicting content or layouts.
+
 
 ## Template Settings 
 
@@ -132,4 +133,71 @@ usage_model = ''
 workers_dev = true
 target_type = "webpack"
 site = {bucket = "./deploy", entry-point = "workers-site"}
+```
+
+## Creating Posts
+
+### Working with JSON
+
+The basic post blueprint is a JSON file that looks as follows. The key/values are used throughout the template layouts to structure the static output. Adding keys might be an easier way to enhance the layout features if you want to change the default template. It is important to keep existing keys in place unless you actually plan to redevelop the layout files.
+
+``` json
+{
+  "title": "Lorem ipsum dolor sit amet",
+  "postsGroup": "Lorem One",
+  "image": {
+    "src": "nick-morrison-FHnnjk1Yj7Y-unsplash.jpg",
+    "alt": "Post Image",
+    "citation": "Photo by <a href='https://unsplash.com/@nickmorrison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Nick Morrison</a> on <a href='https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+  },
+  "author": {
+    "name": "Ro Doe",
+    "url": "pages/about"
+  },
+  "dateCreated": "1/8/2021",
+  "dateModified": "7/5/2021",
+  "categories": ["Photography"],
+  "tags": ["Art", "Image", "Random"],
+  "featured": true,
+  "draft": true,
+  "articleBody": "<p>Something good here<br/><br/>Paragraph 2<br/><br/>And so on!</p>"
+}
+```
+
+Description of a less obvious key values.
+
+Key | Description
+--- | ---
+postsGroup | Name of post groupings. For example, if you want to group your posts project or if you want to group them by similar types of posts
+featured | true to highlight the post on the homepage image carousel
+articleBody | html encoded body of the post
+
+### articulatePosts
+
+In case you prefer writing your posts in [Markdown](https://commonmark.org/), you might try my NodeJS project [articulatePost](https://github.com/roobyz/articulatePost). It takes posts written with a Yaml header and Markdown body, and then outputs the posts in the above JSON format. It also supports the Markdown extensions Katex for math typesetting and PrismJS for code syntax highlighting.
+
+``` yaml
+---
+title: "Lorem ipsum dolor sit amet"
+postsGroup: "Lorem One"
+image:
+  src: "nick-morrison-FHnnjk1Yj7Y-unsplash.jpg"
+  alt: "Post Image"
+  citation: "Photo by <a href='https://unsplash.com/@nickmorrison?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Nick Morrison</a> on <a href='https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText'>Unsplash</a>"
+author:
+  name: "Jo Doe"
+  url: "/pages/about"
+dateCreated: "1/8/2021"
+dateModified:
+categories: [Photography]
+tags: [Art, Image, Random]
+featured: true
+draft: true
+---
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque convallis purus vitae ipsum imperdiet condimentum. Nunc vel vehicula augue. Vestibulum luctus nulla nisl, at congue augue maximus et. Mauris eget massa dui. Cras sagittis accumsan lacus.
+
+## Table of Content
+
+More Mardown...
 ```
