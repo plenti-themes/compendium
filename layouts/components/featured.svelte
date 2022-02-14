@@ -85,7 +85,7 @@
             </h2>
             <div
               role="complementary"
-              class="flex flex-wrap items-center justify-center text-sm md:text-md lg:text-lg {featuredPage ==
+              class="flex flex-wrap items-center justify-center text-center text-sm md:text-md lg:text-lg {featuredPage ==
               'Frame'
                 ? 'md:mb-10 sm:mb-5'
                 : 'mb-15'}"
