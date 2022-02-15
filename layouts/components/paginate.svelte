@@ -1,8 +1,8 @@
 <script>
-  export let content, currentPage, totalPages;
+  export let content, currentPage, totalPages, baseurl;
   export let pagePath;
 
-  pagePath = (content.path.replace(/[0-9]/g, "") + "/").replace("//", "/");
+  pagePath = (baseurl + content.path.replace(/[0-9]/g, "")).replace("//", "/");
 </script>
 
 <div class="flex pagination text-center justify-center" role="navigation">
