@@ -46,16 +46,17 @@ function create_fragment(ctx) {
 				allPosts: /*allPosts*/ ctx[0],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				postRangeHigh: /*postRangeHigh*/ ctx[4],
-				postRangeLow: /*postRangeLow*/ ctx[5]
+				postRangeHigh: /*postRangeHigh*/ ctx[5],
+				postRangeLow: /*postRangeLow*/ ctx[6]
 			}
 		});
 
 	pagination = new Pagination({
 			props: {
 				content: /*content*/ ctx[3],
-				currentPage: /*currentPage*/ ctx[6],
-				totalPages: /*totalPages*/ ctx[7]
+				currentPage: /*currentPage*/ ctx[7],
+				totalPages: /*totalPages*/ ctx[8],
+				baseurl: /*baseurl*/ ctx[4]
 			}
 		});
 
@@ -64,7 +65,7 @@ function create_fragment(ctx) {
 				allPosts: /*allPosts*/ ctx[0],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				socialLinks: /*socialLinks*/ ctx[8]
+				socialLinks: /*socialLinks*/ ctx[9]
 			}
 		});
 
@@ -136,13 +137,14 @@ function create_fragment(ctx) {
 			if (dirty & /*allPosts*/ 1) cards_changes.allPosts = /*allPosts*/ ctx[0];
 			if (dirty & /*catgPosts*/ 2) cards_changes.catgPosts = /*catgPosts*/ ctx[1];
 			if (dirty & /*tagsPosts*/ 4) cards_changes.tagsPosts = /*tagsPosts*/ ctx[2];
-			if (dirty & /*postRangeHigh*/ 16) cards_changes.postRangeHigh = /*postRangeHigh*/ ctx[4];
-			if (dirty & /*postRangeLow*/ 32) cards_changes.postRangeLow = /*postRangeLow*/ ctx[5];
+			if (dirty & /*postRangeHigh*/ 32) cards_changes.postRangeHigh = /*postRangeHigh*/ ctx[5];
+			if (dirty & /*postRangeLow*/ 64) cards_changes.postRangeLow = /*postRangeLow*/ ctx[6];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
 			if (dirty & /*content*/ 8) pagination_changes.content = /*content*/ ctx[3];
-			if (dirty & /*currentPage*/ 64) pagination_changes.currentPage = /*currentPage*/ ctx[6];
-			if (dirty & /*totalPages*/ 128) pagination_changes.totalPages = /*totalPages*/ ctx[7];
+			if (dirty & /*currentPage*/ 128) pagination_changes.currentPage = /*currentPage*/ ctx[7];
+			if (dirty & /*totalPages*/ 256) pagination_changes.totalPages = /*totalPages*/ ctx[8];
+			if (dirty & /*baseurl*/ 16) pagination_changes.baseurl = /*baseurl*/ ctx[4];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
@@ -176,7 +178,8 @@ function instance($$self, $$props, $$invalidate) {
 	let { allPosts } = $$props,
 		{ catgPosts } = $$props,
 		{ tagsPosts } = $$props,
-		{ content } = $$props;
+		{ content } = $$props,
+		{ baseurl } = $$props;
 
 	let { postRangeHigh } = $$props,
 		{ postRangeLow } = $$props,
@@ -190,10 +193,11 @@ function instance($$self, $$props, $$invalidate) {
 		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 		if ("content" in $$props) $$invalidate(3, content = $$props.content);
-		if ("postRangeHigh" in $$props) $$invalidate(4, postRangeHigh = $$props.postRangeHigh);
-		if ("postRangeLow" in $$props) $$invalidate(5, postRangeLow = $$props.postRangeLow);
-		if ("currentPage" in $$props) $$invalidate(6, currentPage = $$props.currentPage);
-		if ("totalPages" in $$props) $$invalidate(7, totalPages = $$props.totalPages);
+		if ("baseurl" in $$props) $$invalidate(4, baseurl = $$props.baseurl);
+		if ("postRangeHigh" in $$props) $$invalidate(5, postRangeHigh = $$props.postRangeHigh);
+		if ("postRangeLow" in $$props) $$invalidate(6, postRangeLow = $$props.postRangeLow);
+		if ("currentPage" in $$props) $$invalidate(7, currentPage = $$props.currentPage);
+		if ("totalPages" in $$props) $$invalidate(8, totalPages = $$props.totalPages);
 	};
 
 	return [
@@ -201,6 +205,7 @@ function instance($$self, $$props, $$invalidate) {
 		catgPosts,
 		tagsPosts,
 		content,
+		baseurl,
 		postRangeHigh,
 		postRangeLow,
 		currentPage,
@@ -218,10 +223,11 @@ class Component extends SvelteComponent {
 			catgPosts: 1,
 			tagsPosts: 2,
 			content: 3,
-			postRangeHigh: 4,
-			postRangeLow: 5,
-			currentPage: 6,
-			totalPages: 7
+			baseurl: 4,
+			postRangeHigh: 5,
+			postRangeLow: 6,
+			currentPage: 7,
+			totalPages: 8
 		});
 	}
 }

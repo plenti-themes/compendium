@@ -21,8 +21,8 @@ import {
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[4] = list[i];
-	child_ctx[6] = i;
+	child_ctx[5] = list[i];
+	child_ctx[7] = i;
 	return child_ctx;
 }
 
@@ -162,7 +162,7 @@ function create_if_block_2(ctx) {
 // (36:4) {:else}
 function create_else_block_1(ctx) {
 	let a;
-	let t_value = /*i*/ ctx[6] + 1 + "";
+	let t_value = /*i*/ ctx[7] + 1 + "";
 	let t;
 	let a_href_value;
 
@@ -181,14 +181,14 @@ function create_else_block_1(ctx) {
 		},
 		h() {
 			attr(a, "class", "btn-round m-0.5");
-			attr(a, "href", a_href_value = "" + (/*pagePath*/ ctx[0] + (/*i*/ ctx[6] + 1)));
+			attr(a, "href", a_href_value = "" + (/*pagePath*/ ctx[0] + (/*i*/ ctx[7] + 1)));
 		},
 		m(target, anchor) {
 			insert(target, a, anchor);
 			append(a, t);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*pagePath*/ 1 && a_href_value !== (a_href_value = "" + (/*pagePath*/ ctx[0] + (/*i*/ ctx[6] + 1)))) {
+			if (dirty & /*pagePath*/ 1 && a_href_value !== (a_href_value = "" + (/*pagePath*/ ctx[0] + (/*i*/ ctx[7] + 1)))) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -201,7 +201,7 @@ function create_else_block_1(ctx) {
 // (34:4) {#if currentPage == i + 1}
 function create_if_block_1(ctx) {
 	let button;
-	let t_value = /*i*/ ctx[6] + 1 + "";
+	let t_value = /*i*/ ctx[7] + 1 + "";
 	let t;
 
 	return {
@@ -236,7 +236,7 @@ function create_each_block(ctx) {
 	let if_block_anchor;
 
 	function select_block_type_1(ctx, dirty) {
-		if (/*currentPage*/ ctx[1] == /*i*/ ctx[6] + 1) return create_if_block_1;
+		if (/*currentPage*/ ctx[1] == /*i*/ ctx[7] + 1) return create_if_block_1;
 		return create_else_block_1;
 	}
 
@@ -541,18 +541,23 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { content } = $$props, { currentPage } = $$props, { totalPages } = $$props;
+	let { content } = $$props,
+		{ currentPage } = $$props,
+		{ totalPages } = $$props,
+		{ baseurl } = $$props;
+
 	let { pagePath } = $$props;
-	pagePath = (content.path.replace(/[0-9]/g, "") + "/").replace("//", "/");
+	pagePath = (baseurl + content.path.replace(/[0-9]/g, "")).replace("//", "/");
 
 	$$self.$$set = $$props => {
 		if ("content" in $$props) $$invalidate(3, content = $$props.content);
 		if ("currentPage" in $$props) $$invalidate(1, currentPage = $$props.currentPage);
 		if ("totalPages" in $$props) $$invalidate(2, totalPages = $$props.totalPages);
+		if ("baseurl" in $$props) $$invalidate(4, baseurl = $$props.baseurl);
 		if ("pagePath" in $$props) $$invalidate(0, pagePath = $$props.pagePath);
 	};
 
-	return [pagePath, currentPage, totalPages, content];
+	return [pagePath, currentPage, totalPages, content, baseurl];
 }
 
 class Component extends SvelteComponent {
@@ -563,6 +568,7 @@ class Component extends SvelteComponent {
 			content: 3,
 			currentPage: 1,
 			totalPages: 2,
+			baseurl: 4,
 			pagePath: 0
 		});
 	}

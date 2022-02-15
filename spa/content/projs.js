@@ -46,9 +46,9 @@ function create_fragment(ctx) {
 
 	cards = new Cards({
 			props: {
-				projList: /*projList*/ ctx[8],
-				projRangeHigh: /*projRangeHigh*/ ctx[5],
-				projRangeLow: /*projRangeLow*/ ctx[6],
+				projList: /*projList*/ ctx[9],
+				projRangeHigh: /*projRangeHigh*/ ctx[6],
+				projRangeLow: /*projRangeLow*/ ctx[7],
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
@@ -57,15 +57,16 @@ function create_fragment(ctx) {
 	pagination = new Pagination({
 			props: {
 				content: /*content*/ ctx[1],
-				currentPage: /*currentPage*/ ctx[4],
-				totalPages: /*totalPages*/ ctx[9]
+				currentPage: /*currentPage*/ ctx[5],
+				totalPages: /*totalPages*/ ctx[10],
+				baseurl: /*baseurl*/ ctx[4]
 			}
 		});
 
 	aside = new Aside({
 			props: {
 				allPosts: /*allPosts*/ ctx[0],
-				socialLinks: /*socialLinks*/ ctx[7],
+				socialLinks: /*socialLinks*/ ctx[8],
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
@@ -164,14 +165,15 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			const cards_changes = {};
-			if (dirty & /*projRangeHigh*/ 32) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[5];
-			if (dirty & /*projRangeLow*/ 64) cards_changes.projRangeLow = /*projRangeLow*/ ctx[6];
+			if (dirty & /*projRangeHigh*/ 64) cards_changes.projRangeHigh = /*projRangeHigh*/ ctx[6];
+			if (dirty & /*projRangeLow*/ 128) cards_changes.projRangeLow = /*projRangeLow*/ ctx[7];
 			if (dirty & /*catgPosts*/ 4) cards_changes.catgPosts = /*catgPosts*/ ctx[2];
 			if (dirty & /*tagsPosts*/ 8) cards_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			cards.$set(cards_changes);
 			const pagination_changes = {};
 			if (dirty & /*content*/ 2) pagination_changes.content = /*content*/ ctx[1];
-			if (dirty & /*currentPage*/ 16) pagination_changes.currentPage = /*currentPage*/ ctx[4];
+			if (dirty & /*currentPage*/ 32) pagination_changes.currentPage = /*currentPage*/ ctx[5];
+			if (dirty & /*baseurl*/ 16) pagination_changes.baseurl = /*baseurl*/ ctx[4];
 			pagination.$set(pagination_changes);
 			const aside_changes = {};
 			if (dirty & /*allPosts*/ 1) aside_changes.allPosts = /*allPosts*/ ctx[0];
@@ -210,7 +212,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ allPosts } = $$props,
 		{ content } = $$props,
 		{ catgPosts } = $$props,
-		{ tagsPosts } = $$props;
+		{ tagsPosts } = $$props,
+		{ baseurl } = $$props;
 
 	let socialLinks = idxContent.socialLinks;
 	let projsPerPage = idxContent.theme.projsPerPage;
@@ -271,24 +274,25 @@ function instance($$self, $$props, $$invalidate) {
 	let totalProjPages = totalPages;
 
 	$$self.$$set = $$props => {
-		if ("idxContent" in $$props) $$invalidate(10, idxContent = $$props.idxContent);
+		if ("idxContent" in $$props) $$invalidate(11, idxContent = $$props.idxContent);
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
 		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(3, tagsPosts = $$props.tagsPosts);
+		if ("baseurl" in $$props) $$invalidate(4, baseurl = $$props.baseurl);
 	};
 
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty & /*content*/ 2) {
-			$: $$invalidate(4, currentPage = content.pager);
+			$: $$invalidate(5, currentPage = content.pager);
 		}
 
-		if ($$self.$$.dirty & /*currentPage*/ 16) {
-			$: $$invalidate(5, projRangeHigh = currentPage * projsPerPage);
+		if ($$self.$$.dirty & /*currentPage*/ 32) {
+			$: $$invalidate(6, projRangeHigh = currentPage * projsPerPage);
 		}
 
-		if ($$self.$$.dirty & /*projRangeHigh*/ 32) {
-			$: $$invalidate(6, projRangeLow = projRangeHigh - projsPerPage);
+		if ($$self.$$.dirty & /*projRangeHigh*/ 64) {
+			$: $$invalidate(7, projRangeLow = projRangeHigh - projsPerPage);
 		}
 	};
 
@@ -297,6 +301,7 @@ function instance($$self, $$props, $$invalidate) {
 		content,
 		catgPosts,
 		tagsPosts,
+		baseurl,
 		currentPage,
 		projRangeHigh,
 		projRangeLow,
@@ -312,11 +317,12 @@ class Component extends SvelteComponent {
 		super();
 
 		init(this, options, instance, create_fragment, safe_not_equal, {
-			idxContent: 10,
+			idxContent: 11,
 			allPosts: 0,
 			content: 1,
 			catgPosts: 2,
-			tagsPosts: 3
+			tagsPosts: 3,
+			baseurl: 4
 		});
 	}
 }

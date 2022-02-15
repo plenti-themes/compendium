@@ -147,7 +147,7 @@ function create_fragment(ctx) {
 }
 
 function instance($$self, $$props, $$invalidate) {
-	let { idxContent } = $$props, { content } = $$props, { env } = $$props;
+	let { idxContent } = $$props, { content } = $$props, { baseurl } = $$props;
 
 	let { url } = $$props,
 		{ image_url } = $$props,
@@ -161,7 +161,7 @@ function instance($$self, $$props, $$invalidate) {
 	// Define site-level attributes
 	let site_name = idxContent.name;
 
-	let site_url = idxContent.site + env.baseurl;
+	let site_url = idxContent.site + baseurl;
 	let locale = idxContent.SEO.locale;
 	let author = idxContent.SEO.author;
 	let author_site = idxContent.SEO.author_site;
@@ -196,7 +196,7 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(13, idxContent = $$props.idxContent);
 		if ("content" in $$props) $$invalidate(14, content = $$props.content);
-		if ("env" in $$props) $$invalidate(15, env = $$props.env);
+		if ("baseurl" in $$props) $$invalidate(15, baseurl = $$props.baseurl);
 		if ("url" in $$props) $$invalidate(0, url = $$props.url);
 		if ("image_url" in $$props) $$invalidate(1, image_url = $$props.image_url);
 		if ("image_alt" in $$props) $$invalidate(2, image_alt = $$props.image_alt);
@@ -223,7 +223,7 @@ function instance($$self, $$props, $$invalidate) {
 		twitterUsername,
 		idxContent,
 		content,
-		env
+		baseurl
 	];
 }
 
@@ -234,7 +234,7 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			idxContent: 13,
 			content: 14,
-			env: 15,
+			baseurl: 15,
 			url: 0,
 			image_url: 1,
 			image_alt: 2,

@@ -54,20 +54,20 @@ function create_fragment(ctx) {
 
 	head = new Head({
 			props: {
-				idxContent: /*idxContent*/ ctx[5],
-				allPages: /*allPages*/ ctx[6],
+				idxContent: /*idxContent*/ ctx[4],
+				allPages: /*allPages*/ ctx[5],
 				content: /*content*/ ctx[2],
-				env: /*env*/ ctx[4]
+				baseurl: /*baseurl*/ ctx[9]
 			}
 		});
 
 	function navbar_isDark_binding(value) {
-		/*navbar_isDark_binding*/ ctx[11](value);
+		/*navbar_isDark_binding*/ ctx[12](value);
 	}
 
 	let navbar_props = {
-		allPages: /*allPages*/ ctx[6],
-		idxContent: /*idxContent*/ ctx[5],
+		allPages: /*allPages*/ ctx[5],
+		idxContent: /*idxContent*/ ctx[4],
 		content: /*content*/ ctx[2]
 	};
 
@@ -80,14 +80,14 @@ function create_fragment(ctx) {
 
 	const switch_instance_spread_levels = [
 		/*content*/ ctx[2].fields,
-		{ idxContent: /*idxContent*/ ctx[5] },
+		{ idxContent: /*idxContent*/ ctx[4] },
 		{ allLayouts: /*allLayouts*/ ctx[1] },
-		{ allPosts: /*allPosts*/ ctx[7] },
-		{ catgPosts: /*catgPosts*/ ctx[8] },
-		{ tagsPosts: /*tagsPosts*/ ctx[9] },
+		{ allPosts: /*allPosts*/ ctx[6] },
+		{ catgPosts: /*catgPosts*/ ctx[7] },
+		{ tagsPosts: /*tagsPosts*/ ctx[8] },
 		{ content: /*content*/ ctx[2] },
 		{ isDark: /*isDark*/ ctx[0] },
-		{ env: /*env*/ ctx[4] }
+		{ baseurl: /*baseurl*/ ctx[9] }
 	];
 
 	var switch_value = /*layout*/ ctx[3];
@@ -178,14 +178,14 @@ function create_fragment(ctx) {
 		},
 		p(ctx, [dirty]) {
 			const head_changes = {};
-			if (dirty & /*idxContent*/ 32) head_changes.idxContent = /*idxContent*/ ctx[5];
-			if (dirty & /*allPages*/ 64) head_changes.allPages = /*allPages*/ ctx[6];
+			if (dirty & /*idxContent*/ 16) head_changes.idxContent = /*idxContent*/ ctx[4];
+			if (dirty & /*allPages*/ 32) head_changes.allPages = /*allPages*/ ctx[5];
 			if (dirty & /*content*/ 4) head_changes.content = /*content*/ ctx[2];
-			if (dirty & /*env*/ 16) head_changes.env = /*env*/ ctx[4];
+			if (dirty & /*baseurl*/ 512) head_changes.baseurl = /*baseurl*/ ctx[9];
 			head.$set(head_changes);
 			const navbar_changes = {};
-			if (dirty & /*allPages*/ 64) navbar_changes.allPages = /*allPages*/ ctx[6];
-			if (dirty & /*idxContent*/ 32) navbar_changes.idxContent = /*idxContent*/ ctx[5];
+			if (dirty & /*allPages*/ 32) navbar_changes.allPages = /*allPages*/ ctx[5];
+			if (dirty & /*idxContent*/ 16) navbar_changes.idxContent = /*idxContent*/ ctx[4];
 			if (dirty & /*content*/ 4) navbar_changes.content = /*content*/ ctx[2];
 
 			if (!updating_isDark && dirty & /*isDark*/ 1) {
@@ -196,17 +196,17 @@ function create_fragment(ctx) {
 
 			navbar.$set(navbar_changes);
 
-			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, catgPosts, tagsPosts, isDark, env*/ 951)
+			const switch_instance_changes = (dirty & /*content, idxContent, allLayouts, allPosts, catgPosts, tagsPosts, isDark, baseurl*/ 983)
 			? get_spread_update(switch_instance_spread_levels, [
 					dirty & /*content*/ 4 && get_spread_object(/*content*/ ctx[2].fields),
-					dirty & /*idxContent*/ 32 && { idxContent: /*idxContent*/ ctx[5] },
+					dirty & /*idxContent*/ 16 && { idxContent: /*idxContent*/ ctx[4] },
 					dirty & /*allLayouts*/ 2 && { allLayouts: /*allLayouts*/ ctx[1] },
-					dirty & /*allPosts*/ 128 && { allPosts: /*allPosts*/ ctx[7] },
-					dirty & /*catgPosts*/ 256 && { catgPosts: /*catgPosts*/ ctx[8] },
-					dirty & /*tagsPosts*/ 512 && { tagsPosts: /*tagsPosts*/ ctx[9] },
+					dirty & /*allPosts*/ 64 && { allPosts: /*allPosts*/ ctx[6] },
+					dirty & /*catgPosts*/ 128 && { catgPosts: /*catgPosts*/ ctx[7] },
+					dirty & /*tagsPosts*/ 256 && { tagsPosts: /*tagsPosts*/ ctx[8] },
 					dirty & /*content*/ 4 && { content: /*content*/ ctx[2] },
 					dirty & /*isDark*/ 1 && { isDark: /*isDark*/ ctx[0] },
-					dirty & /*env*/ 16 && { env: /*env*/ ctx[4] }
+					dirty & /*baseurl*/ 512 && { baseurl: /*baseurl*/ ctx[9] }
 				])
 			: {};
 
@@ -285,6 +285,7 @@ function instance($$self, $$props, $$invalidate) {
 
 	let { catgPosts = Object(ctObj["catgs"]) } = $$props;
 	let { tagsPosts = Object(ctObj["tags"]) } = $$props;
+	let { baseurl = env.local ? "/" : env.baseurl } = $$props;
 
 	function navbar_isDark_binding(value) {
 		isDark = value;
@@ -297,12 +298,13 @@ function instance($$self, $$props, $$invalidate) {
 		if ("allLayouts" in $$props) $$invalidate(1, allLayouts = $$props.allLayouts);
 		if ("content" in $$props) $$invalidate(2, content = $$props.content);
 		if ("layout" in $$props) $$invalidate(3, layout = $$props.layout);
-		if ("env" in $$props) $$invalidate(4, env = $$props.env);
-		if ("idxContent" in $$props) $$invalidate(5, idxContent = $$props.idxContent);
-		if ("allPages" in $$props) $$invalidate(6, allPages = $$props.allPages);
-		if ("allPosts" in $$props) $$invalidate(7, allPosts = $$props.allPosts);
-		if ("catgPosts" in $$props) $$invalidate(8, catgPosts = $$props.catgPosts);
-		if ("tagsPosts" in $$props) $$invalidate(9, tagsPosts = $$props.tagsPosts);
+		if ("env" in $$props) $$invalidate(11, env = $$props.env);
+		if ("idxContent" in $$props) $$invalidate(4, idxContent = $$props.idxContent);
+		if ("allPages" in $$props) $$invalidate(5, allPages = $$props.allPages);
+		if ("allPosts" in $$props) $$invalidate(6, allPosts = $$props.allPosts);
+		if ("catgPosts" in $$props) $$invalidate(7, catgPosts = $$props.catgPosts);
+		if ("tagsPosts" in $$props) $$invalidate(8, tagsPosts = $$props.tagsPosts);
+		if ("baseurl" in $$props) $$invalidate(9, baseurl = $$props.baseurl);
 	};
 
 	return [
@@ -310,13 +312,14 @@ function instance($$self, $$props, $$invalidate) {
 		allLayouts,
 		content,
 		layout,
-		env,
 		idxContent,
 		allPages,
 		allPosts,
 		catgPosts,
 		tagsPosts,
+		baseurl,
 		allContent,
+		env,
 		navbar_isDark_binding
 	];
 }
@@ -331,12 +334,13 @@ class Component extends SvelteComponent {
 			allLayouts: 1,
 			content: 2,
 			layout: 3,
-			env: 4,
-			idxContent: 5,
-			allPages: 6,
-			allPosts: 7,
-			catgPosts: 8,
-			tagsPosts: 9
+			env: 11,
+			idxContent: 4,
+			allPages: 5,
+			allPosts: 6,
+			catgPosts: 7,
+			tagsPosts: 8,
+			baseurl: 9
 		});
 	}
 }

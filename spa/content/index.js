@@ -32,8 +32,8 @@ function create_if_block_1(ctx) {
 
 	featured = new Featured({
 			props: {
-				allFeatures: /*allFeatures*/ ctx[8],
-				featuredPage: /*featuredPage*/ ctx[7],
+				allFeatures: /*allFeatures*/ ctx[9],
+				featuredPage: /*featuredPage*/ ctx[8],
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
@@ -90,8 +90,8 @@ function create_if_block(ctx) {
 
 	featured = new Featured({
 			props: {
-				allFeatures: /*allFeatures*/ ctx[8],
-				featuredPage: /*featuredPage*/ ctx[7],
+				allFeatures: /*allFeatures*/ ctx[9],
+				featuredPage: /*featuredPage*/ ctx[8],
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3]
 			}
@@ -152,8 +152,8 @@ function create_fragment(ctx) {
 	let t3;
 	let div3;
 	let current;
-	let if_block0 = /*featuredPage*/ ctx[7] == "Bleed" && /*currentPage*/ ctx[4] <= 1 && create_if_block_1(ctx);
-	let if_block1 = /*featuredPage*/ ctx[7] == "Frame" && /*currentPage*/ ctx[4] <= 1 && create_if_block(ctx);
+	let if_block0 = /*featuredPage*/ ctx[8] == "Bleed" && /*currentPage*/ ctx[5] <= 1 && create_if_block_1(ctx);
+	let if_block1 = /*featuredPage*/ ctx[8] == "Frame" && /*currentPage*/ ctx[5] <= 1 && create_if_block(ctx);
 
 	mainsection = new MainSection({
 			props: {
@@ -161,10 +161,11 @@ function create_fragment(ctx) {
 				catgPosts: /*catgPosts*/ ctx[2],
 				tagsPosts: /*tagsPosts*/ ctx[3],
 				content: /*content*/ ctx[1],
-				postRangeHigh: /*postRangeHigh*/ ctx[5],
-				postRangeLow: /*postRangeLow*/ ctx[6],
-				currentPage: /*currentPage*/ ctx[4],
-				totalPages: /*totalPages*/ ctx[9]
+				postRangeHigh: /*postRangeHigh*/ ctx[6],
+				postRangeLow: /*postRangeLow*/ ctx[7],
+				currentPage: /*currentPage*/ ctx[5],
+				totalPages: /*totalPages*/ ctx[10],
+				baseurl: /*baseurl*/ ctx[4]
 			}
 		});
 
@@ -230,11 +231,11 @@ function create_fragment(ctx) {
 			current = true;
 		},
 		p(ctx, [dirty]) {
-			if (/*featuredPage*/ ctx[7] == "Bleed" && /*currentPage*/ ctx[4] <= 1) {
+			if (/*featuredPage*/ ctx[8] == "Bleed" && /*currentPage*/ ctx[5] <= 1) {
 				if (if_block0) {
 					if_block0.p(ctx, dirty);
 
-					if (dirty & /*currentPage*/ 16) {
+					if (dirty & /*currentPage*/ 32) {
 						transition_in(if_block0, 1);
 					}
 				} else {
@@ -253,11 +254,11 @@ function create_fragment(ctx) {
 				check_outros();
 			}
 
-			if (/*featuredPage*/ ctx[7] == "Frame" && /*currentPage*/ ctx[4] <= 1) {
+			if (/*featuredPage*/ ctx[8] == "Frame" && /*currentPage*/ ctx[5] <= 1) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
-					if (dirty & /*currentPage*/ 16) {
+					if (dirty & /*currentPage*/ 32) {
 						transition_in(if_block1, 1);
 					}
 				} else {
@@ -281,9 +282,10 @@ function create_fragment(ctx) {
 			if (dirty & /*catgPosts*/ 4) mainsection_changes.catgPosts = /*catgPosts*/ ctx[2];
 			if (dirty & /*tagsPosts*/ 8) mainsection_changes.tagsPosts = /*tagsPosts*/ ctx[3];
 			if (dirty & /*content*/ 2) mainsection_changes.content = /*content*/ ctx[1];
-			if (dirty & /*postRangeHigh*/ 32) mainsection_changes.postRangeHigh = /*postRangeHigh*/ ctx[5];
-			if (dirty & /*postRangeLow*/ 64) mainsection_changes.postRangeLow = /*postRangeLow*/ ctx[6];
-			if (dirty & /*currentPage*/ 16) mainsection_changes.currentPage = /*currentPage*/ ctx[4];
+			if (dirty & /*postRangeHigh*/ 64) mainsection_changes.postRangeHigh = /*postRangeHigh*/ ctx[6];
+			if (dirty & /*postRangeLow*/ 128) mainsection_changes.postRangeLow = /*postRangeLow*/ ctx[7];
+			if (dirty & /*currentPage*/ 32) mainsection_changes.currentPage = /*currentPage*/ ctx[5];
+			if (dirty & /*baseurl*/ 16) mainsection_changes.baseurl = /*baseurl*/ ctx[4];
 			mainsection.$set(mainsection_changes);
 		},
 		i(local) {
@@ -317,7 +319,8 @@ function instance($$self, $$props, $$invalidate) {
 		{ content } = $$props,
 		{ theme } = $$props,
 		{ catgPosts } = $$props,
-		{ tagsPosts } = $$props;
+		{ tagsPosts } = $$props,
+		{ baseurl } = $$props;
 
 	let featuredPage = theme.featuredPage;
 	let allFeatures = allPosts.filter(content => content.fields?.featured);
@@ -327,22 +330,23 @@ function instance($$self, $$props, $$invalidate) {
 	$$self.$$set = $$props => {
 		if ("allPosts" in $$props) $$invalidate(0, allPosts = $$props.allPosts);
 		if ("content" in $$props) $$invalidate(1, content = $$props.content);
-		if ("theme" in $$props) $$invalidate(10, theme = $$props.theme);
+		if ("theme" in $$props) $$invalidate(11, theme = $$props.theme);
 		if ("catgPosts" in $$props) $$invalidate(2, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(3, tagsPosts = $$props.tagsPosts);
+		if ("baseurl" in $$props) $$invalidate(4, baseurl = $$props.baseurl);
 	};
 
 	$$self.$$.update = () => {
 		if ($$self.$$.dirty & /*content*/ 2) {
-			$: $$invalidate(4, currentPage = content.pager);
+			$: $$invalidate(5, currentPage = content.pager);
 		}
 
-		if ($$self.$$.dirty & /*currentPage, theme*/ 1040) {
-			$: $$invalidate(5, postRangeHigh = currentPage * theme.postsPerPage);
+		if ($$self.$$.dirty & /*currentPage, theme*/ 2080) {
+			$: $$invalidate(6, postRangeHigh = currentPage * theme.postsPerPage);
 		}
 
-		if ($$self.$$.dirty & /*postRangeHigh, theme*/ 1056) {
-			$: $$invalidate(6, postRangeLow = postRangeHigh - theme.postsPerPage);
+		if ($$self.$$.dirty & /*postRangeHigh, theme*/ 2112) {
+			$: $$invalidate(7, postRangeLow = postRangeHigh - theme.postsPerPage);
 		}
 	};
 
@@ -351,6 +355,7 @@ function instance($$self, $$props, $$invalidate) {
 		content,
 		catgPosts,
 		tagsPosts,
+		baseurl,
 		currentPage,
 		postRangeHigh,
 		postRangeLow,
@@ -368,9 +373,10 @@ class Component extends SvelteComponent {
 		init(this, options, instance, create_fragment, safe_not_equal, {
 			allPosts: 0,
 			content: 1,
-			theme: 10,
+			theme: 11,
 			catgPosts: 2,
-			tagsPosts: 3
+			tagsPosts: 3,
+			baseurl: 4
 		});
 	}
 }

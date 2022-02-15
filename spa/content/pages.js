@@ -39,7 +39,7 @@ function create_if_block(ctx) {
 				articleBody: /*articleBody*/ ctx[8],
 				catgPosts: /*catgPosts*/ ctx[9],
 				tagsPosts: /*tagsPosts*/ ctx[10],
-				env: /*env*/ ctx[11]
+				baseurl: /*baseurl*/ ctx[11]
 			}
 		};
 	}
@@ -85,7 +85,7 @@ function create_if_block(ctx) {
 			if (dirty & /*articleBody*/ 256) switch_instance_changes.articleBody = /*articleBody*/ ctx[8];
 			if (dirty & /*catgPosts*/ 512) switch_instance_changes.catgPosts = /*catgPosts*/ ctx[9];
 			if (dirty & /*tagsPosts*/ 1024) switch_instance_changes.tagsPosts = /*tagsPosts*/ ctx[10];
-			if (dirty & /*env*/ 2048) switch_instance_changes.env = /*env*/ ctx[11];
+			if (dirty & /*baseurl*/ 2048) switch_instance_changes.baseurl = /*baseurl*/ ctx[11];
 
 			if (switch_value !== (switch_value = /*getComponent*/ ctx[12]())) {
 				if (switch_instance) {
@@ -199,7 +199,7 @@ function instance($$self, $$props, $$invalidate) {
 		{ articleBody } = $$props,
 		{ catgPosts } = $$props,
 		{ tagsPosts } = $$props,
-		{ env } = $$props;
+		{ baseurl } = $$props;
 
 	const getComponent = function () {
 		try {
@@ -222,7 +222,7 @@ function instance($$self, $$props, $$invalidate) {
 		if ("articleBody" in $$props) $$invalidate(8, articleBody = $$props.articleBody);
 		if ("catgPosts" in $$props) $$invalidate(9, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(10, tagsPosts = $$props.tagsPosts);
-		if ("env" in $$props) $$invalidate(11, env = $$props.env);
+		if ("baseurl" in $$props) $$invalidate(11, baseurl = $$props.baseurl);
 	};
 
 	return [
@@ -237,7 +237,7 @@ function instance($$self, $$props, $$invalidate) {
 		articleBody,
 		catgPosts,
 		tagsPosts,
-		env,
+		baseurl,
 		getComponent,
 		allLayouts
 	];
@@ -260,7 +260,7 @@ class Component extends SvelteComponent {
 			articleBody: 8,
 			catgPosts: 9,
 			tagsPosts: 10,
-			env: 11
+			baseurl: 11
 		});
 	}
 }
