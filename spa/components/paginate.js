@@ -26,7 +26,7 @@ function get_each_context(ctx, list, i) {
 	return child_ctx;
 }
 
-// (21:2) {:else}
+// (22:2) {:else}
 function create_else_block_2(ctx) {
 	let button0;
 	let i0;
@@ -81,7 +81,7 @@ function create_else_block_2(ctx) {
 	};
 }
 
-// (12:2) {#if currentPage - 1 > 0}
+// (13:2) {#if currentPage - 1 > 0}
 function create_if_block_2(ctx) {
 	let a0;
 	let i0;
@@ -159,7 +159,7 @@ function create_if_block_2(ctx) {
 	};
 }
 
-// (36:4) {:else}
+// (37:4) {:else}
 function create_else_block_1(ctx) {
 	let a;
 	let t_value = /*i*/ ctx[7] + 1 + "";
@@ -198,7 +198,7 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (34:4) {#if currentPage == i + 1}
+// (35:4) {#if currentPage == i + 1}
 function create_if_block_1(ctx) {
 	let button;
 	let t_value = /*i*/ ctx[7] + 1 + "";
@@ -231,7 +231,7 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (33:2) {#each Array(totalPages) as _, i}
+// (34:2) {#each Array(totalPages) as _, i}
 function create_each_block(ctx) {
 	let if_block_anchor;
 
@@ -276,7 +276,7 @@ function create_each_block(ctx) {
 	};
 }
 
-// (53:2) {:else}
+// (54:2) {:else}
 function create_else_block(ctx) {
 	let button0;
 	let i0;
@@ -331,7 +331,7 @@ function create_else_block(ctx) {
 	};
 }
 
-// (44:2) {#if currentPage + 1 <= totalPages}
+// (45:2) {#if currentPage + 1 <= totalPages}
 function create_if_block(ctx) {
 	let a0;
 	let i0;
@@ -547,7 +547,7 @@ function instance($$self, $$props, $$invalidate) {
 		{ baseurl } = $$props;
 
 	let { pagePath } = $$props;
-	pagePath = (baseurl + content.path.replace(/[0-9]/g, "")).replace("//", "/");
+	pagePath = (baseurl + content.path.replace(/[0-9]/g, "")).replace("//", "") + "/";
 
 	$$self.$$set = $$props => {
 		if ("content" in $$props) $$invalidate(3, content = $$props.content);
