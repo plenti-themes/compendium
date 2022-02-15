@@ -27,11 +27,12 @@
   let ctObj = catgs_tags(allPosts);
   export let catgPosts = Object(ctObj["catgs"]);
   export let tagsPosts = Object(ctObj["tags"]);
+  export let baseurl = env.local ? "/" : env.baseurl;
 </script>
 
 <html lang="en" class="bg-primary {isDark ? 'dk-theme' : 'lt-theme'}">
   <!-- Setup the template meta, styles, scripts, and SEO -->
-  <Head {idxContent} {allPages} {content} {env} />
+  <Head {idxContent} {allPages} {content} {baseurl} />
 
   <!-- Setup the template content -->
   <body>
@@ -56,7 +57,7 @@
         {tagsPosts}
         {content}
         {isDark}
-        {env}
+        {baseurl}
       />
     </main>
 

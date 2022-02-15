@@ -6,7 +6,7 @@
   // * content: values for keys in "index.json"
   // * allPosts: values for keys in all posts
   // * theme: values passed in from layout content {...content.fields}
-  export let allPosts, content, theme, catgPosts, tagsPosts;
+  export let allPosts, content, theme, catgPosts, tagsPosts, baseurl;
 
   $: currentPage = content.pager;
   let featuredPage = theme.featuredPage;
@@ -48,6 +48,7 @@
         {postRangeLow}
         {currentPage}
         {totalPages}
+        {baseurl}
       />
     </div>
   </div>

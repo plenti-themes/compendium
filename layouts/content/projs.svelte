@@ -4,7 +4,7 @@
   import Pagination from "../components/paginate.svelte";
 
   // Variables passed in from "html.svelte" via "index.svelte"
-  export let idxContent, allPosts, content, catgPosts, tagsPosts;
+  export let idxContent, allPosts, content, catgPosts, tagsPosts, baseurl;
 
   $: currentPage = content.pager;
   let socialLinks = idxContent.socialLinks;
@@ -91,7 +91,7 @@
           <!-- Paginate each page as necessary                         -->
           <!-- ------------------------------------------------------- -->
           <div class="row mt-8 md:pr-10 mb-6 sm:mb-0">
-            <Pagination {content} {currentPage} {totalPages} />
+            <Pagination {content} {currentPage} {totalPages} {baseurl} />
           </div>
         </div>
 

@@ -2,8 +2,7 @@
   import SEO from "../scripts/SEO.svelte";
 
   // Values passed in from "html.svelte"
-  export let idxContent, allPages, content, env;
-  let base = env.local ? "/" : env.baseurl;
+  export let idxContent, allPages, content, baseurl;
   let isPost;
 
   // Defne key value for SEO updates
@@ -15,10 +14,10 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
 
   {#key isPost}
-    <SEO {idxContent} {content} {env} />
+    <SEO {idxContent} {content} {baseurl} />
   {/key}
 
-  <base href={base} />
+  <base href={baseurl} />
 
   <!-- Fix hydration -->
   <script type="module" src="spa/ejected/main.js"></script>

@@ -11,7 +11,7 @@
     articleBody,
     catgPosts,
     tagsPosts,
-    env;
+    baseurl;
 
   const getComponent = function () {
     try {
@@ -38,7 +38,7 @@
       {articleBody}
       {catgPosts}
       {tagsPosts}
-      {env}
+      {baseurl}
     />
   </div>
 {/if}

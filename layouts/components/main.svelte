@@ -1,6 +1,6 @@
 <script>
   // Variables passed in from "html.svelte"
-  export let allPosts, catgPosts, tagsPosts, content;
+  export let allPosts, catgPosts, tagsPosts, content, baseurl;
   // Variables passed in from "index.svelte"
   export let postRangeHigh, postRangeLow, currentPage, totalPages;
 
@@ -33,7 +33,7 @@
       <!-- Paginate each page as necessary                         -->
       <!-- ------------------------------------------------------- -->
       <div class="row mt-8 md:pr-10 mb-6 sm:mb-0">
-        <Pagination {content} {currentPage} {totalPages} />
+        <Pagination {content} {currentPage} {totalPages} {baseurl} />
       </div>
     </div>
 

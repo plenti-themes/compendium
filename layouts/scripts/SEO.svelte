@@ -4,7 +4,7 @@
   import { get_excerpt } from "./get_excerpt.svelte";
 
   // Values passed in from post.svelte or index.svelte via "html.svelte"
-  export let idxContent, content, env;
+  export let idxContent, content, baseurl;
 
   // Defined here for use in the HTML below
   export let url,
@@ -18,7 +18,7 @@
 
   // Define site-level attributes
   let site_name = idxContent.name;
-  let site_url = idxContent.site + env.baseurl;
+  let site_url = idxContent.site + baseurl;
   let locale = idxContent.SEO.locale;
   let author = idxContent.SEO.author;
   let author_site = idxContent.SEO.author_site;
