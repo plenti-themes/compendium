@@ -1,5 +1,5 @@
 {
-  "name": "quantified-leap",
+  "name": "compendium-theme",
   "version": "0.9.1",
   "scripts": {
     "style": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
