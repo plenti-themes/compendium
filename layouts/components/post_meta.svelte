@@ -50,7 +50,7 @@
       Tags: {#each tags as tag, i}
         {#each Object(tagsPosts) as { page, name }}
           {#if tag == name}
-            <a href="tags/{page}" class="meta ml-0.5">
+            <a href="tags/{name}" class="meta ml-0.5">
               {name}
             </a>{#if i < tags.length - 1},{/if}
           {/if}
