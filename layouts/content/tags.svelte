@@ -6,11 +6,21 @@
   export let idxContent, allPosts, content, catgPosts, tagsPosts;
 
   let socialLinks = idxContent.socialLinks;
-  let totalPages = Object(tagsPosts).length;
-  $: tag = Object(tagsPosts)[content.pager - 1].name;
 
-  // Setup variable for page link logic used on plenti.json
-  let totalTagsPages = totalPages;
+  // parse multi-word tags and set proper capitalization
+  function getTag() {
+    let words = content.path.split("/")[1].split("-");
+
+    for (let i = 0; i < words.length; i++) {
+      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+    }
+
+    return words.join(" ");
+  }
+
+  let tag = getTag();
+
+  let posts = Object(tagsPosts.filter((key) => key.name == tag)[0]).posts;
 </script>
 
 <div class="w-full py-6 sm:py-16">
@@ -23,7 +33,7 @@
             <!-- ------------------------------------------------------- -->
             <!-- Setup a Card for each post as necessary                 -->
             <!-- ------------------------------------------------------- -->
-            <PostList {tag} {catgPosts} {tagsPosts} />
+            <PostList {tag} {posts} {catgPosts} {tagsPosts} />
           </div>
         </div>
 

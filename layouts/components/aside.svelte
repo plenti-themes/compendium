@@ -29,9 +29,9 @@
     <div class="row">
       <h4 class="header mb-1 w-full flex">Tags</h4>
       <ul class="text-aside mb-4">
-        {#each Object(tagsPosts) as {page, name, length}}
+        {#each Object(tagsPosts) as {name, length}}
           <li class="flex{tag == name ? ' active' : ''}">
-            <a href="tags/{page}">{name} ({length})</a>
+            <a href="tags/{name.toLowerCase().replace(" ", "-")}">{name} ({length})</a>
           </li>
         {/each}
       </ul>
