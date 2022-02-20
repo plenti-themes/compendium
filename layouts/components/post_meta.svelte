@@ -7,7 +7,7 @@
   let author_name = post.author_name ?? post.fields.author.name;
   let dateCreated = post.dateCreated ?? post.fields.dateCreated;
   let dateModified = post.dateModified ?? post.fields.dateModified;
-  let title = (post.dateModified ?? post.fields.title) ?? '';
+  let title = post.dateModified ?? post.fields.title ?? "";
   let tags = post.tags ?? post.fields.tags;
   let catgs = post.catgs ?? post.fields.categories;
   let cardBody = pm.description
@@ -37,9 +37,9 @@
   {#if pm.catg_tags}
     <li class="mr-2 my-0 inline-flex">
       Categories: {#each catgs as catg, i}
-        {#each Object(catgPosts) as { page, name }}
+        {#each Object(catgPosts) as { path, name }}
           {#if catg == name}
-            <a href="catgs/{page}" class="meta ml-0.5">
+            <a href={path} class="meta ml-0.5">
               {name}
             </a>{#if i < catgs.length - 1},{/if}
           {/if}
@@ -48,9 +48,9 @@
     </li>
     <li class="mr-2 my-0 inline-flex">
       Tags: {#each tags as tag, i}
-        {#each Object(tagsPosts) as { name }}
+        {#each Object(tagsPosts) as { path, name }}
           {#if tag == name}
-            <a href="tags/{name.toLowerCase().replace(" ", "-")}" class="meta ml-0.5">
+            <a href={path} class="meta ml-0.5">
               {name}
             </a>{#if i < tags.length - 1},{/if}
           {/if}
@@ -66,7 +66,7 @@
 {/if}
 {#if pm.continue}
   <div class="mb-4">
-    <a href={path} title="{title}" class="btn-outline hover:white">Continue Reading</a>
+    <a href={path} {title} class="btn-outline hover:white">Continue Reading</a>
   </div>
 {/if}
 
