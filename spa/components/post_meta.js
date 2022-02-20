@@ -31,6 +31,7 @@ function get_each_context(ctx, list, i) {
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
+	child_ctx[11] = list[i].path;
 	child_ctx[16] = list[i].name;
 	return child_ctx;
 }
@@ -44,7 +45,7 @@ function get_each_context_2(ctx, list, i) {
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[21] = list[i].page;
+	child_ctx[11] = list[i].path;
 	child_ctx[16] = list[i].name;
 	return child_ctx;
 }
@@ -66,7 +67,7 @@ function create_if_block_9(ctx) {
 			t0 = space();
 			li1 = element("li");
 			a = element("a");
-			t1 = text(/*author_name*/ ctx[5]);
+			t1 = text(/*author_name*/ ctx[4]);
 			this.h();
 		},
 		l(nodes) {
@@ -80,7 +81,7 @@ function create_if_block_9(ctx) {
 			var li1_nodes = children(li1);
 			a = claim_element(li1_nodes, "A", { href: true });
 			var a_nodes = children(a);
-			t1 = claim_text(a_nodes, /*author_name*/ ctx[5]);
+			t1 = claim_text(a_nodes, /*author_name*/ ctx[4]);
 			a_nodes.forEach(detach);
 			li1_nodes.forEach(detach);
 			this.h();
@@ -88,7 +89,7 @@ function create_if_block_9(ctx) {
 		h() {
 			attr(i, "class", i_class_value = "las la-user-astronaut" + (/*pm*/ ctx[2].feature ? " feature" : " standard") + " svelte-1u9o9p2");
 			attr(li0, "class", "mx-0 -mt-1 text-meta inline-flex");
-			attr(a, "href", /*author_url*/ ctx[4]);
+			attr(a, "href", /*author_url*/ ctx[3]);
 			attr(li1, "class", "mr-2 my-0 inline-flex");
 		},
 		m(target, anchor) {
@@ -122,14 +123,14 @@ function create_if_block_8(ctx) {
 		c() {
 			li = element("li");
 			t0 = text("Created: ");
-			t1 = text(/*dateCreated*/ ctx[6]);
+			t1 = text(/*dateCreated*/ ctx[5]);
 			this.h();
 		},
 		l(nodes) {
 			li = claim_element(nodes, "LI", { class: true });
 			var li_nodes = children(li);
 			t0 = claim_text(li_nodes, "Created: ");
-			t1 = claim_text(li_nodes, /*dateCreated*/ ctx[6]);
+			t1 = claim_text(li_nodes, /*dateCreated*/ ctx[5]);
 			li_nodes.forEach(detach);
 			this.h();
 		},
@@ -158,14 +159,14 @@ function create_if_block_7(ctx) {
 		c() {
 			li = element("li");
 			t0 = text("Updated: ");
-			t1 = text(/*dateModified*/ ctx[7]);
+			t1 = text(/*dateModified*/ ctx[6]);
 			this.h();
 		},
 		l(nodes) {
 			li = claim_element(nodes, "LI", { class: true });
 			var li_nodes = children(li);
 			t0 = claim_text(li_nodes, "Updated: ");
-			t1 = claim_text(li_nodes, /*dateModified*/ ctx[7]);
+			t1 = claim_text(li_nodes, /*dateModified*/ ctx[6]);
 			li_nodes.forEach(detach);
 			this.h();
 		},
@@ -191,14 +192,14 @@ function create_if_block_2(ctx) {
 	let t1;
 	let li1;
 	let t2;
-	let each_value_2 = /*catgs*/ ctx[10];
+	let each_value_2 = /*catgs*/ ctx[9];
 	let each_blocks_1 = [];
 
 	for (let i = 0; i < each_value_2.length; i += 1) {
 		each_blocks_1[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
 	}
 
-	let each_value = /*tags*/ ctx[9];
+	let each_value = /*tags*/ ctx[8];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -267,8 +268,8 @@ function create_if_block_2(ctx) {
 			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*Object, catgPosts, catgs*/ 1025) {
-				each_value_2 = /*catgs*/ ctx[10];
+			if (dirty & /*Object, catgPosts, catgs*/ 513) {
+				each_value_2 = /*catgs*/ ctx[9];
 				let i;
 
 				for (i = 0; i < each_value_2.length; i += 1) {
@@ -290,8 +291,8 @@ function create_if_block_2(ctx) {
 				each_blocks_1.length = each_value_2.length;
 			}
 
-			if (dirty & /*Object, tagsPosts, tags*/ 514) {
-				each_value = /*tags*/ ctx[9];
+			if (dirty & /*Object, tagsPosts, tags*/ 258) {
+				each_value = /*tags*/ ctx[8];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -331,7 +332,7 @@ function create_if_block_5(ctx) {
 	let t1;
 	let a_href_value;
 	let if_block_anchor;
-	let if_block = /*i*/ ctx[15] < /*catgs*/ ctx[10].length - 1 && create_if_block_6(ctx);
+	let if_block = /*i*/ ctx[15] < /*catgs*/ ctx[9].length - 1 && create_if_block_6(ctx);
 
 	return {
 		c() {
@@ -353,7 +354,7 @@ function create_if_block_5(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "catgs/" + /*page*/ ctx[21]);
+			attr(a, "href", a_href_value = /*path*/ ctx[11]);
 			attr(a, "class", "meta ml-0.5 svelte-1u9o9p2");
 		},
 		m(target, anchor) {
@@ -366,7 +367,7 @@ function create_if_block_5(ctx) {
 		p(ctx, dirty) {
 			if (dirty & /*catgPosts*/ 1 && t0_value !== (t0_value = /*name*/ ctx[16] + "")) set_data(t0, t0_value);
 
-			if (dirty & /*catgPosts*/ 1 && a_href_value !== (a_href_value = "catgs/" + /*page*/ ctx[21])) {
+			if (dirty & /*catgPosts*/ 1 && a_href_value !== (a_href_value = /*path*/ ctx[11])) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -398,7 +399,7 @@ function create_if_block_6(ctx) {
 	};
 }
 
-// (40:8) {#each Object(catgPosts) as { page, name }}
+// (40:8) {#each Object(catgPosts) as { path, name }}
 function create_each_block_3(ctx) {
 	let if_block_anchor;
 	let if_block = /*catg*/ ctx[19] == /*name*/ ctx[16] && create_if_block_5(ctx);
@@ -470,7 +471,7 @@ function create_each_block_2(ctx) {
 			insert(target, each_1_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*catgs, Object, catgPosts*/ 1025) {
+			if (dirty & /*catgs, Object, catgPosts*/ 513) {
 				each_value_3 = Object(/*catgPosts*/ ctx[0]);
 				let i;
 
@@ -508,7 +509,7 @@ function create_if_block_3(ctx) {
 	let t1;
 	let a_href_value;
 	let if_block_anchor;
-	let if_block = /*i*/ ctx[15] < /*tags*/ ctx[9].length - 1 && create_if_block_4(ctx);
+	let if_block = /*i*/ ctx[15] < /*tags*/ ctx[8].length - 1 && create_if_block_4(ctx);
 
 	return {
 		c() {
@@ -530,7 +531,7 @@ function create_if_block_3(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "tags/" + /*name*/ ctx[16].toLowerCase().replace(" ", "-"));
+			attr(a, "href", a_href_value = /*path*/ ctx[11]);
 			attr(a, "class", "meta ml-0.5 svelte-1u9o9p2");
 		},
 		m(target, anchor) {
@@ -543,7 +544,7 @@ function create_if_block_3(ctx) {
 		p(ctx, dirty) {
 			if (dirty & /*tagsPosts*/ 2 && t0_value !== (t0_value = /*name*/ ctx[16] + "")) set_data(t0, t0_value);
 
-			if (dirty & /*tagsPosts*/ 2 && a_href_value !== (a_href_value = "tags/" + /*name*/ ctx[16].toLowerCase().replace(" ", "-"))) {
+			if (dirty & /*tagsPosts*/ 2 && a_href_value !== (a_href_value = /*path*/ ctx[11])) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -575,7 +576,7 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (51:8) {#each Object(tagsPosts) as { name }}
+// (51:8) {#each Object(tagsPosts) as { path, name }}
 function create_each_block_1(ctx) {
 	let if_block_anchor;
 	let if_block = /*tag*/ ctx[13] == /*name*/ ctx[16] && create_if_block_3(ctx);
@@ -647,7 +648,7 @@ function create_each_block(ctx) {
 			insert(target, each_1_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tags, Object, tagsPosts*/ 514) {
+			if (dirty & /*tags, Object, tagsPosts*/ 258) {
 				each_value_1 = Object(/*tagsPosts*/ ctx[1]);
 				let i;
 
@@ -697,7 +698,7 @@ function create_if_block_1(ctx) {
 		},
 		m(target, anchor) {
 			insert(target, p, anchor);
-			p.innerHTML = /*cardBody*/ ctx[11];
+			p.innerHTML = /*cardBody*/ ctx[10];
 		},
 		p: noop,
 		d(detaching) {
@@ -730,8 +731,8 @@ function create_if_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", /*path*/ ctx[3]);
-			attr(a, "title", /*title*/ ctx[8]);
+			attr(a, "href", /*path*/ ctx[11]);
+			attr(a, "title", /*title*/ ctx[7]);
 			attr(a, "class", "btn-outline hover:white");
 			attr(div, "class", "mb-4");
 		},
@@ -936,7 +937,6 @@ function instance($$self, $$props, $$invalidate) {
 		catgPosts,
 		tagsPosts,
 		pm,
-		path,
 		author_url,
 		author_name,
 		dateCreated,
@@ -945,6 +945,7 @@ function instance($$self, $$props, $$invalidate) {
 		tags,
 		catgs,
 		cardBody,
+		path,
 		post
 	];
 }
