@@ -1,6 +1,6 @@
 <script>
   import PostMeta from "./post_meta.svelte";
-  export let tag, posts, catgPosts, tagsPosts;
+  export let tag, catgPosts, tagsPosts;
 
   // Post Meta configuration values
   const pm = {
@@ -19,9 +19,9 @@
       {#key tag}
         <h2 class="header text-xl md:text-2xl lg:text-3xl my-5">
           <span class="accent">Tag:</span>
-          {tag}
+          {tag.name}
         </h2>
-        {#each Object(posts) as post}
+        {#each Object(tag.posts) as post}
           <div class="flex items-center my-4">
             <img
               class="inline-block object-cover rounded-md w-28 h-28"

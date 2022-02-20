@@ -7,20 +7,11 @@
 
   let socialLinks = idxContent.socialLinks;
 
-  // parse multi-word tags and set proper capitalization
-  function getTag() {
-    let words = content.path.split("/")[1].split("-");
-
-    for (let i = 0; i < words.length; i++) {
-      words[i] = words[i][0].toUpperCase() + words[i].substr(1);
-    }
-
-    return words.join(" ");
-  }
-
-  let tag = getTag();
-
-  let posts = Object(tagsPosts.filter((key) => key.name == tag)[0]).posts;
+  $: tag = {
+    name: content.fields.name,
+    route: content.fields.route,
+    posts: Object(tagsPosts.filter((key) => key.name == content.fields.name)[0]).posts,
+  };
 </script>
 
 <div class="w-full py-6 sm:py-16">
@@ -33,7 +24,7 @@
             <!-- ------------------------------------------------------- -->
             <!-- Setup a Card for each post as necessary                 -->
             <!-- ------------------------------------------------------- -->
-            <PostList {tag} {posts} {catgPosts} {tagsPosts} />
+            <PostList {tag} {catgPosts} {tagsPosts} />
           </div>
         </div>
 
