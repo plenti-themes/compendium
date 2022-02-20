@@ -6,11 +6,12 @@
   export let idxContent, allPosts, content, catgPosts, tagsPosts;
 
   let socialLinks = idxContent.socialLinks;
-  let totalPages = Object(catgPosts).length;
-  $: catg = Object(catgPosts)[content.pager - 1].name;
-
-  // Setup variable for page link logic used on plenti.json
-  let totalCatgsPages = totalPages;
+  $: catg = {
+    name: content.fields.name,
+    route: content.fields.route,
+    posts: Object(catgPosts.filter((key) => key.name == content.fields.name)[0])
+      .posts,
+  };
 </script>
 
 <div class="w-full py-6 sm:py-16">

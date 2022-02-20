@@ -11,10 +11,6 @@
     catg_tags: true,
     continue: false,
   };
-
-  let Posts;
-
-  $: Posts = Object.values(tagsPosts.filter((key) => key.name == tag)[0].posts);
 </script>
 
 <div class="rounded-xl overflow-hidden shadow-md bg-secondary mb-6">
@@ -23,9 +19,9 @@
       {#key tag}
         <h2 class="header text-xl md:text-2xl lg:text-3xl my-5">
           <span class="accent">Tag:</span>
-          {tag}
+          {tag.name}
         </h2>
-        {#each Posts as post}
+        {#each Object(tag.posts) as post}
           <div class="flex items-center my-4">
             <img
               class="inline-block object-cover rounded-md w-28 h-28"

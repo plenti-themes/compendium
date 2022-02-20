@@ -24,7 +24,7 @@
   export let allPosts = allContent.filter((key) => key.type == "posts");
 
   // Create the list of posts by tags and categories
-  let ctObj = catgs_tags(allPosts);
+  let ctObj = catgs_tags(allPosts, allContent);
   export let catgPosts = Object(ctObj["catgs"]);
   export let tagsPosts = Object(ctObj["tags"]);
   export let baseurl = env.local ? "/" : env.baseurl;

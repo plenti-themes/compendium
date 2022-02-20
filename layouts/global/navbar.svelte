@@ -109,7 +109,7 @@
           <a
             role="menuitem"
             class="block md:inline-flex px-2 py-1 md:py-0"
-            href="projs/"
+            href="projects"
             ><span class="navmenu{content.path == 'projs' ? ' active' : ''}"
               >Projects</span
             ></a

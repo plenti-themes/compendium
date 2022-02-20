@@ -48,9 +48,9 @@
     </li>
     <li class="mr-2 my-0 inline-flex">
       Tags: {#each tags as tag, i}
-        {#each Object(tagsPosts) as { page, name }}
+        {#each Object(tagsPosts) as { name }}
           {#if tag == name}
-            <a href="tags/{page}" class="meta ml-0.5">
+            <a href="tags/{name.toLowerCase().replace(" ", "-")}" class="meta ml-0.5">
               {name}
             </a>{#if i < tags.length - 1},{/if}
           {/if}

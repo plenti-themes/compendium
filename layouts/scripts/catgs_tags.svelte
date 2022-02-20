@@ -1,12 +1,15 @@
 <script context="module">
-  export function catgs_tags(posts) {
+  export function catgs_tags(posts, content) {
     let tagsObj = [];
     let catgObj = [];
     let index = 0;
 
-    // What: Store post metadata into catg and tag arrays 
+    let catContent = content.filter((key) => key.type == "catgs");
+    let tagContent = content.filter((key) => key.type == "tags");
+
+    // What: Store post metadata into catg and tag arrays
     // Why:  Use arrays to build sorted key/value objects below
-    // How:  Loop through each post to push them into  
+    // How:  Loop through each post to push them into
     //       arrays indexed by category or tag
     posts.forEach((post) => {
       // Flag the post in question
@@ -38,38 +41,34 @@
       });
     });
 
-    // What: Alphabetically refactor array indexed by tags into
-    //       array of key/value pairs
-    // Why:  Use final objects to populate tags for asides and posts
-    //       metadata, and to generate tag pages
-    // How:  Loop through sorted tags to build object containing posts,
-    //       by tag with pagination number, and quantity of posts.
-    let tagKeys = Object.keys(tagsObj).sort();
+    // What: Group posts by tagContent
+    // Why:  Use to populate tags for asides, posts metadata, and for
+    //       generating tag pages
+    // How:  Loop through tagContent to build object containing posts,
+    //       names, paths, and quantity of posts.
     let tagsList = [];
-    for (index = 0; index < tagKeys.length; index++) {
+    for (index = 0; index < tagContent.length; index++) {
       let obj = {
-        name: tagKeys[index],
-        posts: Object.values(tagsObj[tagKeys[index]]),
-        page: index + 1,
-        length: Object.keys(tagsObj[tagKeys[index]]).length,
+        name: tagContent[index].fields.name,
+        path: tagContent[index].path,
+        posts: Object.values(tagsObj[tagContent[index].fields.name]),
+        length: Object.keys(tagsObj[tagContent[index].fields.name]).length,
       };
       tagsList.push(obj);
     }
 
-    // What: Alphabetically refactor arrays indexed by categories 
-    //       into array of key/value pairs
-    // Why:  Use ofinal bjects to populate categories for asides and posts 
-    //       metadata, and to generate category pages
-    // How:  Loop through sorted tags to build object containing posts,
-    //       by category with pagination number, and quantity of posts.
-    let catKeys = Object.keys(catgObj).sort();
+    // What: Group posts by catContent
+    // Why:  To populate categories for asides, posts metadata, and for
+    //       generating category pages
+    // How:  Loop through catContent to build object containing posts,
+    //       names, paths, and quantity of posts.
     let catgList = [];
-    for (index = 0; index < catKeys.length; index++) {
+    for (index = 0; index < catContent.length; index++) {
       let obj = {
-        name: catKeys[index],
-        posts: Object.values(catgObj[catKeys[index]]),
-        page: index + 1,
-        length: Object.keys(catgObj[catKeys[index]]).length,
+        name: catContent[index].fields.name,
+        path: catContent[index].path,
+        posts: Object.values(catgObj[catContent[index].fields.name]),
+        length: Object.keys(catgObj[catContent[index].fields.name]).length,
       };
       catgList.push(obj);
     }

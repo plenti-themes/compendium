@@ -17,9 +17,9 @@
     <div class="row">
       <h4 class="header mb-1"><span>Categories</span></h4>
       <ul class="text-aside mb-4">
-        {#each Object(catgPosts) as {page, name, length}}
-          <li class="flex{catg == name ? ' active' : ''}">
-            <a href="catgs/{page}">{name} ({length})</a>
+        {#each Object(catgPosts) as { path, name, length }}
+          <li class="flex{(catg ? catg.name : '') == name ? ' active' : ''}">
+            <a href={path}>{name} ({length})</a>
           </li>
         {/each}
       </ul>
@@ -29,9 +29,9 @@
     <div class="row">
       <h4 class="header mb-1 w-full flex">Tags</h4>
       <ul class="text-aside mb-4">
-        {#each Object(tagsPosts) as {page, name, length}}
-          <li class="flex{tag == name ? ' active' : ''}">
-            <a href="tags/{page}">{name} ({length})</a>
+        {#each Object(tagsPosts) as { path, name, length }}
+          <li class="flex{(tag ? tag.name : '') == name ? ' active' : ''}">
+            <a href={path}>{name} ({length})</a>
           </li>
         {/each}
       </ul>
