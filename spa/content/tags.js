@@ -179,10 +179,6 @@ function instance($$self, $$props, $$invalidate) {
 		{ tagsPosts } = $$props;
 
 	let socialLinks = idxContent.socialLinks;
-	let totalPages = Object(tagsPosts).length;
-
-	// Setup variable for page link logic used on plenti.json
-	let totalTagsPages = totalPages;
 
 	$$self.$$set = $$props => {
 		if ("idxContent" in $$props) $$invalidate(5, idxContent = $$props.idxContent);
@@ -193,8 +189,12 @@ function instance($$self, $$props, $$invalidate) {
 	};
 
 	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*tagsPosts, content*/ 68) {
-			$: $$invalidate(3, tag = Object(tagsPosts)[content.pager - 1].name);
+		if ($$self.$$.dirty & /*content, tagsPosts*/ 68) {
+			$: $$invalidate(3, tag = {
+				name: content.fields.name,
+				route: content.fields.route,
+				posts: Object(tagsPosts.filter(key => key.name == content.fields.name)[0]).posts
+			});
 		}
 	};
 

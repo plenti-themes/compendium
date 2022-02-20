@@ -31,22 +31,21 @@ function get_each_context(ctx, list, i) {
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[16] = list[i].page;
-	child_ctx[17] = list[i].name;
+	child_ctx[16] = list[i].name;
 	return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[20] = list[i];
+	child_ctx[19] = list[i];
 	child_ctx[15] = i;
 	return child_ctx;
 }
 
 function get_each_context_3(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[16] = list[i].page;
-	child_ctx[17] = list[i].name;
+	child_ctx[21] = list[i].page;
+	child_ctx[16] = list[i].name;
 	return child_ctx;
 }
 
@@ -327,7 +326,7 @@ function create_if_block_2(ctx) {
 // (41:10) {#if catg == name}
 function create_if_block_5(ctx) {
 	let a;
-	let t0_value = /*name*/ ctx[17] + "";
+	let t0_value = /*name*/ ctx[16] + "";
 	let t0;
 	let t1;
 	let a_href_value;
@@ -354,7 +353,7 @@ function create_if_block_5(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "catgs/" + /*page*/ ctx[16]);
+			attr(a, "href", a_href_value = "catgs/" + /*page*/ ctx[21]);
 			attr(a, "class", "meta ml-0.5 svelte-1u9o9p2");
 		},
 		m(target, anchor) {
@@ -365,9 +364,9 @@ function create_if_block_5(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*catgPosts*/ 1 && t0_value !== (t0_value = /*name*/ ctx[17] + "")) set_data(t0, t0_value);
+			if (dirty & /*catgPosts*/ 1 && t0_value !== (t0_value = /*name*/ ctx[16] + "")) set_data(t0, t0_value);
 
-			if (dirty & /*catgPosts*/ 1 && a_href_value !== (a_href_value = "catgs/" + /*page*/ ctx[16])) {
+			if (dirty & /*catgPosts*/ 1 && a_href_value !== (a_href_value = "catgs/" + /*page*/ ctx[21])) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -402,7 +401,7 @@ function create_if_block_6(ctx) {
 // (40:8) {#each Object(catgPosts) as { page, name }}
 function create_each_block_3(ctx) {
 	let if_block_anchor;
-	let if_block = /*catg*/ ctx[20] == /*name*/ ctx[17] && create_if_block_5(ctx);
+	let if_block = /*catg*/ ctx[19] == /*name*/ ctx[16] && create_if_block_5(ctx);
 
 	return {
 		c() {
@@ -418,7 +417,7 @@ function create_each_block_3(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (/*catg*/ ctx[20] == /*name*/ ctx[17]) {
+			if (/*catg*/ ctx[19] == /*name*/ ctx[16]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
@@ -504,7 +503,7 @@ function create_each_block_2(ctx) {
 // (52:10) {#if tag == name}
 function create_if_block_3(ctx) {
 	let a;
-	let t0_value = /*name*/ ctx[17] + "";
+	let t0_value = /*name*/ ctx[16] + "";
 	let t0;
 	let t1;
 	let a_href_value;
@@ -531,7 +530,7 @@ function create_if_block_3(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "tags/" + /*page*/ ctx[16]);
+			attr(a, "href", a_href_value = "tags/" + /*name*/ ctx[16].toLowerCase().replace(" ", "-"));
 			attr(a, "class", "meta ml-0.5 svelte-1u9o9p2");
 		},
 		m(target, anchor) {
@@ -542,9 +541,9 @@ function create_if_block_3(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*tagsPosts*/ 2 && t0_value !== (t0_value = /*name*/ ctx[17] + "")) set_data(t0, t0_value);
+			if (dirty & /*tagsPosts*/ 2 && t0_value !== (t0_value = /*name*/ ctx[16] + "")) set_data(t0, t0_value);
 
-			if (dirty & /*tagsPosts*/ 2 && a_href_value !== (a_href_value = "tags/" + /*page*/ ctx[16])) {
+			if (dirty & /*tagsPosts*/ 2 && a_href_value !== (a_href_value = "tags/" + /*name*/ ctx[16].toLowerCase().replace(" ", "-"))) {
 				attr(a, "href", a_href_value);
 			}
 		},
@@ -576,10 +575,10 @@ function create_if_block_4(ctx) {
 	};
 }
 
-// (51:8) {#each Object(tagsPosts) as { page, name }}
+// (51:8) {#each Object(tagsPosts) as { name }}
 function create_each_block_1(ctx) {
 	let if_block_anchor;
-	let if_block = /*tag*/ ctx[13] == /*name*/ ctx[17] && create_if_block_3(ctx);
+	let if_block = /*tag*/ ctx[13] == /*name*/ ctx[16] && create_if_block_3(ctx);
 
 	return {
 		c() {
@@ -595,7 +594,7 @@ function create_each_block_1(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, dirty) {
-			if (/*tag*/ ctx[13] == /*name*/ ctx[17]) {
+			if (/*tag*/ ctx[13] == /*name*/ ctx[16]) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {

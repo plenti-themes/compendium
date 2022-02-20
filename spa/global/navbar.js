@@ -426,7 +426,7 @@ function create_fragment(ctx) {
 			attr(span1, "class", span1_class_value = "navmenu" + (/*content*/ ctx[3].path == "projs" ? " active" : ""));
 			attr(a2, "role", "menuitem");
 			attr(a2, "class", "block md:inline-flex px-2 py-1 md:py-0");
-			attr(a2, "href", "projs/");
+			attr(a2, "href", "projects");
 			attr(i2, "class", "las la-adjust text-2xl");
 			attr(span2, "class", "navmenu");
 			attr(button1, "id", "is-dark");

@@ -29,7 +29,7 @@ import Social from '../components/social.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[6] = list[i].page;
+	child_ctx[6] = list[i].path;
 	child_ctx[7] = list[i].name;
 	child_ctx[8] = list[i].length;
 	return child_ctx;
@@ -37,13 +37,13 @@ function get_each_context(ctx, list, i) {
 
 function get_each_context_1(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[6] = list[i].page;
+	child_ctx[6] = list[i].path;
 	child_ctx[7] = list[i].name;
 	child_ctx[8] = list[i].length;
 	return child_ctx;
 }
 
-// (20:8) {#each Object(catgPosts) as {page, name, length}}
+// (20:8) {#each Object(catgPosts) as { path, name, length }}
 function create_each_block_1(ctx) {
 	let li;
 	let a;
@@ -83,8 +83,11 @@ function create_each_block_1(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "catgs/" + /*page*/ ctx[6]);
-			attr(li, "class", li_class_value = "flex" + (/*catg*/ ctx[0] == /*name*/ ctx[7] ? " active" : "") + " svelte-htt49j");
+			attr(a, "href", a_href_value = /*path*/ ctx[6]);
+
+			attr(li, "class", li_class_value = "flex" + ((/*catg*/ ctx[0] ? /*catg*/ ctx[0].name : "") == /*name*/ ctx[7]
+			? " active"
+			: "") + " svelte-htt49j");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -99,11 +102,13 @@ function create_each_block_1(ctx) {
 			if (dirty & /*catgPosts*/ 16 && t0_value !== (t0_value = /*name*/ ctx[7] + "")) set_data(t0, t0_value);
 			if (dirty & /*catgPosts*/ 16 && t2_value !== (t2_value = /*length*/ ctx[8] + "")) set_data(t2, t2_value);
 
-			if (dirty & /*catgPosts*/ 16 && a_href_value !== (a_href_value = "catgs/" + /*page*/ ctx[6])) {
+			if (dirty & /*catgPosts*/ 16 && a_href_value !== (a_href_value = /*path*/ ctx[6])) {
 				attr(a, "href", a_href_value);
 			}
 
-			if (dirty & /*catg, catgPosts*/ 17 && li_class_value !== (li_class_value = "flex" + (/*catg*/ ctx[0] == /*name*/ ctx[7] ? " active" : "") + " svelte-htt49j")) {
+			if (dirty & /*catg, catgPosts*/ 17 && li_class_value !== (li_class_value = "flex" + ((/*catg*/ ctx[0] ? /*catg*/ ctx[0].name : "") == /*name*/ ctx[7]
+			? " active"
+			: "") + " svelte-htt49j")) {
 				attr(li, "class", li_class_value);
 			}
 		},
@@ -113,7 +118,7 @@ function create_each_block_1(ctx) {
 	};
 }
 
-// (32:8) {#each Object(tagsPosts) as {page, name, length}}
+// (32:8) {#each Object(tagsPosts) as { path, name, length }}
 function create_each_block(ctx) {
 	let li;
 	let a;
@@ -153,8 +158,11 @@ function create_each_block(ctx) {
 			this.h();
 		},
 		h() {
-			attr(a, "href", a_href_value = "tags/" + /*page*/ ctx[6]);
-			attr(li, "class", li_class_value = "flex" + (/*tag*/ ctx[1] == /*name*/ ctx[7] ? " active" : "") + " svelte-htt49j");
+			attr(a, "href", a_href_value = /*path*/ ctx[6]);
+
+			attr(li, "class", li_class_value = "flex" + ((/*tag*/ ctx[1] ? /*tag*/ ctx[1].name : "") == /*name*/ ctx[7]
+			? " active"
+			: "") + " svelte-htt49j");
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -169,11 +177,13 @@ function create_each_block(ctx) {
 			if (dirty & /*tagsPosts*/ 32 && t0_value !== (t0_value = /*name*/ ctx[7] + "")) set_data(t0, t0_value);
 			if (dirty & /*tagsPosts*/ 32 && t2_value !== (t2_value = /*length*/ ctx[8] + "")) set_data(t2, t2_value);
 
-			if (dirty & /*tagsPosts*/ 32 && a_href_value !== (a_href_value = "tags/" + /*page*/ ctx[6])) {
+			if (dirty & /*tagsPosts*/ 32 && a_href_value !== (a_href_value = /*path*/ ctx[6])) {
 				attr(a, "href", a_href_value);
 			}
 
-			if (dirty & /*tag, tagsPosts*/ 34 && li_class_value !== (li_class_value = "flex" + (/*tag*/ ctx[1] == /*name*/ ctx[7] ? " active" : "") + " svelte-htt49j")) {
+			if (dirty & /*tag, tagsPosts*/ 34 && li_class_value !== (li_class_value = "flex" + ((/*tag*/ ctx[1] ? /*tag*/ ctx[1].name : "") == /*name*/ ctx[7]
+			? " active"
+			: "") + " svelte-htt49j")) {
 				attr(li, "class", li_class_value);
 			}
 		},

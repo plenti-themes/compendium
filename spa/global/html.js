@@ -281,7 +281,7 @@ function instance($$self, $$props, $$invalidate) {
 	let { allPosts = allContent.filter(key => key.type == "posts") } = $$props;
 
 	// Create the list of posts by tags and categories
-	let ctObj = catgs_tags(allPosts);
+	let ctObj = catgs_tags(allPosts, allContent);
 
 	let { catgPosts = Object(ctObj["catgs"]) } = $$props;
 	let { tagsPosts = Object(ctObj["tags"]) } = $$props;

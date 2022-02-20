@@ -32,11 +32,11 @@ import PostMeta from './post_meta.js';
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[5] = list[i];
+	child_ctx[4] = list[i];
 	return child_ctx;
 }
 
-// (28:8) {#each Posts as post}
+// (24:8) {#each Object(tag.posts) as post}
 function create_each_block(ctx) {
 	let div2;
 	let img;
@@ -46,7 +46,7 @@ function create_each_block(ctx) {
 	let div1;
 	let h3;
 	let a;
-	let t1_value = /*post*/ ctx[5].title + "";
+	let t1_value = /*post*/ ctx[4].title + "";
 	let t1;
 	let a_href_value;
 	let t2;
@@ -57,10 +57,10 @@ function create_each_block(ctx) {
 
 	postmeta = new PostMeta({
 			props: {
-				post: /*post*/ ctx[5],
+				post: /*post*/ ctx[4],
 				catgPosts: /*catgPosts*/ ctx[1],
 				tagsPosts: /*tagsPosts*/ ctx[2],
-				pm: /*pm*/ ctx[4]
+				pm: /*pm*/ ctx[3]
 			}
 		});
 
@@ -105,9 +105,9 @@ function create_each_block(ctx) {
 		},
 		h() {
 			attr(img, "class", "inline-block object-cover rounded-md w-28 h-28");
-			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[5].img_src)) attr(img, "src", img_src_value);
-			attr(img, "alt", img_alt_value = /*post*/ ctx[5].img_alt);
-			attr(a, "href", a_href_value = /*post*/ ctx[5].path);
+			if (img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[4].img_src)) attr(img, "src", img_src_value);
+			attr(img, "alt", img_alt_value = /*post*/ ctx[4].img_alt);
+			attr(a, "href", a_href_value = /*post*/ ctx[4].path);
 			attr(h3, "class", "header my-0 text-xl md:text-2xl");
 			attr(div0, "class", "text-meta flex flex-wrap");
 			attr(div0, "role", "complementary");
@@ -129,22 +129,22 @@ function create_each_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*Posts*/ 8 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[5].img_src)) {
+			if (!current || dirty & /*tag*/ 1 && img.src !== (img_src_value = "assets/posts/" + /*post*/ ctx[4].img_src)) {
 				attr(img, "src", img_src_value);
 			}
 
-			if (!current || dirty & /*Posts*/ 8 && img_alt_value !== (img_alt_value = /*post*/ ctx[5].img_alt)) {
+			if (!current || dirty & /*tag*/ 1 && img_alt_value !== (img_alt_value = /*post*/ ctx[4].img_alt)) {
 				attr(img, "alt", img_alt_value);
 			}
 
-			if ((!current || dirty & /*Posts*/ 8) && t1_value !== (t1_value = /*post*/ ctx[5].title + "")) set_data(t1, t1_value);
+			if ((!current || dirty & /*tag*/ 1) && t1_value !== (t1_value = /*post*/ ctx[4].title + "")) set_data(t1, t1_value);
 
-			if (!current || dirty & /*Posts*/ 8 && a_href_value !== (a_href_value = /*post*/ ctx[5].path)) {
+			if (!current || dirty & /*tag*/ 1 && a_href_value !== (a_href_value = /*post*/ ctx[4].path)) {
 				attr(a, "href", a_href_value);
 			}
 
 			const postmeta_changes = {};
-			if (dirty & /*Posts*/ 8) postmeta_changes.post = /*post*/ ctx[5];
+			if (dirty & /*tag*/ 1) postmeta_changes.post = /*post*/ ctx[4];
 			if (dirty & /*catgPosts*/ 2) postmeta_changes.catgPosts = /*catgPosts*/ ctx[1];
 			if (dirty & /*tagsPosts*/ 4) postmeta_changes.tagsPosts = /*tagsPosts*/ ctx[2];
 			postmeta.$set(postmeta_changes);
@@ -165,17 +165,18 @@ function create_each_block(ctx) {
 	};
 }
 
-// (23:6) {#key tag}
+// (19:6) {#key tag}
 function create_key_block(ctx) {
 	let h2;
 	let span;
 	let t0;
 	let t1;
+	let t2_value = /*tag*/ ctx[0].name + "";
 	let t2;
 	let t3;
 	let each_1_anchor;
 	let current;
-	let each_value = /*Posts*/ ctx[3];
+	let each_value = Object(/*tag*/ ctx[0].posts);
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -192,7 +193,7 @@ function create_key_block(ctx) {
 			span = element("span");
 			t0 = text("Tag:");
 			t1 = space();
-			t2 = text(/*tag*/ ctx[0]);
+			t2 = text(t2_value);
 			t3 = space();
 
 			for (let i = 0; i < each_blocks.length; i += 1) {
@@ -210,7 +211,7 @@ function create_key_block(ctx) {
 			t0 = claim_text(span_nodes, "Tag:");
 			span_nodes.forEach(detach);
 			t1 = claim_space(h2_nodes);
-			t2 = claim_text(h2_nodes, /*tag*/ ctx[0]);
+			t2 = claim_text(h2_nodes, t2_value);
 			h2_nodes.forEach(detach);
 			t3 = claim_space(nodes);
 
@@ -241,10 +242,10 @@ function create_key_block(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (!current || dirty & /*tag*/ 1) set_data(t2, /*tag*/ ctx[0]);
+			if ((!current || dirty & /*tag*/ 1) && t2_value !== (t2_value = /*tag*/ ctx[0].name + "")) set_data(t2, t2_value);
 
-			if (dirty & /*Posts, catgPosts, tagsPosts, pm*/ 30) {
-				each_value = /*Posts*/ ctx[3];
+			if (dirty & /*Object, tag, catgPosts, tagsPosts, pm*/ 15) {
+				each_value = Object(/*tag*/ ctx[0].posts);
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -380,21 +381,13 @@ function instance($$self, $$props, $$invalidate) {
 		continue: false
 	};
 
-	let Posts;
-
 	$$self.$$set = $$props => {
 		if ("tag" in $$props) $$invalidate(0, tag = $$props.tag);
 		if ("catgPosts" in $$props) $$invalidate(1, catgPosts = $$props.catgPosts);
 		if ("tagsPosts" in $$props) $$invalidate(2, tagsPosts = $$props.tagsPosts);
 	};
 
-	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*tagsPosts, tag*/ 5) {
-			$: $$invalidate(3, Posts = Object.values(tagsPosts.filter(key => key.name == tag)[0].posts));
-		}
-	};
-
-	return [tag, catgPosts, tagsPosts, Posts, pm];
+	return [tag, catgPosts, tagsPosts, pm];
 }
 
 class Component extends SvelteComponent {
