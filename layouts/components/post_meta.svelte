@@ -66,7 +66,7 @@
 {/if}
 {#if pm.continue}
   <div class="mb-4">
-    <a href={path} {title} class="btn-outline hover:white">Continue Reading</a>
+    <a href={path} title="{title}" class="btn-outline hover:white">Continue Reading</a>
   </div>
 {/if}
 
