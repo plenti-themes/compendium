@@ -81,7 +81,7 @@
             <h2
               class="w-full text-center pb-3 md:pb-4 lg:pb-5 text-3xl sm:text-4xl md:text-5xl"
             >
-              <a href={post.path} class="">{post.fields.title}</a>
+              <a href={post.path} class="feature">{post.fields.title}</a>
             </h2>
             <div
               role="complementary"
@@ -148,18 +148,18 @@
 
 <style>
   .feature {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
   }
   .feature a {
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 1);
     background-color: rgba(1, 1, 1, 0.15);
   }
   .feature a:hover {
     color: var(--accent);
   }
   .feature {
-    bottom: 15%;
+    bottom: 18%;
   }
   .citation {
     background-color: rgba(1, 1, 1, 0.15);
