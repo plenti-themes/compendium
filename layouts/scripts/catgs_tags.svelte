@@ -3,9 +3,22 @@
     let tagsObj = [];
     let catgObj = [];
     let index = 0;
+    let tagContent = [];
+    let catContent = [];
 
-    let catContent = content.filter((key) => key.type == "catgs");
-    let tagContent = content.filter((key) => key.type == "tags");
+    let catGroup = content.filter((key) => key.type == "catgs");
+    let tagGroup = content.filter((key) => key.type == "tags");
+
+    catGroup.forEach((cat) => {
+      if (cat.path.split("/").length == 2) {
+        catContent.push(cat);
+      }
+    });
+    tagGroup.forEach((tag) => {
+      if (tag.path.split("/").length == 2) {
+        tagContent.push(tag);
+      }
+    });
 
     // What: Store post metadata into catg and tag arrays
     // Why:  Use arrays to build sorted key/value objects below
@@ -41,6 +54,8 @@
       });
     });
 
+    // console.log(tagsObj)
+
     // What: Group posts by tagContent
     // Why:  Use to populate tags for asides, posts metadata, and for
     //       generating tag pages
@@ -50,7 +65,7 @@
     for (index = 0; index < tagContent.length; index++) {
       let obj = {
         name: tagContent[index].fields.name,
-        path: tagContent[index].path,
+        path: tagContent[index].fields.route,
         posts: Object.values(tagsObj[tagContent[index].fields.name]),
         length: Object.keys(tagsObj[tagContent[index].fields.name]).length,
       };
@@ -66,7 +81,7 @@
     for (index = 0; index < catContent.length; index++) {
       let obj = {
         name: catContent[index].fields.name,
-        path: catContent[index].path,
+        path: catContent[index].fields.route,
         posts: Object.values(catgObj[catContent[index].fields.name]),
         length: Object.keys(catgObj[catContent[index].fields.name]).length,
       };

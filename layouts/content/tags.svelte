@@ -1,16 +1,32 @@
 <script>
   import Aside from "../components/aside.svelte";
   import PostList from "../components/list_tags.svelte";
+  import Pagination from "../components/paginate.svelte";
 
   // Variables passed in from "html.svelte" via "index.svelte"
-  export let idxContent, allPosts, content, catgPosts, tagsPosts;
+  export let idxContent, allPosts, content, catgPosts, tagsPosts, baseurl;
 
   let socialLinks = idxContent.socialLinks;
+  let maxItems = idxContent.theme.tagsPerPage;
+
+  // Setting variables for pagination logic.
+  let totalTags = tagsPosts.filter((key) => key.name == content.fields.name)[0]
+    .length;
+
+  // Set variable for pager
+  let totalPages = Math.ceil(totalTags / maxItems);
+
+  // Set variable for plenti.json
+  let totalTagPages = totalPages;
+  $: currentPage = content.pager;
+  $: pgRangeHigh = currentPage * maxItems;
+  $: pgRangeLow = pgRangeHigh - maxItems;
 
   $: tag = {
     name: content.fields.name,
     route: content.fields.route,
-    posts: Object(tagsPosts.filter((key) => key.name == content.fields.name)[0]).posts,
+    posts: Object(tagsPosts.filter((key) => key.name == content.fields.name)[0])
+      .posts,
   };
 </script>
 
@@ -24,7 +40,20 @@
             <!-- ------------------------------------------------------- -->
             <!-- Setup a Card for each post as necessary                 -->
             <!-- ------------------------------------------------------- -->
-            <PostList {tag} {catgPosts} {tagsPosts} />
+            <PostList
+              {tag}
+              {catgPosts}
+              {tagsPosts}
+              {pgRangeHigh}
+              {pgRangeLow}
+            />
+          </div>
+
+          <!-- ------------------------------------------------------- -->
+          <!-- Paginate each page as necessary                         -->
+          <!-- ------------------------------------------------------- -->
+          <div class="row mt-8 md:pr-10 mb-6 sm:mb-0">
+            <Pagination {content} {currentPage} {totalPages} {baseurl} />
           </div>
         </div>
 
