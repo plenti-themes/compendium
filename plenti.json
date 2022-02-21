@@ -10,7 +10,7 @@
     "pages": "pages/:filename",
     "posts": "posts/:filename",
     "projs": ":fields(route)/:paginate(totalProjPages)",
-    "tags": ":fields(route)",
-    "catgs": ":fields(route)"
+    "tags": ":fields(route)/:paginate(totalTagPages)",
+    "catgs": ":fields(route)/:paginate(totalCatgPages)"
   }
 }
