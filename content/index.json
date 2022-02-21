@@ -59,7 +59,7 @@
     "projsPerPage": 3,
     "projsSort": "Date",
     "projsSortValues": "Date, Name",
-    "tagsPerPage": 12,
+    "tagsPerPage": 5,
     "mathTypesetting": true,
     "codeHighlighting": true,
     "featuredPage": "Frame",
