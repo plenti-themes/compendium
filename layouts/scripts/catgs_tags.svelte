@@ -51,8 +51,8 @@
       let obj = {
         name: tagContent[index].fields.name,
         path: tagContent[index].path,
-        posts: Object.values(tagsObj[tagContent[index].fields.name]),
-        length: Object.keys(tagsObj[tagContent[index].fields.name]).length,
+        posts: tagsObj[tagContent[index].fields.name] ? Object.values(tagsObj[tagContent[index].fields.name]) : null,
+        length: tagsObj[tagContent[index].fields.name] ? Object.keys(tagsObj[tagContent[index].fields.name]).length : null,
       };
       tagsList.push(obj);
     }
@@ -67,8 +67,8 @@
       let obj = {
         name: catContent[index].fields.name,
         path: catContent[index].path,
-        posts: Object.values(catgObj[catContent[index].fields.name]),
-        length: Object.keys(catgObj[catContent[index].fields.name]).length,
+        posts: catgObj[catContent[index].fields.name] ? Object.values(catgObj[catContent[index].fields.name]) : null,
+        length: catgObj[catContent[index].fields.name] ? Object.keys(catgObj[catContent[index].fields.name]).length : null,
       };
       catgList.push(obj);
     }
