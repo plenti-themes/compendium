@@ -1,10 +1,10 @@
 articulatePost/
 deploy/
+public/
 dist/
 node_modules/
 package-lock.json
 temp_build/
-themes/
 workers-site/
 wrangler.toml
 .env
