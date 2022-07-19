@@ -8,7 +8,7 @@
   // * theme: values passed in from layout content {...content.fields}
   export let allPosts, content, theme, catgPosts, tagsPosts, baseurl;
 
-  $: currentPage = content.pager;
+  $: currentPage = content.pager ? content.pager : 1;
   let featuredPage = theme.featuredPage;
   let allFeatures = allPosts.filter((content) => content.fields?.featured);
   let totalPosts = allPosts.length;

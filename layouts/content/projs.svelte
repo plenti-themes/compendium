@@ -6,7 +6,7 @@
   // Variables passed in from "html.svelte" via "index.svelte"
   export let idxContent, allPosts, content, catgPosts, tagsPosts, baseurl;
 
-  $: currentPage = content.pager;
+  $: currentPage = content.pager ? content.pager : 1;
   let socialLinks = idxContent.socialLinks;
   let projsPerPage = idxContent.theme.projsPerPage;
   let projsSort = idxContent.theme.projsSort;
