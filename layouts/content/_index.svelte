@@ -10,11 +10,12 @@
 
   $: currentPage = content.pager ? content.pager : 1;
   let featuredPage = theme.featuredPage;
+  let postsPerPage = 4;
   let allFeatures = allPosts.filter((content) => content.fields?.featured);
   let totalPosts = allPosts.length;
-  let totalPages = Math.ceil(totalPosts / theme.postsPerPage);
-  $: postRangeHigh = currentPage * theme.postsPerPage;
-  $: postRangeLow = postRangeHigh - theme.postsPerPage;
+  let totalPages = Math.ceil(totalPosts / postsPerPage);
+  $: postRangeHigh = currentPage * postsPerPage;
+  $: postRangeLow = postRangeHigh - postsPerPage;
 </script>
 
 <section class="flex flex-wrap items-center justify-between pb-11">
