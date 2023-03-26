@@ -61,7 +61,7 @@
     <nav class="flex flex-wrap items-center justify-between">
       <!-- logo -->
       <h1 class="font-bold opacity-100 my-0 flex items-center">
-        <img width="50" height="50" src="assets/logo.svg" alt="Logo" />
+        <img width="50" height="50" src="logo.svg" alt="Logo" />
         <a class="navmenu ml-2 text-4xl" href=".">
           {#if site_name.length > 1}
             <span class="accent" style="opacity: 1;"

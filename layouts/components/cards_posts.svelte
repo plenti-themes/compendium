@@ -20,7 +20,7 @@
     <div class="rounded-lg overflow-hidden shadow-md bg-secondary">
       <img
         class="w-full md:h-52 lg:h-60 object-cover"
-        src="assets/posts/{post.fields.image.src}"
+        src="media/posts/{post.fields.image.src}"
         alt={post.fields.image.alt}
       />
       <div class="px-5 py-4">

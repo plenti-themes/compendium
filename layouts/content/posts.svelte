@@ -40,7 +40,7 @@
       <div class="relative mb-8 w-full">
         <img
           class="rounded-lg overflow-hidden w-full h-screen-60 object-cover object-center"
-          src="assets/posts/{image.src}"
+          src="media/posts/{image.src}"
           alt={image.alt}
         />
         <cite class="text-meta"

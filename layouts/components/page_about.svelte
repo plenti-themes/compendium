@@ -27,7 +27,7 @@
   <div>
     <img
       class="w-full object-cover object-bottom h-screen-40 sm:h-screen-60 md:h-screen-70 lg:h-screen-80 xl:h-screen-90"
-      src="assets/pages/{image.src}"
+      src="media/pages/{image.src}"
       alt={image.alt}
     />
     <cite class="text-meta"
@@ -59,7 +59,7 @@
     <img
       class="w-full object-center object-cover h-screen-80 lg:h-screen-90"
       style="filter: brightness(60%)"
-      src="assets/pages/{splash.src}"
+      src="media/pages/{splash.src}"
       alt={splash.alt}
     />
   </div>

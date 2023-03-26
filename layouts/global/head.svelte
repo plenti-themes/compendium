@@ -2,7 +2,7 @@
   import SEO from "../scripts/SEO.svelte";
 
   // Values passed in from "html.svelte"
-  export let idxContent, allPages, content, baseurl;
+  export let idxContent, content, baseurl;
   let isPost;
 
   // Defne key value for SEO updates
@@ -20,17 +20,17 @@
   <base href={baseurl} />
 
   <!-- Fix hydration -->
-  <script type="module" src="spa/ejected/main.js"></script>
+  <script type="module" src="spa/core/main.js"></script>
 
-  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-  <link rel="stylesheet" href="assets/tailwind.global.css" />
+  <link rel="icon" type="image/svg+xml" href="logo.svg" />
+  <link rel="stylesheet" href="tailwind.global.css" />
 
   {#if idxContent.theme.codeHighlighting}
-    <link rel="stylesheet" href="assets/prism.css" />
+    <link rel="stylesheet" href="prism.css" />
   {/if}
 
   {#if idxContent.theme.mathTypesetting}
-    <link rel="stylesheet" href="assets/katex.min.css" />
+    <link rel="stylesheet" href="katex.min.css" />
   {/if}
 
   <link rel="stylesheet" href="spa/bundle.css" />

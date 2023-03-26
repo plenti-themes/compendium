@@ -2,8 +2,8 @@
   "name": "compendium-theme",
   "version": "0.9.1",
   "scripts": {
-    "style": "postcss styles/tailwind.source.css -o assets/tailwind.global.css",
-    "theme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css assets/color-scheme.css",
+    "style": "postcss styles/tailwind.source.css -o static/tailwind.global.css",
+    "theme": "cp styles/$(grep -m 1 colorScheme content/index.json | awk '{ gsub(/[[:punct:]]/, \"\"); print $2 }').css static/color-scheme.css",
     "posttheme": "npm run style",
     "prebuild": "NODE_ENV=production npm run style",
     "build": "$(cd deploy && rm -rf functions/api && cp -r ../functions/api/ functions/)",

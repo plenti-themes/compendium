@@ -66,7 +66,7 @@
               ? 'rounded-lg object-cover h-screen-70'
               : 'object-cover h-screen'}"
             style="filter: brightness(60%)"
-            src="assets/posts/{post.fields.image.src}"
+            src="media/posts/{post.fields.image.src}"
             alt={post.fields.image.alt}
           />
         </div>

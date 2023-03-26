@@ -27,7 +27,7 @@
   let ctObj = catgs_tags(allPosts, allContent);
   export let catgPosts = Object(ctObj["catgs"]);
   export let tagsPosts = Object(ctObj["tags"]);
-  export let baseurl = env.local ? "/" : env.baseurl;
+  export let baseurl = env.baseurl;
 </script>
 
 <html lang="en" class="bg-primary {isDark ? 'dk-theme' : 'lt-theme'}">

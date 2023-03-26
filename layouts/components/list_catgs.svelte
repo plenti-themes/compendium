@@ -25,7 +25,7 @@
           <div class="flex items-center my-4">
             <img
               class="inline-block object-cover rounded-md w-28 h-28"
-              src="assets/posts/{post.img_src}"
+              src="media/posts/{post.img_src}"
               alt={post.img_alt}
             />
             <div class="inline-block ml-2">

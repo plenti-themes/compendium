@@ -13,7 +13,7 @@
       <img
         class=" w-full object-cover rounded-lg overflow-hidden h-screen-60"
         style="filter: brightness(60%)"
-        src="assets/pages/{image.src}"
+        src="media/pages/{image.src}"
         alt={image.alt}
       />
       <div class="absolute pl-2 md:pl-6" style="bottom: 10%;">

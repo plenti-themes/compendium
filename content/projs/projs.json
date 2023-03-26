@@ -1,6 +1,6 @@
 {
 	"title": "Projects",
-  "route": "projects",
+  	"route": "projects",
 	"enabled": true,
 	"menu": true
 }

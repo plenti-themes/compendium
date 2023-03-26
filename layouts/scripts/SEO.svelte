@@ -30,7 +30,7 @@
     page_title = content.fields.title;
     description = get_excerpt(content.fields.articleBody, 160);
     url = site_url + content.path + "/";
-    image_url = site_url + "assets/posts/" + content.fields.image.src;
+    image_url = site_url + "media/posts/" + content.fields.image.src;
     image_alt = content.fields.image.alt;
     dateCreated = content.fields.dateCreated;
     dateModified = content.fields.dateModified;
@@ -40,7 +40,7 @@
     page_title = idxContent.name + " | " + content.fields.title;
     description = content.fields.hero.tagline;
     url = site_url + content.path + "/";
-    image_url = site_url + "assets/pages/" + content.fields.image.src;
+    image_url = site_url + "media/pages/" + content.fields.image.src;
     image_alt = content.fields.image.alt;
   // Default SEO card to site attributes
   } else {
@@ -48,7 +48,7 @@
     page_title = idxContent.title;
     description = idxContent.description;
     url = site_url;
-    image_url = site_url + "assets/" + idxContent.SEO.image;
+    image_url = site_url + "media/" + idxContent.SEO.image;
     image_alt = page_title;
   }
 </script>
