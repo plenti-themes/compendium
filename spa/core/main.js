@@ -1,0 +1,1 @@
+import Router from"./router.js";new Router({target:document,hydrate:!0,props:{}})

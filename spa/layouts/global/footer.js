@@ -1,0 +1,17 @@
+import{SvelteComponent,append,attr,children,claim_element,claim_space,claim_text,detach,element,init,insert,listen,noop,safe_not_equal,space,text}from"../../web_modules/svelte/internal/index.mjs";function create_fragment(){let r,s,c,l,_,t,b,p,m,h,u,n,d,f,a,g,v,i,j,y,o,w,O,x,C;return{c(){r=element("div"),s=element("div"),c=element("button"),l=element("i"),_=space(),t=element("div"),b=text("© Copyright 2022. All rights reserved."),p=element("br"),m=text(`
+      Designed and developed by Roberto Rivera.`),h=element("br"),u=text(`
+      Powered by
+      `),n=element("a"),d=text("Plenti"),f=text(`
+      of
+      `),a=element("a"),g=text("Svelte"),v=text(`,
+      `),i=element("a"),j=text("Line Awesome"),y=text(`
+      and
+      `),o=element("a"),w=text("tailwindcss"),O=text("."),this.h()},l(e){r=claim_element(e,"DIV",{class:!0});var x,C,E,k,A,S,M,F=children(r);s=claim_element(F,"DIV",{class:!0}),C=children(s),c=claim_element(C,"BUTTON",{}),k=children(c),l=claim_element(k,"I",{class:!0}),children(l).forEach(detach),k.forEach(detach),_=claim_space(C),t=claim_element(C,"DIV",{class:!0,role:!0}),x=children(t),b=claim_text(x,"© Copyright 2022. All rights reserved."),p=claim_element(x,"BR",{}),m=claim_text(x,`
+      Designed and developed by Roberto Rivera.`),h=claim_element(x,"BR",{}),u=claim_text(x,`
+      Powered by
+      `),n=claim_element(x,"A",{target:!0,rel:!0,href:!0}),A=children(n),d=claim_text(A,"Plenti"),A.forEach(detach),f=claim_text(x,`
+      of
+      `),a=claim_element(x,"A",{target:!0,rel:!0,href:!0}),S=children(a),g=claim_text(S,"Svelte"),S.forEach(detach),v=claim_text(x,`,
+      `),i=claim_element(x,"A",{target:!0,rel:!0,href:!0}),E=children(i),j=claim_text(E,"Line Awesome"),E.forEach(detach),y=claim_text(x,`
+      and
+      `),o=claim_element(x,"A",{target:!0,rel:!0,href:!0}),M=children(o),w=claim_text(M,"tailwindcss"),M.forEach(detach),O=claim_text(x,"."),x.forEach(detach),C.forEach(detach),F.forEach(detach),this.h()},h(){attr(l,"class","las la-chevron-circle-up text-5xl md:text-6xl rounded-full overflow-hidden bg-clip-content opacity-70 hover:opacity-100 accent"),attr(n,"target","_blank"),attr(n,"rel","noopener"),attr(n,"href","https://plenti.co/"),attr(a,"target","_blank"),attr(a,"rel","noopener"),attr(a,"href","https://svelte.dev/"),attr(i,"target","_blank"),attr(i,"rel","noopener"),attr(i,"href","https://icons8.com/line-awesome"),attr(o,"target","_blank"),attr(o,"rel","noopener"),attr(o,"href","https://tailwindcss.com/"),attr(t,"class","footnote mt-2"),attr(t,"role","contentinfo"),attr(s,"class","w-full text-center"),attr(r,"class","flex flex-wrap items-center justify-between pb-4 pt-2")},m(e,E){insert(e,r,E),append(r,s),append(s,c),append(c,l),append(s,_),append(s,t),append(t,b),append(t,p),append(t,m),append(t,h),append(t,u),append(t,n),append(n,d),append(t,f),append(t,a),append(a,g),append(t,v),append(t,i),append(i,j),append(t,y),append(t,o),append(o,w),append(t,O),x||(C=listen(c,"click",scrollTop),x=!0)},p:noop,i:noop,o:noop,d(e){e&&detach(r),x=!1,C()}}}function scrollTop(){window.scrollTo({top:0,left:0,behavior:"smooth"})}class Component extends SvelteComponent{constructor(e){super(),init(this,e,null,create_fragment,safe_not_equal,{})}}export default Component
